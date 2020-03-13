@@ -2,13 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { FormPageComponent } from './form-page/form-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: 'home', component: HomePageComponent},
+  {path: 'form', component: FormPageComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: '**', component: NotFoundComponent}
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent,
+    FormPageComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})
   ],
   providers: [],
   bootstrap: [AppComponent]
