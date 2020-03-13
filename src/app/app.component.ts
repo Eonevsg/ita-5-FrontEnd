@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ita5-FrontEndv3';
+  title = 'IT Akademija';
 
   ngOnInit() {
     document.body.classList.add('bg-img');

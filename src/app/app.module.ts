@@ -7,6 +7,8 @@ import { FormPageComponent } from './form-page/form-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 
+import { FormsModule } from "@angular/forms";
+
 const appRoutes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'form', component: FormPageComponent},
@@ -23,6 +25,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})
   ],
   providers: [],

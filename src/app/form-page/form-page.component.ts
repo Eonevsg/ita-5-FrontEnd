@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from "../shared/form";
 
 @Component({
   selector: 'app-form-page',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent implements OnInit {
-
+  form: Form;
   constructor() { }
 
   ngOnInit(): void {
