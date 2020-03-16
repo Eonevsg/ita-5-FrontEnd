@@ -26,6 +26,7 @@
 .two {
   height: auto;
   margin-right: 2%;
+  text-align: right;
 }
 /* Clear floats after the columns */
 .container:after {
@@ -33,24 +34,10 @@
   display: table;
   clear: both;
 }
-#Column1_rowOne {
+.Column1_row {
    width: 100%;
    height: 50%;
  }
-#Column1_rowTwo {
-  width: 100%;
-  height: 50%;
-}
-
-#Column2_rowOne {
-  width: 100%;
-  text-align: right;}
-#Column2_rowTwo {
-  width: 100%;
-  text-align: right;}
-#Column2_rowThree {
-  width: 100%;
-  text-align: right;}
 
 .collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
 .collapse-accordion .card-header {padding:0;}
