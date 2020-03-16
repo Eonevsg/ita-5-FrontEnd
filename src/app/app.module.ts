@@ -9,7 +9,7 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { FormsModule } from "@angular/forms";
 import { AnswerListComponent } from './answer-list/answer-list.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 const appRoutes: Routes = [
   {path: 'list', component: AnswerListComponent},
@@ -30,6 +30,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})
   ],
   providers: [],
