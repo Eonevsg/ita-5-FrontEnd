@@ -8,7 +8,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 
+import { FormsModule } from "@angular/forms";
+import { AnswerListComponent } from './answer-list/answer-list.component';
+import { HttpClientModule } from '@angular/common/http';
+
 const appRoutes: Routes = [
+  {path: 'list', component: AnswerListComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'form', component: FormPageComponent},
   {path: 'login', component: LoginPageComponent},
@@ -22,10 +27,13 @@ const appRoutes: Routes = [
     HomePageComponent,
     FormPageComponent,
     NotFoundComponent,
+    AnswerListComponent,
     LoginPageComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})
   ],
   providers: [],
