@@ -1,7 +1,7 @@
 export class Answer{
     id: string;
-    questionId: string;
+    question_id: string;
     answer: string;
-    personId: string;
+    person_id: string;
     __class: string;
 }

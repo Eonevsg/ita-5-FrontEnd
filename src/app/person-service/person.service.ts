@@ -9,7 +9,7 @@ export class PersonService {
   private answersUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.answersUrl = 'https://ita-5-back-staging.herokuapp.com/api/answer';
+    this.answersUrl = 'http://localhost:8080/api/answer';
   }
 
   public findAll(): Observable<Answer[]> {
