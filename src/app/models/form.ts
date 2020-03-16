@@ -1,0 +1,17 @@
+export interface Form {
+    id?: string;
+    fname: string;
+    lname: string;
+    phone: number;
+    email: string;
+    establishment: string;
+    contract: boolean;
+    contractExplanation?: string;
+    shift: boolean;
+    shiftExplanation?: string;
+    hobbies: string;
+    motivation: string;
+    experience: string;
+    marketing: string;
+  }
+  
