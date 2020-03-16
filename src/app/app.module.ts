@@ -6,10 +6,12 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FormPageComponent } from './form-page/form-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 const appRoutes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'form', component: FormPageComponent},
+  {path: 'login', component: LoginPageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 ];
@@ -19,7 +21,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomePageComponent,
     FormPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
