@@ -8,8 +8,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 
 import { FormsModule } from "@angular/forms";
+import { AnswerListComponent } from './answer-list/answer-list.component';
+import { HttpClient } from '@angular/common/http';
 
 const appRoutes: Routes = [
+  {path: 'list', component: AnswerListComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'form', component: FormPageComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomePageComponent,
     FormPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AnswerListComponent
   ],
   imports: [
     BrowserModule,
