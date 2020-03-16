@@ -14,16 +14,17 @@
 }
 .container {
   width: 100%;
-  height: 100%;
+  height: auto;
+  margin-bottom: 2%;
 }
 
 .one {
   width: 65%;
-  height: 100%;
+  height: auto;
   float: left;
 }
 .two {
-  height: 100%;
+  height: auto;
   margin-right: 2%;
 }
 /* Clear floats after the columns */
@@ -53,3 +54,7 @@
 
 .collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
 .collapse-accordion .card-header {padding:0;}
+
+#footerBackground{
+  background: #ee7023;
+}
