@@ -1,0 +1,47 @@
+#logo{
+  width: 5%;
+  height: 5%;
+}
+.side-image{
+  width: 30%;
+  height: 20%;
+}
+#header {
+  text-align: left;
+  background: white;
+  color: #ee7023;
+  margin-left: 2%;
+}
+.container {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2%;
+}
+
+.one {
+  width: 65%;
+  height: auto;
+  float: left;
+}
+.two {
+  height: auto;
+  margin-right: 2%;
+  text-align: right;
+}
+/* Clear floats after the columns */
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.Column1_row {
+   width: 100%;
+   height: 50%;
+ }
+
+.collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
+.collapse-accordion .card-header {padding:0;}
+
+#footerBackground{
+  background: #ee7023;
+}

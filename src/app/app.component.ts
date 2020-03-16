@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ita5-FrontEndv3';
+
+  ngOnInit() {
+    document.body.classList.add('bg-img');
+  }
 }
