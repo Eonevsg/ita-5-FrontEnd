@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 
 import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const appRoutes: Routes = [
   {path: 'home', component: HomePageComponent},
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})
   ],
   providers: [],

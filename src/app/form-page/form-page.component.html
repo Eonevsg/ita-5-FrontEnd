@@ -1,19 +1,23 @@
 <div id="main">
+  <div id="header">
+    <div>
+      <img src="/assets/images/logo.png" id="logo" />
+    </div>
+    <div>
+      <h1>IT Academija</h1>
+    </div>
+  </div>
+
   <div id="form-container">
-    <h2>Registracijos forma</h2>
-    <form #applicationsForm="ngForm">
-      <div class="form-group">
+    <h2 id="form-title">Registracijos forma</h2>
+    <form [formGroup]="applicationForm">
+      <div class="form-group" [class.has-error]="fname.invalid">
         <label for="fname">Vardas:</label>
         <input
           type="text"
           class="form-control"
           id="fname"
-          name="fname"
-          (ngModel)="(applicationForm.fname)"
-          required
-          #fname="ngModel"
-          minlength="2"
-          maxlength="100"
+          formControlName="fname"
         />
         <div
           [hidden]="fname.valid || fname.untouched"
@@ -25,6 +29,9 @@
           <div *ngIf="fname.errors?.minlength">
             Vardas per trumpas
           </div>
+          <div *ngIf="fname.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -32,14 +39,9 @@
         <label for="lname">Pavardė:</label>
         <input
           type="text"
-          id="lname"
           class="form-control"
-          (ngModel)="(applicationForm.lname)"
-          name="lname"
-          #lname="ngModel"
-          required
-          minlength="2"
-          maxlength="100"
+          id="lname"
+          formControlName="lname"
         />
         <div
           [hidden]="lname.valid || lname.untouched"
@@ -51,20 +53,20 @@
           <div *ngIf="lname.errors?.minlength">
             Pavardė per trumpa
           </div>
+          <div *ngIf="lname.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
       <div class="form-group">
         <label for="phone">Tel. numeris:</label>
         <input
-          type="number"
-          id="phone"
-          (ngModel)="(applicationForm.phone)"
+          type="text"
           class="form-control"
-          name="phone"
-          #phone="ngModel"
-          required
-          pattern="^(3706|86)+[0-9]{7}$"
+          id="phone"
+          formControlName="phone"
+          placeholder="+37060000000"
         />
         <div
           [hidden]="phone.valid || phone.untouched"
@@ -83,14 +85,10 @@
         <label for="email">El. paštas:</label>
         <input
           type="text"
-          id="email"
-          (ngModel)="(applicationForm.email)"
           class="form-control"
-          name="email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          #email="ngModel"
-          maxlength="100"
-          required
+          id="email"
+          formControlName="email"
+          placeholder="name@example.com"
         />
         <div
           [hidden]="email.valid || email.untouched"
@@ -98,6 +96,9 @@
         >
           <div *ngIf="email.errors?.required">
             Įveskite el. pašto adresą
+          </div>
+          <div *ngIf="email.errors?.maxlength">
+            El. pašto adresas per ilgas!
           </div>
           <div *ngIf="email.errors?.pattern">
             Neteisingas formatas!
@@ -111,14 +112,9 @@
         >
         <input
           type="text"
-          id="establishment"
-          (ngModel)="(applicationForm.establishment)"
           class="form-control"
-          name="establishment"
-          #establishment="ngModel"
-          required
-          pattern="[a-z -ąčęėįšųūžĄČĘĖĮŠŲŪŽ]+"
-          maxlength="150"
+          id="establishment"
+          formControlName="establishment"
         />
         <div
           [hidden]="establishment.valid || establishment.untouched"
@@ -143,12 +139,9 @@
               type="radio"
               value="yes"
               id="contract-pos"
-              name="contract"
-              (ngModel)="(applicationForm.contract)"
-              #contract="ngModel"
-              required
+              formControlName="contract"
             />
-            <label for="contract-pos">Taip</label>
+            <label for="contract-pos" class="radio-label">Taip</label>
           </div>
 
           <div class="form-radio-group-choice">
@@ -156,12 +149,9 @@
               type="radio"
               value="no"
               id="contract-neg"
-              name="contract"
-              (ngModel)="(applicationForm.contract)"
-              #contract="ngModel"
-              required
+              formControlName="contract"
             />
-            <label for="contract-neg">Ne</label>
+            <label for="contract-neg" class="radio-label">Ne</label>
           </div>
           <div
             *ngIf="contract.invalid"
@@ -179,22 +169,22 @@
           <label for="contractExplanation">Pakomentuok plačiau:</label>
           <input
             type="text"
-            id="contractExplanation"
-            name="contractExplanation"
-            (ngModel)="(applicationForm.contractExplanation)"
             class="form-control"
-            #contractExplanation="ngModel"
-            [required]="contract.value == 'no'"
-            maxlength="250"
+            id="contractExplanation"
+            formControlName="contractExplanation"
           />
+
           <div
             class="alert alert-danger"
             [hidden]="
               contractExplanation.valid || contractExplanation.untouched
             "
           >
-            <div *ngIf="establishment.errors?.required">
+            <div *ngIf="contractExplanation.errors?.required">
               Laukas privalomas!
+            </div>
+            <div *ngIf="contractExplanation.errors?.pattern">
+              Nenaudokite skaičių ar specialių simbolių!
             </div>
           </div>
         </div>
@@ -209,27 +199,21 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              id="shift-pos"
-              name="shift"
               value="yes"
-              (ngModel)="(applicationForm.shift)"
-              #shift="ngModel"
-              required
+              id="shift-pos"
+              formControlName="shift"
             />
-            <label for="shift-pos">Taip</label>
+            <label for="shift-pos" class="radio-label">Taip</label>
           </div>
 
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              id="shift-neg"
-              name="shift"
               value="no"
-              (ngModel)="(applicationForm.shift)"
-              #shift="ngModel"
-              required
+              id="shift-neg"
+              formControlName="shift"
             />
-            <label for="shift-neg">Ne</label>
+            <label for="shift-neg" class="radio-label">Ne</label>
           </div>
         </div>
         <div
@@ -248,19 +232,20 @@
         <label for="shiftExplanation">Pakomentuok plačiau:</label>
         <input
           type="text"
-          id="shiftExplanation"
-          name="shiftExplanation"
-          (ngModel)="(applicationForm.shiftExplanation)"
           class="form-control"
-          #shiftExplanation="ngModel"
-          [required]="shift.value == 'no'"
-          maxlength="250"
+          id="shiftExplanation"
+          formControlName="shiftExplanation"
         />
         <div
           class="alert alert-danger"
           [hidden]="shiftExplanation.valid || shiftExplanation.untouched"
         >
-          Laukas privalomas!
+          <div *ngIf="shiftExplanation.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="shiftExplanation.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -268,21 +253,22 @@
         <label for="hobbies"
           >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
         >
-        <input
+        <textarea
           type="text"
-          id="hobbies"
-          name="hobbies"
-          (ngModel)="(applicationForm.hobbies)"
           class="form-control"
-          #hobbies="ngModel"
-          required
-          maxlength="450"
-        />
+          id="hobbies"
+          formControlName="hobbies"
+        ></textarea>
         <div
           [hidden]="hobbies.valid || hobbies.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          <div *ngIf="hobbies.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="hobbies.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -291,21 +277,22 @@
           >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
-        <input
+        <textarea
           type="text"
-          id="motivation"
-          name="motivation"
-          (ngModel)="(applicationForm.motivation)"
           class="form-control"
-          #motivation="ngModel"
-          required
-          maxlength="450"
-        />
+          id="motivation"
+          formControlName="motivation"
+        ></textarea>
         <div
           [hidden]="motivation.valid || motivation.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          <div *ngIf="motivation.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="motivation.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -315,21 +302,22 @@
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
         >
-        <input
+        <textarea
           type="text"
-          id="experience"
-          name="experience"
-          (ngModel)="(applicationForm.experience)"
           class="form-control"
-          #experience="ngModel"
-          required
-          maxlength="450"
-        />
+          id="experience"
+          formControlName="experience"
+        ></textarea>
         <div
           [hidden]="experience.valid || experience.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          <div *ngIf="experience.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="experience.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -337,21 +325,22 @@
         <label for="marketing"
           >Iš kur sužinojai apie IT akademiją Swedbank?</label
         >
-        <input
+        <textarea
           type="text"
-          id="marketing"
-          name="marketing"
-          (ngModel)="(applicationForm.marketing)"
           class="form-control"
-          #marketing="ngModel"
-          required
-          maxlength="250"
-        />
+          id="marketing"
+          formControlName="marketing"
+        ></textarea>
         <div
           [hidden]="marketing.valid || marketing.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          <div *ngIf="marketing.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="marketing.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
@@ -360,9 +349,18 @@
           <button
             type="submit"
             class="btn btn-success"
-            [disabled]="!applicationsForm.valid"
+            [disabled]="applicationForm.invalid"
           >
-            Submit
+            Pateikti
+          </button>
+        </div>
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="applicationForm.reset()"
+          >
+            Išvalyti
           </button>
         </div>
       </div>
