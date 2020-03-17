@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer } from '../shared/answer(test)';
-import { PersonService } from '../person-service/person.service';
+import { PersonService } from '../services/person.service';
 import { Observable } from 'rxjs';
 
 @Component({

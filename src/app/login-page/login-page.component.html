@@ -9,10 +9,10 @@
         <button>Registruotis</button>
         <p class="message">Turi paskyrą? <a href="#">Prisijunk</a></p>
       </form>
-      <form class="login-form">
-        <input type="text" placeholder="prisijungimo vardas"/>
-        <input type="password" placeholder="slaptažodis"/>
-        <button>login</button>
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" class="login-form">
+        <input type="text" placeholder="prisijungimo vardas" name="username" ngModel>
+        <input type="password" placeholder="slaptažodis" name="password" ngModel/>
+        <button type="submit">login</button>
          <p class="message">Neturi paskyros? <a href="#">Užsiregistruok</a></p>
       </form>
     </div>
