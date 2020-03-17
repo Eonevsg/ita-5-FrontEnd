@@ -14,15 +14,9 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(value: any) {
     console.log(value);
-    this.http.post('https://ita-5-back-staging.herokuapp.com/login', value).subscribe(response => {
+    this.http.post('https://ita-5-back-staging.herokuapp.com/login', value, {observe: 'response'}).subscribe(response => {
       console.log(response.headers.get('Authorization'));
     });
-    // this.http.post('https://ita-5-back-staging.herokuapp.com/login', value).toPromise().then((data: any) => {
-    //   console.log(data.headers.get('Authorization')); //Response from backend
-    // });
-    // this.http.post('https://ita-5-back-staging.herokuapp.com/api/log-in', value).pipe(
-    //   catchError(this.errorHandlerService.handleError(value))
-    // );
   }
 
   ngOnInit(): void {
