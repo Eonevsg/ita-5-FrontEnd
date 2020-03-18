@@ -1,7 +1,11 @@
 export class Answer{
+person: {
     id: string;
-    questionId: string;
-    answer: string;
-    personId: string;
-    __class: string;
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    uni: string;
+  };
+  answerList: string[];
 }
