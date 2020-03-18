@@ -1,152 +1,300 @@
 <div id="main">
+  <div id="header">
+    <div>
+      <img src="/assets/images/logo.png" id="logo" />
+    </div>
+    <div>
+      <h1>IT Academija</h1>
+    </div>
+  </div>
+
   <div id="form-container">
-    <h2>Registracijos forma</h2>
-    <form>
-      <div class="form-group">
+    <h2 id="form-title">Registracijos forma</h2>
+    <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group" [class.has-error]="fname.invalid">
         <label for="fname">Vardas:</label>
         <input
           type="text"
           class="form-control"
           id="fname"
-          required
-          [(ngModel)]="form.fname"
-          name="fname"
-          minlength="2"
-          maxlength="100"
-          #fname="ngModel"
+          formControlName="fname"
         />
-      </div>
-      <div [hidden]="fname.valid || fname.pristine" class="alert alert-danger">
-        <div *ngIf="fname.errors?.required">
-          First name is required
-        </div>
-        <div *ngIf="fname.errors?.minlength">
-          First name must be at least 2 letters
+        <div
+          [hidden]="fname.valid || fname.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="fname.errors?.required">
+            Įveskite vardą
+          </div>
+          <div *ngIf="fname.errors?.minlength">
+            Vardas per trumpas
+          </div>
+          <div *ngIf="fname.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="lname">Pavardė:</label><br />
+        <label for="lname">Pavardė:</label>
         <input
           type="text"
+          class="form-control"
           id="lname"
-          class="form-control"
-          [(ngModel)]="form.lname"
-          name="lname"
-          #lname="ngModel"
-          required
-          minlength="2"
-          maxlength="100"
-        /><br />
-      </div>
-      <div [hidden]="lname.valid || lname.pristine" class="alert alert-danger">
-        <div *ngIf="lname.errors?.required">
-          Last name is required
-        </div>
-        <div *ngIf="lname.errors?.minlength">
-          First name must be at least 2 letters
+          formControlName="lname"
+        />
+        <div
+          [hidden]="lname.valid || lname.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="lname.errors?.required">
+            Įveskite pavardę
+          </div>
+          <div *ngIf="lname.errors?.minlength">
+            Pavardė per trumpa
+          </div>
+          <div *ngIf="lname.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="phone">Tel. numeris:</label><br />
+        <label for="phone">Tel. numeris:</label>
         <input
           type="text"
+          class="form-control"
           id="phone"
-          [(ngModel)]="form.phone"
-          class="form-control"
-          name="phone"
-          #phone="ngModel"
-        /><br />
+          formControlName="phone"
+          placeholder="+37060000000"
+        />
+        <div
+          [hidden]="phone.valid || phone.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="phone.errors?.required">
+            Įveskite telefono numerį
+          </div>
+          <div *ngIf="phone.errors?.pattern">
+            Neteisingas formatas! (+37060000000)
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="email">El. paštas:</label><br />
+        <label for="email">El. paštas:</label>
         <input
           type="text"
-          id="email"
-          [(ngModel)]="form.email"
           class="form-control"
-          name="email"
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          #email="ngModel"
-        /><br />
+          id="email"
+          formControlName="email"
+          placeholder="name@example.com"
+        />
+        <div
+          [hidden]="email.valid || email.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors?.required">
+            Įveskite el. pašto adresą
+          </div>
+          <div *ngIf="email.errors?.maxlength">
+            El. pašto adresas per ilgas!
+          </div>
+          <div *ngIf="email.errors?.pattern">
+            Neteisingas formatas!
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="establishment"
           >Mokymo įstaiga, kurioje šiuo metu mokaisi:</label
-        ><br />
+        >
         <input
           type="text"
-          id="establishment"
-          [(ngModel)]="form.establishment"
           class="form-control"
-          name="establishment"
-          #establishment="ngModel"
-        /><br />
+          id="establishment"
+          formControlName="establishment"
+        />
+        <div
+          [hidden]="establishment.valid || establishment.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="establishment.errors?.required">
+            Įveskite mokymosi įstaigos pavadinimą
+          </div>
+          <div *ngIf="establishment.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="contract"
           >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
-        ><br />
-        <div class="form-radio-group">
+        >
+        <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
-            <label for="contract-pos">Taip</label>
-            <input type="radio" id="contract-pos" name="contract-pos" />
+            <input
+              type="radio"
+              value="yes"
+              id="contract-pos"
+              formControlName="contract"
+            />
+            <label for="contract-pos" class="radio-label">Taip</label>
           </div>
+
           <div class="form-radio-group-choice">
-            <label for="contract-neg">Ne</label>
-            <input type="radio" id="contract-neg" name="contract-neg" /><br />
+            <input
+              type="radio"
+              value="no"
+              id="contract-neg"
+              formControlName="contract"
+            />
+            <label for="contract-neg" class="radio-label">Ne</label>
+          </div>
+          <div
+            *ngIf="contract.invalid"
+            [hidden]="contract.valid || contract.untouched"
+            class="alert alert-danger"
+          >
+            Laukas privalomas!
           </div>
         </div>
-        <div class="radio-hidden-group">
-          <label for="contract-explanation">Pakomentuok plačiau:</label><br />
+
+        <div
+          [hidden]="contract.value == 'yes' || contract.pristine"
+          class="radio-hidden-group"
+        >
+          <label for="contractExplanation">Pakomentuok plačiau:</label>
           <input
             type="text"
-            id="contract-explanation"
-            name="contract-explanation"
-          /><br />
+            class="form-control"
+            id="contractExplanation"
+            formControlName="contractExplanation"
+          />
+         
+          <div
+            class="alert alert-danger"
+            [hidden]="
+              contractExplanation.valid || contractExplanation.untouched
+            "
+          >
+            <div *ngIf="contractExplanation.errors?.required">
+              Laukas privalomas!
+            </div>
+            <div *ngIf="contractExplanation.errors?.pattern">
+              Nenaudokite skaičių ar specialių simbolių!
+            </div>
+          </div>
         </div>
+       
       </div>
+
       <div class="form-group">
         <label for="shift"
           >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
           akademijai skirti tiek laiko?</label
-        ><br />
+        >
         <div class="form-radio-group">
           <div class="form-radio-group-choice">
-            <label for="shift-pos">Taip</label>
-            <input type="radio" id="shift-pos" name="shift-pos" />
+            <input
+              type="radio"
+              value="yes"
+              id="shift-pos"
+              formControlName="shift"
+            />
+            <label for="shift-pos" class="radio-label">Taip</label>
           </div>
+
           <div class="form-radio-group-choice">
-            <label for="shift-neg">Ne</label>
-            <input type="radio" id="shift-neg" name="shift-neg" /><br />
+            <input
+              type="radio"
+              value="no"
+              id="shift-neg"
+              formControlName="shift"
+            />
+            <label for="shift-neg" class="radio-label">Ne</label>
+          </div>
+        </div>
+        <div
+          *ngIf="shift.invalid"
+          [hidden]="shift.valid || shift.untouched"
+          class="alert alert-danger"
+        >
+          Laukas privalomas!
+        </div>
+      </div>
+
+      <div
+        [hidden]="shift.value == 'yes' || shift.pristine"
+        class="radio-hidden-group"
+      >
+        <label for="shiftExplanation">Pakomentuok plačiau:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="shiftExplanation"
+          formControlName="shiftExplanation"
+        />
+        <div
+          class="alert alert-danger"
+          [hidden]="shiftExplanation.valid || shiftExplanation.untouched"
+        >
+          <div *ngIf="shiftExplanation.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="shiftExplanation.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
           </div>
         </div>
       </div>
-      <div class="radio-hidden-group">
-        <label for="shift-explanation">Pakomentuok plačiau:</label><br />
-        <input
-          type="text"
-          id="shift-explanation"
-          name="shift-explanation"
-        /><br />
-      </div>
 
       <div class="form-group">
-        <label for="hobbies">Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
-        ><br />
-        <input type="text" id="hobbies" name="hobbies" /><br />
+        <label for="hobbies"
+          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
+        >
+        <textarea
+          type="text"
+          class="form-control"
+          id="hobbies"
+          formControlName="hobbies"
+        ></textarea>
+        <div
+          [hidden]="hobbies.valid || hobbies.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="hobbies.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="hobbies.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="motivation"
           >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
-        ><br />
-        <input type="text" id="motivation" name="motivation" /><br />
+        >
+        <textarea
+          type="text"
+          class="form-control"
+          id="motivation"
+          formControlName="motivation"
+        ></textarea>
+        <div
+          [hidden]="motivation.valid || motivation.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="motivation.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="motivation.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
@@ -154,15 +302,68 @@
           >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
-        ><br />
-        <input type="text" id="experience" name="experience" /><br />
+        >
+        <textarea
+          type="text"
+          class="form-control"
+          id="experience"
+          formControlName="experience"
+        ></textarea>
+        <div
+          [hidden]="experience.valid || experience.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="experience.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="experience.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
         <label for="marketing"
           >Iš kur sužinojai apie IT akademiją Swedbank?</label
-        ><br />
-        <input type="text" id="marketing" name="marketing" /><br />
+        >
+        <textarea
+          type="text"
+          class="form-control"
+          id="marketing"
+          formControlName="marketing"
+        ></textarea>
+        <div
+          [hidden]="marketing.valid || marketing.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="marketing.errors?.required">
+            Laukas privalomas!
+          </div>
+          <div *ngIf="marketing.errors?.pattern">
+            Nenaudokite skaičių ar specialių simbolių!
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="applicationForm.invalid"
+          >
+            Pateikti
+          </button>
+        </div>
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn btn-light"
+            (click)="applicationForm.reset()"
+          >
+            Išvalyti
+          </button>
+        </div>
       </div>
     </form>
   </div>

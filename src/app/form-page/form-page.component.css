@@ -1,0 +1,50 @@
+#logo {
+  width: 5%;
+  height: 5%;
+}
+#header {
+  text-align: left;
+  background: white;
+  color: #ee7023;
+  margin: 2% 5% 0%;
+}
+
+.ng-valid.ng-touched:not(form) {
+  border-left: 5px solid #42a948;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.row {
+  padding: 5% 0% 3%;
+}
+
+.col-2 {
+  margin-right: 2%;
+}
+
+.btn {
+  width: 120px;
+}
+
+#form-container {
+  margin: 0% 5% 10%;
+}
+
+#form-title {
+  margin: 5% 0;
+}
+
+.radio-label {
+  margin-left: 1%;
+}
