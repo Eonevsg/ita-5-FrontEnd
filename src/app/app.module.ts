@@ -10,7 +10,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 
 
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-
+    FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes,{anchorScrolling: 'enabled'})

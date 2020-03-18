@@ -5,9 +5,9 @@
              #username="ngModel" (click)="isSelected=true">
       <input id="password" type="password" placeholder="slaptažodis" name="password" required ngModel
              #password="ngModel" (click)="isSelected=true">
-        <div class="alert alert-danger" *ngIf="hasError && !isSelected">
-          Klaidingi duomenys!
-        </div>
+      <div class="alert alert-danger" *ngIf="hasError && !isSelected">
+        Klaidingi duomenys!
+      </div>
       <button type="submit">login</button>
     </form>
   </div>
