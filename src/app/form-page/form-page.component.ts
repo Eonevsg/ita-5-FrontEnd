@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Form } from "../models/form";
-import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from "@angular/forms";
 import { FormService } from "../person-service/person.service";
 
 @Component({
@@ -18,6 +18,7 @@ export class FormPageComponent implements OnInit {
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
   }
   onSubmit() {
+    
     this.myForm = new FormGroup({
       person: new FormGroup({
         name: this.fname,
@@ -26,19 +27,35 @@ export class FormPageComponent implements OnInit {
         email: this.email,
         uni: this.establishment
       }),
-      questions: new FormGroup({
-        contract: this.contract,
-        contractExplanation: this.contractExplanation,
-        shift: this.shift,
-        shiftExplanation: this.shiftExplanation,
-        hobbies: this.hobbies,
-        motivation: this.motivation,
-        experience: this.experience,
-        marketing: this.marketing
-      })
+      answerList: new FormArray([
+        new FormGroup({
+          questionId: new FormControl('1'),
+          answer: this.contractExplanation,
+        }),
+        new FormGroup({
+          questionId: new FormControl('2'),
+          answer: this.shiftExplanation,
+        }),
+        new FormGroup({
+          questionId: new FormControl('3'),
+          answer: this.hobbies,
+        }),
+        new FormGroup({
+          questionId: new FormControl('4'),
+          answer: this.motivation,
+        }),
+        new FormGroup({
+          questionId: new FormControl('5'),
+          answer: this.experience,
+        }),
+        new FormGroup({
+          questionId: new FormControl('6'),
+          answer: this.marketing
+        }),
+      ])
     });
-    console.log(this.applicationForm.value);
-    this.personService.saveForm(this.myForm);
+    console.log(this.myForm.value);
+    this.personService.saveForm(this.myForm.value);
   }
 
   applicationForm = this.fb.group({
