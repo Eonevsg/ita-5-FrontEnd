@@ -1,20 +1,16 @@
-
-
-  <div class="login-page">
-    <div class="form">
-      <form class="register-form">
-        <input type="text" placeholder="prisijungimo vardas"/>
-        <input type="password" placeholder="slaptažodis"/>
-        <input type="text" placeholder="el.paštas"/>
-        <button>Registruotis</button>
-        <p class="message">Turi paskyrą? <a href="#">Prisijunk</a></p>
-      </form>
-      <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" class="login-form">
-        <input type="text" placeholder="prisijungimo vardas" name="username" ngModel>
-        <input type="password" placeholder="slaptažodis" name="password" ngModel/>
-        <button type="submit">login</button>
-         <p class="message">Neturi paskyros? <a href="#">Užsiregistruok</a></p>
-      </form>
-    </div>
+<div class="login-page">
+  <div class="form">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm.value)" class="login-form">
+      <input id="username" type="text" placeholder="prisijungimo vardas" name="username" required ngModel
+             #username="ngModel" (click)="isSelected=true">
+      <input id="password" type="password" placeholder="slaptažodis" name="password" required ngModel
+             #password="ngModel" (click)="isSelected=true">
+        <div class="alert alert-danger" *ngIf="hasError && !isSelected">
+          Klaidingi duomenys!
+        </div>
+      <button type="submit">login</button>
+    </form>
   </div>
+</div>
+
 
