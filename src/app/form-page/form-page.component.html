@@ -344,13 +344,12 @@
           </div>
         </div>
       </div>
-
       <div class="row">
         <div class="col-2">
           <button
             type="submit"
-            class="btn btn-success"
-            [disabled]="applicationForm.invalid"
+            class="btn btn-custom"
+            (click)="(applicationForm.valid ? show() : null)"
           >
             Pateikti
           </button>
@@ -366,5 +365,31 @@
         </div>
       </div>
     </form>
+    
+    <div
+      [style.display]="showModal ? 'block' : 'none'"
+      class="modal"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">
+              Registracijos forma sėkmingai išsiųsta.
+            </h4>
+          </div>
+          <div id="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-custom"
+              id="btn-popup"
+              (click)="hide()"
+            >
+              Baigti
+            </button>
+          </div>
+        </div>
+      </div>
+      
+    </div>
   </div>
 </div>

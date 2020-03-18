@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Form} from '../models/form';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { Form } from '../models/form';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import {Person} from '../models/person';
 import {Answer} from '../models/answer';
 import {AnswerPerson} from '../models/answer-person';
 import {FormService} from '../form-service/form.service';
+
 
 @Component({
   selector: 'app-form-page',
@@ -13,63 +14,49 @@ import {FormService} from '../form-service/form.service';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent implements OnInit {
-  constructor(private personService: FormService, private fb: FormBuilder) {
-  }
+  constructor(private fb: FormBuilder, private formService: FormService) {}
 
   get fname() {
     return this.applicationForm.get('fname');
   }
-
   get lname() {
     return this.applicationForm.get('lname');
   }
-
   get phone() {
     return this.applicationForm.get('phone');
   }
-
   get email() {
     return this.applicationForm.get('email');
   }
-
   get establishment() {
     return this.applicationForm.get('establishment');
   }
-
   get contract() {
     return this.applicationForm.get('contract');
   }
-
   get contractExplanation() {
     return this.applicationForm.get('contractExplanation');
   }
-
   get shift() {
     return this.applicationForm.get('shift');
   }
-
   get shiftExplanation() {
     return this.applicationForm.get('shiftExplanation');
   }
-
   get hobbies() {
     return this.applicationForm.get('hobbies');
   }
-
   get motivation() {
     return this.applicationForm.get('motivation');
   }
-
   get experience() {
     return this.applicationForm.get('experience');
   }
-
   get marketing() {
     return this.applicationForm.get('marketing');
   }
-
   form: Form;
-  myForm: FormGroup;
+  showModal: boolean;
   tempPerson: Person;
   tempAnswerList: Answer[];
   answerPerson: AnswerPerson;
@@ -164,14 +151,21 @@ export class FormPageComponent implements OnInit {
       ]
     ]
   });
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, 'contract', 'contractExplanation');
     subscribeToValue(this.applicationForm, 'shift', 'shiftExplanation');
   }
 
-  onSubmit() {
-
+  onSubmit(): void {
+    this.applicationForm.markAllAsTouched();
     this.tempPerson = null;
     this.tempAnswerList = [];
     this.answerPerson = null;
@@ -189,7 +183,7 @@ export class FormPageComponent implements OnInit {
     );
 
     console.log(JSON.stringify(this.answerPerson));
-    this.personService.saveForm(this.answerPerson);
+    this.formService.saveForm(this.answerPerson);
   }
 }
 
