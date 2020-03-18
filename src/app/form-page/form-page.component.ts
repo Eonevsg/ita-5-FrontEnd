@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Form } from "../models/form";
 import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from "@angular/forms";
-import { FormService } from "../person-service/person.service";
+import { FormService } from "../form-service/form.service";
 
 @Component({
   selector: "app-form-page",
@@ -9,7 +9,7 @@ import { FormService } from "../person-service/person.service";
   styleUrls: ["./form-page.component.css"]
 })
 export class FormPageComponent implements OnInit {
-  constructor(private personService: FormService, private fb: FormBuilder) {}
+  constructor(private formService: FormService, private fb: FormBuilder) {}
   form: Form;
   myForm: FormGroup;
 
@@ -22,7 +22,7 @@ export class FormPageComponent implements OnInit {
     this.myForm = new FormGroup({
       person: new FormGroup({
         name: this.fname,
-        surename: this.lname,
+        surname: this.lname,
         phone: this.phone,
         email: this.email,
         uni: this.establishment
@@ -55,7 +55,7 @@ export class FormPageComponent implements OnInit {
       ])
     });
     console.log(this.myForm.value);
-    this.personService.saveForm(this.myForm.value);
+    this.formService.saveForm(this.myForm.value);
   }
 
   applicationForm = this.fb.group({

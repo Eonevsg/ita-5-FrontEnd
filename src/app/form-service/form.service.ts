@@ -13,7 +13,7 @@ export class FormService {
 
 
   constructor(private http: HttpClient) { 
-    this.answersUrl = 'http://localhost:8080/api/answer';
+    this.answersUrl = 'http://localhost:8080/api/answer/all';
   }
 
   public findAllAnswers(): Observable<Answer[]> {

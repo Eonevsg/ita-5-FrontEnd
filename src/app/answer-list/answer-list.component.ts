@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer } from '../shared/answer(test)';
-import { FormService } from '../person-service/person.service';
+import { FormService } from '../form-service/form.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,10 +13,10 @@ export class AnswerListComponent implements OnInit {
 
   answers: Answer[];
 
-   constructor(private personService: FormService) { }
+   constructor(private formService: FormService) { }
 
   ngOnInit(): void {
-    this.personService.findAllAnswers().subscribe(data =>{
+    this.formService.findAllAnswers().subscribe(data =>{
       this.answers = data;
     })
   }
