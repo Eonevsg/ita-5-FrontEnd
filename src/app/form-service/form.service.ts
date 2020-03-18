@@ -13,7 +13,7 @@ export class FormService {
 
 
   constructor(private http: HttpClient) {
-    this.answersUrl = 'http://ita-5-bakc-staging.herokuapp.com/api/answer';
+    this.answersUrl = 'https://ita-5-back-staging.herokuapp.com/api/answer';
   }
 
   public findAllAnswers(): Observable<Answer[]> {

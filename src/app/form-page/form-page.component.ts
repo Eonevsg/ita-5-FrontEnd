@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Form} from '../models/form';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {FormService} from '../person-service/person.service';
+
 import {Person} from '../models/person';
 import {Answer} from '../models/answer';
 import {AnswerPerson} from '../models/answer-person';
+import {FormService} from '../form-service/form.service';
 
 @Component({
   selector: 'app-form-page',
