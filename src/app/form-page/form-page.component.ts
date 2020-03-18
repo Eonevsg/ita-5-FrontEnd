@@ -10,10 +10,23 @@ import { FormBuilder, Validators } from "@angular/forms";
 export class FormPageComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   form: Form;
+  showModal: boolean;
+
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
+  }
+
+  onSubmit(): void {
+    this.applicationForm.markAllAsTouched();
   }
 
   applicationForm = this.fb.group({
