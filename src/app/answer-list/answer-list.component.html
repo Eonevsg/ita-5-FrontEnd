@@ -1,0 +1,29 @@
+<div id="main">
+    <div id="form-container">
+      <h2>List component</h2>
+      <div class="card my-5">
+        <div class="card-body">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">QuestinoId</th>
+                <th scope="col">Answer</th>
+                <th scope="col">PersonId</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let answer of answers">
+                <td>{{ answer.id }}</td>
+                <td>{{ answer.question_id }}</td>
+                <td>{{ answer.answer }}</td>
+                <td>{{ answer.person_id }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
