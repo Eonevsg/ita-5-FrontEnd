@@ -7,17 +7,21 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">QuestinoId</th>
-                <th scope="col">Answer</th>
-                <th scope="col">PersonId</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surename</th>
+                <th scope="col">email</th>
+                <th scope="col">phone</th>
+                <th scope="col">uni</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let answer of answers">
-                <td>{{ answer.id }}</td>
-                <td>{{ answer.questionId }}</td>
-                <td>{{ answer.answer }}</td>
-                <td>{{ answer.personId }}</td>
+                <td>{{ answer.person.id }}</td>
+                <td>{{ answer.person.name }}</td>
+                <td>{{ answer.person.surname }}</td>
+                <td>{{ answer.person.email }}</td>
+                <td>{{ answer.person.phone }}</td>
+                <td>{{ answer.person.uni }}</td>
               </tr>
             </tbody>
           </table>
