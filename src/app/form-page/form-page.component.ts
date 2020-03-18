@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Form } from "../models/form";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
-import { FormService } from '../person-service/person.service';
+import { FormService } from "../person-service/person.service";
 
 @Component({
   selector: "app-form-page",
@@ -9,17 +9,36 @@ import { FormService } from '../person-service/person.service';
   styleUrls: ["./form-page.component.css"]
 })
 export class FormPageComponent implements OnInit {
-  constructor(private personService:FormService, private fb: FormBuilder) {}
+  constructor(private personService: FormService, private fb: FormBuilder) {}
   form: Form;
+  myForm: FormGroup;
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
   }
-  onSubmit(){
+  onSubmit() {
+    this.myForm = new FormGroup({
+      person: new FormGroup({
+        name: this.fname,
+        surename: this.lname,
+        phone: this.phone,
+        email: this.email,
+        uni: this.establishment
+      }),
+      questions: new FormGroup({
+        contract: this.contract,
+        contractExplanation: this.contractExplanation,
+        shift: this.shift,
+        shiftExplanation: this.shiftExplanation,
+        hobbies: this.hobbies,
+        motivation: this.motivation,
+        experience: this.experience,
+        marketing: this.marketing
+      })
+    });
     console.log(this.applicationForm.value);
-    this.personService.saveForm(this.applicationForm);
-    //console.warn(this.form);
+    this.personService.saveForm(this.myForm);
   }
 
   applicationForm = this.fb.group({
