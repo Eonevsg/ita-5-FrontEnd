@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Answer } from '../shared/answer(test)';
-import { FormService } from '../form-service/form.service';
-import { Observable } from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Answer} from '../shared/answer(test)';
+import {FormService} from '../form-service/form.service';
+import {AuthService} from '../services/auth/auth.service';
 
 @Component({
   selector: 'app-answer-list',
@@ -13,12 +13,12 @@ export class AnswerListComponent implements OnInit {
 
   answers: Answer[];
 
-   constructor(private formService: FormService) { }
+  constructor(private formService: FormService) { }
 
   ngOnInit(): void {
-    this.formService.findAllAnswers().subscribe(data =>{
+    this.formService.findAllAnswers().subscribe(data => {
       this.answers = data;
-    })
+    });
   }
 
 }
