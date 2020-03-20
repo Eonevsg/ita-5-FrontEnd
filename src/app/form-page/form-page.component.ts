@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Form } from '../models/form';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
+import {Form} from '../models/form';
+import {FormBuilder, Validators} from '@angular/forms';
 
 import {Person} from '../models/person';
 import {Answer} from '../models/answer';
 import {AnswerPerson} from '../models/answer-person';
 import {FormService} from '../form-service/form.service';
-
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-page',
@@ -14,47 +15,81 @@ import {FormService} from '../form-service/form.service';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent implements OnInit {
-  constructor(private fb: FormBuilder, private formService: FormService) {}
+  constructor(private fb: FormBuilder, private formService: FormService, private ngZone: NgZone) {
+  }
+
+  @ViewChild('autosizeFirst') autosizeFirst: CdkTextareaAutosize;
+  @ViewChild('autosizeSecond') autosizeSecond: CdkTextareaAutosize;
+  @ViewChild('autosizeThird') autosizeThird: CdkTextareaAutosize;
+  @ViewChild('autosizeForth') autosizeForth: CdkTextareaAutosize;
+  @ViewChild('autosizeFifth') autosizeFifth: CdkTextareaAutosize;
+  @ViewChild('autosizeSixth') autosizeSixth: CdkTextareaAutosize;
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this.ngZone.onStable.pipe(take(10))
+      .subscribe(() => {
+        this.autosizeFirst.resizeToFitContent(true);
+        this.autosizeSecond.resizeToFitContent(true);
+        this.autosizeThird.resizeToFitContent(true);
+        this.autosizeForth.resizeToFitContent(true);
+        this.autosizeFifth.resizeToFitContent(true);
+        this.autosizeSixth.resizeToFitContent(true);
+      });
+  }
 
   get fname() {
     return this.applicationForm.get('fname');
   }
+
   get lname() {
     return this.applicationForm.get('lname');
   }
+
   get phone() {
     return this.applicationForm.get('phone');
   }
+
   get email() {
     return this.applicationForm.get('email');
   }
+
   get establishment() {
     return this.applicationForm.get('establishment');
   }
+
   get contract() {
     return this.applicationForm.get('contract');
   }
+
   get contractExplanation() {
     return this.applicationForm.get('contractExplanation');
   }
+
   get shift() {
     return this.applicationForm.get('shift');
   }
+
   get shiftExplanation() {
     return this.applicationForm.get('shiftExplanation');
   }
+
   get hobbies() {
     return this.applicationForm.get('hobbies');
   }
+
   get motivation() {
     return this.applicationForm.get('motivation');
   }
+
   get experience() {
     return this.applicationForm.get('experience');
   }
+
   get marketing() {
     return this.applicationForm.get('marketing');
   }
+
   form: Form;
   showModal: boolean;
   tempPerson: Person;
@@ -151,6 +186,7 @@ export class FormPageComponent implements OnInit {
       ]
     ]
   });
+
   show() {
     this.showModal = true;
   }
