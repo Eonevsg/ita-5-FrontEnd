@@ -23,11 +23,13 @@
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
     "express": "^4.17.1",
+    "ng-autosize": "^1.1.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "typescript": "~3.7.5",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "@angular/cdk": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.900.2",
