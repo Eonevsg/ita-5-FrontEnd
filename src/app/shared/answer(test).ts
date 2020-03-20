@@ -1,4 +1,4 @@
-export class Answer{
+export class AnswerViewModel{
 person: {
     id: string;
     name: string;

@@ -13,8 +13,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AnswerListComponent } from './answer-list/answer-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AnswerDetailsComponent } from './answer-details/answer-details.component';
 
 const appRoutes: Routes = [
+  {path: 'details/:id', component: AnswerDetailsComponent},
   {path: 'list', component: AnswerListComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'form', component: FormPageComponent},
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     FormPageComponent,
     NotFoundComponent,
     AnswerListComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    AnswerDetailsComponent
   ],
   imports: [
     BrowserModule,

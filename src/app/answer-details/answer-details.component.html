@@ -1,0 +1,26 @@
+<div id="main">
+    <div id="form-container">
+      <div class="card my-5">
+        <div class="card-body" *ngIf="answer$ | async as model">
+            <div>{{model.person.name +" "+ model.person.surname}}</div>
+            <div>{{model.person.uni}}</div>
+            <br>
+            <div>{{model.person.phone}}</div>
+            <div>{{model.person.email}}</div>
+            <br>
+        
+          
+          <div *ngIf="answer$ | async as model">
+              <div *ngFor="let answer of model.answerList">
+                  <div>{{answer.questionId}}</div>
+                  <div>{{answer.answer}}</div> 
+                  <hr>
+              </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  

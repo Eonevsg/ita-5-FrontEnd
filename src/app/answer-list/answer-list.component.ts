@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Answer } from '../shared/answer(test)';
+import { AnswerViewModel } from '../shared/answer(test)';
 import { FormService } from '../form-service/form.service';
 import { Observable } from 'rxjs';
+import { AnswerPerson } from '../models/answer-person';
 
 @Component({
   selector: 'app-answer-list',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class AnswerListComponent implements OnInit {
 
-  answers: Answer[];
+  answers: AnswerViewModel[];
 
    constructor(private formService: FormService) { }
 

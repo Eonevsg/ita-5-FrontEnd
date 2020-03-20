@@ -1,31 +1,33 @@
 <div id="main">
-    <div id="form-container">
-      <div class="card my-5">
-        <div class="card-body">
-          <table class="table table-bordered table-striped">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Vardas</th>
-                <th scope="col">Pavardė</th>
-                <th scope="col">El. paštas</th>
-                <th scope="col">Tel. numeris</th>
-                <th scope="col">Mokymo įstaiga</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let answer of answers">
-                <td>{{ answer.person.id }}</td>
-                <td>{{ answer.person.name }}</td>
-                <td>{{ answer.person.surname }}</td>
-                <td>{{ answer.person.email }}</td>
-                <td>{{ answer.person.phone }}</td>
-                <td>{{ answer.person.uni }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div id="form-container">
+    <div class="card my-5">
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Vardas</th>
+              <th scope="col">Pavardė</th>
+              <th scope="col">El. paštas</th>
+              <th scope="col">Tel. numeris</th>
+              <th scope="col">Mokymo įstaiga</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let answer of answers"
+              [routerLink]="['/details', answer.person.id]"
+            >
+              <td>{{ answer.person.id }}</td>
+              <td>{{ answer.person.name }}</td>
+              <td>{{ answer.person.surname }}</td>
+              <td>{{ answer.person.email }}</td>
+              <td>{{ answer.person.phone }}</td>
+              <td>{{ answer.person.uni }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
     </div>
   </div>
+</div>
