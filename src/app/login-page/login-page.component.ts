@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common';
+import {AuthService} from '../services/auth/auth.service';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-login-page',
@@ -15,14 +17,14 @@ export class LoginPageComponent implements OnInit {
   isSelected = false;
 
 
-  constructor(private http: HttpClient, private router: Router, private location: Location) {
+  constructor(private router: Router, private location: Location, private authService: AuthService) {
   }
 
-  onSubmit(value: any) {
+  onSubmit(value: User) {
     console.log(value);
-    this.http.post('https://ita-5-back-staging.herokuapp.com/login', value, {observe: 'response'}).subscribe(
-      response => {
-        this.token = response.headers.get('Authorization');
+    this.authService.logIn(value).subscribe(
+      data => {
+        console.log(data);
         this.location.replaceState('/'); // clears browser history so they can't navigate with back button
         this.router.navigate(['list']);
       },

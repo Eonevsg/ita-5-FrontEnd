@@ -11,7 +11,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AnswerListComponent } from './answer-list/answer-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {CustomHttpInterceptor} from './services/auth/custom-http-interceptor';
 
 const appRoutes: Routes = [
   {path: 'list', component: AnswerListComponent},
@@ -39,7 +40,13 @@ const appRoutes: Routes = [
     TextFieldModule,
     RouterModule.forRoot(appRoutes, {anchorScrolling: 'enabled'})
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
