@@ -1,8 +1,8 @@
-#logo{
+#logo {
   width: 5%;
   height: 5%;
 }
-.side-image{
+.side-image {
   width: 30%;
   height: 20%;
 }
@@ -18,12 +18,12 @@
   margin-bottom: 2%;
 }
 
-.one {
+.content-container {
   width: 65%;
   height: auto;
   float: left;
 }
-.two {
+.image-container {
   height: auto;
   margin-right: 2%;
   text-align: right;
@@ -35,13 +35,18 @@
   clear: both;
 }
 .Column1_row {
-   width: 100%;
-   height: 50%;
- }
+  width: 100%;
+  height: 50%;
+}
 
-.collapse-accordion .card a[data-toggle=collapse] {display: block;padding:.75rem 1.25rem;}
-.collapse-accordion .card-header {padding:0;}
+.collapse-accordion .card a[data-toggle="collapse"] {
+  display: block;
+  padding: 0.75rem 1.25rem;
+}
+.collapse-accordion .card-header {
+  padding: 0;
+}
 
-#footerBackground{
+#footerBackground {
   background: #ee7023;
 }
