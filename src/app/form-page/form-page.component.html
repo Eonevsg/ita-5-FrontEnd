@@ -108,23 +108,48 @@
 
       <div class="form-group">
         <label for="establishment"
-        >Mokymo įstaiga, kurioje šiuo metu mokaisi:</label
+        >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
         >
-        <input
+        <select
           type="text"
           class="form-control"
           id="establishment"
           formControlName="establishment"
-        />
+        >
+          <option value="0" disabled>Pasirinkite mokymosi įstaigą</option>
+          <option
+            *ngFor="let university of $universites | async"
+            value="{{ university }}"
+          >
+            {{ university }}
+          </option>
+          <option value="kita">Kita</option>
+        </select>
         <div
           [hidden]="establishment.valid || establishment.untouched"
           class="alert alert-danger"
         >
-          <div *ngIf="establishment.errors?.required">
-            Įveskite mokymosi įstaigos pavadinimą
-          </div>
-          <div *ngIf="establishment.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+          Pasirinkite mokymosi įstaiga!
+        </div>
+        <br/>
+        <div [hidden]="establishment.value != 'kita'" class="form-group">
+          <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="establishmentOther"
+            formControlName="establishmentOther"
+          />
+          <div
+            [hidden]="establishmentOther.valid || establishmentOther.untouched"
+            class="alert alert-danger"
+          >
+            <div *ngIf="establishmentOther.errors?.required">
+              Įveskite mokymosi įstaigos pavadinimą
+            </div>
+            <div *ngIf="establishmentOther.errors?.pattern">
+              Nenaudokite skaičių ar specialių simbolių!
+            </div>
           </div>
         </div>
       </div>
