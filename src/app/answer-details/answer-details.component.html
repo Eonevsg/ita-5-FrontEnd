@@ -21,12 +21,26 @@
             <div class="form-group">
               <label for="valuation">Valuation</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 id="valuation"
                 formControlName="valuation"
               />
             </div>
+            <div
+            [hidden]="valuation.valid || valuation.untouched"
+            class="alert alert-danger"
+          >
+            <div *ngIf="valuation.errors?.required">
+              Įveskite įvertinimą
+            </div>
+            <div *ngIf="valuation.errors?.min">
+              Įvertinimas per mažas
+            </div>
+            <div *ngIf="valuation.errors?.max">
+              Įvertinimas per didelis
+            </div>
+          </div>
             <div class="form-group">
               <label for="notes">Notes</label>
               <input
@@ -36,10 +50,21 @@
                 formControlName="notes"
               />
             </div>
+            <div
+            [hidden]="notes.valid || notes.untouched"
+            class="alert alert-danger"
+          >
+            <div *ngIf="notes.errors?.required">
+              Įveskite pastabą
+            </div>
+            <div *ngIf="notes.errors?.maxlength">
+              Pastaba per ilga
+            </div>
+          </div>
             <button type="submit" class="btn btn-custom">
               Pateikti
             </button>
-            <button [routerLink]="['/list']">Atgal</button>
+            <button [routerLink]="['/list']" class="btn btn-custom">Atgal</button>
           </form>
         </div>
       </div>

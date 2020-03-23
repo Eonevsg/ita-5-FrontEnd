@@ -22,9 +22,19 @@ export class AnswerDetailsComponent implements OnInit {
     private fb: FormBuilder
   ) {}
   valuationForm = this.fb.group({
-    valuation: ["", [Validators.required]],
-    notes: ["", [Validators.required]]
+    valuation: [
+      "",
+      [Validators.required, Validators.min(0), Validators.max(100)]
+    ],
+    notes: ["", [Validators.required,
+      Validators.maxLength(250)]]
   });
+  get valuation() {
+    return this.valuationForm.get('valuation');
+  }
+  get notes() {
+    return this.valuationForm.get('notes');
+  }
 
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
