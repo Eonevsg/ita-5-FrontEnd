@@ -2,6 +2,7 @@
   <div id="form-container">
     <div class="card my-5">
       <div class="card-body" *ngIf="answer$ | async as model">
+        <div align="right">"Person's State"</div>
         <div>{{ model.person.name + " " + model.person.surname }}</div>
         <div>{{ model.person.uni }}</div>
         <br />
