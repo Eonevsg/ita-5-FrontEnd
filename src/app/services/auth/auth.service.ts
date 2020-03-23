@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BackendUrlService} from '../backend-url-service';
+import {environment} from '../../../environments/environment.prod';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {User} from '../../models/user';
 import {throwError} from 'rxjs';
@@ -8,13 +8,12 @@ import {catchError, tap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService extends BackendUrlService {
+export class AuthService {
 
-  constructor(private httpClient: HttpClient) {
-    super();
-  }
+  constructor(private httpClient: HttpClient) { }
 
   private logInUrl = '/login';
+  baseUrl = environment.baseUrl;
 
   public logIn(user: User) {
     return this.httpClient.post(this.baseUrl + this.logInUrl, user, {observe: 'response'})

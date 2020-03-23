@@ -2,15 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Answer} from '../shared/answer(test)';
+import {environment} from '../../environments/environment.prod';
 
 @Injectable({providedIn: 'root'})
 export class PersonService {
 
-  answersUrl: string;
+  private answersUrl = environment.answersUrl;
 
   constructor(private http: HttpClient) {
-    // this.answersUrl = 'http://localhost:8080/api/answer';
-    this.answersUrl = 'http://ita-5-back-staging.herokuapp.com/api/answer';
   }
 
   public findAll(): Observable<Answer[]> {
