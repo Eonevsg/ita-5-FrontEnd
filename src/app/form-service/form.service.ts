@@ -21,10 +21,6 @@ export class FormService {
     return this.http.get<AnswerViewModel[]>(`${this.apiPath}/answer`);
   }
 
-  // public saveAnswer(answer: AnswerViewModel) {
-  //   return this.http.post<AnswerViewModel>(this.answersUrl, answer);
-  // }
-
   public fetchAnswer({ id }): Observable<AnswerViewModel> {
     return this.http.get<AnswerViewModel>(`${this.apiPath}/answer/${id}`);
   }
@@ -35,5 +31,9 @@ export class FormService {
         headers: new HttpHeaders({ "Content-Type": "application/json" })
       })
       .subscribe(data => console.log(data));
+  }
+
+  public fetchSchools(): Observable<Object> {
+    return this.http.get(`${this.apiPath}/school`);
   }
 }

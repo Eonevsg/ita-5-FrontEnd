@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: 'https://ita-5-back-staging.herokuapp.com',
+  answersUrl: 'http://ita-5-back-staging.herokuapp.com/api/answer'
 };
