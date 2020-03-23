@@ -138,7 +138,6 @@ export class FormPageComponent implements OnInit {
     establishmentOther: [
       "",
       [
-        Validators.required,
         requiredIfValidator(
           () => this.applicationForm.get("establishment").value
         ),
