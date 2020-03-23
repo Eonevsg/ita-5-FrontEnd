@@ -18,7 +18,8 @@
         <div id="form-container">
           <h2 id="form-title">Person Valuation</h2>
           <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
+            <!-- Valuation group -->
+            <div class="form-group" [class.has-error]="valuation.invalid">
               <label for="valuation">Valuation</label>
               <input
                 type="number"
@@ -27,21 +28,25 @@
                 formControlName="valuation"
               />
             </div>
+            <!-- Valuation group validation -->
             <div
-            [hidden]="valuation.valid || valuation.untouched"
-            class="alert alert-danger"
-          >
-            <div *ngIf="valuation.errors?.required">
-              Įveskite įvertinimą
+              [hidden]="valuation.valid || valuation.untouched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="valuation.errors?.required">
+                Įveskite įvertinimą
+              </div>
+              <div *ngIf="valuation.errors?.min">
+                Įvertinimas per mažas
+              </div>
+              <div *ngIf="valuation.errors?.max">
+                Įvertinimas per didelis
+              </div>
             </div>
-            <div *ngIf="valuation.errors?.min">
-              Įvertinimas per mažas
-            </div>
-            <div *ngIf="valuation.errors?.max">
-              Įvertinimas per didelis
-            </div>
-          </div>
-            <div class="form-group">
+            <!-- Valuation group validation END -->
+            <!-- Valuation group END -->
+            <!-- Notes group -->
+            <div class="form-group" [class.has-error]="notes.invalid">
               <label for="notes">Notes</label>
               <input
                 type="text"
@@ -50,21 +55,61 @@
                 formControlName="notes"
               />
             </div>
+            <!-- Notes validation -->
             <div
-            [hidden]="notes.valid || notes.untouched"
-            class="alert alert-danger"
-          >
-            <div *ngIf="notes.errors?.required">
-              Įveskite pastabą
+              [hidden]="notes.valid || notes.untouched"
+              class="alert alert-danger"
+            >
+              <div *ngIf="notes.errors?.required">
+                Įveskite pastabą
+              </div>
+              <div *ngIf="notes.errors?.maxlength">
+                Pastaba per ilga
+              </div>
             </div>
-            <div *ngIf="notes.errors?.maxlength">
-              Pastaba per ilga
+            <!-- Notes validation END -->
+            <!-- Notes group END -->
+            <!-- State group -->
+            <div class="form-group">
+              <h4>Accept/Reject</h4>
+              <div class="form-radio-group" [class.has-error]="state.invalid">
+                <div class="form-radio-group-choice">
+                  <input
+                    type="radio"
+                    value="yes"
+                    id="contract-pos"
+                    formControlName="state"
+                  />
+                  <label for="contract-pos" class="radio-label">Accept</label>
+                </div>
+
+                <div class="form-radio-group-choice">
+                  <input
+                    type="radio"
+                    value="no"
+                    id="contract-neg"
+                    formControlName="state"
+                  />
+                  <label for="contract-neg" class="radio-label">Reject</label>
+                </div>
+                <!-- State validation -->
+                <div
+                  *ngIf="state.invalid"
+                  [hidden]="state.valid || state.untouched"
+                  class="alert alert-danger"
+                >
+                  Laukas privalomas!
+                </div>
+                <!-- State validation END-->
+              </div>
             </div>
-          </div>
+            <!-- State group END -->
             <button type="submit" class="btn btn-custom">
               Pateikti
             </button>
-            <button [routerLink]="['/list']" class="btn btn-custom">Atgal</button>
+            <button [routerLink]="['/list']" class="btn btn-custom">
+              Atgal
+            </button>
           </form>
         </div>
       </div>

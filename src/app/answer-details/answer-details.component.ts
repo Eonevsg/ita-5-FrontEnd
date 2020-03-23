@@ -26,14 +26,17 @@ export class AnswerDetailsComponent implements OnInit {
       "",
       [Validators.required, Validators.min(0), Validators.max(100)]
     ],
-    notes: ["", [Validators.required,
-      Validators.maxLength(250)]]
+    notes: ["", [Validators.required, Validators.maxLength(450)]],
+    state: ["", [Validators.required]]
   });
   get valuation() {
-    return this.valuationForm.get('valuation');
+    return this.valuationForm.get("valuation");
   }
   get notes() {
-    return this.valuationForm.get('notes');
+    return this.valuationForm.get("notes");
+  }
+  get state() {
+    return this.valuationForm.get("state");
   }
 
   ngOnInit(): void {
