@@ -9,14 +9,39 @@
         <div>{{ model.person.email }}</div>
         <br />
 
-        <div *ngIf="answer$ | async as model">
-          <div *ngFor="let answer of model.answerList">
-            <div>{{ getFullQuestion(answer.questionId) }}</div>
-            <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
-            <hr />
-          </div>
+        <div *ngFor="let answer of model.answerList">
+          <div>{{ getFullQuestion(answer.questionId) }}</div>
+          <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+          <hr />
         </div>
-        
+
+        <div id="form-container">
+          <h2 id="form-title">Person Valuation</h2>
+          <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="valuation">Valuation</label>
+              <input
+                type="text"
+                class="form-control"
+                id="valuation"
+                formControlName="valuation"
+              />
+            </div>
+            <div class="form-group">
+              <label for="notes">Notes</label>
+              <input
+                type="text"
+                class="form-control"
+                id="notes"
+                formControlName="notes"
+              />
+            </div>
+            <button type="submit" class="btn btn-custom">
+              Pateikti
+            </button>
+            <button [routerLink]="['/list']">Atgal</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

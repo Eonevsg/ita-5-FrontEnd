@@ -5,6 +5,7 @@ import { FormService } from "../form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
 import { from, Observable, empty } from "rxjs";
 import { switchMap, tap } from "rxjs/operators";
+import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-answer-details",
@@ -17,8 +18,13 @@ export class AnswerDetailsComponent implements OnInit {
 
   constructor(
     private formService: FormService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {}
+  valuationForm = this.fb.group({
+    valuation: ["", [Validators.required]],
+    notes: ["", [Validators.required]]
+  });
 
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
@@ -35,6 +41,7 @@ export class AnswerDetailsComponent implements OnInit {
     console.log("Hello");
     this.answer$.subscribe(res => console.log(res));
   }
+  onSubmit() {}
 
   getFullQuestion(id: string): string {
     for (let index = 0; index < this.questions.length; index++) {
