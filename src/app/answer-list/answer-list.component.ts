@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AnswerViewModel } from '../shared/answer(test)';
+import { AnswerViewModel } from '../shared/answerViewModel';
 import { FormService } from '../form-service/form.service';
 import { Observable } from 'rxjs';
 import { AnswerPerson } from '../models/answer-person';

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { FormService } from './form.service';
 
-describe('PersonServiceService', () => {
+describe('FormService', () => {
   let service: FormService;
 
   beforeEach(() => {
