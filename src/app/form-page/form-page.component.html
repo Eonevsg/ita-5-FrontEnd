@@ -1,7 +1,7 @@
 <div id="main">
   <div id="header">
     <div>
-      <img src="/assets/images/logo.png" id="logo"/>
+      <img src="/assets/images/logo.png" id="logo" />
     </div>
     <div>
       <h1>IT Academija</h1>
@@ -108,30 +108,57 @@
 
       <div class="form-group">
         <label for="establishment"
-        >Mokymo įstaiga, kurioje šiuo metu mokaisi:</label
+          >Mokymo įstaiga, kurioje šiuo metu mokaisi:</label
         >
-        <input
-          type="text"
+        <select
           class="form-control"
           id="establishment"
           formControlName="establishment"
-        />
+        >
+          <option value="0" disabled>Pasirinkite mokymosi įstaigą</option>
+          <option
+            *ngFor="let university of $universites | async"
+            value="{{ university }}"
+          >
+            {{ university }}
+          </option>
+          <option value="kita">Kita</option>
+        </select>
+
         <div
           [hidden]="establishment.valid || establishment.untouched"
           class="alert alert-danger"
         >
-          <div *ngIf="establishment.errors?.required">
-            Įveskite mokymosi įstaigos pavadinimą
-          </div>
-          <div *ngIf="establishment.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+          Pasirinkite mokymosi įstaigą!
+        </div>
+
+        <br />
+
+        <div [hidden]="establishment.value != 'kita'" class="form-group">
+          <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="establishmentOther"
+            formControlName="establishmentOther"
+          />
+          <div
+            [hidden]="establishmentOther.valid || establishmentOther.untouched"
+            class="alert alert-danger"
+          >
+            <div *ngIf="establishmentOther.errors?.required">
+              Įveskite mokymosi įstaigos pavadinimą
+            </div>
+            <div *ngIf="establishmentOther.errors?.pattern">
+              Nenaudokite skaičių ar specialių simbolių!
+            </div>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <label for="contract"
-        >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
+          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
         >
         <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
@@ -167,18 +194,12 @@
           class="radio-hidden-group"
         >
           <label for="contractExplanation">Pakomentuok plačiau:</label>
-          <textarea
+          <input
             type="text"
-            (input)="triggerResize()"
-            cdkTextareaAutosize
-            #autosizeFirst="cdkTextareaAutosize"
-            cdkAutosizeMinRows="3"
-            cdkAutosizeMaxRows="5"
-            class="form-control textarea-custom"
+            class="form-control"
             id="contractExplanation"
-            maxlength="250"
             formControlName="contractExplanation"
-          ></textarea>
+          />
 
           <div
             class="alert alert-danger"
@@ -194,12 +215,11 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="form-group">
         <label for="shift"
-        >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
+          >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
           akademijai skirti tiek laiko?</label
         >
         <div class="form-radio-group">
@@ -237,18 +257,12 @@
         class="radio-hidden-group"
       >
         <label for="shiftExplanation">Pakomentuok plačiau:</label>
-        <textarea
+        <input
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #autosizeSecond="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
-          class="form-control textarea-custom"
+          class="form-control"
           id="shiftExplanation"
           formControlName="shiftExplanation"
-          maxlength="250"
-        ></textarea>
+        />
         <div
           class="alert alert-danger"
           [hidden]="shiftExplanation.valid || shiftExplanation.untouched"
@@ -264,19 +278,13 @@
 
       <div class="form-group">
         <label for="hobbies"
-        >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
+          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
         >
         <textarea
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #autosizeThird="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
-          class="form-control textarea-custom"
+          class="form-control"
           id="hobbies"
           formControlName="hobbies"
-          maxlength="450"
         ></textarea>
         <div
           [hidden]="hobbies.valid || hobbies.untouched"
@@ -293,20 +301,14 @@
 
       <div class="form-group">
         <label for="motivation"
-        >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
+          >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
         <textarea
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #autosizeSixth="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
-          class="form-control textarea-custom"
+          class="form-control"
           id="motivation"
           formControlName="motivation"
-          maxlength="450"
         ></textarea>
         <div
           [hidden]="motivation.valid || motivation.untouched"
@@ -323,21 +325,15 @@
 
       <div class="form-group">
         <label for="experience"
-        >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+          >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
         >
         <textarea
           type="text"
+          class="form-control"
           id="experience"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #autosizeForth="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
-          class="form-control textarea-custom"
           formControlName="experience"
-          maxlength="250"
         ></textarea>
         <div
           [hidden]="experience.valid || experience.untouched"
@@ -354,19 +350,13 @@
 
       <div class="form-group">
         <label for="marketing"
-        >Iš kur sužinojai apie IT akademiją Swedbank?</label
+          >Iš kur sužinojai apie IT akademiją Swedbank?</label
         >
         <textarea
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #autosizeFifth="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
-          class="form-control textarea-custom"
           type="text"
+          class="form-control"
           id="marketing"
           formControlName="marketing"
-          maxlength="250"
         ></textarea>
         <div
           [hidden]="marketing.valid || marketing.untouched"
@@ -385,7 +375,7 @@
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="(applicationForm.valid ? show() : null)"
+            (click)="applicationForm.valid ? show() : null"
           >
             Pateikti
           </button>
@@ -402,10 +392,7 @@
       </div>
     </form>
 
-    <div
-      [style.display]="showModal ? 'block' : 'none'"
-      class="modal"
-    >
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -425,7 +412,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>

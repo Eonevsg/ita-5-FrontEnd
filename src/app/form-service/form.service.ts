@@ -1,19 +1,17 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Answer} from '../shared/answer(test)';
-import {AnswerPerson} from '../models/answer-person';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Answer } from "../shared/answer(test)";
+import { AnswerPerson } from "../models/answer-person";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class FormService {
-
   private answersUrl: string;
 
-
   constructor(private http: HttpClient) {
-    this.answersUrl = 'https://ita-5-back-staging.herokuapp.com/api/answer';
+    this.answersUrl = "https://ita-5-back-staging.herokuapp.com/api/answer";
   }
 
   public findAllAnswers(): Observable<Answer[]> {
@@ -25,12 +23,14 @@ export class FormService {
   }
 
   public saveForm(form: AnswerPerson) {
-    return this.http.post<AnswerPerson>(this.answersUrl
-      , JSON.stringify(form)
-      , {headers: new HttpHeaders({'Content-Type': 'application/json'})})
-      .subscribe(
-        data => console.log(data)
-      );
+    return this.http
+      .post<AnswerPerson>(this.answersUrl, JSON.stringify(form), {
+        headers: new HttpHeaders({ "Content-Type": "application/json" })
+      })
+      .subscribe(data => console.log(data));
   }
 
+  public fetchSchools(): Observable<Object> {
+    return this.http.get("https://ita-5-back-staging.herokuapp.com/api/school");
+  }
 }
