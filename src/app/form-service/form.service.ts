@@ -1,36 +1,39 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Answer } from "../shared/answer(test)";
+import { AnswerViewModel } from "../shared/answerViewModel";
 import { AnswerPerson } from "../models/answer-person";
+import { Answer } from "../models/answer";
 
 @Injectable({
   providedIn: "root"
 })
 export class FormService {
-  private answersUrl: string;
+  private readonly apiPath = "/api";
 
-  constructor(private http: HttpClient) {
-    this.answersUrl = "https://ita-5-back-staging.herokuapp.com/api/answer";
+  constructor(private http: HttpClient) {}
+
+  public fetchQuestions(): Observable<Answer[]> {
+    return this.http.get<Answer[]>(`${this.apiPath}/question`);
   }
 
-  public findAllAnswers(): Observable<Answer[]> {
-    return this.http.get<Answer[]>(this.answersUrl);
+  public findAllAnswers(): Observable<AnswerViewModel[]> {
+    return this.http.get<AnswerViewModel[]>(`${this.apiPath}/answer`);
   }
 
-  public saveAnswer(answer: Answer) {
-    return this.http.post<Answer>(this.answersUrl, answer);
+  public fetchAnswer({ id }): Observable<AnswerViewModel> {
+    return this.http.get<AnswerViewModel>(`${this.apiPath}/answer/${id}`);
   }
 
   public saveForm(form: AnswerPerson) {
     return this.http
-      .post<AnswerPerson>(this.answersUrl, JSON.stringify(form), {
+      .post<AnswerPerson>(`${this.apiPath}/answer`, JSON.stringify(form), {
         headers: new HttpHeaders({ "Content-Type": "application/json" })
       })
       .subscribe(data => console.log(data));
   }
 
   public fetchSchools(): Observable<Object> {
-    return this.http.get("https://ita-5-back-staging.herokuapp.com/api/school");
+    return this.http.get(`${this.apiPath}/school`);
   }
 }

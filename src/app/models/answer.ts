@@ -6,4 +6,9 @@ export class Answer {
 
   questionId: string;
   answer?: string;
+
+  //TODO refactoring needed
+  id: string;
+  fullQuestion: string;
+  shortQuestion: string;
 }
