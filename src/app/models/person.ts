@@ -1,5 +1,11 @@
 export class Person {
-  constructor(fname: string, lname: string, phone: string, email: string, establishment: string) {
+  constructor(
+    fname: string,
+    lname: string,
+    phone: string,
+    email: string,
+    establishment: string
+  ) {
     this.email = email;
     this.name = fname;
     this.phone = phone;

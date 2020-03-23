@@ -5,6 +5,7 @@ export interface Form {
   phone: number;
   email: string;
   establishment: string;
+  establishmentOther: string;
   contract: boolean;
   contractExplanation?: string;
   shift: boolean;
