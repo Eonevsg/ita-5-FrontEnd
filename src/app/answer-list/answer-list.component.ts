@@ -10,6 +10,8 @@ import { FormService } from "../form-service/form.service";
 })
 export class AnswerListComponent implements OnInit {
   answers: AnswerViewModel[];
+  query: string;
+ 
 
   constructor(private formService: FormService) {}
 

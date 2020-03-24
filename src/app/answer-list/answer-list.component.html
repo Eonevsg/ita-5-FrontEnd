@@ -2,6 +2,7 @@
   <div id="form-container">
     <div class="card my-5">
       <div class="card-body">
+        <input [(ngModel)]="query">
         <table class="table table-bordered table-striped">
           <thead class="thead-dark">
             <tr>
@@ -13,7 +14,7 @@
           </thead>
           <tbody>
             <tr
-              *ngFor="let answer of answers"
+              *ngFor="let answer of answers | search:'name':query"
               [routerLink]="['/details', answer.person.id]"
             >
               <td>{{ answer.person.id }}</td>

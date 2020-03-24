@@ -13,6 +13,7 @@ import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./services/auth/custom-http-interceptor";
+import { SearchPipe } from './filter/list-filter';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -32,7 +33,8 @@ const appRoutes: Routes = [
     NotFoundComponent,
     AnswerListComponent,
     LoginPageComponent,
-    AnswerDetailsComponent
+    AnswerDetailsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
