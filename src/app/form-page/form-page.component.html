@@ -118,7 +118,7 @@
         >
           <option value="0" disabled>Pasirinkite mokymosi įstaigą</option>
           <option
-            *ngFor="let university of $universites | async"
+            *ngFor="let university of $universities | async"
             value="{{ university }}"
           >
             {{ university }}
@@ -196,7 +196,7 @@
             type="text"
             (input)="triggerResize()"
             cdkTextareaAutosize
-            #autosizeFirst="cdkTextareaAutosize"
+            #contractResizableArea="cdkTextareaAutosize"
             cdkAutosizeMinRows="3"
             cdkAutosizeMaxRows="5"
             class="form-control textarea-custom"
@@ -266,7 +266,7 @@
           type="text"
           (input)="triggerResize()"
           cdkTextareaAutosize
-          #autosizeSecond="cdkTextareaAutosize"
+          #shiftResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="3"
           cdkAutosizeMaxRows="5"
           class="form-control textarea-custom"
@@ -295,7 +295,7 @@
           type="text"
           (input)="triggerResize()"
           cdkTextareaAutosize
-          #autosizeThird="cdkTextareaAutosize"
+          #hobbiesResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="3"
           cdkAutosizeMaxRows="5"
           class="form-control textarea-custom"
@@ -325,7 +325,7 @@
           type="text"
           (input)="triggerResize()"
           cdkTextareaAutosize
-          #autosizeSixth="cdkTextareaAutosize"
+          #motivationResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="3"
           cdkAutosizeMaxRows="5"
           class="form-control textarea-custom"
@@ -357,7 +357,7 @@
           id="experience"
           (input)="triggerResize()"
           cdkTextareaAutosize
-          #autosizeForth="cdkTextareaAutosize"
+          #experienceResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="3"
           cdkAutosizeMaxRows="5"
           class="form-control textarea-custom"
@@ -384,7 +384,7 @@
         <textarea
           (input)="triggerResize()"
           cdkTextareaAutosize
-          #autosizeFifth="cdkTextareaAutosize"
+          #marketingResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="3"
           cdkAutosizeMaxRows="5"
           class="form-control textarea-custom"
