@@ -10,12 +10,19 @@ import { FormService } from "../form-service/form.service";
 })
 export class AnswerListComponent implements OnInit {
   answers: AnswerViewModel[];
-
+  fields: any = {name: "", surname:"", uni: ""};
+  filters: any = {name: "", surname: "", uni: ""};
+  
+  
   constructor(private formService: FormService) {}
 
   ngOnInit(): void {
     this.formService.findAllAnswers().subscribe(data => {
       this.answers = data;
     });
+  }
+  updateFilters(): void{
+    this.filters = Object.assign({}, this.fields);
+      console.log(this.filters);
   }
 }
