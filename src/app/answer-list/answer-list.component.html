@@ -6,6 +6,8 @@
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Būsena</th>
+              <th scope="col">Data</th>
               <th scope="col">Vardas</th>
               <th scope="col">Pavardė</th>
               <th scope="col">Mokymo įstaiga</th>
@@ -17,6 +19,10 @@
               [routerLink]="['/details', answer.person.id]"
             >
               <td>{{ answer.person.id }}</td>
+              <td>{{ answer.person.extra.status }}</td>
+              <td>
+                {{ answer.person.extra.dateTime | date: "yyyy-mm-dd" }}
+              </td>
               <td>{{ answer.person.name }}</td>
               <td>{{ answer.person.surname }}</td>
               <td>{{ answer.person.uni }}</td>
