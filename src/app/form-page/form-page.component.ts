@@ -15,12 +15,12 @@ import {take} from 'rxjs/operators';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent implements OnInit {
-  constructor(
-    private fb: FormBuilder,
-    private formService: FormService,
-    private ngZone: NgZone
-  ) {
-  }
+  form: Form;
+  showModal: boolean;
+  tempPerson: Person;
+  tempAnswerList: Answer[];
+  answerPerson: AnswerPerson;
+  $universities;
 
   @ViewChild('contractResizableArea') contractResizableArea: CdkTextareaAutosize;
   @ViewChild('shiftResizableArea') shiftResizableArea: CdkTextareaAutosize;
@@ -28,81 +28,6 @@ export class FormPageComponent implements OnInit {
   @ViewChild('experienceResizableArea') experienceResizableArea: CdkTextareaAutosize;
   @ViewChild('marketingResizableArea') marketingResizableArea: CdkTextareaAutosize;
   @ViewChild('motivationResizableArea') motivationResizableArea: CdkTextareaAutosize;
-
-  triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
-    this.ngZone.onStable.pipe(take(10)).subscribe(() => {
-      this.contractResizableArea.resizeToFitContent(true);
-      this.shiftResizableArea.resizeToFitContent(true);
-      this.hobbiesResizableArea.resizeToFitContent(true);
-      this.experienceResizableArea.resizeToFitContent(true);
-      this.marketingResizableArea.resizeToFitContent(true);
-      this.motivationResizableArea.resizeToFitContent(true);
-    });
-  }
-
-  get fname() {
-    return this.applicationForm.get('fname');
-  }
-
-  get lname() {
-    return this.applicationForm.get('lname');
-  }
-
-  get phone() {
-    return this.applicationForm.get('phone');
-  }
-
-  get email() {
-    return this.applicationForm.get('email');
-  }
-
-  get establishment() {
-    return this.applicationForm.get('establishment');
-  }
-
-  get establishmentOther() {
-    return this.applicationForm.get('establishmentOther');
-  }
-
-  get contract() {
-    return this.applicationForm.get('contract');
-  }
-
-  get contractExplanation() {
-    return this.applicationForm.get('contractExplanation');
-  }
-
-  get shift() {
-    return this.applicationForm.get('shift');
-  }
-
-  get shiftExplanation() {
-    return this.applicationForm.get('shiftExplanation');
-  }
-
-  get hobbies() {
-    return this.applicationForm.get('hobbies');
-  }
-
-  get motivation() {
-    return this.applicationForm.get('motivation');
-  }
-
-  get experience() {
-    return this.applicationForm.get('experience');
-  }
-
-  get marketing() {
-    return this.applicationForm.get('marketing');
-  }
-
-  form: Form;
-  showModal: boolean;
-  tempPerson: Person;
-  tempAnswerList: Answer[];
-  answerPerson: AnswerPerson;
-  $universites;
 
   applicationForm = this.fb.group({
     fname: [
@@ -198,6 +123,25 @@ export class FormPageComponent implements OnInit {
     ]
   });
 
+  constructor(
+    private fb: FormBuilder,
+    private formService: FormService,
+    private ngZone: NgZone
+  ) {
+  }
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this.ngZone.onStable.pipe(take(10)).subscribe(() => {
+      this.contractResizableArea.resizeToFitContent(true);
+      this.shiftResizableArea.resizeToFitContent(true);
+      this.hobbiesResizableArea.resizeToFitContent(true);
+      this.experienceResizableArea.resizeToFitContent(true);
+      this.marketingResizableArea.resizeToFitContent(true);
+      this.motivationResizableArea.resizeToFitContent(true);
+    });
+  }
+
   show() {
     this.showModal = true;
   }
@@ -209,7 +153,7 @@ export class FormPageComponent implements OnInit {
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, 'contract', 'contractExplanation');
     subscribeToValue(this.applicationForm, 'shift', 'shiftExplanation');
-    this.$universites = this.formService.fetchSchools();
+    this.$universities = this.formService.fetchSchools();
     this.applicationForm.controls['establishment'].setValue(0);
   }
 
@@ -222,14 +166,12 @@ export class FormPageComponent implements OnInit {
     if (establishmentValue === 'kita') {
       establishmentValue = this.establishmentOther.value;
     }
-    // TODO kas nores gales refactorint
     this.tempPerson = new Person(
       this.fname.value,
       this.lname.value,
       this.phone.value,
       this.email.value,
       establishmentValue
-      // this.establishment.value
     );
     this.tempAnswerList.push(new Answer('1', this.contractExplanation.value));
     this.tempAnswerList.push(new Answer('2', this.shiftExplanation.value));
@@ -241,6 +183,62 @@ export class FormPageComponent implements OnInit {
 
     console.log(JSON.stringify(this.answerPerson));
     this.formService.saveForm(this.answerPerson);
+  }
+
+  get fname() {
+    return this.applicationForm.get('fname');
+  }
+
+  get lname() {
+    return this.applicationForm.get('lname');
+  }
+
+  get phone() {
+    return this.applicationForm.get('phone');
+  }
+
+  get email() {
+    return this.applicationForm.get('email');
+  }
+
+  get establishment() {
+    return this.applicationForm.get('establishment');
+  }
+
+  get establishmentOther() {
+    return this.applicationForm.get('establishmentOther');
+  }
+
+  get contract() {
+    return this.applicationForm.get('contract');
+  }
+
+  get contractExplanation() {
+    return this.applicationForm.get('contractExplanation');
+  }
+
+  get shift() {
+    return this.applicationForm.get('shift');
+  }
+
+  get shiftExplanation() {
+    return this.applicationForm.get('shiftExplanation');
+  }
+
+  get hobbies() {
+    return this.applicationForm.get('hobbies');
+  }
+
+  get motivation() {
+    return this.applicationForm.get('motivation');
+  }
+
+  get experience() {
+    return this.applicationForm.get('experience');
+  }
+
+  get marketing() {
+    return this.applicationForm.get('marketing');
   }
 }
 
