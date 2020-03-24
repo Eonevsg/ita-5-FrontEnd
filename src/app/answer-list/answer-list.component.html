@@ -2,19 +2,19 @@
   <div id="form-container">
     <div class="card my-5">
       <div class="card-body">
-        <input [(ngModel)]="query">
+        
         <table class="table table-bordered table-striped">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Vardas</th>
-              <th scope="col">Pavardė</th>
-              <th scope="col">Mokymo įstaiga</th>
+              <th scope="col">Vardas <input [(ngModel)]="fields.name" (ngModelChange)="updateFilters()"></th>
+              <th scope="col">Pavardė<input [(ngModel)]="fields.surname" (ngModelChange)="updateFilters()"></th>
+              <th scope="col">Mokymo įstaiga<input [(ngModel)]="fields.uni" (ngModelChange)="updateFilters()"></th>
             </tr>
           </thead>
           <tbody>
             <tr
-              *ngFor="let answer of answers | search:'name':query"
+              *ngFor="let answer of answers | search:filters"
               [routerLink]="['/details', answer.person.id]"
             >
               <td>{{ answer.person.id }}</td>
