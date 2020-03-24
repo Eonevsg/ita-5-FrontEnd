@@ -48,7 +48,6 @@ export class AnswerDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
       this.questions = data;
-      console.log(this.questions);
     });
 
     this.answer$ = from(this.route.paramMap).pipe(
@@ -56,7 +55,6 @@ export class AnswerDetailsComponent implements OnInit {
         return this.formService.fetchAnswer({id: params.get('id')});
       })
     );
-    this.answer$.subscribe(res => console.log(res));
   }
 
   onSubmit() {

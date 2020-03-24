@@ -21,15 +21,12 @@ export class LoginPageComponent implements OnInit {
   ) {}
 
   onSubmit(value: User) {
-    console.log(value);
     this.authService.logIn(value).subscribe(
       data => {
-        console.log(data);
         this.location.replaceState("/"); // clears browser history so they can't navigate with back button
         this.router.navigate(["list"]);
       },
       error => {
-        console.error("Incorrect credentials!", error);
         this.hasError = true;
         this.isSelected = false;
       }

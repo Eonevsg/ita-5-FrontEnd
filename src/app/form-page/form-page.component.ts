@@ -181,7 +181,6 @@ export class FormPageComponent implements OnInit {
     this.tempAnswerList.push(new Answer('6', this.marketing.value));
     this.answerPerson = new AnswerPerson(this.tempAnswerList, this.tempPerson);
 
-    console.log(JSON.stringify(this.answerPerson));
     this.formService.saveForm(this.answerPerson);
   }
 
