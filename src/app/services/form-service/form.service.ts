@@ -26,7 +26,7 @@ export class FormService {
     return this.http.get<AnswerViewModel>(`${this.url}/answer/${id}`);
   }
 
-  public patchPerson(person: { extra: { status: string }; id: string }) {
+  public patchPerson(person: { extra: any; id: string }) {
     console.log(JSON.stringify(person));
     return this.http
       .patch(`${this.url}/answer`, JSON.stringify(person), {

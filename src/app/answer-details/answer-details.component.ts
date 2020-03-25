@@ -73,11 +73,15 @@ export class AnswerDetailsComponent implements OnInit {
         return this.formService.fetchAnswer({ id: params.get("id") });
       })
     );
-    this.answer$.subscribe(data => this.updateStatus(data.person));
+    this.answer$.subscribe(data => {
+      this.updateStatus(data.person);
+      this.personId = data.person.id;
+    });
   }
   person$: Observable<Person>;
 
   private statusValue;
+  private personId;
 
   onSubmit(): void {
     this.valuationForm.markAllAsTouched();
@@ -89,8 +93,8 @@ export class AnswerDetailsComponent implements OnInit {
       this.statusValue = "Atmesta";
     }
 
-    this.personService.updatePerson({
-      id: this.answer$.subscribe(data => data.person.id),
+    this.formService.patchPerson({
+      id: this.personId,
       extra: {
         applicationValuation: this.applicationValuation.value,
         interviewValuation: this.interviewValuation.value,
