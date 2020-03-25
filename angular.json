@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "ita5-FrontEndv3"
+  "defaultProject": "ita5-FrontEndv3",
+  "cli": {
+    "analytics": "ce45906d-de49-4ef3-8874-7fe941074455"
+  }
 }

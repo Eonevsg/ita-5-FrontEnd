@@ -2,13 +2,31 @@
   <div id="form-container">
     <div class="card my-5">
       <div class="card-body" *ngIf="answer$ | async as model">
-        <div align="right">"Person's State"</div>
-        <div>{{ model.person.name + " " + model.person.surname }}</div>
-        <div>{{ model.person.uni }}</div>
-        <br />
-        <div>{{ model.person.phone }}</div>
-        <div>{{ model.person.email }}</div>
-        <br />
+
+        <table
+        class="table table-bordered table-striped table-hover">
+        <thead class ="thead-custom">
+          <tr>
+          <td align="middle">Studento duomenys</td>
+          </tr>
+        </thead>
+        </table>
+        
+   
+    <body> 
+        <label id="form-title">Vardas, Pavardė</label>
+        <p>{{ model.person.name + " " + model.person.surname }}</p> 
+        <hr> 
+        <label id="form-title">Mokymosi įstaiga</label>
+        <p>{{ model.person.uni }}</p>
+        <hr> 
+        <label id="form-title">Telefono numeris</label>
+        <p>{{ model.person.phone }}</p>
+        <hr>
+        <label id="form-title">Elektroninis paštas</label>
+        <p>{{ model.person.email }}</p>
+        <hr>
+    </body> 
 
         <div *ngFor="let answer of model.answerList">
           <div>{{ getFullQuestion(answer.questionId) }}</div>
@@ -17,11 +35,10 @@
         </div>
 
         <div id="form-container">
-          <h2 id="form-title">Person Valuation</h2>
+          <h2 id="form-title">Studento vertinimas</h2>
           <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
-            <!-- Valuation group -->
             <div class="form-group" [class.has-error]="valuation.invalid">
-              <label for="valuation">Valuation</label>
+              <label for="valuation">Anketos vertinimas</label>
               <input
                 type="number"
                 class="form-control"
@@ -29,7 +46,16 @@
                 formControlName="valuation"
               />
             </div>
-            <!-- Valuation group validation -->
+
+            <div class="form-group" [class.has-error]="valuation.invalid">
+              <label for="valuation">Pokalbio vertinimas</label>
+              <input
+                type="number"
+                class="form-control"
+                id="valuation"
+                formControlName="valuation"
+              />
+            </div>
             <div
               [hidden]="valuation.valid || valuation.untouched"
               class="alert alert-danger"
@@ -44,11 +70,9 @@
                 Įvertinimas per didelis
               </div>
             </div>
-            <!-- Valuation group validation END -->
-            <!-- Valuation group END -->
-            <!-- Notes group -->
+ 
             <div class="form-group" [class.has-error]="notes.invalid">
-              <label for="notes">Notes</label>
+              <label for="notes">Pastabos</label>
               <input
                 type="text"
                 class="form-control"
@@ -56,7 +80,6 @@
                 formControlName="notes"
               />
             </div>
-            <!-- Notes validation -->
             <div
               [hidden]="notes.valid || notes.untouched"
               class="alert alert-danger"
@@ -68,11 +91,9 @@
                 Pastaba per ilga
               </div>
             </div>
-            <!-- Notes validation END -->
-            <!-- Notes group END -->
-            <!-- State group -->
+
             <div class="form-group">
-              <h4>Accept/Reject</h4>
+              <h4>Priimtas/Atmestas</h4>
               <div class="form-radio-group" [class.has-error]="state.invalid">
                 <div class="form-radio-group-choice">
                   <input
@@ -81,7 +102,7 @@
                     id="contract-pos"
                     formControlName="state"
                   />
-                  <label for="contract-pos" class="radio-label">Accept</label>
+                  <label for="contract-pos" class="radio-label">Priimtas</label>
                 </div>
 
                 <div class="form-radio-group-choice">
@@ -91,9 +112,8 @@
                     id="contract-neg"
                     formControlName="state"
                   />
-                  <label for="contract-neg" class="radio-label">Reject</label>
+                  <label for="contract-neg" class="radio-label">Atmestas</label>
                 </div>
-                <!-- State validation -->
                 <div
                   *ngIf="state.invalid"
                   [hidden]="state.valid || state.untouched"
@@ -101,10 +121,8 @@
                 >
                   Laukas privalomas!
                 </div>
-                <!-- State validation END-->
               </div>
             </div>
-            <!-- State group END -->
             <button type="submit" class="btn btn-custom">
               Pateikti
             </button>

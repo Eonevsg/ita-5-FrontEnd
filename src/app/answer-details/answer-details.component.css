@@ -1,8 +1,17 @@
 .btn-custom {
     background: #ee7023;
+    margin-right: 10px;
   }
   .btn-custom:active,
   .btn-custom:focus,
   .btn-custom:hover {
     background: #c95f1e;
+  }
+  table.table-bordered > thead > tr > th,
+  table.table-bordered > thead > tr > td {
+  /* border-color: #da6720; */
+  background-color: #ee7023;
+  }
+  .thead-custom {
+    background-color: #ee7023;
   }
