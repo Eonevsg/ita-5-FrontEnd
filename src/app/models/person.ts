@@ -20,4 +20,11 @@ export class Person {
   phone: string;
   email: string;
   uni: string;
+  extra: {
+    dateTime: Date;
+    notes: string;
+    applicationValuation: string;
+    interviewValuation: string;
+    status: string;
+  };
 }

@@ -13,10 +13,10 @@ import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./services/auth/custom-http-interceptor";
-import { SearchPipe } from './filter/list-filter';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SearchPipe } from "./filter/list-filter";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from "@angular/material/sort";
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
