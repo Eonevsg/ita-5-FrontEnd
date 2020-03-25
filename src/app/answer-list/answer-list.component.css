@@ -8,11 +8,20 @@ input {
   width: 25%;
 }
 
-.id-column {
+#id-column {
   width: 5%;
 }
-.column-width-small {
-  width: 12%;
+
+#status-column {
+  width: 10%;
+}
+
+#dateTime-column {
+  width: 11%;
+}
+
+#uni-column {
+  width: 16%;
 }
 
 table {
@@ -47,4 +56,9 @@ table.table-bordered > thead > tr > td {
 
 th {
   color: #4b250e;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #da672027;
 }

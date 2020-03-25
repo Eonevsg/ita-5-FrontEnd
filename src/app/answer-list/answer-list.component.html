@@ -11,27 +11,25 @@
         <table
           matSort
           (matSortChange)="sortData($event)"
-          class="table table-bordered table-striped"
+          class="table table-bordered table-striped table-hover"
         >
           <colgroup>
-            <col class="id-column" />
-            <col class="column-width-small" />
-            <col class="column-width-small" />
-            <col />
-            <col />
-            <col />
+            <col id="dateTime-column" />
+            <col id="status-column" />
+            <col class="name-surname-column" />
+            <col class="name-surname-column" />
+            <col id="uni-column" />
+            <col class="valuation-column" />
+            <col class="valuation-column" />
+            <col id="notes-column" />
           </colgroup>
           <thead class="thead-custom">
             <tr>
               <th scope="col">
-                <div mat-sort-header="id" id="id-column-header">#</div>
-                <!-- <p></p> -->
-              </th>
-              <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="status">Būsena</div>
+                  <div mat-sort-header="dateTime">Data</div>
                   <input
-                    [(ngModel)]="fields.status"
+                    [(ngModel)]="fields.dateTime"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
@@ -41,9 +39,9 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="dateTime">Data</div>
+                  <div mat-sort-header="status">Būsena</div>
                   <input
-                    [(ngModel)]="fields.dateTime"
+                    [(ngModel)]="fields.status"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
@@ -87,6 +85,44 @@
                   />
                 </div>
               </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="applicationValuation">Vertinimas</div>
+                  <input
+                    [(ngModel)]="fields.applicationValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="interviewValuation">
+                    Interviu vertinimas
+                  </div>
+                  <input
+                    [(ngModel)]="fields.interviewValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="notes">Pastabos</div>
+                  <input
+                    [(ngModel)]="fields.notes"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -94,14 +130,20 @@
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
             >
-              <td id="id">{{ person.id }}</td>
-              <td class="column-width-small">{{ person.extra.status }}</td>
               <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
+              <td class="column-width-small">{{ person.extra.status }}</td>
               <td class="column-width">{{ person.name }}</td>
               <td class="column-width">{{ person.surname }}</td>
               <td class="column-width">{{ person.uni }}</td>
+              <td class="column-width">
+                {{ person.extra.applicationValuation }}
+              </td>
+              <td class="column-width">
+                {{ person.extra.interviewValuation }}
+              </td>
+              <td class="column-width">{{ person.extra.notes }}</td>
             </tr>
           </tbody>
         </table>

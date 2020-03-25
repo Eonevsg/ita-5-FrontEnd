@@ -17,7 +17,14 @@ export class SearchPipe implements PipeTransform {
         item.name.toLowerCase().indexOf(filters.name.toLowerCase()) >= 0 &&
         item.surname.toLowerCase().indexOf(filters.surname.toLowerCase()) >=
           0 &&
-        item.uni.toLowerCase().indexOf(filters.uni.toLowerCase()) >= 0
+        item.uni.toLowerCase().indexOf(filters.uni.toLowerCase()) >= 0 &&
+        item.extra.applicationValuation
+          .toLowerCase()
+          .indexOf(filters.applicationValuation.toLowerCase()) >= 0 &&
+        item.extra.interviewValuation
+          .toLowerCase()
+          .indexOf(filters.interviewValuation.toLowerCase()) >= 0 &&
+        item.extra.notes.toLowerCase().indexOf(filters.notes.toLowerCase()) >= 0
       );
     });
   }
