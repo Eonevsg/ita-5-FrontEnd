@@ -6,6 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {from, Observable, empty} from 'rxjs';
 import {switchMap, tap} from 'rxjs/operators';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Person} from '../models/person';
 
 @Component({
   selector: 'app-answer-details',
@@ -55,9 +56,16 @@ export class AnswerDetailsComponent implements OnInit {
         return this.formService.fetchAnswer({id: params.get('id')});
       })
     );
+    this.answer$.subscribe(data => this.updateStatus(data.person));
   }
 
   onSubmit() {
+  }
+
+  updateStatus(person: Person): any {
+    if (person.extra.status.toLowerCase() === 'nauja') {
+      return this.formService.patchPerson({id: person.id, extra: {status: 'Perskaityta' }});
+    }
   }
 
   getFullQuestion(id: string): string {
