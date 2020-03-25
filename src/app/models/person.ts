@@ -6,10 +6,7 @@ export class Person {
     phone: string,
     email: string,
     establishment: string,
-    applicationValuation?: string,
-    interviewValuation?: string,
-    notes?: string,
-    status?: string
+    extra: any
   ) {
     this.id = id;
     this.email = email;
@@ -17,7 +14,9 @@ export class Person {
     this.phone = phone;
     this.surname = lname;
     this.uni = establishment;
+    this.extra = extra;
   }
+
   id: string;
   name: string;
   surname: string;

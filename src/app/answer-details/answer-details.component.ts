@@ -73,7 +73,7 @@ export class AnswerDetailsComponent implements OnInit {
         return this.formService.fetchAnswer({ id: params.get("id") });
       })
     );
-    console.log("ANSWER", this.answer$);
+    this.answer$.subscribe(data => this.updateStatus(data.person));
   }
   person$: Observable<Person>;
 
@@ -99,6 +99,15 @@ export class AnswerDetailsComponent implements OnInit {
       }
     });
     // this.formService.saveForm(this.answerPerson);
+  }
+
+  updateStatus(person: Person): any {
+    if (person.extra.status.toLowerCase() === "nauja") {
+      return this.formService.patchPerson({
+        id: person.id,
+        extra: { status: "Perskaityta" }
+      });
+    }
   }
 
   getFullQuestion(id: string): string {

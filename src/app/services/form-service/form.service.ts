@@ -26,6 +26,15 @@ export class FormService {
     return this.http.get<AnswerViewModel>(`${this.url}/answer/${id}`);
   }
 
+  public patchPerson(person: { extra: { status: string }; id: string }) {
+    console.log(JSON.stringify(person));
+    return this.http
+      .patch(`${this.url}/answer`, JSON.stringify(person), {
+        headers: new HttpHeaders({ "Content-Type": "application/json" })
+      })
+      .subscribe(data => console.log(data));
+  }
+
   public saveForm(form: AnswerPerson) {
     return this.http
       .post<AnswerPerson>(`${this.url}/answer`, JSON.stringify(form), {
