@@ -17,8 +17,26 @@ export class AnswerListComponent implements OnInit {
   answers: AnswerViewModel[];
   persons: Person[] = [];
   sortedPersons: Person[];
-  fields: any = { status: "", dateTime: "", name: "", surname: "", uni: "" };
-  filters: any = { status: "", dateTime: "", name: "", surname: "", uni: "" };
+  fields: any = {
+    status: "",
+    dateTime: "",
+    name: "",
+    surname: "",
+    uni: "",
+    applicationValuation: "",
+    interviewValuation: "",
+    notes: ""
+  };
+  filters: any = {
+    status: "",
+    dateTime: "",
+    name: "",
+    surname: "",
+    uni: "",
+    applicationValuation: "",
+    interviewValuation: "",
+    notes: ""
+  };
 
   constructor(
     private formService: FormService,
@@ -63,6 +81,20 @@ export class AnswerListComponent implements OnInit {
           return this.compare(a.extra.status, b.extra.status, isAsc);
         case "dateTime":
           return this.compare(a.extra.dateTime, b.extra.dateTime, isAsc);
+        case "applicationValuation":
+          return this.compare(
+            a.extra.applicationValuation,
+            b.extra.applicationValuation,
+            isAsc
+          );
+        case "interviewValuation":
+          return this.compare(
+            a.extra.interviewValuation,
+            b.extra.interviewValuation,
+            isAsc
+          );
+        case "notes":
+          return this.compare(a.extra.notes, b.extra.notes, isAsc);
         default:
           return 0;
       }
