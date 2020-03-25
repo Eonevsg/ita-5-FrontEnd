@@ -1,57 +1,91 @@
 <div id="main">
+  <div id="logout-btn">
+    <button class="btn btn-danger" type="button" (click)="logOutButtonClick()">
+      Atsijungti
+    </button>
+  </div>
   <div id="form-container">
-    <div class="card my-5">
+    <div class="card">
       <div class="card-body">
+        <mat-form-field hidden> <input matInput/></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
           class="table table-bordered table-striped"
         >
-          <thead class="thead-dark">
+          <colgroup>
+            <col class="id-column" />
+            <col class="column-width-small" />
+            <col class="column-width-small" />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <thead class="thead-custom">
             <tr>
               <th scope="col">
-                #
-                <div mat-sort-header="id"></div>
+                <div mat-sort-header="id" id="id-column-header">#</div>
+                <!-- <p></p> -->
               </th>
               <th scope="col">
-                Būsena
-                <div mat-sort-header="status"></div>
-                <input
-                  [(ngModel)]="fields.status"
-                  (ngModelChange)="updateFilters()"
-                />
+                <div class="column-header">
+                  <div mat-sort-header="status">Būsena</div>
+                  <input
+                    [(ngModel)]="fields.status"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
               </th>
               <th scope="col">
-                Data
-                <div mat-sort-header="dateTime"></div>
-                <input
-                  [(ngModel)]="fields.dateTime"
-                  (ngModelChange)="updateFilters()"
-                />
+                <div class="column-header">
+                  <div mat-sort-header="dateTime">Data</div>
+                  <input
+                    [(ngModel)]="fields.dateTime"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
               </th>
               <th scope="col">
-                Vardas
-                <div mat-sort-header="name"></div>
-                <input
-                  [(ngModel)]="fields.name"
-                  (ngModelChange)="updateFilters()"
-                />
+                <div class="column-header">
+                  <div mat-sort-header="name">Vardas</div>
+                  <input
+                    [(ngModel)]="fields.name"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
               </th>
               <th scope="col">
-                Pavardė
-                <div mat-sort-header="surname"></div>
-                <input
-                  [(ngModel)]="fields.surname"
-                  (ngModelChange)="updateFilters()"
-                />
+                <div class="column-header">
+                  <div mat-sort-header="surname">Pavardė</div>
+                  <input
+                    [(ngModel)]="fields.surname"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
               </th>
               <th scope="col">
-                Mokymo įstaiga
-                <div mat-sort-header="uni"></div>
-                <input
-                  [(ngModel)]="fields.uni"
-                  (ngModelChange)="updateFilters()"
-                />
+                <div class="column-header">
+                  <div mat-sort-header="uni">Mokymo įstaiga</div>
+                  <input
+                    [(ngModel)]="fields.uni"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
               </th>
             </tr>
           </thead>
@@ -60,28 +94,17 @@
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
             >
-              <td>{{ person.id }}</td>
-              <td>{{ person.extra.status }}</td>
-              <td>
+              <td id="id">{{ person.id }}</td>
+              <td class="column-width-small">{{ person.extra.status }}</td>
+              <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
-              <td>{{ person.name }}</td>
-              <td>{{ person.surname }}</td>
-              <td>{{ person.uni }}</td>
+              <td class="column-width">{{ person.name }}</td>
+              <td class="column-width">{{ person.surname }}</td>
+              <td class="column-width">{{ person.uni }}</td>
             </tr>
           </tbody>
         </table>
-
-        <!-- Log out button -->
-        <div>
-          <button
-            class="btn btn-danger"
-            type="button"
-            (click)="logOutButtonClick()"
-          >
-            Atsijungti
-          </button>
-        </div>
       </div>
     </div>
   </div>

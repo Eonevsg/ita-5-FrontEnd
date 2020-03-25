@@ -17,6 +17,7 @@ import { SearchPipe } from "./filter/list-filter";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MatSortModule } from "@angular/material/sort";
+import { MatInputModule } from "@angular/material/input";
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     TextFieldModule,
     RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" }),
     BrowserAnimationsModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule
   ],
   providers: [
     {
