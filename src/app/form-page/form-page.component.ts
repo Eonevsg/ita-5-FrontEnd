@@ -167,6 +167,7 @@ export class FormPageComponent implements OnInit {
       establishmentValue = this.establishmentOther.value;
     }
     this.tempPerson = new Person(
+      null,
       this.fname.value,
       this.lname.value,
       this.phone.value,
