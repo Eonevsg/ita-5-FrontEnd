@@ -1,26 +1,149 @@
 <div id="main">
+  <div id="logout-btn">
+    <button class="btn btn-danger" type="button" (click)="logOutButtonClick()">
+      Atsijungti
+    </button>
+  </div>
   <div id="form-container">
-    <div class="card my-5">
+    <div class="card">
       <div class="card-body">
-        
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
+        <mat-form-field hidden> <input matInput/></mat-form-field>
+        <table
+          matSort
+          (matSortChange)="sortData($event)"
+          class="table table-bordered table-striped table-hover"
+        >
+          <colgroup>
+            <col id="dateTime-column" />
+            <col id="status-column" />
+            <col class="name-surname-column" />
+            <col class="name-surname-column" />
+            <col id="uni-column" />
+            <col class="valuation-column" />
+            <col class="valuation-column" />
+            <col id="notes-column" />
+          </colgroup>
+          <thead class="thead-custom">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Vardas <input [(ngModel)]="fields.name" (ngModelChange)="updateFilters()"></th>
-              <th scope="col">Pavardė<input [(ngModel)]="fields.surname" (ngModelChange)="updateFilters()"></th>
-              <th scope="col">Mokymo įstaiga<input [(ngModel)]="fields.uni" (ngModelChange)="updateFilters()"></th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="dateTime">Data</div>
+                  <input
+                    [(ngModel)]="fields.dateTime"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="status">Būsena</div>
+                  <input
+                    [(ngModel)]="fields.status"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="name">Vardas</div>
+                  <input
+                    [(ngModel)]="fields.name"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="surname">Pavardė</div>
+                  <input
+                    [(ngModel)]="fields.surname"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="uni">Mokymo įstaiga</div>
+                  <input
+                    [(ngModel)]="fields.uni"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="applicationValuation">Vertinimas</div>
+                  <input
+                    [(ngModel)]="fields.applicationValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="interviewValuation">
+                    Interviu vertinimas
+                  </div>
+                  <input
+                    [(ngModel)]="fields.interviewValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+              <th scope="col">
+                <div class="column-header">
+                  <div mat-sort-header="notes">Pastabos</div>
+                  <input
+                    [(ngModel)]="fields.notes"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr
-              *ngFor="let answer of answers | search:filters"
-              [routerLink]="['/details', answer.person.id]"
+              *ngFor="let person of sortedPersons | search: filters"
+              [routerLink]="['/details', person.id]"
             >
-              <td>{{ answer.person.id }}</td>
-              <td>{{ answer.person.name }}</td>
-              <td>{{ answer.person.surname }}</td>
-              <td>{{ answer.person.uni }}</td>
+              <td class="column-width-small">
+                {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
+              </td>
+              <td class="column-width-small">{{ person.extra.status }}</td>
+              <td class="column-width">{{ person.name }}</td>
+              <td class="column-width">{{ person.surname }}</td>
+              <td class="column-width">{{ person.uni }}</td>
+              <td class="column-width">
+                {{ person.extra.applicationValuation }}
+              </td>
+              <td class="column-width">
+                {{ person.extra.interviewValuation }}
+              </td>
+              <td class="column-width">{{ person.extra.notes }}</td>
             </tr>
           </tbody>
         </table>

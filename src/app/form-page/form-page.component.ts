@@ -167,11 +167,13 @@ export class FormPageComponent implements OnInit {
       establishmentValue = this.establishmentOther.value;
     }
     this.tempPerson = new Person(
+      null,
       this.fname.value,
       this.lname.value,
       this.phone.value,
       this.email.value,
-      establishmentValue
+      establishmentValue,
+      null
     );
     this.tempAnswerList.push(new Answer('1', this.contractExplanation.value));
     this.tempAnswerList.push(new Answer('2', this.shiftExplanation.value));
