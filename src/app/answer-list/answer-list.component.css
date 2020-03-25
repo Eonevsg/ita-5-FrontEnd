@@ -1,0 +1,64 @@
+input:focus::placeholder {
+  color: transparent;
+}
+input {
+  opacity: 0.3;
+}
+.column-width {
+  width: 25%;
+}
+
+#id-column {
+  width: 5%;
+}
+
+#status-column {
+  width: 10%;
+}
+
+#dateTime-column {
+  width: 11%;
+}
+
+#uni-column {
+  width: 16%;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#logout-btn {
+  float: right;
+  margin: 3%;
+}
+
+#main div {
+  display: inline-block;
+}
+
+#id-column-header {
+  -ms-transform: translateY(-13%);
+  transform: translateY(-13%);
+  margin-left: -5px;
+  font-size: 25px;
+}
+
+.thead-custom {
+  background-color: #ee7023;
+}
+
+table.table-bordered > thead > tr > th,
+table.table-bordered > thead > tr > td {
+  border-color: #da6720;
+}
+
+th {
+  color: #4b250e;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #da672027;
+}
