@@ -5,7 +5,11 @@ export class Person {
     lname: string,
     phone: string,
     email: string,
-    establishment: string
+    establishment: string,
+    applicationValuation?: string,
+    interviewValuation?: string,
+    notes?: string,
+    status?: string
   ) {
     this.id = id;
     this.email = email;
