@@ -17,6 +17,7 @@
   width: auto;
   height: auto;
   margin: 0% 5%;
+  flex:1;
 }
 
 .content-container {

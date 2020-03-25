@@ -23,6 +23,8 @@ html {
   left: 0;
   right: 0;
   margin: auto;
+  display: flex;
+  flex-direction: column;
   -ms-overflow-style: none;
 }
 
