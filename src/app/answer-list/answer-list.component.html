@@ -2,25 +2,25 @@
   <div id="form-container">
     <div class="card my-5">
       <div class="card-body">
-        
-        <table class="table table-bordered table-striped">
+
+        <table matSort (matSortChange)="sortData($event)" class="table table-bordered table-striped">
           <thead class="thead-dark">
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Vardas <input [(ngModel)]="fields.name" (ngModelChange)="updateFilters()"></th>
-              <th scope="col">Pavardė<input [(ngModel)]="fields.surname" (ngModelChange)="updateFilters()"></th>
-              <th scope="col">Mokymo įstaiga<input [(ngModel)]="fields.uni" (ngModelChange)="updateFilters()"></th>
+              <th scope="col">#<div mat-sort-header="id"></div></th>
+              <th scope="col">Vardas <input [(ngModel)]="fields.name" (ngModelChange)="updateFilters()"><div mat-sort-header="name"></div></th>
+              <th scope="col">Pavardė<input [(ngModel)]="fields.surname" (ngModelChange)="updateFilters()"><div mat-sort-header="surname"></div></th>
+              <th  scope="col">Mokymo įstaiga<input [(ngModel)]="fields.uni" (ngModelChange)="updateFilters()"><div mat-sort-header="uni"></div></th>
             </tr>
           </thead>
           <tbody>
             <tr
-              *ngFor="let answer of answers | search:filters"
-              [routerLink]="['/details', answer.person.id]"
+              *ngFor="let person of sortedPersons | search:filters"
+              [routerLink]="['/details', person.id]"
             >
-              <td>{{ answer.person.id }}</td>
-              <td>{{ answer.person.name }}</td>
-              <td>{{ answer.person.surname }}</td>
-              <td>{{ answer.person.uni }}</td>
+              <td>{{ person.id }}</td>
+              <td>{{ person.name }}</td>
+              <td>{{ person.surname }}</td>
+              <td>{{ person.uni }}</td>
             </tr>
           </tbody>
         </table>

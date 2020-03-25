@@ -14,6 +14,9 @@ import { AnswerDetailsComponent } from "./answer-details/answer-details.componen
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { CustomHttpInterceptor } from "./services/auth/custom-http-interceptor";
 import { SearchPipe } from './filter/list-filter';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatSortModule} from '@angular/material/sort';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -42,7 +45,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     TextFieldModule,
-    RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" })
+    RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" }),
+    BrowserAnimationsModule,
+    MatSortModule
   ],
   providers: [
     {
