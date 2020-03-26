@@ -18,6 +18,7 @@ export class AnswerDetailsComponent implements OnInit {
   public answer$: Observable<AnswerViewModel>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
+  showModal: boolean;
 
   constructor(
     private formService: FormService,
@@ -63,6 +64,14 @@ export class AnswerDetailsComponent implements OnInit {
     return this.valuationForm.get("state");
   }
 
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+  }
+
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
       this.questions = data;
@@ -102,7 +111,6 @@ export class AnswerDetailsComponent implements OnInit {
         status: this.statusValue
       }
     });
-    // this.formService.saveForm(this.answerPerson);
   }
 
   updateStatus(person: Person): any {

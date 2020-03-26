@@ -1,157 +1,204 @@
 <div id="main">
-  <div id="form-container">
-    <div class="card my-5">
-      <div class="card-body" *ngIf="answer$ | async as model">
-        <div align="right">"Person's State"</div>
-        <div>{{ model.person.name + " " + model.person.surname }}</div>
-        <div>{{ model.person.uni }}</div>
-        <br />
-        <div>{{ model.person.phone }}</div>
-        <div>{{ model.person.email }}</div>
-        <br />
+  <body>
+    <div id="form-container">
+      <div class="card my-5">
+        <div class="card-body" *ngIf="answer$ | async as model">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-custom">
+              <tr>
+                <td id="title">Asmens duomenys</td>
+              </tr>
+            </thead>
+          </table>
 
-        <div *ngFor="let answer of model.answerList">
-          <div>{{ getFullQuestion(answer.questionId) }}</div>
-          <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+          <label class="bold">Vardas, Pavardė</label>
+          <p>{{ model.person.name + " " + model.person.surname }}</p>
           <hr />
-        </div>
+          <label class="bold">Mokymosi įstaiga</label>
+          <p>{{ model.person.uni }}</p>
+          <hr />
+          <label class="bold">Telefono numeris</label>
+          <p>{{ model.person.phone }}</p>
+          <hr />
+          <label class="bold">Elektroninis paštas</label>
+          <p>{{ model.person.email }}</p>
+          <hr />
 
-        <div id="form-container">
-          <h2 id="form-title">Asmens įvertinimas</h2>
-          <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
-            <!-- Valuation group -->
-            <div
-              class="form-group"
-              [class.has-error]="applicationValuation.invalid"
-            >
-              <label for="applicationValuation">Formos vertinimas</label>
-              <input
-                type="number"
-                class="form-control"
-                id="applicationValuation"
-                formControlName="applicationValuation"
-              />
-            </div>
-            <!-- Valuation group validation -->
-            <div
-              [hidden]="
-                applicationValuation.valid || applicationValuation.untouched
-              "
-              class="alert alert-danger"
-            >
-              <div *ngIf="applicationValuation.errors?.required">
-                Įveskite įvertinimą
-              </div>
-              <div *ngIf="applicationValuation.errors?.min">
-                Įvertinimas negali būti neigiamas!
-              </div>
-              <div *ngIf="applicationValuation.errors?.max">
-                Įvertinimas per didelis
-              </div>
-            </div>
+          <div *ngFor="let answer of model.answerList">
+            <label class="bold">{{ getFullQuestion(answer.questionId) }}</label>
+            <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+            <hr />
+          </div>
 
-            <div
-              class="form-group"
-              [class.has-error]="interviewValuation.invalid"
-            >
-              <label for="interviewValuation">Interviu vertininmas</label>
-              <input
-                type="number"
-                class="form-control"
-                id="interviewValuation"
-                formControlName="interviewValuation"
-              />
-            </div>
-            <!-- Valuation group validation -->
-            <div
-              [hidden]="
-                interviewValuation.valid || interviewValuation.untouched
-              "
-              class="alert alert-danger"
-            >
-              <div *ngIf="interviewValuation.errors?.required">
-                Įveskite įvertinimą
+          <div id="form-container">
+            <h2 id="form-title">Asmens įvertinimas</h2>
+            <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
+              <div
+                class="form-group"
+                [class.has-error]="applicationValuation.invalid"
+              >
+                <label for="applicationValuation">Anketos vertinimas</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="applicationValuation"
+                  formControlName="applicationValuation"
+                />
               </div>
-              <div *ngIf="interviewValuation.errors?.min">
-                Įvertinimas per trumpas
-              </div>
-              <div *ngIf="interviewValuation.errors?.max">
-                Įvertinimas per ilgas
-              </div>
-              <div *ngIf="interviewValuation.errors?.pattern">
-                Nenaudokite specialių simbolių!
-              </div>
-            </div>
-            <!-- Valuation group validation END -->
-            <!-- Valuation group END -->
-            <!-- Notes group -->
-            <div class="form-group" [class.has-error]="notes.invalid">
-              <label for="notes">Pastabos</label>
-              <input
-                type="text"
-                class="form-control"
-                id="notes"
-                formControlName="notes"
-              />
-            </div>
-            <!-- Notes validation -->
-            <div
-              [hidden]="notes.valid || notes.untouched"
-              class="alert alert-danger"
-            >
-              <div *ngIf="notes.errors?.required">
-                Įveskite pastabą
-              </div>
-              <div *ngIf="notes.errors?.maxlength">
-                Pastaba per ilga
-              </div>
-            </div>
-            <!-- Notes validation END -->
-            <!-- Notes group END -->
-            <!-- State group -->
-            <div class="form-group">
-              <h4>Priimti/Atmesti</h4>
-              <div class="form-radio-group" [class.has-error]="state.invalid">
-                <div class="form-radio-group-choice">
-                  <input
-                    type="radio"
-                    value="yes"
-                    id="contract-pos"
-                    formControlName="state"
-                  />
-                  <label for="contract-pos" class="radio-label">Priimti</label>
-                </div>
 
-                <div class="form-radio-group-choice">
-                  <input
-                    type="radio"
-                    value="no"
-                    id="contract-neg"
-                    formControlName="state"
-                  />
-                  <label for="contract-neg" class="radio-label">Atmesti</label>
+              <div
+                [hidden]="
+                  applicationValuation.valid || applicationValuation.untouched
+                "
+                class="alert alert-danger"
+              >
+                <div *ngIf="applicationValuation.errors?.required">
+                  Įveskite įvertinimą
                 </div>
-                <!-- State validation -->
-                <div
-                  *ngIf="state.invalid"
-                  [hidden]="state.valid || state.untouched"
-                  class="alert alert-danger"
-                >
-                  Laukas privalomas!
+                <div *ngIf="applicationValuation.errors?.min">
+                  Įvertinimas negali būti neigiamas!
                 </div>
-                <!-- State validation END-->
+                <div *ngIf="applicationValuation.errors?.max">
+                  Įvertinimas per didelis
+                </div>
+              </div>
+
+              <div
+                class="form-group"
+                [class.has-error]="interviewValuation.invalid"
+              >
+                <label for="interviewValuation">Interviu vertininmas</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="interviewValuation"
+                  formControlName="interviewValuation"
+                />
+              </div>
+
+              <div
+                [hidden]="
+                  interviewValuation.valid || interviewValuation.untouched
+                "
+                class="alert alert-danger"
+              >
+                <div *ngIf="interviewValuation.errors?.required">
+                  Įveskite įvertinimą
+                </div>
+                <div *ngIf="interviewValuation.errors?.min">
+                  Įvertinimas per trumpas
+                </div>
+                <div *ngIf="interviewValuation.errors?.max">
+                  Įvertinimas per ilgas
+                </div>
+                <div *ngIf="interviewValuation.errors?.pattern">
+                  Nenaudokite specialių simbolių!
+                </div>
+              </div>
+
+              <div class="form-group" [class.has-error]="notes.invalid">
+                <label for="notes">Pastabos</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="notes"
+                  formControlName="notes"
+                />
+              </div>
+
+              <div
+                [hidden]="notes.valid || notes.untouched"
+                class="alert alert-danger"
+              >
+                <div *ngIf="notes.errors?.required">
+                  Įveskite pastabą
+                </div>
+                <div *ngIf="notes.errors?.maxlength">
+                  Pastaba per ilga
+                </div>
+              </div>
+
+              <div class="form-group">
+                <h4>Priimti/Atmesti</h4>
+                <div class="form-radio-group" [class.has-error]="state.invalid">
+                  <div class="form-radio-group-choice">
+                    <input
+                      type="radio"
+                      value="yes"
+                      id="contract-pos"
+                      formControlName="state"
+                    />
+                    <label for="contract-pos" class="radio-label"
+                      >Priimti</label
+                    >
+                  </div>
+
+                  <div class="form-radio-group-choice">
+                    <input
+                      type="radio"
+                      value="no"
+                      id="contract-neg"
+                      formControlName="state"
+                    />
+                    <label for="contract-neg" class="radio-label"
+                      >Atmesti</label
+                    >
+                  </div>
+
+                  <div
+                    *ngIf="state.invalid"
+                    [hidden]="state.valid || state.untouched"
+                    class="alert alert-danger"
+                  >
+                    Laukas privalomas!
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-custom"
+                (click)="valuationForm.valid ? show() : null"
+              >
+                Pateikti
+              </button>
+              <button [routerLink]="['/list']" class="btn btn-custom">
+                Atgal
+              </button>
+            </form>
+
+            <div [style.display]="showModal ? 'block' : 'none'" class="modal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                      Įvertinimas pateiktas
+                    </h4>
+                  </div>
+                  <div id="modal-footer">
+                    <button
+                      type="submit"
+                      class="btn btn-custom"
+                      id="btn-popup-hide"
+                      (click)="hide()"
+                    >
+                      Tęsti
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn btn-custom"
+                      id="btn-popup-back"
+                      [routerLink]="['/list']"
+                    >
+                      Baigti
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-            <!-- State group END -->
-            <button type="submit" class="btn btn-custom">
-              Pateikti
-            </button>
-            <button [routerLink]="['/list']" class="btn btn-custom">
-              Atgal
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </body>
 </div>

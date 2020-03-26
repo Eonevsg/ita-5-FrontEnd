@@ -31,5 +31,27 @@ html {
   display: none;
 }
 
-/*html, body { height: 100%; }*/
-/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn-custom {
+  background: #ee7023;
+}
+.btn-custom:active,
+.btn-custom:focus,
+.btn-custom:hover {
+  background: #c95f1e;
+}
+
+.btn {
+  width: 120px;
+}
