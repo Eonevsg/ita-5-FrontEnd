@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../form-service/form.service";
+import { FormService } from "../services/form-service/form.service";
 import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";

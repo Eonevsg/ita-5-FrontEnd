@@ -1,7 +1,7 @@
 <div id="main">
   <div id="header">
     <div>
-      <img src="/assets/images/logo.png" id="logo"/>
+      <img src="/assets/images/logo.png" id="logo" />
     </div>
     <div>
       <h1>IT Academija</h1>
@@ -108,7 +108,7 @@
 
       <div class="form-group">
         <label for="establishment"
-        >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+          >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
         >
         <select
           type="text"
@@ -131,7 +131,7 @@
         >
           Pasirinkite mokymosi įstaiga!
         </div>
-        <br/>
+        <br />
         <div [hidden]="establishment.value != 'kita'" class="form-group">
           <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
           <input
@@ -156,7 +156,7 @@
 
       <div class="form-group">
         <label for="contract"
-        >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
+          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
         >
         <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
@@ -219,12 +219,11 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <div class="form-group">
         <label for="shift"
-        >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
+          >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
           akademijai skirti tiek laiko?</label
         >
         <div class="form-radio-group">
@@ -289,7 +288,7 @@
 
       <div class="form-group">
         <label for="hobbies"
-        >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
+          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
         >
         <textarea
           type="text"
@@ -318,7 +317,7 @@
 
       <div class="form-group">
         <label for="motivation"
-        >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
+          >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
         <textarea
@@ -348,7 +347,7 @@
 
       <div class="form-group">
         <label for="experience"
-        >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+          >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
         >
@@ -379,7 +378,7 @@
 
       <div class="form-group">
         <label for="marketing"
-        >Iš kur sužinojai apie IT akademiją Swedbank?</label
+          >Iš kur sužinojai apie IT akademiją Swedbank?</label
         >
         <textarea
           (input)="triggerResize()"
@@ -410,7 +409,7 @@
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="(applicationForm.valid ? show() : null)"
+            (click)="applicationForm.valid ? show() : null"
           >
             Pateikti
           </button>
@@ -427,10 +426,7 @@
       </div>
     </form>
 
-    <div
-      [style.display]="showModal ? 'block' : 'none'"
-      class="modal"
-    >
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -443,14 +439,14 @@
               type="submit"
               class="btn btn-custom"
               id="btn-popup"
-              (click)="hide()"
+              [routerLink]="['/home']"
             >
+              <!-- (click)="hide()" -->
               Baigti
             </button>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
