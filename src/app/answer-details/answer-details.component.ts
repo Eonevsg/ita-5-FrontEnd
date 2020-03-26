@@ -91,6 +91,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   private statusValue;
   private personId;
+  private tempApplVal = null;
+  private tempInterVal = null;
+  private tempNotes = null;
 
   onSubmit(): void {
     this.valuationForm.markAllAsTouched();
@@ -101,13 +104,23 @@ export class AnswerDetailsComponent implements OnInit {
     } else if (this.state.value === "no") {
       this.statusValue = "Atmesta";
     }
+    if (this.applicationValuation.value) {
+      this.tempApplVal = this.applicationValuation.value;
+    }
+    if (this.interviewValuation.value) {
+      this.tempInterVal = this.interviewValuation.value;
+    }
+    if (this.notes.value) {
+      this.tempNotes = this.notes.value;
+    }
+
 
     this.formService.patchPerson({
       id: this.personId,
       extra: {
-        applicationValuation: this.applicationValuation.value,
-        interviewValuation: this.interviewValuation.value,
-        notes: this.notes.value,
+        applicationValuation: this.tempApplVal,
+        interviewValuation: this.tempInterVal,
+        notes: this.tempNotes,
         status: this.statusValue
       }
     });
