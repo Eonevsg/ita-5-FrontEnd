@@ -143,7 +143,11 @@
               <td class="column-width">
                 {{ person.extra.interviewValuation }}
               </td>
-              <td class="column-width">{{ person.extra.notes }}</td>
+              <td class="column-width">
+                <div *ngIf="person.extra.notes">
+                  {{ person.extra.notes.substring(0, 15) }}...
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
