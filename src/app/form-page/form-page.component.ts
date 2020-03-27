@@ -137,15 +137,9 @@ export class FormPageComponent implements OnInit {
   }
 
   triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
-    this.ngZone.onStable.pipe(take(10)).subscribe(() => {
-      this.contractResizableArea.resizeToFitContent(true);
-      this.shiftResizableArea.resizeToFitContent(true);
-      this.hobbiesResizableArea.resizeToFitContent(true);
-      this.experienceResizableArea.resizeToFitContent(true);
-      this.marketingResizableArea.resizeToFitContent(true);
-      this.motivationResizableArea.resizeToFitContent(true);
-    });
+    this.hobbiesResizableArea.resizeToFitContent(true);
+    this.experienceResizableArea.resizeToFitContent(true);
+    this.marketingResizableArea.resizeToFitContent(true);
   }
 
   ngOnInit(): void {
@@ -253,7 +247,6 @@ export class FormPageComponent implements OnInit {
     this.message = 'Registracijos forma sėkmingai išsiųsta.';
   }
 }
-
 function requiredIfValidator(predicate) {
   return formControl => {
     if (!formControl.parent) {

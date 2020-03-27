@@ -3,7 +3,6 @@ html {
   height: 100%;
   margin: 0px;
 }
-
 .bg-img {
   background-image: url("/assets/images/back.jpg");
   height: 100%;
@@ -58,6 +57,50 @@ input[type="number"] {
 
 .btn {
   width: 120px;
+  margin-right: 3%;
+}
+
+.btn:active,
+.btn:focus,
+.btn:hover {
+  box-shadow: 0 5px 11px 0 rgba(66, 133, 244, 0.18),
+    0 4px 15px 0 rgba(66, 133, 244, 0.15);
+}
+
+.btn-light {
+  background-color: #ececec;
+}
+
+.btn-light:active,
+.btn-light:hover {
+  background-color: #dbdbdb;
+}
+
+#submit {
+  margin-right: 2%;
+}
+
+.logo {
+  margin-bottom: 2%;
+  max-width: 5%;
+  max-height: 5%;
+}
+
+.header {
+  text-align: left;
+  background: white;
+  color: #ee7023;
+  margin: 2% 5%;
+}
+.title {
+  font-size: 250%;
+}
+.textarea-custom {
+  overflow: hidden;
+}
+
+table > tbody > tr > td {
+  cursor: pointer;
 }
 
 table.table-bordered > thead > tr > th {

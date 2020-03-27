@@ -1,9 +1,14 @@
 input:focus::placeholder {
   color: transparent;
 }
+
 input {
-  opacity: 0.3;
+  opacity: 1;
+  background-color: #29292921;
+  width: 100%;
+  vertical-align: bottom;
 }
+
 .column-width {
   width: 25%;
 }
@@ -20,6 +25,10 @@ input {
   width: 11%;
 }
 
+.valuation-column {
+  width: 12%;
+}
+
 #uni-column {
   width: 16%;
 }
@@ -32,12 +41,20 @@ table {
 
 #logout-btn {
   float: right;
-  margin: 3%;
+  margin: 3% 1.5%;
 }
 
 #main div {
   display: inline-block;
 }
+
+table.table-bordered > thead > tr > th {
+  border-color: #da6720;
+  color: #4b250e;
+}
+
+td {
+  vertical-align: middle;
 
 #id-column-header {
   -ms-transform: translateY(-13%);
@@ -54,3 +71,23 @@ th {
 .table-hover tbody tr:hover th {
   background-color: #da672027;
 }
+
+.column-header {
+  text-align: center;
+}
+
+.column-header-title {
+  display: inline-block;
+  text-align: center;
+  margin-left: 15%;
+  vertical-align: middle;
+}
+
+.vertical-align-middle {
+  transform: translateY(-50%);
+}
+
+#main {
+  width: 85%;
+}
+/* vertical-align: middle; */

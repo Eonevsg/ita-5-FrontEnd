@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { Answer } from "../models/answer";
 import { AnswerViewModel } from "../shared/answerViewModel";
 import { FormService } from "../services/form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
-import { from, Observable } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { from, Observable, empty } from "rxjs";
+import { switchMap, tap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
+import { PersonService } from "../services/person-service/person.service";
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
   selector: "app-answer-details",
@@ -19,13 +21,12 @@ export class AnswerDetailsComponent implements OnInit {
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
   public person$: Observable<Person>;
-
+  @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
   private statusValue;
   private personId;
   private tempApplVal = null;
   private tempInterVal = null;
   private tempNotes = null;
-
   private email;
 
   constructor(
@@ -40,7 +41,7 @@ export class AnswerDetailsComponent implements OnInit {
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern(/^(0|[1-9][0-9]*)$/)
       ]
     ],
     interviewValuation: [
@@ -48,7 +49,7 @@ export class AnswerDetailsComponent implements OnInit {
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern(/^(0|[1-9][0-9]*)$/)
       ]
     ],
     notes: ["", [Validators.maxLength(450)]]
@@ -56,6 +57,37 @@ export class AnswerDetailsComponent implements OnInit {
   acceptanceForm = this.fb.group({
     state: ["", []]
   });
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+  get applicationValuation() {
+    return this.valuationForm.get('applicationValuation');
+  }
+
+  get interviewValuation() {
+    return this.valuationForm.get('interviewValuation');
+  }
+
+  get notes() {
+    return this.valuationForm.get('notes');
+  }
+
+  get state() {
+    return this.acceptanceForm.get('state');
+  }
+
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+  }
 
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
@@ -141,28 +173,8 @@ console.log("appval", )
     }
   }
 
-  get applicationValuation() {
-    return this.valuationForm.get("applicationValuation");
-  }
-
-  get interviewValuation() {
-    return this.valuationForm.get("interviewValuation");
-  }
-
-  get notes() {
-    return this.valuationForm.get("notes");
-  }
-
-  get state() {
-    return this.acceptanceForm.get("state");
-  }
-
-  show() {
-    this.showModal = true;
-  }
-
-  hide() {
-    this.showModal = false;
+  triggerResize() {
+    this.notesResizableArea.resizeToFitContent(true);
   }
 
   getEmailOpenString(email: string) {

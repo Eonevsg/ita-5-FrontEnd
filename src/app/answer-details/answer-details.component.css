@@ -1,17 +1,20 @@
 .btn-custom {
-  margin-right: 3%;
-}
+    background: #ee7023;
+    margin-right: 3%;
+  }
+  table.table-bordered > thead > tr > th {
+  background-color: #ee7023;
+  }
+ 
+  #btn-popup-hide {
+    margin: 3%;
+  }
+  .bold {
+    font-weight: bold;
+  }
 
 .title {
   text-align: center;
-  font-weight: bold;
-}
-
-#btn-popup-hide {
-  margin: 3%;
-}
-
-.bold {
   font-weight: bold;
 }
 
@@ -34,15 +37,6 @@
   margin: 3% 3% 0;
   background-color: lightgray;
 }
-
-/* .both-form-container {
-  display: inline-flex;
-  width: 100%;
-}
-
-.both-form-container > div {
-  width: 50%;
-} */
 
 #btn-bottom {
   display: inline-block;
