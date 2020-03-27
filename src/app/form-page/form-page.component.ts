@@ -15,6 +15,8 @@ import { take } from "rxjs/operators";
   styleUrls: ["./form-page.component.css"]
 })
 export class FormPageComponent implements OnInit {
+  message = "";
+  errorMessage = false;
   form: Form;
   showModal: boolean;
   tempPerson: Person;
@@ -145,14 +147,6 @@ export class FormPageComponent implements OnInit {
     });
   }
 
-  show() {
-    this.showModal = true;
-  }
-
-  hide() {
-    this.showModal = false;
-  }
-
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
@@ -161,6 +155,7 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this. errorMessage = false;
     this.applicationForm.markAllAsTouched();
     this.tempPerson = null;
     this.tempAnswerList = [];
@@ -186,7 +181,10 @@ export class FormPageComponent implements OnInit {
     this.tempAnswerList.push(new Answer("6", this.marketing.value));
     this.answerPerson = new AnswerPerson(this.tempAnswerList, this.tempPerson);
 
-    this.formService.saveForm(this.answerPerson);
+    this.formService.saveForm(this.answerPerson).subscribe(
+      () => (this.errorMessage = false, this.message = "Registracijos forma sėkmingai išsiųsta."),
+      error => (this.message = error.error, this.errorMessage = true)
+    );
   }
 
   get fname() {
@@ -243,6 +241,14 @@ export class FormPageComponent implements OnInit {
 
   get marketing() {
     return this.applicationForm.get("marketing");
+  }
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+    this.message = "Registracijos forma sėkmingai išsiųsta.";
   }
 }
 

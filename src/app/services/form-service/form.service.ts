@@ -40,7 +40,6 @@ export class FormService {
       .post<AnswerPerson>(`${this.url}/answer`, JSON.stringify(form), {
         headers: new HttpHeaders({ "Content-Type": "application/json" })
       })
-      .subscribe(data => console.log(data));
   }
 
   public fetchSchools(): Observable<Object> {

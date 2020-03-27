@@ -431,17 +431,25 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel">
-              Registracijos forma sėkmingai išsiųsta.
+              {{ message }}
             </h4>
           </div>
           <div id="modal-footer">
+            <button
+              *ngIf = "errorMessage"
+              type="submit"
+              class="btn btn-custom"
+              id="btn-popup-hide"
+              (click)="hide()"
+            >
+              Tęsti
+            </button>
             <button
               type="submit"
               class="btn btn-custom"
               id="btn-popup"
               [routerLink]="['/home']"
             >
-              <!-- (click)="hide()" -->
               Baigti
             </button>
           </div>
