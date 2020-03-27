@@ -55,6 +55,7 @@ table.table-bordered > thead > tr > th {
 
 td {
   vertical-align: middle;
+}
 
 #id-column-header {
   -ms-transform: translateY(-13%);
