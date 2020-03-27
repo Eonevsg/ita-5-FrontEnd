@@ -409,7 +409,7 @@
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="applicationForm.valid ? show() : null"
+            (click)="applicationForm.valid"
           >
             Pateikti
           </button>
@@ -436,7 +436,7 @@
           </div>
           <div id="modal-footer">
             <button
-              *ngIf = "errorMessage"
+              *ngIf = "isErrorMessage"
               type="submit"
               class="btn btn-custom"
               id="btn-popup-hide"
