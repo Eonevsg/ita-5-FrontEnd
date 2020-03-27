@@ -1,17 +1,6 @@
-#logo {
-  margin-bottom: 2%;
-}
-
 .side-image {
   width: 30%;
   height: 20%;
-}
-
-#header {
-  text-align: left;
-  background: white;
-  color: #ee7023;
-  margin: 2% 5%;
 }
 
 .main-container {
@@ -59,6 +48,12 @@
   margin-top: 2%;
 }
 
+.open-by-default-tab[aria-expanded="true"]::after{
+  font-family: "FontAwesome";
+  /* Only once for the first open by default tab*/
+  content: "\f068" !important;
+  float: right;
+}
 .accordion .card-header:after {
   font-family: "FontAwesome";
   content: "\f068";

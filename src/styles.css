@@ -83,3 +83,19 @@ input[type="number"] {
 #submit {
   margin-right: 2%;
 }
+
+.logo {
+  margin-bottom: 2%;
+  max-width: 5%;
+  max-height: 5%;
+}
+
+.header {
+  text-align: left;
+  background: white;
+  color: #ee7023;
+  margin: 2% 5%;
+}
+.title {
+  font-size: 250%;
+}
