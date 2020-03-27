@@ -146,7 +146,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   get state() {
-    return this.valuationForm.get("state");
+    return this.acceptanceForm.get("state");
   }
 
   show() {
