@@ -8,8 +8,7 @@
       <h1>IT Akademija</h1>
     </div>
   </div>
-
-  <section class="container">
+  <div class="main-container">
     <!-- Column 1 -->
     <div class="content-container">
       <div class="Column1_row">
@@ -134,72 +133,75 @@
         <div><a class="nav-link" [routerLink]="'/login'">Prisijungimas</a></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer class="page-footer font-small blue pt-4 bottom" id="footerBackground">
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-      <!-- Grid row -->
-      <div class="row">
-        <!-- Grid column -->
-        <div class="col-md-6 mt-md-0 mt-3">
-          <!-- Content -->
-          <h5 class="text-uppercase">Rekvizitai</h5>
-          <ul class="list-unstyled">
-            <li>
-              <p>„Įmonės pavadinimas“</p>
-            </li>
-            <li>
-              <p>'Įmonės adresas'</p>
-            </li>
-            <li>
-              <p>'Įmonės SWIFT kodas'</p>
-            </li>
-          </ul>
+  <div id="footerBackground">
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+        <!-- Grid row -->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+            <!-- Content -->
+            <h5 class="text-uppercase">Rekvizitai</h5>
+            <ul class="list-unstyled">
+              <li>
+                <p>„Įmonės pavadinimas“</p>
+              </li>
+              <li>
+                <p>'Įmonės adresas'</p>
+              </li>
+              <li>
+                <p>'Įmonės SWIFT kodas'</p>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none pb-3"/>
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+            <!-- Space for extra content if needed -->
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+            <!-- Links -->
+            <h5 class="text-uppercase">Nuorodos</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a [routerLink]="'/form'">Užpildyk prašymą</a>
+              </li>
+              <li>
+                <a href="#!">Studentų erdvė</a>
+              </li>
+              <li>
+                <a href="#!">D.U.K</a>
+              </li>
+              <li>
+                <a href="#!">Apie mus</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Grid column -->
         </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none pb-3"/>
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Space for extra content if needed -->
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Links -->
-          <h5 class="text-uppercase">Nuorodos</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a [routerLink]="'/form'">Užpildyk prašymą</a>
-            </li>
-            <li>
-              <a href="#!">Studentų erdvė</a>
-            </li>
-            <li>
-              <a href="#!">D.U.K</a>
-            </li>
-            <li>
-              <a href="#!">Apie mus</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Grid column -->
+        <!-- Grid row -->
       </div>
-      <!-- Grid row -->
-    </div>
-    <!-- Footer Links -->
+      <!-- Footer Links -->
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">
-      © 2020:
-      <a href=""> „Įmonės pavadinimas“</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
+              <!-- Copyright -->
+              <div class="footer-copyright text-center py-3">
+                © 2020:
+                <a href=""> „Įmonės pavadinimas“</a>
+              </div>
+              <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </div>
 </div>
+

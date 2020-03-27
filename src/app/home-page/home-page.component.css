@@ -11,12 +11,13 @@
   text-align: left;
   background: white;
   color: #ee7023;
-  margin-left: 2%;
+  margin: 2% 5%;
 }
-.container {
-  width: 100%;
+.main-container {
+  width: auto;
   height: auto;
-  margin-bottom: 2%;
+  margin: 0% 5%;
+  flex:1;
 }
 
 .content-container {
@@ -26,7 +27,8 @@
 }
 .image-container {
   height: auto;
-  margin-right: 2%;
+  width: auto;
+  padding: 0;
   text-align: right;
 }
 /* Clear floats after the columns */
@@ -40,9 +42,6 @@
   height: 50%;
 }
 
-#footerBackground {
-  background: #ee7023;
-}
 .custom-collapse-text{
   color: black;
   font-weight: bold;
@@ -64,3 +63,10 @@
   content: "\f067";
 }
 
+.page-footer{
+  position: relative;
+  height: auto;
+  clear:both;
+  padding-top:20px;
+  background: #ee7023;
+}

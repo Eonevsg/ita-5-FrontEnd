@@ -1,42 +1,52 @@
 <div id="main">
-  <div id="form-container">
-    <div class="card my-5">
-      <div class="card-body" *ngIf="answer$ | async as model">
-
-        <table
-        class="table table-bordered table-striped table-hover">
-        <thead class ="thead-custom">
-          <tr>
-          <td class="bold" align="middle">Asmens duomenys</td>
-          </tr>
-        </thead>
-        </table>
+  <body>
+    <div id="form-container">
+      <div class="card my-5">
+        <div class="card-body" *ngIf="answer$ | async as model">
+          <table class="table table-bordered table-striped table-hover">
+            <thead class="thead-custom">
+              <tr>
+                <td class="bold" id="title">Asmens duomenys</td>
+              </tr>
+            </thead>
+          </table>
 
         <div>{{ model.person.name + " " + model.person.surname }}</div>
         <div>{{ model.person.uni }}</div>
         <div>{{ model.person.phone }}</div>
         <div>{{ model.person.email }}</div>
-        <br />
+     
 
-        <div *ngFor="let answer of model.answerList">
-          <label class="bold">{{ getFullQuestion(answer.questionId) }}</label>
-          <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
-          <hr />
-        </div>
+          <div *ngFor="let answer of model.answerList">
+            <label class="bold">{{ getFullQuestion(answer.questionId) }}</label>
+            <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+            <hr />
+          </div>
 
-        <div id="form-container">
-            <h2 id="form-title">Asmens įvertinimas</h2>
+            <table class="table table-bordered table-striped table-hover">
+              <thead class="thead-custom">
+                <tr>
+                  <td class="bold" id="title">Asmens įvertinimas</td>
+                </tr>
+              </thead>
+            </table>
+
+             <div id="form-container">
             <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
+              <section>
               <div
+                style="display:inline-block; margin-right:20px;"
                 class="form-group"
                 [class.has-error]="applicationValuation.invalid"
               >
+              
                 <label for="applicationValuation">Anketos vertinimas</label>
                 <input
                   type="number"
                   class="form-control"
                   id="applicationValuation"
                   formControlName="applicationValuation"
+                  placeholder="0-100"
                 />
               </div>
 
@@ -58,6 +68,7 @@
               </div>
 
               <div
+                style="display:inline-block"
                 class="form-group"
                 [class.has-error]="interviewValuation.invalid"
               >
@@ -67,6 +78,7 @@
                   class="form-control"
                   id="interviewValuation"
                   formControlName="interviewValuation"
+                  placeholder="0-100"
                 />
               </div>
 
@@ -89,7 +101,9 @@
                   Nenaudokite specialių simbolių!
                 </div>
               </div>
+            </section>
 
+            <section>
               <div class="form-group" [class.has-error]="notes.invalid">
                 <label for="notes">Pastabos</label>
                 <input
@@ -111,11 +125,13 @@
                   Pastaba per ilga
                 </div>
               </div>
-
+                </section>
               <div class="form-group">
                 <h4>Priimti/Atmesti</h4>
                 <div class="form-radio-group" [class.has-error]="state.invalid">
-                  <div class="form-radio-group-choice">
+                  <div 
+                  style="display:inline-block; margin-right:20px;"
+                  class="form-radio-group-choice">
                     <input
                       type="radio"
                       value="yes"
@@ -127,7 +143,9 @@
                     >
                   </div>
 
-                  <div class="form-radio-group-choice">
+                  <div 
+                  style="display:inline-block"
+                  class="form-radio-group-choice">
                     <input
                       type="radio"
                       value="no"
@@ -154,9 +172,9 @@
                 class="btn btn-custom"
                 (click)="valuationForm.valid ? show() : null"
               >
-                Pateikti
+                Išsaugoti
               </button>
-              <button [routerLink]="['/list']" class="btn btn-custom">
+              <button align="right" [routerLink]="['/list']" class="btn btn-custom ">
                 Atgal
               </button>
             </form>
