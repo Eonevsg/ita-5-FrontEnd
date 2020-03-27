@@ -38,9 +38,9 @@ export class FormService {
   public saveForm(form: AnswerPerson) {
     return this.http
       .post<AnswerPerson>(`${this.url}/answer`, JSON.stringify(form), {
-        headers: new HttpHeaders({ "Content-Type": "application/json" })
-      })
-      .subscribe(data => console.log(data));
+        headers: new HttpHeaders({ "Content-Type": "application/json" }),
+        observe: 'response'
+      });
   }
 
   public fetchSchools(): Observable<Object> {

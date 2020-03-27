@@ -38,7 +38,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
           if (err.status !== 403) {
             return;
           }
-          this.router.navigate(['login']);
+          this.router.navigate(['']);
         }
       }
     ));

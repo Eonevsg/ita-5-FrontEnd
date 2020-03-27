@@ -15,6 +15,8 @@ import {take} from 'rxjs/operators';
   styleUrls: ['./form-page.component.css']
 })
 export class FormPageComponent implements OnInit {
+  message = '';
+  isErrorMessage = false;
   form: Form;
   showModal: boolean;
   tempPerson: Person;
@@ -140,14 +142,6 @@ export class FormPageComponent implements OnInit {
     this.marketingResizableArea.resizeToFitContent(true);
   }
 
-  show() {
-    this.showModal = true;
-  }
-
-  hide() {
-    this.showModal = false;
-  }
-
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, 'contract', 'contractExplanation');
     subscribeToValue(this.applicationForm, 'shift', 'shiftExplanation');
@@ -156,6 +150,7 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.isErrorMessage = false;
     this.applicationForm.markAllAsTouched();
     this.tempPerson = null;
     this.tempAnswerList = [];
@@ -181,7 +176,10 @@ export class FormPageComponent implements OnInit {
     this.tempAnswerList.push(new Answer('6', this.marketing.value));
     this.answerPerson = new AnswerPerson(this.tempAnswerList, this.tempPerson);
 
-    this.formService.saveForm(this.answerPerson);
+    this.formService.saveForm(this.answerPerson).subscribe(
+      () => (this.isErrorMessage = false, this.message = 'Registracijos forma sėkmingai išsiųsta.', this.show()),
+      error => (this.message = error.error, this.isErrorMessage = true, this.show())
+    );
   }
 
   get fname() {
@@ -239,8 +237,16 @@ export class FormPageComponent implements OnInit {
   get marketing() {
     return this.applicationForm.get('marketing');
   }
-}
 
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+    this.message = 'Registracijos forma sėkmingai išsiųsta.';
+  }
+}
 function requiredIfValidator(predicate) {
   return formControl => {
     if (!formControl.parent) {

@@ -32,7 +32,7 @@
             </table>
 
              <div id="form-container">
-            <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="valuationForm" (ngSubmit)="onSubmitValuation()">
               <section>
               <div
                 style="display:inline-block; margin-right:20px;"
@@ -180,7 +180,6 @@
                   </div>
                 </div>
               </div>
-
               <button
                 type="submit"
                 class="btn btn-custom"
@@ -223,6 +222,53 @@
               </div>
             </div>
           </div>
+          <br>
+          <!-- Acceptance form -->
+          <div class="form-container">
+            <div class="form-title">
+              <form
+                [formGroup]="acceptanceForm"
+                (ngSubmit)="onSubmitAcceptance()"
+              >
+                <div class="form-group">
+                  <h4>Priimti/Atmesti</h4>
+                  <div class="form-radio-group">
+                    <div class="form-radio-group-choice">
+                      <input
+                        type="radio"
+                        value="yes"
+                        id="contract-pos"
+                        formControlName="state"
+                      />
+                      <label for="contract-pos" class="radio-label"
+                        >Priimti</label
+                      >
+                    </div>
+
+                    <div class="form-radio-group-choice">
+                      <input
+                        type="radio"
+                        value="no"
+                        id="contract-neg"
+                        formControlName="state"
+                      />
+                      <label for="contract-neg" class="radio-label"
+                        >Atmesti</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-custom">
+                  Atsakyti
+                </button>
+                <button [routerLink]="['/list']" class="btn btn-custom btn-return">
+                  Atgal
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Acceptance form End -->
         </div>
       </div>
     </div>

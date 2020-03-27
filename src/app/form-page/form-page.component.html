@@ -410,7 +410,7 @@
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="applicationForm.valid ? show() : null"
+            (click)="applicationForm.valid"
           >
             Pateikti
           </button>
@@ -432,17 +432,25 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title" id="myModalLabel">
-              Registracijos forma sėkmingai išsiųsta.
+              {{ message }}
             </h4>
           </div>
           <div id="modal-footer">
+            <button
+              *ngIf = "isErrorMessage"
+              type="submit"
+              class="btn btn-custom"
+              id="btn-popup-hide"
+              (click)="hide()"
+            >
+              Tęsti
+            </button>
             <button
               type="submit"
               class="btn btn-custom"
               id="btn-popup"
               [routerLink]="['/home']"
             >
-              <!-- (click)="hide()" -->
               Baigti
             </button>
           </div>
