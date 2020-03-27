@@ -36,6 +36,7 @@ input {
 table {
   table-layout: fixed;
   width: 100%;
+  min-width: 981px;
 }
 
 #logout-btn {
@@ -47,10 +48,6 @@ table {
   display: inline-block;
 }
 
-.thead-custom {
-  background-color: #ee7023;
-}
-
 table.table-bordered > thead > tr > th {
   border-color: #da6720;
   color: #4b250e;
@@ -58,6 +55,16 @@ table.table-bordered > thead > tr > th {
 
 td {
   vertical-align: middle;
+
+#id-column-header {
+  -ms-transform: translateY(-13%);
+  transform: translateY(-13%);
+  margin-left: -5px;
+  font-size: 25px;
+}
+
+th {
+  color: #4b250e;
 }
 
 .table-hover tbody tr:hover td,

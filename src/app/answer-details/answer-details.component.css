@@ -2,23 +2,43 @@
     background: #ee7023;
     margin-right: 3%;
   }
-  table.table-bordered > thead > tr > th,
-  table.table-bordered > thead > tr > td {
+  table.table-bordered > thead > tr > th {
   background-color: #ee7023;
   }
-  .thead-custom {
-    background-color: #ee7023;
-  } 
-  #title {
-    text-align: center;
-  }
-  
+ 
   #btn-popup-hide {
     margin: 3%;
   }
   .bold {
     font-weight: bold;
   }
-button.btn.btn-custom.btn-return{
-  float:right;
+
+.title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.btn-return {
+  float: right;
+}
+
+.custom-border {
+  border: lightgray;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.form-inner-content {
+  margin: 2%;
+}
+
+.random {
+  margin: 3% 3% 0;
+  background-color: lightgray;
+}
+
+#btn-bottom {
+  display: inline-block;
+  height: 100%;
 }
