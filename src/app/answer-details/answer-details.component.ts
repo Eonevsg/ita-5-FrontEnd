@@ -1,76 +1,62 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { Answer } from "../models/answer";
-import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
-import { ActivatedRoute } from "@angular/router";
-import { from, Observable, empty } from "rxjs";
-import { switchMap, tap } from "rxjs/operators";
-import { FormBuilder, Validators } from "@angular/forms";
-import { Person } from "../models/person";
-import { PersonService } from "../services/person-service/person.service";
+import {Component, OnInit} from '@angular/core';
+import {Answer} from '../models/answer';
+import {AnswerViewModel} from '../shared/answerViewModel';
+import {FormService} from '../services/form-service/form.service';
+import {ActivatedRoute} from '@angular/router';
+import {from, Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Person} from '../models/person';
 
 @Component({
-  selector: "app-answer-details",
-  templateUrl: "./answer-details.component.html",
-  styleUrls: ["./answer-details.component.css"]
+  selector: 'app-answer-details',
+  templateUrl: './answer-details.component.html',
+  styleUrls: ['./answer-details.component.css']
 })
 export class AnswerDetailsComponent implements OnInit {
   public answer$: Observable<AnswerViewModel>;
   public questions: Answer[];
-  public radioQuestionID: string[] = ["1", "2"];
-  showModal: boolean;
+  public radioQuestionID: string[] = ['1', '2'];
+  public showModal: boolean;
+  public person$: Observable<Person>;
+
+  private statusValue;
+  private personId;
+  private tempApplVal = null;
+  private tempInterVal = null;
+  private tempNotes = null;
+
+  private email;
 
   constructor(
     private formService: FormService,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private personService: PersonService
-  ) {}
+    private fb: FormBuilder
+  ) {
+  }
 
   valuationForm = this.fb.group({
     applicationValuation: [
-      "",
+      '',
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern('^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-\'"]+$')
       ]
     ],
     interviewValuation: [
-      "",
+      '',
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern('^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-\'"]+$')
       ]
     ],
-    notes: ["", [Validators.maxLength(450)]],
-    state: ["", []]
+    notes: ['', [Validators.maxLength(450)]]
   });
-
-  get applicationValuation() {
-    return this.valuationForm.get("applicationValuation");
-  }
-
-  get interviewValuation() {
-    return this.valuationForm.get("interviewValuation");
-  }
-
-  get notes() {
-    return this.valuationForm.get("notes");
-  }
-
-  get state() {
-    return this.valuationForm.get("state");
-  }
-
-  show() {
-    this.showModal = true;
-  }
-
-  hide() {
-    this.showModal = false;
-  }
+  acceptanceForm = this.fb.group({
+    state: ['', []]
+  });
 
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
@@ -79,31 +65,19 @@ export class AnswerDetailsComponent implements OnInit {
 
     this.answer$ = from(this.route.paramMap).pipe(
       switchMap(params => {
-        return this.formService.fetchAnswer({ id: params.get("id") });
+        return this.formService.fetchAnswer({id: params.get('id')});
       })
     );
     this.answer$.subscribe(data => {
       this.updateStatus(data.person);
       this.personId = data.person.id;
+      this.email = data.person.email;
     });
   }
-  person$: Observable<Person>;
 
-  private statusValue;
-  private personId;
-  private tempApplVal = null;
-  private tempInterVal = null;
-  private tempNotes = null;
-
-  onSubmit(): void {
+  onSubmitValuation(): void {
     this.valuationForm.markAllAsTouched();
 
-    this.statusValue = null;
-    if (this.state.value === "yes") {
-      this.statusValue = "Priimta";
-    } else if (this.state.value === "no") {
-      this.statusValue = "Atmesta";
-    }
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
     }
@@ -114,23 +88,37 @@ export class AnswerDetailsComponent implements OnInit {
       this.tempNotes = this.notes.value;
     }
 
-
     this.formService.patchPerson({
       id: this.personId,
       extra: {
         applicationValuation: this.tempApplVal,
         interviewValuation: this.tempInterVal,
-        notes: this.tempNotes,
-        status: this.statusValue
+        notes: this.tempNotes
       }
     });
   }
 
+  onSubmitAcceptance() {
+    this.acceptanceForm.markAllAsTouched();
+    this.statusValue = null;
+    console.log(this.state.value);
+    if (this.state.value === 'yes') {
+      this.statusValue = 'Priimta';
+    } else if (this.state.value === 'no') {
+      this.statusValue = 'Atmesta';
+    }
+    window.location.href = this.getEmailOpenString(this.email);
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: {status: this.statusValue}
+    });
+  }
+
   updateStatus(person: Person): any {
-    if (person.extra.status.toLowerCase() === "nauja") {
+    if (person.extra.status.toLowerCase() === 'nauja') {
       return this.formService.patchPerson({
         id: person.id,
-        extra: { status: "Perskaityta" }
+        extra: {status: 'Perskaityta'}
       });
     }
   }
@@ -142,12 +130,40 @@ export class AnswerDetailsComponent implements OnInit {
   getAnswer(str: string, qId: string) {
     if (this.radioQuestionID.includes(qId)) {
       if (str) {
-        return "Ne. " + str;
+        return 'Ne. ' + str;
       } else {
-        return "Taip";
+        return 'Taip';
       }
     } else {
       return str;
     }
+  }
+
+  get applicationValuation() {
+    return this.valuationForm.get('applicationValuation');
+  }
+
+  get interviewValuation() {
+    return this.valuationForm.get('interviewValuation');
+  }
+
+  get notes() {
+    return this.valuationForm.get('notes');
+  }
+
+  get state() {
+    return this.acceptanceForm.get('state');
+  }
+
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
+  }
+
+  getEmailOpenString(email: string) {
+    return `mailto:${email}?subject=IT Akademija`;
   }
 }

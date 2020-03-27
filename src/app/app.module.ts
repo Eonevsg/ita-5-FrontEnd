@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: "form", component: FormPageComponent },
   { path: "login", component: LoginPageComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "**", component: NotFoundComponent }
+  { path: "**", redirectTo: "/home" }
 ];
 
 @NgModule({
