@@ -1,8 +1,21 @@
 .btn-custom {
     background: #ee7023;
+    margin-right: 3%;
   }
-  .btn-custom:active,
-  .btn-custom:focus,
-  .btn-custom:hover {
-    background: #c95f1e;
+  table.table-bordered > thead > tr > th,
+  table.table-bordered > thead > tr > td {
+  background-color: #ee7023;
+  }
+  .thead-custom {
+    background-color: #ee7023;
+  } 
+  #title {
+    text-align: center;
+  }
+  
+  #btn-popup-hide {
+    margin: 3%;
+  }
+  .bold {
+    font-weight: bold;
   }
