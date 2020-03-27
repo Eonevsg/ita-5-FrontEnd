@@ -32,7 +32,7 @@
 
           <div id="form-container">
             <h2 id="form-title">Asmens įvertinimas</h2>
-            <form [formGroup]="valuationForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="valuationForm" (ngSubmit)="onSubmitValuation()">
               <div
                 class="form-group"
                 [class.has-error]="applicationValuation.invalid"
@@ -118,52 +118,12 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <h4>Priimti/Atmesti</h4>
-                <div class="form-radio-group" [class.has-error]="state.invalid">
-                  <div class="form-radio-group-choice">
-                    <input
-                      type="radio"
-                      value="yes"
-                      id="contract-pos"
-                      formControlName="state"
-                    />
-                    <label for="contract-pos" class="radio-label"
-                      >Priimti</label
-                    >
-                  </div>
-
-                  <div class="form-radio-group-choice">
-                    <input
-                      type="radio"
-                      value="no"
-                      id="contract-neg"
-                      formControlName="state"
-                    />
-                    <label for="contract-neg" class="radio-label"
-                      >Atmesti</label
-                    >
-                  </div>
-
-                  <div
-                    *ngIf="state.invalid"
-                    [hidden]="state.valid || state.untouched"
-                    class="alert alert-danger"
-                  >
-                    Laukas privalomas!
-                  </div>
-                </div>
-              </div>
-
               <button
                 type="submit"
                 class="btn btn-custom"
                 (click)="valuationForm.valid ? show() : null"
               >
-                Pateikti
-              </button>
-              <button [routerLink]="['/list']" class="btn btn-custom">
-                Atgal
+                Išsaugoti
               </button>
             </form>
 
@@ -197,6 +157,53 @@
               </div>
             </div>
           </div>
+          <br>
+          <!-- Acceptance form -->
+          <div class="form-container">
+            <div class="form-title">
+              <form
+                [formGroup]="acceptanceForm"
+                (ngSubmit)="onSubmitAcceptance()"
+              >
+                <div class="form-group">
+                  <h4>Priimti/Atmesti</h4>
+                  <div class="form-radio-group">
+                    <div class="form-radio-group-choice">
+                      <input
+                        type="radio"
+                        value="yes"
+                        id="contract-pos"
+                        formControlName="state"
+                      />
+                      <label for="contract-pos" class="radio-label"
+                        >Priimti</label
+                      >
+                    </div>
+
+                    <div class="form-radio-group-choice">
+                      <input
+                        type="radio"
+                        value="no"
+                        id="contract-neg"
+                        formControlName="state"
+                      />
+                      <label for="contract-neg" class="radio-label"
+                        >Atmesti</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-custom">
+                  Atsakyti
+                </button>
+                <button [routerLink]="['/list']" class="btn btn-custom btn-return">
+                  Atgal
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Acceptance form End -->
         </div>
       </div>
     </div>

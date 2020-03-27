@@ -18,13 +18,19 @@ export class AnswerDetailsComponent implements OnInit {
   public answer$: Observable<AnswerViewModel>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
-  showModal: boolean;
+  public showModal: boolean;
+  public person$: Observable<Person>;
+
+  private statusValue;
+  private personId;
+  private tempApplVal = null;
+  private tempInterVal = null;
+  private tempNotes = null;
 
   constructor(
     private formService: FormService,
     private route: ActivatedRoute,
-    private fb: FormBuilder,
-    private personService: PersonService
+    private fb: FormBuilder
   ) {}
 
   valuationForm = this.fb.group({
@@ -44,33 +50,11 @@ export class AnswerDetailsComponent implements OnInit {
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
       ]
     ],
-    notes: ["", [Validators.maxLength(450)]],
+    notes: ["", [Validators.maxLength(450)]]
+  });
+  acceptanceForm = this.fb.group({
     state: ["", []]
   });
-
-  get applicationValuation() {
-    return this.valuationForm.get("applicationValuation");
-  }
-
-  get interviewValuation() {
-    return this.valuationForm.get("interviewValuation");
-  }
-
-  get notes() {
-    return this.valuationForm.get("notes");
-  }
-
-  get state() {
-    return this.valuationForm.get("state");
-  }
-
-  show() {
-    this.showModal = true;
-  }
-
-  hide() {
-    this.showModal = false;
-  }
 
   ngOnInit(): void {
     this.formService.fetchQuestions().subscribe(data => {
@@ -87,23 +71,10 @@ export class AnswerDetailsComponent implements OnInit {
       this.personId = data.person.id;
     });
   }
-  person$: Observable<Person>;
 
-  private statusValue;
-  private personId;
-  private tempApplVal = null;
-  private tempInterVal = null;
-  private tempNotes = null;
-
-  onSubmit(): void {
+  onSubmitValuation(): void {
     this.valuationForm.markAllAsTouched();
 
-    this.statusValue = null;
-    if (this.state.value === "yes") {
-      this.statusValue = "Priimta";
-    } else if (this.state.value === "no") {
-      this.statusValue = "Atmesta";
-    }
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
     }
@@ -114,15 +85,27 @@ export class AnswerDetailsComponent implements OnInit {
       this.tempNotes = this.notes.value;
     }
 
-
     this.formService.patchPerson({
       id: this.personId,
       extra: {
         applicationValuation: this.tempApplVal,
         interviewValuation: this.tempInterVal,
-        notes: this.tempNotes,
-        status: this.statusValue
+        notes: this.tempNotes
       }
+    });
+  }
+  onSubmitAcceptance() {
+    this.acceptanceForm.markAllAsTouched();
+    this.statusValue = null;
+    console.log(this.state.value);
+    if (this.state.value === "yes") {
+      this.statusValue = "Priimta";
+    } else if (this.state.value === "no") {
+      this.statusValue = "Atmesta";
+    }
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: { status: this.statusValue }
     });
   }
 
@@ -149,5 +132,28 @@ export class AnswerDetailsComponent implements OnInit {
     } else {
       return str;
     }
+  }
+  get applicationValuation() {
+    return this.valuationForm.get("applicationValuation");
+  }
+
+  get interviewValuation() {
+    return this.valuationForm.get("interviewValuation");
+  }
+
+  get notes() {
+    return this.valuationForm.get("notes");
+  }
+
+  get state() {
+    return this.valuationForm.get("state");
+  }
+
+  show() {
+    this.showModal = true;
+  }
+
+  hide() {
+    this.showModal = false;
   }
 }
