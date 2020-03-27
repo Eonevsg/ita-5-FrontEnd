@@ -27,6 +27,7 @@ input {
 table {
   table-layout: fixed;
   width: 100%;
+  min-width: 981px;
 }
 
 #logout-btn {
