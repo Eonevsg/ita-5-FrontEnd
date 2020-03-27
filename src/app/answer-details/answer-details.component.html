@@ -15,7 +15,7 @@
         <div>{{ model.person.uni }}</div>
         <div>{{ model.person.phone }}</div>
         <div>{{ model.person.email }}</div>
-     
+
 
           <div *ngFor="let answer of model.answerList">
             <label class="bold">{{ getFullQuestion(answer.questionId) }}</label>
@@ -39,7 +39,7 @@
                 class="form-group"
                 [class.has-error]="applicationValuation.invalid"
               >
-              
+
                 <label for="applicationValuation">Anketos vertinimas</label>
                 <input
                   (keypress)="numberOnly($event)"
@@ -140,55 +140,13 @@
                 </div>
               </div>
                 </section>
-              <div class="form-group">
-                <h4 class="bold">Priimti/Atmesti</h4>
-                <div class="form-radio-group" [class.has-error]="state.invalid">
-                  <div 
-                  style="display:inline-block; margin-right:20px;"
-                  class="form-radio-group-choice">
-                    <input
-                      type="radio"
-                      value="yes"
-                      id="contract-pos"
-                      formControlName="state"
-                    />
-                    <label for="contract-pos" class="radio-label"
-                      >Priimti</label
-                    >
-                  </div>
-
-                  <div 
-                  style="display:inline-block"
-                  class="form-radio-group-choice">
-                    <input
-                      type="radio"
-                      value="no"
-                      id="contract-neg"
-                      formControlName="state"
-                    />
-                    <label for="contract-neg" class="radio-label"
-                      >Atmesti</label
-                    >
-                  </div>
-
-                  <div
-                    *ngIf="state.invalid"
-                    [hidden]="state.valid || state.untouched"
-                    class="alert alert-danger"
-                  >
-                    Laukas privalomas!
-                  </div>
-                </div>
-              </div>
               <button
                 type="submit"
                 class="btn btn-custom"
+                [disabled]="valuationForm.invalid"
                 (click)="valuationForm.valid ? show() : null"
               >
                 Išsaugoti
-              </button>
-              <button align="right" [routerLink]="['/list']" class="btn btn-custom ">
-                Atgal
               </button>
             </form>
 

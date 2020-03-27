@@ -67,19 +67,19 @@ export class AnswerDetailsComponent implements OnInit {
 
   }
   get applicationValuation() {
-    return this.valuationForm.get("applicationValuation");
+    return this.valuationForm.get('applicationValuation');
   }
-  
+
   get interviewValuation() {
-    return this.valuationForm.get("interviewValuation");
+    return this.valuationForm.get('interviewValuation');
   }
 
   get notes() {
-    return this.valuationForm.get("notes");
+    return this.valuationForm.get('notes');
   }
 
   get state() {
-    return this.valuationForm.get("state");
+    return this.acceptanceForm.get('state');
   }
 
   show() {
