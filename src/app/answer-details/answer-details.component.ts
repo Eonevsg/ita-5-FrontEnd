@@ -35,7 +35,7 @@ export class AnswerDetailsComponent implements OnInit {
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern(/^(0|[1-9][0-9]*)$/)
       ]
     ],
     interviewValuation: [
@@ -43,13 +43,21 @@ export class AnswerDetailsComponent implements OnInit {
       [
         Validators.min(0),
         Validators.max(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ0-9 \\.,\\-'\"]+$")
+        Validators.pattern(/^(0|[1-9][0-9]*)$/)
       ]
     ],
     notes: ["", [Validators.maxLength(450)]],
     state: ["", []]
   });
 
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
   get applicationValuation() {
     return this.valuationForm.get("applicationValuation");
   }

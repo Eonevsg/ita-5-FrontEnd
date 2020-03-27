@@ -39,7 +39,8 @@
               >
                 <label for="applicationValuation">Anketos vertinimas</label>
                 <input
-                  type="number"
+                  (keypress)="numberOnly($event)"
+                  type="text"
                   class="form-control"
                   id="applicationValuation"
                   formControlName="applicationValuation"
@@ -61,6 +62,9 @@
                 <div *ngIf="applicationValuation.errors?.max">
                   Įvertinimas per didelis
                 </div>
+                <div *ngIf="applicationValuation.errors?.pattern">
+                  Įveskite tik skaičius
+                </div>
               </div>
 
               <div
@@ -69,7 +73,8 @@
               >
                 <label for="interviewValuation">Interviu vertininmas</label>
                 <input
-                  type="number"
+                  (keypress)="numberOnly($event)"
+                  type="text"
                   class="form-control"
                   id="interviewValuation"
                   formControlName="interviewValuation"
@@ -93,6 +98,9 @@
                 </div>
                 <div *ngIf="interviewValuation.errors?.pattern">
                   Nenaudokite specialių simbolių!
+                </div>
+                <div *ngIf="interviewValuation.errors?.pattern">
+                  Įveskite tik skaičius
                 </div>
               </div>
 
@@ -125,7 +133,7 @@
               </div>
 
               <div class="form-group">
-                <h4>Priimti/Atmesti</h4>
+                <h4 class="bold">Priimti/Atmesti</h4>
                 <div class="form-radio-group" [class.has-error]="state.invalid">
                   <div class="form-radio-group-choice">
                     <input
