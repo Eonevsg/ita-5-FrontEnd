@@ -98,12 +98,18 @@
 
               <div class="form-group" [class.has-error]="notes.invalid">
                 <label for="notes">Pastabos</label>
-                <input
+                <textarea
                   type="text"
-                  class="form-control"
+                  (input)="triggerResize()"
+                  cdkTextareaAutosize
+                  #notesResizableArea="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="4"
+                  cdkAutosizeMaxRows="8"
+                  class="form-control textarea-custom"
                   id="notes"
+                  maxlength="450"
                   formControlName="notes"
-                />
+                ></textarea>
               </div>
 
               <div

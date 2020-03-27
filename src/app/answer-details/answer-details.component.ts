@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { Answer } from "../models/answer";
 import { AnswerViewModel } from "../shared/answerViewModel";
 import { FormService } from "../services/form-service/form.service";
@@ -8,6 +8,7 @@ import { switchMap, tap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
 import { PersonService } from "../services/person-service/person.service";
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
   selector: "app-answer-details",
@@ -19,6 +20,7 @@ export class AnswerDetailsComponent implements OnInit {
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
   showModal: boolean;
+  @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
 
   constructor(
     private formService: FormService,
@@ -149,5 +151,8 @@ export class AnswerDetailsComponent implements OnInit {
     } else {
       return str;
     }
+  }
+  triggerResize() {
+    this.notesResizableArea.resizeToFitContent(true);
   }
 }

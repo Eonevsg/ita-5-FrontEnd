@@ -99,3 +99,6 @@ input[type="number"] {
 .title {
   font-size: 250%;
 }
+.textarea-custom {
+  overflow: hidden;
+}
