@@ -15,7 +15,9 @@ html {
 #main {
   overflow-y: scroll;
   height: 100%;
-  width: 65%;
+  /*width: 65%;*/
+  max-width: 1023px;
+  min-width: 320px;
   background-color: white;
   position: absolute;
   top: 0;
