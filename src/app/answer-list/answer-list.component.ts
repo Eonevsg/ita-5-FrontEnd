@@ -77,7 +77,7 @@ export class AnswerListComponent implements OnInit {
           return this.compare(a.surname, b.surname, isAsc);
         case "uni":
           return this.compare(a.uni, b.uni, isAsc);
-        case "state":
+        case "status":
           return this.compare(a.extra.status, b.extra.status, isAsc);
         case "dateTime":
           return this.compare(a.extra.dateTime, b.extra.dateTime, isAsc);

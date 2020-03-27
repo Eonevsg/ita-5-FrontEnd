@@ -42,7 +42,8 @@
               
                 <label for="applicationValuation">Anketos vertinimas</label>
                 <input
-                  type="number"
+                  (keypress)="numberOnly($event)"
+                  type="text"
                   class="form-control"
                   id="applicationValuation"
                   formControlName="applicationValuation"
@@ -65,6 +66,9 @@
                 <div *ngIf="applicationValuation.errors?.max">
                   Įvertinimas per didelis
                 </div>
+                <div *ngIf="applicationValuation.errors?.pattern">
+                  Įveskite tik skaičius
+                </div>
               </div>
 
               <div
@@ -74,7 +78,8 @@
               >
                 <label for="interviewValuation">Interviu vertininmas</label>
                 <input
-                  type="number"
+                  (keypress)="numberOnly($event)"
+                  type="text"
                   class="form-control"
                   id="interviewValuation"
                   formControlName="interviewValuation"
@@ -100,18 +105,27 @@
                 <div *ngIf="interviewValuation.errors?.pattern">
                   Nenaudokite specialių simbolių!
                 </div>
+                <div *ngIf="interviewValuation.errors?.pattern">
+                  Įveskite tik skaičius
+                </div>
               </div>
             </section>
 
             <section>
               <div class="form-group" [class.has-error]="notes.invalid">
                 <label for="notes">Pastabos</label>
-                <input
+                <textarea
                   type="text"
-                  class="form-control"
+                  (input)="triggerResize()"
+                  cdkTextareaAutosize
+                  #notesResizableArea="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="4"
+                  cdkAutosizeMaxRows="8"
+                  class="form-control textarea-custom"
                   id="notes"
+                  maxlength="450"
                   formControlName="notes"
-                />
+                ></textarea>
               </div>
 
               <div
@@ -127,7 +141,7 @@
               </div>
                 </section>
               <div class="form-group">
-                <h4>Priimti/Atmesti</h4>
+                <h4 class="bold">Priimti/Atmesti</h4>
                 <div class="form-radio-group" [class.has-error]="state.invalid">
                   <div 
                   style="display:inline-block; margin-right:20px;"

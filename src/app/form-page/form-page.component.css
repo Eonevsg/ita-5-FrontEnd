@@ -1,16 +1,3 @@
-.textarea-custom {
-  overflow: hidden;
-}
-#logo {
-  width: 5%;
-  height: 5%;
-}
-#header {
-  text-align: left;
-  background: white;
-  color: #ee7023;
-  margin: 2% 5% 0%;
-}
 
 .ng-valid.ng-touched:not(form) {
   border-left: 5px solid #42a948;
@@ -19,10 +6,6 @@
 .row {
   padding: 5% 0% 3%;
   width: auto;
-}
-
-#submit {
-  margin-right: 2%;
 }
 
 @media all and (max-width: 480px) {
@@ -47,30 +30,10 @@
   margin-left: 1%;
 }
 
-.btn:active,
-.btn:focus,
-.btn:hover {
-  box-shadow: 0 5px 11px 0 rgba(66, 133, 244, 0.18),
-    0 4px 15px 0 rgba(66, 133, 244, 0.15);
-}
-
-.btn-light {
-  background-color: #ececec;
-}
-
-.btn-light:active,
-.btn-light:hover {
-  background-color: #dbdbdb;
-}
-
 #modal-footer {
   text-align: center;
 }
 
 .modal-title {
   margin: 5%;
-}
-
-#btn-popup {
-  margin: 3%;
 }

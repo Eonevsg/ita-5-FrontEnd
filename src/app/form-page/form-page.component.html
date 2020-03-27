@@ -1,10 +1,11 @@
 <div id="main">
-  <div id="header">
+  <!-- header -->
+  <div class="header">
     <div>
-      <img src="/assets/images/logo.png" id="logo" />
+      <img src="/assets/images/logo.png" class="logo"/>
     </div>
     <div>
-      <h1>IT Academija</h1>
+      <p class="title">IT Akademija</p>
     </div>
   </div>
 
@@ -197,8 +198,8 @@
             (input)="triggerResize()"
             cdkTextareaAutosize
             #contractResizableArea="cdkTextareaAutosize"
-            cdkAutosizeMinRows="3"
-            cdkAutosizeMaxRows="5"
+            cdkAutosizeMinRows="4"
+            cdkAutosizeMaxRows="8"
             class="form-control textarea-custom"
             id="contractExplanation"
             maxlength="250"
@@ -266,8 +267,8 @@
           (input)="triggerResize()"
           cdkTextareaAutosize
           #shiftResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="8"
           class="form-control textarea-custom"
           id="shiftExplanation"
           formControlName="shiftExplanation"
@@ -295,8 +296,8 @@
           (input)="triggerResize()"
           cdkTextareaAutosize
           #hobbiesResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="8"
           class="form-control textarea-custom"
           id="hobbies"
           formControlName="hobbies"
@@ -325,8 +326,8 @@
           (input)="triggerResize()"
           cdkTextareaAutosize
           #motivationResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="8"
           class="form-control textarea-custom"
           id="motivation"
           formControlName="motivation"
@@ -357,8 +358,8 @@
           (input)="triggerResize()"
           cdkTextareaAutosize
           #experienceResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="8"
           class="form-control textarea-custom"
           formControlName="experience"
           maxlength="450"
@@ -378,14 +379,14 @@
 
       <div class="form-group">
         <label for="marketing"
-          >Iš kur sužinojai apie IT akademiją Swedbank?</label
+          >Iš kur sužinojai apie IT akademiją?</label
         >
         <textarea
           (input)="triggerResize()"
           cdkTextareaAutosize
           #marketingResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="3"
-          cdkAutosizeMaxRows="5"
+          cdkAutosizeMinRows="4"
+          cdkAutosizeMaxRows="8"
           class="form-control textarea-custom"
           type="text"
           id="marketing"

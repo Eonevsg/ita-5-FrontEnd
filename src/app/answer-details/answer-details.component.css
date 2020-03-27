@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 .btn-custom {
     background: #ee7023;
     margin-right: 3%;
   }
   table.table-bordered > thead > tr > th,
   table.table-bordered > thead > tr > td {
+=======
+table.table-bordered > thead > tr > th,
+table.table-bordered > thead > tr > td {
+>>>>>>> 10dd25505e4231299c00ed84fc0a4874a081420c
   background-color: #ee7023;
   }
   .thead-custom {
