@@ -27,6 +27,7 @@ input {
 table {
   table-layout: fixed;
   width: 100%;
+  min-width: 981px;
 }
 
 #logout-btn {
@@ -43,15 +44,6 @@ table {
   transform: translateY(-13%);
   margin-left: -5px;
   font-size: 25px;
-}
-
-.thead-custom {
-  background-color: #ee7023;
-}
-
-table.table-bordered > thead > tr > th,
-table.table-bordered > thead > tr > td {
-  border-color: #da6720;
 }
 
 th {
