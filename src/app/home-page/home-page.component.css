@@ -1,23 +1,24 @@
 #logo {
-  width: 5%;
-  height: 5%;
   margin-bottom: 2%;
 }
+
 .side-image {
   width: 30%;
   height: 20%;
 }
+
 #header {
   text-align: left;
   background: white;
   color: #ee7023;
   margin: 2% 5%;
 }
+
 .main-container {
   width: auto;
   height: auto;
   margin: 0% 5%;
-  flex:1;
+  flex: 1;
 }
 
 .content-container {
@@ -25,12 +26,14 @@
   height: auto;
   float: left;
 }
+
 .image-container {
   height: auto;
   width: auto;
   padding: 0;
   text-align: right;
 }
+
 /* Clear floats after the columns */
 .container:after {
   content: "";
@@ -42,31 +45,35 @@
   height: 50%;
 }
 
-.custom-collapse-text{
+.custom-collapse-text {
   color: black;
   font-weight: bold;
 }
-#marketing{
+
+#marketing {
   margin-top: 2%;
 }
-.card-body{
+
+.card-body {
   padding: 0;
   margin-top: 2%;
 }
+
 .accordion .card-header:after {
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   content: "\f068";
   float: right;
 }
+
 .accordion .card-header.collapsed:after {
   /* symbol for "collapsed" panels */
   content: "\f067";
 }
 
-.page-footer{
+.page-footer {
   position: relative;
   height: auto;
-  clear:both;
-  padding-top:20px;
+  clear: both;
+  padding-top: 20px;
   background: #ee7023;
 }
