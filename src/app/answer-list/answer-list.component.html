@@ -27,7 +27,12 @@
             <tr>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="dateTime">Data</div>
+                  <div
+                    mat-sort-header="dateTime"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Data
+                  </div>
                   <input
                     [(ngModel)]="fields.dateTime"
                     (ngModelChange)="updateFilters()"
@@ -39,7 +44,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="status">Būsena</div>
+                  <div
+                    mat-sort-header="status"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Būsena
+                  </div>
                   <input
                     [(ngModel)]="fields.status"
                     (ngModelChange)="updateFilters()"
@@ -51,7 +61,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="name">Vardas</div>
+                  <div
+                    mat-sort-header="name"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Vardas
+                  </div>
                   <input
                     [(ngModel)]="fields.name"
                     (ngModelChange)="updateFilters()"
@@ -63,7 +78,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="surname">Pavardė</div>
+                  <div
+                    mat-sort-header="surname"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Pavardė
+                  </div>
                   <input
                     [(ngModel)]="fields.surname"
                     (ngModelChange)="updateFilters()"
@@ -75,7 +95,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="uni">Mokymo įstaiga</div>
+                  <div
+                    mat-sort-header="uni"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Mokymosi įstaiga
+                  </div>
                   <input
                     [(ngModel)]="fields.uni"
                     (ngModelChange)="updateFilters()"
@@ -87,7 +112,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="applicationValuation">Vertinimas</div>
+                  <div
+                    mat-sort-header="applicationValuation"
+                    class="column-header-title"
+                  >
+                    Anketos vertinimas
+                  </div>
                   <input
                     [(ngModel)]="fields.applicationValuation"
                     (ngModelChange)="updateFilters()"
@@ -99,8 +129,11 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="interviewValuation">
-                    Interviu vertinimas
+                  <div
+                    mat-sort-header="interviewValuation"
+                    class="column-header-title"
+                  >
+                    Pokalbio vertinimas
                   </div>
                   <input
                     [(ngModel)]="fields.interviewValuation"
@@ -113,7 +146,12 @@
               </th>
               <th scope="col">
                 <div class="column-header">
-                  <div mat-sort-header="notes">Pastabos</div>
+                  <div
+                    mat-sort-header="notes"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Pastabos
+                  </div>
                   <input
                     [(ngModel)]="fields.notes"
                     (ngModelChange)="updateFilters()"
