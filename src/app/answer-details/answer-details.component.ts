@@ -27,6 +27,8 @@ export class AnswerDetailsComponent implements OnInit {
   private tempInterVal = null;
   private tempNotes = null;
 
+  private email;
+
   constructor(
     private formService: FormService,
     private route: ActivatedRoute,
@@ -69,6 +71,7 @@ export class AnswerDetailsComponent implements OnInit {
     this.answer$.subscribe(data => {
       this.updateStatus(data.person);
       this.personId = data.person.id;
+      this.email = data.person.email;
     });
   }
 
@@ -103,6 +106,7 @@ export class AnswerDetailsComponent implements OnInit {
     } else if (this.state.value === "no") {
       this.statusValue = "Atmesta";
     }
+    window.location.href = this.getEmailOpenString(this.email);
     this.formService.patchPerson({
       id: this.personId,
       extra: { status: this.statusValue }
@@ -155,5 +159,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   hide() {
     this.showModal = false;
+  }
+
+  getEmailOpenString(email: string) {
+    return `mailto:${email}?subject=IT Akademija`;
   }
 }
