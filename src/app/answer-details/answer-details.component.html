@@ -11,15 +11,17 @@
               <table class="table table-bordered table-striped table-hover ">
                 <thead class="thead-custom">
                   <tr>
-                    <th class="title bold">Asmens duomenys</th>
+                    <th class="center">Asmens duomenys</th>
                   </tr>
                 </thead>
               </table>
+
               <br />
               <p>{{ model.person.name + " " + model.person.surname }}</p>
               <p>{{ model.person.uni }}</p>
               <p>{{ model.person.phone }}</p>
               <p>{{ model.person.email }}</p>
+
               <div *ngFor="let answer of model.answerList">
                 <hr />
                 <label class="bold">{{
@@ -32,160 +34,172 @@
           </div>
           <br />
 
-            <table class="table table-bordered table-striped table-hover">
-              <thead class="thead-custom">
-                <tr>
-                  <td class="bold" id="title">Asmens įvertinimas</td>
-                </tr>
-              </thead>
-            </table>
+          <div class="both-form-container">
+            <div class="form-container custom-border">
+              <div class="form-inner-content">
+                <table class="table table-bordered table-striped table-hover ">
+                  <thead class="thead-custom">
+                    <tr>
+                      <th class="center">Asmens įvertinimas</th>
+                    </tr>
+                  </thead>
+                </table>
 
-             <div id="form-container">
-            <form [formGroup]="valuationForm" (ngSubmit)="onSubmitValuation()">
-              <section>
-              <div
-                style="display:inline-block; margin-right:20px;"
-                class="form-group"
-                [class.has-error]="applicationValuation.invalid"
-              >
-
-                <label for="applicationValuation">Anketos vertinimas</label>
-                <input
-                  (keypress)="numberOnly($event)"
-                  type="text"
-                  class="form-control"
-                  id="applicationValuation"
-                  formControlName="applicationValuation"
-                  placeholder="0-100"
-                />
-              </div>
-
-              <div
-                [hidden]="
-                  applicationValuation.valid || applicationValuation.untouched
-                "
-                class="alert alert-danger"
-              >
-                <div *ngIf="applicationValuation.errors?.required">
-                  Įveskite įvertinimą
-                </div>
-                <div *ngIf="applicationValuation.errors?.min">
-                  Įvertinimas negali būti neigiamas!
-                </div>
-                <div *ngIf="applicationValuation.errors?.max">
-                  Įvertinimas per didelis
-                </div>
-                <div *ngIf="applicationValuation.errors?.pattern">
-                  Įveskite tik skaičius
-                </div>
-              </div>
-
-              <div
-                style="display:inline-block"
-                class="form-group"
-                [class.has-error]="interviewValuation.invalid"
-              >
-                <label for="interviewValuation">Interviu vertininmas</label>
-                <input
-                  (keypress)="numberOnly($event)"
-                  type="text"
-                  class="form-control"
-                  id="interviewValuation"
-                  formControlName="interviewValuation"
-                  placeholder="0-100"
-                />
-              </div>
-
-              <div
-                [hidden]="
-                  interviewValuation.valid || interviewValuation.untouched
-                "
-                class="alert alert-danger"
-              >
-                <div *ngIf="interviewValuation.errors?.required">
-                  Įveskite įvertinimą
-                </div>
-                <div *ngIf="interviewValuation.errors?.min">
-                  Įvertinimas per trumpas
-                </div>
-                <div *ngIf="interviewValuation.errors?.max">
-                  Įvertinimas per ilgas
-                </div>
-                <div *ngIf="interviewValuation.errors?.pattern">
-                  Nenaudokite specialių simbolių!
-                </div>
-                <div *ngIf="interviewValuation.errors?.pattern">
-                  Įveskite tik skaičius
-                </div>
-              </div>
-            </section>
-
-            <section>
-              <div class="form-group" [class.has-error]="notes.invalid">
-                <label for="notes">Pastabos</label>
-                <textarea
-                  type="text"
-                  (input)="triggerResize()"
-                  cdkTextareaAutosize
-                  #notesResizableArea="cdkTextareaAutosize"
-                  cdkAutosizeMinRows="4"
-                  cdkAutosizeMaxRows="8"
-                  class="form-control textarea-custom"
-                  id="notes"
-                  maxlength="450"
-                  formControlName="notes"
-                ></textarea>
-              </div>
-
-              <div
-                [hidden]="notes.valid || notes.untouched"
-                class="alert alert-danger"
-              >
-                <div *ngIf="notes.errors?.required">
-                  Įveskite pastabą
-                </div>
-                <div *ngIf="notes.errors?.maxlength">
-                  Pastaba per ilga
-                </div>
-              </div>
-                </section>
-              <button
-                type="submit"
-                class="btn btn-custom"
-                [disabled]="valuationForm.invalid"
-                (click)="valuationForm.valid ? show() : null"
-              >
-                Išsaugoti
-              </button>
-            </form>
-                <div
-                  [style.display]="showModal ? 'block' : 'none'"
-                  class="modal"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">
-                          Įvertinimas pateiktas
-                        </h4>
+                <div id="form-container">
+                  <form
+                    [formGroup]="valuationForm"
+                    (ngSubmit)="onSubmitValuation()"
+                  >
+                    <section>
+                      <div
+                        style="display:inline-block; margin-right:20px;"
+                        class="form-group"
+                        [class.has-error]="applicationValuation.invalid"
+                      >
+                        <label for="applicationValuation"
+                          >Anketos vertinimas</label
+                        >
+                        <input
+                          (keypress)="numberOnly($event)"
+                          type="text"
+                          class="form-control"
+                          id="applicationValuation"
+                          formControlName="applicationValuation"
+                          placeholder="0-100"
+                        />
                       </div>
-                      <div id="modal-footer">
-                        <button
-                          type="submit"
-                          class="btn btn-custom"
-                          id="btn-popup-hide"
-                          (click)="hide()"
+
+                      <div
+                        [hidden]="
+                          applicationValuation.valid ||
+                          applicationValuation.untouched
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="applicationValuation.errors?.required">
+                          Įveskite įvertinimą
+                        </div>
+                        <div *ngIf="applicationValuation.errors?.min">
+                          Įvertinimas negali būti neigiamas!
+                        </div>
+                        <div *ngIf="applicationValuation.errors?.max">
+                          Įvertinimas per didelis
+                        </div>
+                        <div *ngIf="applicationValuation.errors?.pattern">
+                          Įveskite tik skaičius
+                        </div>
+                      </div>
+
+                      <div
+                        style="display:inline-block"
+                        class="form-group"
+                        [class.has-error]="interviewValuation.invalid"
+                      >
+                        <label for="interviewValuation"
+                          >Interviu vertininmas</label
                         >
-                          Tęsti
-                        </button>
-                        <button
-                          type="submit"
-                          class="btn btn-custom"
-                          id="btn-popup-back"
-                          [routerLink]="['/list']"
-                        >
-                          Baigti
-                        </button>
+                        <input
+                          (keypress)="numberOnly($event)"
+                          type="text"
+                          class="form-control"
+                          id="interviewValuation"
+                          formControlName="interviewValuation"
+                          placeholder="0-100"
+                        />
+                      </div>
+
+                      <div
+                        [hidden]="
+                          interviewValuation.valid ||
+                          interviewValuation.untouched
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="interviewValuation.errors?.required">
+                          Įveskite įvertinimą
+                        </div>
+                        <div *ngIf="interviewValuation.errors?.min">
+                          Įvertinimas per trumpas
+                        </div>
+                        <div *ngIf="interviewValuation.errors?.max">
+                          Įvertinimas per ilgas
+                        </div>
+                        <div *ngIf="interviewValuation.errors?.pattern">
+                          Nenaudokite specialių simbolių!
+                        </div>
+                        <div *ngIf="interviewValuation.errors?.pattern">
+                          Įveskite tik skaičius
+                        </div>
+                      </div>
+                    </section>
+
+                    <section>
+                      <div class="form-group" [class.has-error]="notes.invalid">
+                        <label for="notes">Pastabos</label>
+                        <textarea
+                          type="text"
+                          (input)="triggerResize()"
+                          cdkTextareaAutosize
+                          #notesResizableArea="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="4"
+                          cdkAutosizeMaxRows="8"
+                          class="form-control textarea-custom"
+                          id="notes"
+                          maxlength="450"
+                          formControlName="notes"
+                        ></textarea>
+                      </div>
+
+                      <div
+                        [hidden]="notes.valid || notes.untouched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="notes.errors?.required">
+                          Įveskite pastabą
+                        </div>
+                        <div *ngIf="notes.errors?.maxlength">
+                          Pastaba per ilga
+                        </div>
+                      </div>
+                    </section>
+                    <button
+                      type="submit"
+                      class="btn btn-custom"
+                      [disabled]="valuationForm.invalid"
+                      (click)="valuationForm.valid ? show() : null"
+                    >
+                      Išsaugoti
+                    </button>
+                  </form>
+                  <div
+                    [style.display]="showModal ? 'block' : 'none'"
+                    class="modal"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel">
+                            Įvertinimas pateiktas
+                          </h4>
+                        </div>
+                        <div id="modal-footer">
+                          <button
+                            type="submit"
+                            class="btn btn-custom"
+                            id="btn-popup-hide"
+                            (click)="hide()"
+                          >
+                            Tęsti
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn btn-custom"
+                            id="btn-popup-back"
+                            [routerLink]="['/list']"
+                          >
+                            Baigti
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -207,7 +221,7 @@
                       >
                         <thead class="thead-custom">
                           <tr>
-                            <th class="title">Priimti/Atmesti</th>
+                            <th class="center">Priimti/Atmesti</th>
                           </tr>
                         </thead>
                       </table>
@@ -242,15 +256,11 @@
                     <button type="submit" class="btn btn-custom">
                       Atsakyti
                     </button>
-                    <!-- <button
-                    [routerLink]="['/list']"
-                    class="btn btn-light btn-return"
-                  >
-                    Atgal
-                  </button> -->
                   </form>
                 </div>
               </div>
+            </div>
+          </div>
           <button
             [routerLink]="['/list']"
             class="btn btn-light btn-return random"

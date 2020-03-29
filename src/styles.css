@@ -107,3 +107,7 @@ table.table-bordered > thead > tr > th {
   background-color: #ee7023;
   border-color: #da6720;
 }
+
+.center {
+  text-align: center;
+}
