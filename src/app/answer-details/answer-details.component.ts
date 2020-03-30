@@ -1,24 +1,24 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import { Answer } from "../models/answer";
-import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
-import { ActivatedRoute } from "@angular/router";
-import { from, Observable, empty } from "rxjs";
-import { switchMap, tap } from "rxjs/operators";
-import { FormBuilder, Validators } from "@angular/forms";
-import { Person } from "../models/person";
-import { PersonService } from "../services/person-service/person.service";
+import {Answer} from '../models/answer';
+import {AnswerViewModel} from '../shared/answerViewModel';
+import {FormService} from '../services/form-service/form.service';
+import {ActivatedRoute} from '@angular/router';
+import {from, Observable, empty} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Person} from '../models/person';
+import {PersonService} from '../services/person-service/person.service';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
-  selector: "app-answer-details",
-  templateUrl: "./answer-details.component.html",
-  styleUrls: ["./answer-details.component.css"]
+  selector: 'app-answer-details',
+  templateUrl: './answer-details.component.html',
+  styleUrls: ['./answer-details.component.css']
 })
 export class AnswerDetailsComponent implements OnInit {
   public answer$: Observable<AnswerViewModel>;
   public questions: Answer[];
-  public radioQuestionID: string[] = ["1", "2"];
+  public radioQuestionID: string[] = ['1', '2'];
   public showModal: boolean;
   public person$: Observable<Person>;
   @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
@@ -29,48 +29,49 @@ export class AnswerDetailsComponent implements OnInit {
   private tempNotes = null;
   private email;
 
+
+  applicationValues: any[] = [{id: 1, value: '1'}, {id: 2, value: '2'}, {id: 3, value: '3'}];
+  interviewValues: any[] = [{id: 1, value: '1'}, {id: 2, value: '2'}, {id: 3, value: '3'}];
+  testValues: any[] = [{id: 1, value: '1'}, {id: 2, value: '2'}, {id: 3, value: '3'},
+    {id: 4, value: '4'}, {id: 5, value: '5'}, {id: 6, value: '6'},
+    {id: 7, value: '7'}, {id: 8, value: '8'}, {id: 9, value: '9'}, {id: 10, value: '10'}];
+
   constructor(
     private formService: FormService,
     private route: ActivatedRoute,
     private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   valuationForm = this.fb.group({
     applicationValuation: [
-      "",
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
+      '',
+      []
     ],
     interviewValuation: [
-      "",
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
+      '',
+      []
     ],
-    notes: ["", [Validators.maxLength(450)]]
+    testValuation: [
+      '',
+      []
+    ],
+    notes: ['', [Validators.maxLength(450)]]
   });
   acceptanceForm = this.fb.group({
-    state: ["", []]
+    state: ['', []]
   });
-  numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
 
-  }
   get applicationValuation() {
     return this.valuationForm.get('applicationValuation');
   }
 
   get interviewValuation() {
     return this.valuationForm.get('interviewValuation');
+  }
+
+  get testValuation() {
+    return this.valuationForm.get('testValuation');
   }
 
   get notes() {
@@ -96,7 +97,7 @@ export class AnswerDetailsComponent implements OnInit {
 
     this.answer$ = from(this.route.paramMap).pipe(
       switchMap(params => {
-        return this.formService.fetchAnswer({ id: params.get("id") });
+        return this.formService.fetchAnswer({id: params.get('id')});
       })
     );
     this.answer$.subscribe(data => {
@@ -120,8 +121,8 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-console.log("tempappval", this.tempApplVal);
-console.log("appval", )
+    console.log('tempappval', this.tempApplVal);
+    console.log('appval',);
     this.formService.patchPerson({
       id: this.personId,
       extra: {
@@ -136,23 +137,23 @@ console.log("appval", )
     this.acceptanceForm.markAllAsTouched();
     this.statusValue = null;
     console.log(this.state.value);
-    if (this.state.value === "yes") {
-      this.statusValue = "Priimta";
-    } else if (this.state.value === "no") {
-      this.statusValue = "Atmesta";
+    if (this.state.value === 'yes') {
+      this.statusValue = 'Priimta';
+    } else if (this.state.value === 'no') {
+      this.statusValue = 'Atmesta';
     }
     window.location.href = this.getEmailOpenString(this.email);
     this.formService.patchPerson({
       id: this.personId,
-      extra: { status: this.statusValue }
+      extra: {status: this.statusValue}
     });
   }
 
   updateStatus(person: Person): any {
-    if (person.extra.status.toLowerCase() === "nauja") {
+    if (person.extra.status.toLowerCase() === 'nauja') {
       return this.formService.patchPerson({
         id: person.id,
-        extra: { status: "Perskaityta" }
+        extra: {status: 'Perskaityta'}
       });
     }
   }
@@ -164,13 +165,32 @@ console.log("appval", )
   getAnswer(str: string, qId: string) {
     if (this.radioQuestionID.includes(qId)) {
       if (str) {
-        return "Ne. " + str;
+        return 'Ne. ' + str;
       } else {
-        return "Taip";
+        return 'Taip';
       }
     } else {
       return str;
     }
+  }
+
+  changeApplicationValue(e) {
+    console.log(e.value);
+    this.applicationValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeInterviewValue(e) {
+    this.interviewValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeTestValue(e) {
+    this.testValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
   }
 
   triggerResize() {
@@ -180,19 +200,20 @@ console.log("appval", )
   getEmailOpenString(email: string) {
     return `mailto:${email}?subject=IT Akademija`;
   }
+
   setExistingExtraValue(extra: any) {
     if (extra.applicationValuation) {
-      this.valuationForm.controls["applicationValuation"].setValue(
+      this.valuationForm.controls.applicationValuation.setValue(
         extra.applicationValuation
       );
     }
     if (extra.interviewValuation) {
-      this.valuationForm.controls["interviewValuation"].setValue(
+      this.valuationForm.controls.interviewValuation.setValue(
         extra.interviewValuation
       );
     }
     if (extra.notes) {
-      this.valuationForm.controls["notes"].setValue(extra.notes);
+      this.valuationForm.controls.notes.setValue(extra.notes);
     }
   }
 }
