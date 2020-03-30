@@ -7,7 +7,6 @@ import { from, Observable, empty } from "rxjs";
 import { switchMap, tap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
-import { PersonService } from "../services/person-service/person.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 
 @Component({

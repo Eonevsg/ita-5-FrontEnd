@@ -5,6 +5,7 @@ import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
+import { Observable } from "rxjs";
 
 @Component({
   selector: "app-form-page",
@@ -15,7 +16,8 @@ export class FormPageComponent implements OnInit {
   message = "";
   isErrorMessage = false;
   showModal: boolean;
-  $universities: any;
+  $universities: Observable<string[]>;
+  
 
   @ViewChild("contractResizableArea")
   contractResizableArea: CdkTextareaAutosize;

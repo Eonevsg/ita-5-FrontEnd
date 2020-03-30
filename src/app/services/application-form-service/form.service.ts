@@ -47,7 +47,7 @@ export class ApplicationFormService {
     );
   }
 
-  public fetchSchools(): Observable<Object> {
-    return this.http.get(`${this.url}/api/school`);
+  public fetchSchools(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url}/api/school`);
   }
 }
