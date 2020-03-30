@@ -45,95 +45,69 @@
                   </thead>
                 </table>
 
-                <div id="form-container">
+                <div class="form-container">
                   <form
                     [formGroup]="valuationForm"
                     (ngSubmit)="onSubmitValuation()"
                   >
                     <section>
-                      <div
-                        style="display:inline-block; margin-right:20px;"
-                        class="form-group"
-                        [class.has-error]="applicationValuation.invalid"
-                      >
-                        <label for="applicationValuation"
-                          >Anketos vertinimas</label
-                        >
-                        <input
-                          (keypress)="numberOnly($event)"
-                          type="text"
-                          class="form-control"
-                          id="applicationValuation"
-                          formControlName="applicationValuation"
-                          placeholder="0-100"
-                        />
+                      <div class="row">
+                        <div class="form-group column">
+                          <label for="applicationValuation"
+                            >Anketos vertinimas</label
+                          >
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeApplicationValue($event)"
+                            id="applicationValuation"
+                            formControlName="applicationValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let applVal of applicationValues"
+                              [value]="applVal.value"
+                              >{{ applVal.value }}</option
+                            >
+                          </select>
+                        </div>
+
+                        <div class="form-group column">
+                          <label for="testValuation">Testo vertinimas</label>
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeTestValue($event)"
+                            id="testValuation"
+                            formControlName="testValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let testVal of testValues"
+                              [value]="testVal.value"
+                              >{{ testVal.value }}</option
+                            >
+                          </select>
+                        </div>
+
+                        <div class="form-group column">
+                          <label for="interviewValuation"
+                            >Interviu vertinimas</label
+                          >
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeInterviewValue($event)"
+                            id="interviewValuation"
+                            formControlName="interviewValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let interVal of interviewValues"
+                              [value]="interVal.value"
+                              >{{ interVal.value }}</option
+                            >
+                          </select>
+                        </div>
                       </div>
 
-                      <div
-                        [hidden]="
-                          applicationValuation.valid ||
-                          applicationValuation.untouched
-                        "
-                        class="alert alert-danger"
-                      >
-                        <div *ngIf="applicationValuation.errors?.required">
-                          Įveskite įvertinimą
-                        </div>
-                        <div *ngIf="applicationValuation.errors?.min">
-                          Įvertinimas negali būti neigiamas!
-                        </div>
-                        <div *ngIf="applicationValuation.errors?.max">
-                          Įvertinimas per didelis
-                        </div>
-                        <div *ngIf="applicationValuation.errors?.pattern">
-                          Įveskite tik skaičius
-                        </div>
-                      </div>
-
-                      <div
-                        style="display:inline-block"
-                        class="form-group"
-                        [class.has-error]="interviewValuation.invalid"
-                      >
-                        <label for="interviewValuation"
-                          >Interviu vertininmas</label
-                        >
-                        <input
-                          (keypress)="numberOnly($event)"
-                          type="text"
-                          class="form-control"
-                          id="interviewValuation"
-                          formControlName="interviewValuation"
-                          placeholder="0-100"
-                        />
-                      </div>
-
-                      <div
-                        [hidden]="
-                          interviewValuation.valid ||
-                          interviewValuation.untouched
-                        "
-                        class="alert alert-danger"
-                      >
-                        <div *ngIf="interviewValuation.errors?.required">
-                          Įveskite įvertinimą
-                        </div>
-                        <div *ngIf="interviewValuation.errors?.min">
-                          Įvertinimas per trumpas
-                        </div>
-                        <div *ngIf="interviewValuation.errors?.max">
-                          Įvertinimas per ilgas
-                        </div>
-                        <div *ngIf="interviewValuation.errors?.pattern">
-                          Nenaudokite specialių simbolių!
-                        </div>
-                        <div *ngIf="interviewValuation.errors?.pattern">
-                          Įveskite tik skaičius
-                        </div>
-                      </div>
-                    </section>
-
-                    <section>
                       <div class="form-group" [class.has-error]="notes.invalid">
                         <label for="notes">Pastabos</label>
                         <textarea
@@ -142,10 +116,10 @@
                           cdkTextareaAutosize
                           #notesResizableArea="cdkTextareaAutosize"
                           cdkAutosizeMinRows="4"
-                          cdkAutosizeMaxRows="8"
+                          cdkAutosizeMaxRows="13"
                           class="form-control textarea-custom"
                           id="notes"
-                          maxlength="450"
+                          maxlength="1000"
                           formControlName="notes"
                         ></textarea>
                       </div>
@@ -154,14 +128,12 @@
                         [hidden]="notes.valid || notes.untouched"
                         class="alert alert-danger"
                       >
-                        <div *ngIf="notes.errors?.required">
-                          Įveskite pastabą
-                        </div>
                         <div *ngIf="notes.errors?.maxlength">
                           Pastaba per ilga
                         </div>
                       </div>
                     </section>
+
                     <button
                       type="submit"
                       class="btn btn-custom"

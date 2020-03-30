@@ -6,6 +6,7 @@ export class Person {
     phone: string,
     email: string,
     establishment: string,
+    contract: boolean,
     extra: any
   ) {
     this.id = id;
@@ -14,6 +15,7 @@ export class Person {
     this.phone = phone;
     this.surname = lname;
     this.uni = establishment;
+    this.contract = contract;
     this.extra = extra;
   }
 
@@ -23,10 +25,12 @@ export class Person {
   phone: string;
   email: string;
   uni: string;
+  contract: boolean;
   extra: {
     dateTime: Date;
     notes: string;
     applicationValuation: string;
+    testValuation: string;
     interviewValuation: string;
     status: string;
   };

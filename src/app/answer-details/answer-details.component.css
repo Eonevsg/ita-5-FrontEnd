@@ -34,3 +34,21 @@ table.table-bordered > thead > tr > th {
   display: inline-block;
   height: 100%;
 }
+
+.column {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+.custom-select {
+  width: 70%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
