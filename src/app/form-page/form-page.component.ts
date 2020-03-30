@@ -7,7 +7,6 @@ import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { FormService } from "../services/form-service/form.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
-import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-form-page",
@@ -82,7 +81,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         requiredIfValidator(() => this.applicationForm.get("contract").value),
-        Validators.maxLength(250),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ],
@@ -91,7 +90,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         requiredIfValidator(() => this.applicationForm.get("shift").value),
-        Validators.maxLength(250),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ],
@@ -99,7 +98,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         Validators.required,
-        Validators.maxLength(450),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ],
@@ -107,7 +106,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         Validators.required,
-        Validators.maxLength(450),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ],
@@ -115,7 +114,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         Validators.required,
-        Validators.maxLength(450),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ],
@@ -123,7 +122,7 @@ export class FormPageComponent implements OnInit {
       "",
       [
         Validators.required,
-        Validators.maxLength(250),
+        Validators.maxLength(1000),
         Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
       ]
     ]
