@@ -10,6 +10,7 @@ export class AnswerViewModel {
       dateTime: Date;
       notes: string;
       applicationValuation: string;
+      testValuation: string;
       interviewValuation: string;
       status: string;
     };

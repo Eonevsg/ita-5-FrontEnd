@@ -17,13 +17,17 @@
             <col id="dateTime-column" />
             <col id="status-column" />
             <col class="name-surname-column" />
-            <col class="name-surname-column" />
             <col id="uni-column" />
             <col class="valuation-column" />
             <col class="valuation-column" />
             <col id="notes-column" />
           </colgroup>
           <thead class="thead-custom">
+            <tr>
+              <th colspan="4" scope="colgroup"></th>
+              <th colspan="3" scope="colgroup" class="center">Vertinimas</th>
+              <th colspan="1" scope="colgroup"></th>
+            </tr>
             <tr>
               <th scope="col">
                 <div class="column-header">
@@ -42,6 +46,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -59,6 +64,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -76,25 +82,9 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
-                <div class="column-header">
-                  <div
-                    mat-sort-header="surname"
-                    class="column-header-title vertical-align-middle"
-                  >
-                    Pavardė
-                  </div>
-                  <input
-                    [(ngModel)]="fields.surname"
-                    (ngModelChange)="updateFilters()"
-                    matInput
-                    MatFormFieldControl
-                    placeholder="Filtruoti"
-                  />
-                </div>
-              </th>
-              <th scope="col">
-                <div class="column-header">
+                <div class="column-header ">
                   <div
                     mat-sort-header="uni"
                     class="column-header-title vertical-align-middle"
@@ -110,13 +100,14 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
                     mat-sort-header="applicationValuation"
                     class="column-header-title"
                   >
-                    Anketos vertinimas
+                    Anketos
                   </div>
                   <input
                     [(ngModel)]="fields.applicationValuation"
@@ -127,13 +118,32 @@
                   />
                 </div>
               </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="testValuation"
+                    class="column-header-title"
+                  >
+                    Testo
+                  </div>
+                  <input
+                    [(ngModel)]="fields.testValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
                     mat-sort-header="interviewValuation"
                     class="column-header-title"
                   >
-                    Pokalbio vertinimas
+                    Pokalbio
                   </div>
                   <input
                     [(ngModel)]="fields.interviewValuation"
@@ -144,6 +154,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -172,11 +183,15 @@
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
               <td class="column-width-small">{{ person.extra.status }}</td>
-              <td class="column-width">{{ person.name }}</td>
-              <td class="column-width">{{ person.surname }}</td>
+              <td class="column-width">
+                {{ person.name + " " + person.surname }}
+              </td>
               <td class="column-width">{{ person.uni }}</td>
               <td class="column-width">
                 {{ person.extra.applicationValuation }}
+              </td>
+              <td class="column-width">
+                {{ person.extra.testValuation }}
               </td>
               <td class="column-width">
                 {{ person.extra.interviewValuation }}
