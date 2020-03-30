@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import { Answer } from "../models/answer";
 import { AnswerView } from "../models/answerViewModel";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
@@ -8,7 +8,7 @@ import { switchMap, tap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
 import { PersonService } from "../services/person-service/person.service";
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 
 @Component({
   selector: "app-answer-details",
@@ -21,7 +21,7 @@ export class AnswerDetailsComponent implements OnInit {
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
   public person$: Observable<Person>;
-  @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
+  @ViewChild("notesResizableArea") notesResizableArea: CdkTextareaAutosize;
   private statusValue;
   private personId;
   private tempApplVal = null;
@@ -58,27 +58,26 @@ export class AnswerDetailsComponent implements OnInit {
     state: ["", []]
   });
   numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
+    const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
     }
     return true;
-
   }
   get applicationValuation() {
-    return this.valuationForm.get('applicationValuation');
+    return this.valuationForm.get("applicationValuation");
   }
 
   get interviewValuation() {
-    return this.valuationForm.get('interviewValuation');
+    return this.valuationForm.get("interviewValuation");
   }
 
   get notes() {
-    return this.valuationForm.get('notes');
+    return this.valuationForm.get("notes");
   }
 
   get state() {
-    return this.acceptanceForm.get('state');
+    return this.acceptanceForm.get("state");
   }
 
   show() {
@@ -95,9 +94,9 @@ export class AnswerDetailsComponent implements OnInit {
     });
 
     this.answer$ = from(this.route.paramMap).pipe(
-      switchMap(params => {
-        return this.formService.fetchAnswer({ id: params.get("id") });
-      })
+      switchMap(params =>
+        this.formService.fetchAnswer({ id: params.get("id") })
+      )
     );
     this.answer$.subscribe(data => {
       console.log(data.person.extra);
@@ -120,8 +119,8 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-console.log("tempappval", this.tempApplVal);
-console.log("appval", )
+    console.log("tempappval", this.tempApplVal);
+    console.log("appval");
     this.formService.patchPerson({
       id: this.personId,
       extra: {

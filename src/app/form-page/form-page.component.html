@@ -1,14 +1,5 @@
 <div id="main">
-  <!-- header -->
-  <div class="header">
-    <div>
-      <img src="/assets/images/logo.png" class="logo"/>
-    </div>
-    <div>
-      <p class="title">IT Akademija</p>
-    </div>
-  </div>
-
+  <app-header></app-header>
   <div id="form-container">
     <h2 id="form-title">Registracijos forma</h2>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
@@ -378,9 +369,7 @@
       </div>
 
       <div class="form-group">
-        <label for="marketing"
-          >Iš kur sužinojai apie IT akademiją?</label
-        >
+        <label for="marketing">Iš kur sužinojai apie IT akademiją?</label>
         <textarea
           (input)="triggerResize()"
           cdkTextareaAutosize
@@ -410,7 +399,7 @@
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="applicationForm.valid"
+            (click)="(applicationForm.valid)"
           >
             Pateikti
           </button>
@@ -437,7 +426,7 @@
           </div>
           <div id="modal-footer">
             <button
-              *ngIf = "isErrorMessage"
+              *ngIf="isErrorMessage"
               type="submit"
               class="btn btn-custom"
               id="btn-popup-hide"
