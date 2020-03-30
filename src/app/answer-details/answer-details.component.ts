@@ -56,7 +56,7 @@ export class AnswerDetailsComponent implements OnInit {
       '',
       []
     ],
-    notes: ['', [Validators.maxLength(450)]]
+    notes: ['', [Validators.maxLength(1000)]]
   });
   acceptanceForm = this.fb.group({
     state: ['', []]
@@ -121,8 +121,6 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-    console.log('tempappval', this.tempApplVal);
-    console.log('appval',);
     this.formService.patchPerson({
       id: this.personId,
       extra: {
@@ -175,7 +173,6 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   changeApplicationValue(e) {
-    console.log(e.value);
     this.applicationValuation.setValue(e.target.value, {
       onlySelf: true
     });

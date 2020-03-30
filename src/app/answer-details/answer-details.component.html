@@ -105,10 +105,10 @@
                         cdkTextareaAutosize
                         #notesResizableArea="cdkTextareaAutosize"
                         cdkAutosizeMinRows="4"
-                        cdkAutosizeMaxRows="8"
+                        cdkAutosizeMaxRows="13"
                         class="form-control textarea-custom"
                         id="notes"
-                        maxlength="450"
+                        maxlength="1000"
                         formControlName="notes"
                       ></textarea>
                     </div>
@@ -117,9 +117,6 @@
                       [hidden]="notes.valid || notes.untouched"
                       class="alert alert-danger"
                     >
-                      <div *ngIf="notes.errors?.required">
-                        Įveskite pastabą
-                      </div>
                       <div *ngIf="notes.errors?.maxlength">
                         Pastaba per ilga
                       </div>
