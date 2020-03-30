@@ -13,7 +13,7 @@ import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
 
 @Injectable()
-export class CustomHttpInterceptor implements HttpInterceptor {
+export class AuthHttpInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) {}
 
   intercept(
@@ -28,7 +28,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this.authService.getToken();
-    let changedRequest = request;
+    let changedRequest;
 
     const headerSettings: { [name: string]: string | string[] } = {};
 
@@ -40,9 +40,8 @@ export class CustomHttpInterceptor implements HttpInterceptor {
       headerSettings.Authorization = token;
     }
     headerSettings["Content-Type"] = "application/json";
-    const newHeader = new HttpHeaders(headerSettings);
     changedRequest = request.clone({
-      headers: newHeader
+      headers: new HttpHeaders(headerSettings)
     });
     return next.handle(changedRequest).pipe(
       tap(

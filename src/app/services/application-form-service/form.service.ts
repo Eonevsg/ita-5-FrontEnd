@@ -6,10 +6,11 @@ import { AnswerPerson } from "../../models/answer-person";
 import { Answer } from "../../models/answer";
 import { environment } from "src/environments/environment.prod";
 
+
 @Injectable({
   providedIn: "root"
 })
-export class FormService {
+export class ApplicationFormService {
   private url = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
@@ -36,11 +37,14 @@ export class FormService {
   }
 
   public saveForm(form: AnswerPerson) {
-    return this.http
-      .post<AnswerPerson>(`${this.url}/api/answer`, JSON.stringify(form), {
+    return this.http.post<AnswerPerson>(
+      `${this.url}/api/answer`,
+      JSON.stringify(form),
+      {
         headers: new HttpHeaders({ "Content-Type": "application/json" }),
-        observe: 'response'
-      });
+        observe: "response"
+      }
+    );
   }
 
   public fetchSchools(): Observable<Object> {

@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { Answer } from "../models/answer";
 import { AnswerView } from "../models/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
 import { from, Observable, empty } from "rxjs";
 import { switchMap, tap } from "rxjs/operators";
@@ -30,7 +30,7 @@ export class AnswerDetailsComponent implements OnInit {
   private email;
 
   constructor(
-    private formService: FormService,
+    private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}

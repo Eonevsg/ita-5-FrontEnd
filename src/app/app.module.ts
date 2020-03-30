@@ -12,7 +12,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { CustomHttpInterceptor } from "./services/auth/custom-http-interceptor";
+import { AuthHttpInterceptor } from "./services/auth/custom-http-interceptor";
 import { SearchPipe } from "./filter/list-filter";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -58,7 +58,7 @@ const appRoutes: Routes = [
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: CustomHttpInterceptor,
+      useClass: AuthHttpInterceptor,
       multi: true
     }
   ],
