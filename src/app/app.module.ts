@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MatSortModule } from "@angular/material/sort";
 import { MatInputModule } from "@angular/material/input";
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -38,7 +40,9 @@ const appRoutes: Routes = [
     AnswerListComponent,
     LoginPageComponent,
     AnswerDetailsComponent,
-    SearchPipe
+    SearchPipe,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

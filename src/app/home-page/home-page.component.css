@@ -64,11 +64,3 @@
   /* symbol for "collapsed" panels */
   content: "\f067";
 }
-
-.page-footer {
-  position: relative;
-  height: auto;
-  clear: both;
-  padding-top: 20px;
-  background: #ee7023;
-}

@@ -23,8 +23,7 @@ export class AuthService {
             data.headers.get("Authorization")
           );
           console.log(sessionStorage.getItem("authorization"));
-        }),
-        catchError(err => throwError(err))
+        })
       );
   }
 
