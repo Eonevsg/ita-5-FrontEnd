@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { AnswerViewModel } from "../../models/answerViewModel";
+import { AnswerView } from "../../models/answerViewModel";
 import { AnswerPerson } from "../../models/answer-person";
 import { Answer } from "../../models/answer";
 import { environment } from "src/environments/environment.prod";
@@ -18,12 +18,12 @@ export class FormService {
     return this.http.get<Answer[]>(`${this.url}/question`);
   }
 
-  public findAllAnswers(): Observable<AnswerViewModel[]> {
-    return this.http.get<AnswerViewModel[]>(`${this.url}/answer`);
+  public findAllAnswers(): Observable<AnswerView[]> {
+    return this.http.get<AnswerView[]>(`${this.url}/answer`);
   }
 
-  public fetchAnswer({ id }): Observable<AnswerViewModel> {
-    return this.http.get<AnswerViewModel>(`${this.url}/answer/${id}`);
+  public fetchAnswer({ id }): Observable<AnswerView> {
+    return this.http.get<AnswerView>(`${this.url}/answer/${id}`);
   }
 
   public patchPerson(person: { extra: any; id: string }) {

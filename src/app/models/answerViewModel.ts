@@ -1,5 +1,5 @@
 import { Person } from "src/app/models/person"
-export class AnswerViewModel {
+export class AnswerView {
   person: Person;
   answerList: string[];
 }

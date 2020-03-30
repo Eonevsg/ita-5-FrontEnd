@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AnswerViewModel } from "../models/answerViewModel";
+import { AnswerView } from "../models/answerViewModel";
 import { FormService } from "../services/form-service/form.service";
 import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
@@ -14,7 +14,7 @@ import { Person } from "../models/person";
   providers: [FormService]
 })
 export class AnswerListComponent implements OnInit {
-  answers: AnswerViewModel[];
+  answers: AnswerView[];
   persons: Person[] = [];
   sortedPersons: Person[];
   fields: any = {

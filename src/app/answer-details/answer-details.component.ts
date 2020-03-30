@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
 import { Answer } from "../models/answer";
-import { AnswerViewModel } from "../models/answerViewModel";
+import { AnswerView } from "../models/answerViewModel";
 import { FormService } from "../services/form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
 import { from, Observable, empty } from "rxjs";
@@ -16,7 +16,7 @@ import {CdkTextareaAutosize} from '@angular/cdk/text-field';
   styleUrls: ["./answer-details.component.css"]
 })
 export class AnswerDetailsComponent implements OnInit {
-  public answer$: Observable<AnswerViewModel>;
+  public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
