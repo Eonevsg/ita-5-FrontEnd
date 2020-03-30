@@ -1,236 +1,247 @@
 <div id="main">
   <body>
-  <div id="form-container">
-    <div class="card my-5">
-      <div
-        class="card-body form-inner-content"
-        *ngIf="answer$ | async as model"
-      >
-        <div class="custom-border">
-          <div class="form-inner-content">
-            <table class="table table-bordered table-striped table-hover ">
-              <thead class="thead-custom">
-              <tr>
-                <th class="center">Asmens duomenys</th>
-              </tr>
-              </thead>
-            </table>
-
-            <br/>
-            <p>{{ model.person.name + " " + model.person.surname }}</p>
-            <p>{{ model.person.uni }}</p>
-            <p>{{ model.person.phone }}</p>
-            <p>{{ model.person.email }}</p>
-
-            <div *ngFor="let answer of model.answerList">
-              <hr/>
-              <label class="bold">{{
-                getFullQuestion(answer.questionId)
-                }}</label>
-              <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
-            </div>
-            <br/>
-          </div>
-        </div>
-        <br/>
-
-        <div class="both-form-container">
-          <div class="form-container custom-border">
+    <div id="form-container">
+      <div class="card my-5">
+        <div
+          class="card-body form-inner-content"
+          *ngIf="answer$ | async as model"
+        >
+          <div class="custom-border">
             <div class="form-inner-content">
               <table class="table table-bordered table-striped table-hover ">
                 <thead class="thead-custom">
-                <tr>
-                  <th class="center">Asmens įvertinimas</th>
-                </tr>
+                  <tr>
+                    <th class="center">Asmens duomenys</th>
+                  </tr>
                 </thead>
               </table>
 
-              <div class="form-container">
-                <form
-                  [formGroup]="valuationForm"
-                  (ngSubmit)="onSubmitValuation()"
-                >
-                  <section>
-                    <div class="row">
-                      <div
-                        class="form-group column"
-                      >
-                        <label for="applicationValuation"
-                        >Anketos vertinimas</label
-                        >
-                        <select class="custom-select form-control" (change)="changeApplicationValue($event)"
-                                id="applicationValuation"
-                                formControlName="applicationValuation">
-                          <option value="">Pasirinkite įvertinimą</option>
-                          <option *ngFor="let applVal of applicationValues"
-                                  [value]="applVal.value">{{applVal.value}}</option>
-                        </select>
-                      </div>
+              <br />
+              <p>{{ model.person.name + " " + model.person.surname }}</p>
+              <p>{{ model.person.uni }}</p>
+              <p>{{ model.person.phone }}</p>
+              <p>{{ model.person.email }}</p>
 
-                      <div
-                        class="form-group column"
-                      >
-                        <label for="interviewValuation"
-                        >Interviu vertinimas</label
-                        >
-                        <select class="custom-select form-control" (change)="changeInterviewValue($event)"
-                                id="interviewValuation"
-                                formControlName="interviewValuation">
-                          <option value="">Pasirinkite įvertinimą</option>
-                          <option *ngFor="let interVal of interviewValues"
-                                  [value]="interVal.value">{{interVal.value}}</option>
-                        </select>
-                      </div>
+              <div *ngFor="let answer of model.answerList">
+                <hr />
+                <label class="bold">{{
+                  getFullQuestion(answer.questionId)
+                }}</label>
+                <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+              </div>
+              <br />
+            </div>
+          </div>
+          <br />
 
-                      <div
-                        class="form-group column"
-                      >
-                        <label for="testValuation"
-                        >Testo vertinimas</label
-                        >
-                        <select class="custom-select form-control" (change)="changeTestValue($event)"
-                                id="testValuation"
-                                formControlName="testValuation">
-                          <option value="">Pasirinkite įvertinimą</option>
-                          <option *ngFor="let testVal of testValues" [value]="testVal.value">{{testVal.value}}</option>
-                        </select>
-                      </div>
-                    </div>
+          <div class="both-form-container">
+            <div class="form-container custom-border">
+              <div class="form-inner-content">
+                <table class="table table-bordered table-striped table-hover ">
+                  <thead class="thead-custom">
+                    <tr>
+                      <th class="center">Asmens įvertinimas</th>
+                    </tr>
+                  </thead>
+                </table>
 
-                    <div class="form-group" [class.has-error]="notes.invalid">
-                      <label for="notes">Pastabos</label>
-                      <textarea
-                        type="text"
-                        (input)="triggerResize()"
-                        cdkTextareaAutosize
-                        #notesResizableArea="cdkTextareaAutosize"
-                        cdkAutosizeMinRows="4"
-                        cdkAutosizeMaxRows="13"
-                        class="form-control textarea-custom"
-                        id="notes"
-                        maxlength="1000"
-                        formControlName="notes"
-                      ></textarea>
-                    </div>
-
-                    <div
-                      [hidden]="notes.valid || notes.untouched"
-                      class="alert alert-danger"
-                    >
-                      <div *ngIf="notes.errors?.maxlength">
-                        Pastaba per ilga
-                      </div>
-                    </div>
-                  </section>
-
-                  <button
-                    type="submit"
-                    class="btn btn-custom"
-                    [disabled]="valuationForm.invalid"
-                    (click)="valuationForm.valid ? show() : null"
+                <div class="form-container">
+                  <form
+                    [formGroup]="valuationForm"
+                    (ngSubmit)="onSubmitValuation()"
                   >
-                    Išsaugoti
-                  </button>
-                </form>
-                <div
-                  [style.display]="showModal ? 'block' : 'none'"
-                  class="modal"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">
-                          Įvertinimas pateiktas
-                        </h4>
+                    <section>
+                      <div class="row">
+                        <div class="form-group column">
+                          <label for="applicationValuation"
+                            >Anketos vertinimas</label
+                          >
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeApplicationValue($event)"
+                            id="applicationValuation"
+                            formControlName="applicationValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let applVal of applicationValues"
+                              [value]="applVal.value"
+                              >{{ applVal.value }}</option
+                            >
+                          </select>
+                        </div>
+
+                        <div class="form-group column">
+                          <label for="testValuation">Testo vertinimas</label>
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeTestValue($event)"
+                            id="testValuation"
+                            formControlName="testValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let testVal of testValues"
+                              [value]="testVal.value"
+                              >{{ testVal.value }}</option
+                            >
+                          </select>
+                        </div>
+
+                        <div class="form-group column">
+                          <label for="interviewValuation"
+                            >Interviu vertinimas</label
+                          >
+                          <select
+                            class="custom-select form-control"
+                            (change)="changeInterviewValue($event)"
+                            id="interviewValuation"
+                            formControlName="interviewValuation"
+                          >
+                            <option value="">Pasirinkite įvertinimą</option>
+                            <option
+                              *ngFor="let interVal of interviewValues"
+                              [value]="interVal.value"
+                              >{{ interVal.value }}</option
+                            >
+                          </select>
+                        </div>
                       </div>
-                      <div id="modal-footer">
-                        <button
-                          type="submit"
-                          class="btn btn-custom"
-                          id="btn-popup-hide"
-                          (click)="hide()"
-                        >
-                          Tęsti
-                        </button>
-                        <button
-                          type="submit"
-                          class="btn btn-custom"
-                          id="btn-popup-back"
-                          [routerLink]="['/list']"
-                        >
-                          Baigti
-                        </button>
+
+                      <div class="form-group" [class.has-error]="notes.invalid">
+                        <label for="notes">Pastabos</label>
+                        <textarea
+                          type="text"
+                          (input)="triggerResize()"
+                          cdkTextareaAutosize
+                          #notesResizableArea="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="4"
+                          cdkAutosizeMaxRows="13"
+                          class="form-control textarea-custom"
+                          id="notes"
+                          maxlength="1000"
+                          formControlName="notes"
+                        ></textarea>
+                      </div>
+
+                      <div
+                        [hidden]="notes.valid || notes.untouched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="notes.errors?.maxlength">
+                          Pastaba per ilga
+                        </div>
+                      </div>
+                    </section>
+
+                    <button
+                      type="submit"
+                      class="btn btn-custom"
+                      [disabled]="valuationForm.invalid"
+                      (click)="valuationForm.valid ? show() : null"
+                    >
+                      Išsaugoti
+                    </button>
+                  </form>
+                  <div
+                    [style.display]="showModal ? 'block' : 'none'"
+                    class="modal"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="myModalLabel">
+                            Įvertinimas pateiktas
+                          </h4>
+                        </div>
+                        <div id="modal-footer">
+                          <button
+                            type="submit"
+                            class="btn btn-custom"
+                            id="btn-popup-hide"
+                            (click)="hide()"
+                          >
+                            Tęsti
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn btn-custom"
+                            id="btn-popup-back"
+                            [routerLink]="['/list']"
+                          >
+                            Baigti
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <br/>
-          <!-- Acceptance form -->
-          <div class="form-container custom-border">
-            <div class="form-inner-content">
-              <div class="form-title">
-                <form
-                  [formGroup]="acceptanceForm"
-                  (ngSubmit)="onSubmitAcceptance()"
-                >
-                  <div class="form-group">
-                    <table
-                      class="table table-bordered table-striped table-hover"
-                    >
-                      <thead class="thead-custom">
-                      <tr>
-                        <th class="center">Priimti/Atmesti</th>
-                      </tr>
-                      </thead>
-                    </table>
-                    <div class="form-radio-group">
-                      <div class="form-radio-group-choice">
-                        <input
-                          type="radio"
-                          value="yes"
-                          id="contract-pos"
-                          formControlName="state"
-                        />
-                        <label for="contract-pos" class="radio-label"
-                        >Priimti</label
-                        >
-                      </div>
+            <br />
+            <!-- Acceptance form -->
+            <div class="form-container custom-border">
+              <div class="form-inner-content">
+                <div class="form-title">
+                  <form
+                    [formGroup]="acceptanceForm"
+                    (ngSubmit)="onSubmitAcceptance()"
+                  >
+                    <div class="form-group">
+                      <table
+                        class="table table-bordered table-striped table-hover"
+                      >
+                        <thead class="thead-custom">
+                          <tr>
+                            <th class="center">Priimti/Atmesti</th>
+                          </tr>
+                        </thead>
+                      </table>
+                      <div class="form-radio-group">
+                        <div class="form-radio-group-choice">
+                          <input
+                            type="radio"
+                            value="yes"
+                            id="contract-pos"
+                            formControlName="state"
+                          />
+                          <label for="contract-pos" class="radio-label"
+                            >Priimti</label
+                          >
+                        </div>
 
-                      <div class="form-radio-group-choice">
-                        <input
-                          type="radio"
-                          value="no"
-                          id="contract-neg"
-                          formControlName="state"
-                        />
-                        <label for="contract-neg" class="radio-label"
-                        >Atmesti</label
-                        >
+                        <div class="form-radio-group-choice">
+                          <input
+                            type="radio"
+                            value="no"
+                            id="contract-neg"
+                            formControlName="state"
+                          />
+                          <label for="contract-neg" class="radio-label"
+                            >Atmesti</label
+                          >
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div id="bthn-bottom"></div>
-                  <button type="submit" class="btn btn-custom">
-                    Atsakyti
-                  </button>
-                </form>
+                    <div id="bthn-bottom"></div>
+                    <button type="submit" class="btn btn-custom">
+                      Atsakyti
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <button
+            [routerLink]="['/list']"
+            class="btn btn-light btn-return random"
+          >
+            Atgal
+          </button>
+          <!-- Acceptance form End -->
         </div>
-        <button
-          [routerLink]="['/list']"
-          class="btn btn-light btn-return random"
-        >
-          Atgal
-        </button>
-        <!-- Acceptance form End -->
       </div>
     </div>
-  </div>
   </body>
 </div>

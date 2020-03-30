@@ -21,9 +21,9 @@ export class AnswerListComponent implements OnInit {
     status: "",
     dateTime: "",
     name: "",
-    surname: "",
     uni: "",
     applicationValuation: "",
+    testValuation: "",
     interviewValuation: "",
     notes: ""
   };
@@ -34,6 +34,7 @@ export class AnswerListComponent implements OnInit {
     surname: "",
     uni: "",
     applicationValuation: "",
+    testValuation: "",
     interviewValuation: "",
     notes: ""
   };
@@ -91,6 +92,12 @@ export class AnswerListComponent implements OnInit {
           return this.compare(
             a.extra.interviewValuation,
             b.extra.interviewValuation,
+            isAsc
+          );
+        case "testValuation":
+          return this.compare(
+            a.extra.testValuation,
+            b.extra.testValuation,
             isAsc
           );
         case "notes":
