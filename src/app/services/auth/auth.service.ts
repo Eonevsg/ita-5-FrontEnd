@@ -15,7 +15,7 @@ export class AuthService {
 
   public logIn(user: User) {
     return this.httpClient
-      .post(this.baseUrl + "/login", user, { observe: "response" })
+      .post(`${this.baseUrl}/login`, user, { observe: "response" })
       .pipe(
         tap(data => {
           sessionStorage.setItem(
@@ -37,11 +37,9 @@ export class AuthService {
 
   error(error: HttpErrorResponse) {
     let errorMessage = "";
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
+    error.error instanceof ErrorEvent
+      ? (errorMessage = error.error.message)
+      : (errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`);
     return throwError(errorMessage);
   }
 }
