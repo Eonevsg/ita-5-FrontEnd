@@ -10,26 +10,26 @@ import { environment } from "src/environments/environment.prod";
   providedIn: "root"
 })
 export class FormService {
-  private url = environment.apiUrl;
+  private url = environment.baseUrl;
 
   constructor(private http: HttpClient) {}
 
   public fetchQuestions(): Observable<Answer[]> {
-    return this.http.get<Answer[]>(`${this.url}/question`);
+    return this.http.get<Answer[]>(`${this.url}/api/question`);
   }
 
   public findAllAnswers(): Observable<AnswerView[]> {
-    return this.http.get<AnswerView[]>(`${this.url}/answer`);
+    return this.http.get<AnswerView[]>(`${this.url}/api/answer`);
   }
 
   public fetchAnswer({ id }): Observable<AnswerView> {
-    return this.http.get<AnswerView>(`${this.url}/answer/${id}`);
+    return this.http.get<AnswerView>(`${this.url}/api/answer/${id}`);
   }
 
   public patchPerson(person: { extra: any; id: string }) {
     console.log(JSON.stringify(person));
     return this.http
-      .patch(`${this.url}/answer`, JSON.stringify(person), {
+      .patch(`${this.url}/api/answer`, JSON.stringify(person), {
         headers: new HttpHeaders({ "Content-Type": "application/json" })
       })
       .subscribe(data => console.log(data));
@@ -37,13 +37,13 @@ export class FormService {
 
   public saveForm(form: AnswerPerson) {
     return this.http
-      .post<AnswerPerson>(`${this.url}/answer`, JSON.stringify(form), {
+      .post<AnswerPerson>(`${this.url}/api/answer`, JSON.stringify(form), {
         headers: new HttpHeaders({ "Content-Type": "application/json" }),
         observe: 'response'
       });
   }
 
   public fetchSchools(): Observable<Object> {
-    return this.http.get(`${this.url}/school`);
+    return this.http.get(`${this.url}/api/school`);
   }
 }
