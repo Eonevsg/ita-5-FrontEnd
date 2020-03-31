@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { AnswerViewModel } from "../../shared/answerViewModel";
+import { AnswerViewModel } from "../../models/answerViewModel";
 import { AnswerPerson } from "../../models/answer-person";
 import { Answer } from "../../models/answer";
 import { environment } from "src/environments/environment.prod";
@@ -36,11 +36,14 @@ export class FormService {
   }
 
   public saveForm(form: AnswerPerson) {
-    return this.http
-      .post<AnswerPerson>(`${this.url}/answer`, JSON.stringify(form), {
+    return this.http.post<AnswerPerson>(
+      `${this.url}/answer`,
+      JSON.stringify(form),
+      {
         headers: new HttpHeaders({ "Content-Type": "application/json" }),
-        observe: 'response'
-      });
+        observe: "response"
+      }
+    );
   }
 
   public fetchSchools(): Observable<Object> {
