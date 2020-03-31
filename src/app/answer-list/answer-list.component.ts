@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
+import { AnswerView } from "../models/answerViewModel";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
@@ -10,11 +10,10 @@ import { Person } from "../models/person";
 @Component({
   selector: "app-answer-list",
   templateUrl: "./answer-list.component.html",
-  styleUrls: ["./answer-list.component.css"],
-  providers: [FormService]
+  styleUrls: ["./answer-list.component.css"]
 })
 export class AnswerListComponent implements OnInit {
-  answers: AnswerViewModel[];
+  answers: AnswerView[];
   persons: Person[] = [];
   sortedPersons: Person[];
   fields: any = {
@@ -42,7 +41,7 @@ export class AnswerListComponent implements OnInit {
   };
 
   constructor(
-    private formService: FormService,
+    private formService: ApplicationFormService,
     private authService: AuthService,
     private router: Router,
     private location: Location

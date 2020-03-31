@@ -12,12 +12,14 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { CustomHttpInterceptor } from "./services/auth/custom-http-interceptor";
+import { AuthHttpInterceptor } from "./services/auth/custom-http-interceptor";
 import { SearchPipe } from "./filter/list-filter";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MatSortModule } from "@angular/material/sort";
 import { MatInputModule } from "@angular/material/input";
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 
@@ -40,7 +42,9 @@ const appRoutes: Routes = [
     AnswerListComponent,
     LoginPageComponent,
     AnswerDetailsComponent,
-    SearchPipe
+    SearchPipe,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,7 @@ const appRoutes: Routes = [
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: CustomHttpInterceptor,
+      useClass: AuthHttpInterceptor,
       multi: true
     }
   ],

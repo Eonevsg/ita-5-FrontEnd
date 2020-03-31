@@ -9,7 +9,7 @@ import { User } from "../models/user";
   templateUrl: "./login-page.component.html",
   styleUrls: ["./login-page.component.css"]
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
   private token: string;
   hasError = false;
   isSelected = false;
@@ -32,6 +32,4 @@ export class LoginPageComponent implements OnInit {
       }
     );
   }
-
-  ngOnInit(): void {}
 }

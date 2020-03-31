@@ -1,7 +1,7 @@
 export class Answer {
-  constructor(s: string, value: any) {
-    this.questionId = s;
-    this.answer = value;
+  constructor(id: string, answer: string) {
+    this.questionId = id;
+    this.answer = answer;
   }
 
   questionId: string;
