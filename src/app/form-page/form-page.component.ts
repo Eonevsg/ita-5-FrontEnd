@@ -4,7 +4,6 @@ import { Person } from "../models/person";
 import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { FormHelperService } from "../services/form-helper/form-helper.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { Observable } from "rxjs";
 
@@ -18,7 +17,6 @@ export class FormPageComponent implements OnInit {
   isErrorMessage = false;
   showModal: boolean;
   $universities: Observable<string[]>;
-  
 
   @ViewChild("contractResizableArea")
   contractResizableArea: CdkTextareaAutosize;
@@ -31,105 +29,11 @@ export class FormPageComponent implements OnInit {
   @ViewChild("motivationResizableArea")
   motivationResizableArea: CdkTextareaAutosize;
 
-  // applicationForm = this.fb.group({
-  //   fname: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(100),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-  //     ]
-  //   ],
-  //   lname: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //       Validators.maxLength(100),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-  //     ]
-  //   ],
-  //   phone: [
-  //     "",
-  //     [Validators.required, Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")]
-  //   ],
-  //   email: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.maxLength(100),
-  //       Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-  //     ]
-  //   ],
-  //   establishment: ["", [Validators.required, validateSelect]],
-  //   establishmentOther: [
-  //     "",
-  //     [
-  //       requiredIfValidator(
-  //         () => this.applicationForm.get("establishment").value
-  //       ),
-  //       Validators.maxLength(150),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   contract: ["", [Validators.required]],
-  //   contractExplanation: [
-  //     "",
-  //     [
-  //       requiredIfValidator(() => this.applicationForm.get("contract").value),
-  //       Validators.maxLength(250),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   shift: ["", [Validators.required]],
-  //   shiftExplanation: [
-  //     "",
-  //     [
-  //       requiredIfValidator(() => this.applicationForm.get("shift").value),
-  //       Validators.maxLength(250),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   hobbies: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.maxLength(450),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   motivation: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.maxLength(450),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   experience: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.maxLength(450),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ],
-  //   marketing: [
-  //     "",
-  //     [
-  //       Validators.required,
-  //       Validators.maxLength(250),
-  //       Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-  //     ]
-  //   ]
-  // });
-  applicationForm = this.formHelper.buildApplicationForm(this.establishment.value, this.contract.value, this.shift.value);
-  
+  applicationForm = buildApplicationForm();
+
   constructor(
     private fb: FormBuilder,
-    private formService: ApplicationFormService,
-    private formHelper: FormHelperService
+    private formService: ApplicationFormService
   ) {}
 
   triggerResize() {
@@ -281,4 +185,100 @@ function getPersonAndAnswers(): AnswerPerson {
   tempAnswerList.push(new Answer("5", this.experience.value));
   tempAnswerList.push(new Answer("6", this.marketing.value));
   return new AnswerPerson(this.tempAnswerList, this.tempPerson);
+}
+
+function buildApplicationForm() {
+  return this.fb.group({
+    fname: [
+      "",
+      [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
+      ]
+    ],
+    lname: [
+      "",
+      [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
+      ]
+    ],
+    phone: [
+      "",
+      [Validators.required, Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")]
+    ],
+    email: [
+      "",
+      [
+        Validators.required,
+        Validators.maxLength(100),
+        Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+      ]
+    ],
+    establishment: ["", [Validators.required, validateSelect]],
+    establishmentOther: [
+      "",
+      [
+        requiredIfValidator(
+          () => this.applicationForm.get("establishment").value
+        ),
+        Validators.maxLength(150),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    contract: ["", [Validators.required]],
+    contractExplanation: [
+      "",
+      [
+        requiredIfValidator(() => this.applicationForm.get("contract").value),
+        Validators.maxLength(250),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    shift: ["", [Validators.required]],
+    shiftExplanation: [
+      "",
+      [
+        requiredIfValidator(() => this.applicationForm.get("shift").value),
+        Validators.maxLength(250),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    hobbies: [
+      "",
+      [
+        Validators.required,
+        Validators.maxLength(450),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    motivation: [
+      "",
+      [
+        Validators.required,
+        Validators.maxLength(450),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    experience: [
+      "",
+      [
+        Validators.required,
+        Validators.maxLength(450),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ],
+    marketing: [
+      "",
+      [
+        Validators.required,
+        Validators.maxLength(250),
+        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+      ]
+    ]
+  });
 }
