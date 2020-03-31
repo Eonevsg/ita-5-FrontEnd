@@ -10,9 +10,11 @@ input {
 }
 
 select {
-  background-color: #29292921;
-  border-color: #29292921;
+  background-color: #29292946;
+  border-color: transparent;
   width: 100%;
+  font-weight: bold;
+  opacity: 0.5;
 }
 
 .column-width {
