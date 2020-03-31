@@ -227,6 +227,9 @@ export class FormPageComponent implements OnInit {
     let tempPerson: Person = null;
     let tempAnswerList: Answer[] = [];
     let establishmentValue = this.establishment.value;
+    // let contractValue = this.contract.value;
+    //
+    // if (contractValue === "yes") {}
 
     if (establishmentValue === "kita") {
       establishmentValue = this.establishmentOther.value;

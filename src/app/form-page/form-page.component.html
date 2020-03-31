@@ -154,7 +154,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="contract-pos"
               formControlName="contract"
             />
@@ -164,7 +164,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               id="contract-neg"
               formControlName="contract"
             />
@@ -180,7 +180,7 @@
         </div>
 
         <div
-          [hidden]="contract.value == 'yes' || contract.pristine"
+          [hidden]="contract.value == 'true' || contract.pristine"
           class="radio-hidden-group"
         >
           <label for="contractExplanation">Pakomentuok plačiau:</label>
