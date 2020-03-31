@@ -2,6 +2,7 @@
   background: #ee7023;
   margin-right: 3%;
 }
+
 table.table-bordered > thead > tr > th {
   background-color: #ee7023;
 }
@@ -10,8 +11,25 @@ table.table-bordered > thead > tr > th {
   margin: 3%;
 }
 
+.btn-functional {
+  width: 150px;
+  margin-top: 3%;
+  margin-right: 3%;
+  margin-left: 3%;
+}
+
 .btn-return {
   float: right;
+}
+
+.button-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.button-div div:last-child {
+  margin-left: auto;
 }
 
 .custom-border {
@@ -50,5 +68,10 @@ table.table-bordered > thead > tr > th {
   content: "";
   display: table;
   clear: both;
+}
+@media only screen and (max-width: 400px) {
+  .button-div {
+    justify-content: center;
+  }
 }
 
