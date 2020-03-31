@@ -14,7 +14,7 @@ import { Observable } from "rxjs";
 })
 export class FormPageComponent implements OnInit {
   message = "";
-  isErrorMessage = false;
+  isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
 
@@ -50,7 +50,7 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    saveApplicationForm(getPersonAndAnswers());
+    this.saveApplicationForm(this.getPersonAndAnswers());
   }
 
   get fname() {
@@ -216,6 +216,45 @@ export class FormPageComponent implements OnInit {
       ]
     });
   }
+  getPersonAndAnswers(): AnswerPerson {
+    this.isErrorMessage = false;
+    this.applicationForm.markAllAsTouched();
+    let tempPerson: Person = null;
+    let tempAnswerList: Answer[] = [];
+    let establishmentValue = this.establishment.value;
+
+    if (establishmentValue === "kita") {
+      establishmentValue = this.establishmentOther.value;
+    }
+    tempPerson = new Person(
+      null,
+      this.fname.value,
+      this.lname.value,
+      this.phone.value,
+      this.email.value,
+      establishmentValue,
+      null
+    );
+    tempAnswerList.push(new Answer("1", this.contractExplanation.value));
+    tempAnswerList.push(new Answer("2", this.shiftExplanation.value));
+    tempAnswerList.push(new Answer("3", this.hobbies.value));
+    tempAnswerList.push(new Answer("4", this.motivation.value));
+    tempAnswerList.push(new Answer("5", this.experience.value));
+    tempAnswerList.push(new Answer("6", this.marketing.value));
+    return new AnswerPerson(tempAnswerList, tempPerson);
+  }
+  saveApplicationForm(answerPerson: AnswerPerson) {
+    this.formService.saveForm(answerPerson).subscribe(
+      () => (
+        (this.isErrorMessage = false),
+        (this.message = "Registracijos forma sėkmingai išsiųsta."),
+        this.show()
+      ),
+      error => (
+        (this.message = error.error), (this.isErrorMessage = true), this.show()
+      )
+    );
+  }
 }
 
 function requiredIfValidator(predicate) {
@@ -245,44 +284,4 @@ function subscribeToValue(applicationForm, parent, child) {
   applicationForm.get(parent).valueChanges.subscribe(value => {
     applicationForm.get(child).updateValueAndValidity();
   });
-}
-function saveApplicationForm(answerPerson) {
-  this.formService.saveForm(answerPerson).subscribe(
-    () => (
-      (this.isErrorMessage = false),
-      (this.message = "Registracijos forma sėkmingai išsiųsta."),
-      this.show()
-    ),
-    error => (
-      (this.message = error.error), (this.isErrorMessage = true), this.show()
-    )
-  );
-}
-
-function getPersonAndAnswers(): AnswerPerson {
-  this.isErrorMessage = false;
-  this.applicationForm.markAllAsTouched();
-  let tempPerson: Person = null;
-  let tempAnswerList: Answer[] = [];
-  let establishmentValue = this.establishment.value;
-
-  if (establishmentValue === "kita") {
-    establishmentValue = this.establishmentOther.value;
-  }
-  tempPerson = new Person(
-    null,
-    this.fname.value,
-    this.lname.value,
-    this.phone.value,
-    this.email.value,
-    establishmentValue,
-    null
-  );
-  tempAnswerList.push(new Answer("1", this.contractExplanation.value));
-  tempAnswerList.push(new Answer("2", this.shiftExplanation.value));
-  tempAnswerList.push(new Answer("3", this.hobbies.value));
-  tempAnswerList.push(new Answer("4", this.motivation.value));
-  tempAnswerList.push(new Answer("5", this.experience.value));
-  tempAnswerList.push(new Answer("6", this.marketing.value));
-  return new AnswerPerson(this.tempAnswerList, this.tempPerson);
 }
