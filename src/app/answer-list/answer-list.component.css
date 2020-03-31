@@ -9,32 +9,39 @@ input {
   vertical-align: bottom;
 }
 
+select {
+  background-color: #29292921;
+  border-color: #29292921;
+  width: 100%;
+}
+
 .column-width {
   width: 25%;
 }
 
-#id-column {
-  width: 5%;
-}
-
+#dateTime-column,
 #status-column {
-  width: 10%;
+  width: 7%;
 }
 
-#dateTime-column {
-  width: 11%;
-}
-
-.valuation-column {
-  width: 12%;
+#name-surname-column {
+  width: 15%;
 }
 
 #uni-column {
   width: 20%;
 }
 
+#contract-column {
+  width: 6%;
+}
+
+.valuation-column {
+  width: 7%;
+}
+
 #notes-column {
-  width: 12%;
+  width: 8%;
 }
 
 table {
@@ -94,6 +101,16 @@ th {
 }
 
 #main {
-  max-width: 1500px;
-  min-width: 1500px;
+  max-width: 90%;
+  min-width: 90%;
+}
+
+.tick-icon::after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.none-icon:after {
+  font-family: "FontAwesome";
+  content: "\f00d";
 }

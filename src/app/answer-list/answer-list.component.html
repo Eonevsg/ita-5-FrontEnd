@@ -16,8 +16,10 @@
           <colgroup>
             <col id="dateTime-column" />
             <col id="status-column" />
-            <col class="name-surname-column" />
+            <col id="name-surname-column" />
             <col id="uni-column" />
+            <col id="contract-column" />
+            <col class="valuation-column" />
             <col class="valuation-column" />
             <col class="valuation-column" />
             <col id="notes-column" />
@@ -109,13 +111,21 @@
                   >
                     Sutartis
                   </div>
-                  <input
+                  <select
                     [(ngModel)]="fields.contract"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
-                  />
+                  >
+                    <option value="" hidden selected>Filtruoti</option>
+                    <option value=""></option>
+                    <option [ngValue]="true">
+                      Taip
+                    </option>
+                    <option [ngValue]="false">
+                      Ne
+                    </option>
+                  </select>
                 </div>
               </th>
 
@@ -123,7 +133,7 @@
                 <div class="column-header">
                   <div
                     mat-sort-header="applicationValuation"
-                    class="column-header-title"
+                    class="column-header-title vertical-align-middle"
                   >
                     Anketos
                   </div>
@@ -141,7 +151,7 @@
                 <div class="column-header">
                   <div
                     mat-sort-header="testValuation"
-                    class="column-header-title"
+                    class="column-header-title vertical-align-middle"
                   >
                     Testo
                   </div>
@@ -159,7 +169,7 @@
                 <div class="column-header">
                   <div
                     mat-sort-header="interviewValuation"
-                    class="column-header-title"
+                    class="column-header-title vertical-align-middle"
                   >
                     Pokalbio
                   </div>
@@ -205,19 +215,22 @@
                 {{ person.name + " " + person.surname }}
               </td>
               <td class="column-width">{{ person.uni }}</td>
-              <td class="column-width">{{ person.contract }}</td>
-              <td class="column-width">
+              <td
+                class="column-width center"
+                [ngClass]="person.contract ? 'tick-icon' : 'none-icon'"
+              ></td>
+              <td class="column-width center">
                 {{ person.extra.applicationValuation }}
               </td>
-              <td class="column-width">
+              <td class="column-width center">
                 {{ person.extra.testValuation }}
               </td>
-              <td class="column-width">
+              <td class="column-width center">
                 {{ person.extra.interviewValuation }}
               </td>
               <td class="column-width">
-                <div *ngIf="person.extra.notes">
-                  {{ person.extra.notes.substring(0, 15) }}...
+                <div>
+                  {{ addDots(person.extra.notes) }}
                 </div>
               </td>
             </tr>
