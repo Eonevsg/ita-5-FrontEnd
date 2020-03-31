@@ -52,8 +52,8 @@ table {
   min-width: 981px;
 }
 
-#logout-btn {
-  float: right;
+.logout-btn {
+  float: left;
   margin: 3% 1.5%;
 }
 
@@ -116,3 +116,14 @@ th {
   font-family: "FontAwesome";
   content: "\f00d";
 }
+
+@media only screen and (max-width: 600px) {
+  #main {
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .logout-btn {
+    margin: 0% 5% 10%;
+  }
+}
+

@@ -1,13 +1,14 @@
 <div id="main">
-  <div id="logout-btn">
-    <button class="btn btn-light" type="button" (click)="logOutButtonClick()">
-      Atsijungti
-    </button>
-  </div>
   <div id="form-container">
+    <div class="logout-btn">
+      <button class="btn btn-light" type="button" (click)="logOutButtonClick()">
+        Atsijungti
+      </button>
+    </div>
+
     <div class="card">
       <div class="card-body">
-        <mat-form-field hidden> <input matInput/></mat-form-field>
+        <mat-form-field hidden><input matInput/></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
@@ -117,7 +118,8 @@
                     matInput
                     MatFormFieldControl
                   >
-                    <option value="" selected>Filtruoti</option>
+                    <option value="" hidden selected>Filtruoti</option>
+                    <option value=""></option>
                     <option [ngValue]="true">
                       Taip
                     </option>
