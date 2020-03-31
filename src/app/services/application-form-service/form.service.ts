@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { AnswerView } from "../../models/answerViewModel";
+import { AnswerView } from "../../models/answerView";
 import { AnswerPerson } from "../../models/answer-person";
 import { Answer } from "../../models/answer";
 import { environment } from "src/environments/environment.prod";
-
 
 @Injectable({
   providedIn: "root"

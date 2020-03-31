@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import { Answer } from "../models/answer";
-import { AnswerView } from "../models/answerViewModel";
+import { AnswerView } from "../models/answerView";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
 import { from, Observable, empty } from "rxjs";
@@ -116,8 +116,6 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   onSubmitValuation(): void {
-    this.valuationForm.markAllAsTouched();
-
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
     }
@@ -227,7 +225,5 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
-  sendTest() {
-
-  }
+  sendTest() {}
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AnswerView } from "../models/answerViewModel";
+import { AnswerView } from "../models/answerView";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
@@ -87,20 +87,20 @@ export class AnswerListComponent implements OnInit {
           return this.compare(a.extra.dateTime, b.extra.dateTime, isAsc);
         case "applicationValuation":
           return this.compare(
-            a.extra.applicationValuation,
-            b.extra.applicationValuation,
+            Number(a.extra.applicationValuation),
+            Number(b.extra.applicationValuation),
             isAsc
           );
         case "interviewValuation":
           return this.compare(
-            a.extra.interviewValuation,
-            b.extra.interviewValuation,
+            Number(a.extra.interviewValuation),
+            Number(b.extra.interviewValuation),
             isAsc
           );
         case "testValuation":
           return this.compare(
-            a.extra.testValuation,
-            b.extra.testValuation,
+            Number(a.extra.testValuation),
+            Number(b.extra.testValuation),
             isAsc
           );
         case "notes":
@@ -125,8 +125,8 @@ export class AnswerListComponent implements OnInit {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
-  addDots(input) {
+  addDots(input: string): string {
     let adjustedInput = input.substring(0, 12);
-    return adjustedInput > 12 ? adjustedInput + "..." : adjustedInput;
+    return input.length > 12 ? adjustedInput + "..." : adjustedInput;
   }
 }

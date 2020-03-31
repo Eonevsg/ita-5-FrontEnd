@@ -12,16 +12,16 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
-import { AuthHttpInterceptor } from "./services/auth/custom-http-interceptor";
+import { AuthHttpInterceptor } from "./services/auth/auth-http-interceptor";
 import { SearchPipe } from "./filter/list-filter";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MatSortModule } from "@angular/material/sort";
 import { MatInputModule } from "@angular/material/input";
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import {MatOptionModule} from '@angular/material/core';
-import {MatSelectModule} from '@angular/material/select';
+import { FooterComponent } from "./footer/footer.component";
+import { HeaderComponent } from "./header/header.component";
+import { MatOptionModule } from "@angular/material/core";
+import { MatSelectModule } from "@angular/material/select";
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -52,7 +52,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     TextFieldModule,
-    RouterModule.forRoot(appRoutes, {anchorScrolling: 'enabled'}),
+    RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" }),
     BrowserAnimationsModule,
     MatSortModule,
     MatInputModule,
