@@ -29,7 +29,7 @@ export class FormPageComponent implements OnInit {
   @ViewChild("motivationResizableArea")
   motivationResizableArea: CdkTextareaAutosize;
 
-  applicationForm = buildApplicationForm();
+  applicationForm = this.buildApplicationForm();
 
   constructor(
     private fb: FormBuilder,
@@ -117,7 +117,107 @@ export class FormPageComponent implements OnInit {
     this.showModal = false;
     this.message = "Registracijos forma sėkmingai išsiųsta.";
   }
+
+  buildApplicationForm() {
+    return this.fb.group({
+      fname: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(100),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
+        ]
+      ],
+      lname: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(100),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
+        ]
+      ],
+      phone: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")
+        ]
+      ],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(100),
+          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
+        ]
+      ],
+      establishment: ["", [Validators.required, validateSelect]],
+      establishmentOther: [
+        "",
+        [
+          requiredIfValidator(
+            () => this.applicationForm.get("establishment").value
+          ),
+          Validators.maxLength(150),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      contract: ["", [Validators.required]],
+      contractExplanation: [
+        "",
+        [
+          requiredIfValidator(() => this.applicationForm.get("contract").value),
+          Validators.maxLength(250),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      shift: ["", [Validators.required]],
+      shiftExplanation: [
+        "",
+        [
+          requiredIfValidator(() => this.applicationForm.get("shift").value),
+          Validators.maxLength(250),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      hobbies: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(450),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      motivation: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(450),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      experience: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(450),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ],
+      marketing: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(250),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
+        ]
+      ]
+    });
+  }
 }
+
 function requiredIfValidator(predicate) {
   return formControl => {
     if (!formControl.parent) {
@@ -185,100 +285,4 @@ function getPersonAndAnswers(): AnswerPerson {
   tempAnswerList.push(new Answer("5", this.experience.value));
   tempAnswerList.push(new Answer("6", this.marketing.value));
   return new AnswerPerson(this.tempAnswerList, this.tempPerson);
-}
-
-function buildApplicationForm() {
-  return this.fb.group({
-    fname: [
-      "",
-      [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-      ]
-    ],
-    lname: [
-      "",
-      [
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(100),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-      ]
-    ],
-    phone: [
-      "",
-      [Validators.required, Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")]
-    ],
-    email: [
-      "",
-      [
-        Validators.required,
-        Validators.maxLength(100),
-        Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-      ]
-    ],
-    establishment: ["", [Validators.required, validateSelect]],
-    establishmentOther: [
-      "",
-      [
-        requiredIfValidator(
-          () => this.applicationForm.get("establishment").value
-        ),
-        Validators.maxLength(150),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    contract: ["", [Validators.required]],
-    contractExplanation: [
-      "",
-      [
-        requiredIfValidator(() => this.applicationForm.get("contract").value),
-        Validators.maxLength(250),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    shift: ["", [Validators.required]],
-    shiftExplanation: [
-      "",
-      [
-        requiredIfValidator(() => this.applicationForm.get("shift").value),
-        Validators.maxLength(250),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    hobbies: [
-      "",
-      [
-        Validators.required,
-        Validators.maxLength(450),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    motivation: [
-      "",
-      [
-        Validators.required,
-        Validators.maxLength(450),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    experience: [
-      "",
-      [
-        Validators.required,
-        Validators.maxLength(450),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ],
-    marketing: [
-      "",
-      [
-        Validators.required,
-        Validators.maxLength(250),
-        Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-      ]
-    ]
-  });
 }
