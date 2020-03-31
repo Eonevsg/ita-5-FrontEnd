@@ -119,25 +119,24 @@
     <!-- Column 2-->
     <div class="image-container">
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/form'"/></div>
         <div>
           <a class="nav-link" [routerLink]="'/form'">Užpildykite prašymą</a>
         </div>
       </div>
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/home'"/></div>
         <div><a class="nav-link" [routerLink]="'/home'">Studentų erdvė</a></div>
       </div>
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/login'"/></div>
         <div><a class="nav-link" [routerLink]="'/login'">Prisijungimas</a></div>
       </div>
     </div>
   </div>
 
-  <div id="footerBackground">
     <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
+    <footer class="page-footer">
       <!-- Footer Links -->
       <div class="container-fluid text-center text-md-left">
         <!-- Grid row -->
@@ -145,7 +144,7 @@
           <!-- Grid column -->
           <div class="col-md-6 mt-md-0 mt-3">
             <!-- Content -->
-            <h5 class="text-uppercase">Rekvizitai</h5>
+            <p class="text-uppercase">Rekvizitai</p>
             <ul class="list-unstyled">
               <li>
                 <p>„Įmonės pavadinimas“</p>
@@ -171,7 +170,7 @@
           <!-- Grid column -->
           <div class="col-md-3 mb-md-0 mb-3">
             <!-- Links -->
-            <h5 class="text-uppercase">Nuorodos</h5>
+            <p class="text-uppercase">Nuorodos</p>
 
             <ul class="list-unstyled">
               <li>
@@ -202,6 +201,5 @@
       <!-- Copyright -->
     </footer>
     <!-- Footer -->
-  </div>
 </div>
 

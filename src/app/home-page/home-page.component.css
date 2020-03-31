@@ -72,3 +72,35 @@
   padding-top: 20px;
   background: #ee7023;
 }
+
+/* Mobile responsive */
+@media only screen and (max-width: 600px) {
+  #main{
+    /*background-color: lightblue;*/
+  }
+  .content-container{
+    width: 100%;
+    float: none;
+    height: auto;
+  }
+  .image-container {
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .side-image {
+    width: 100%;
+    height: 50%;
+  }
+  .nav-link {
+    font-size: large;
+  }
+  .page-footer {
+    font-size: large;
+  }
+  .logo {
+    width: 10%;
+    height: 10%;
+    margin-bottom: 2%;
+  }
+}
