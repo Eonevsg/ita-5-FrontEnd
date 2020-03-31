@@ -11,6 +11,7 @@ export class Person {
     notes: string;
     applicationValuation: string;
     interviewValuation: string;
+    testValuation: string;
     status: string;
   };
   constructor(
