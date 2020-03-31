@@ -176,10 +176,10 @@ export class FormPageComponent implements OnInit {
     this.tempAnswerList.push(new Answer('6', this.marketing.value));
     this.answerPerson = new AnswerPerson(this.tempAnswerList, this.tempPerson);
 
-    this.formService.saveForm(this.answerPerson).subscribe(
-      () => (this.isErrorMessage = false, this.message = 'Registracijos forma sėkmingai išsiųsta.', this.show()),
-      error => (this.message = error.error, this.isErrorMessage = true, this.show())
-    );
+    // this.formService.saveForm(this.answerPerson).subscribe(
+    //   () => (this.isErrorMessage = false, this.message = 'Registracijos forma sėkmingai išsiųsta.', this.show()),
+    //   error => (this.message = error.error, this.isErrorMessage = true, this.show())
+    // );
   }
 
   get fname() {
