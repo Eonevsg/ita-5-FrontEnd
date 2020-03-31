@@ -24,9 +24,33 @@ export class AnswerDetailsComponent implements OnInit {
   private statusValue;
   private personId;
   private tempApplVal = null;
+  private tempTestVal = null;
   private tempInterVal = null;
   private tempNotes = null;
   private email;
+
+  applicationValues: any[] = [
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" }
+  ];
+  testValues: any[] = [
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" },
+    { id: 4, value: "4" },
+    { id: 5, value: "5" },
+    { id: 6, value: "6" },
+    { id: 7, value: "7" },
+    { id: 8, value: "8" },
+    { id: 9, value: "9" },
+    { id: 10, value: "10" }
+  ];
+  interviewValues: any[] = [
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" }
+  ];
 
   constructor(
     private formService: ApplicationFormService,
@@ -35,36 +59,21 @@ export class AnswerDetailsComponent implements OnInit {
   ) {}
 
   valuationForm = this.fb.group({
-    applicationValuation: [
-      "",
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
-    ],
-    interviewValuation: [
-      "",
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
-    ],
-    notes: ["", [Validators.maxLength(450)]]
+    applicationValuation: ["", []],
+    testValuation: ["", []],
+    interviewValuation: ["", []],
+    notes: ["", [Validators.maxLength(1000)]]
   });
   acceptanceForm = this.fb.group({
     state: ["", []]
   });
-  numberOnly(event): boolean {
-    const charCode = event.which ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
-  }
+
   get applicationValuation() {
     return this.valuationForm.get("applicationValuation");
+  }
+
+  get testValuation() {
+    return this.valuationForm.get("testValuation");
   }
 
   get interviewValuation() {
@@ -112,18 +121,20 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
     }
+    if (this.testValuation.value) {
+      this.tempTestVal = this.testValuation.value;
+    }
     if (this.interviewValuation.value) {
       this.tempInterVal = this.interviewValuation.value;
     }
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-    console.log("tempappval", this.tempApplVal);
-    console.log("appval");
     this.formService.patchPerson({
       id: this.personId,
       extra: {
         applicationValuation: this.tempApplVal,
+        testValuation: this.tempTestVal,
         interviewValuation: this.tempInterVal,
         notes: this.tempNotes
       }
@@ -171,6 +182,24 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
+  changeApplicationValue(e) {
+    this.applicationValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeTestValue(e) {
+    this.testValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeInterviewValue(e) {
+    this.interviewValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
   triggerResize() {
     this.notesResizableArea.resizeToFitContent(true);
   }
@@ -178,19 +207,23 @@ export class AnswerDetailsComponent implements OnInit {
   getEmailOpenString(email: string) {
     return `mailto:${email}?subject=IT Akademija`;
   }
+
   setExistingExtraValue(extra: any) {
     if (extra.applicationValuation) {
-      this.valuationForm.controls["applicationValuation"].setValue(
+      this.valuationForm.controls.applicationValuation.setValue(
         extra.applicationValuation
       );
     }
+    if (extra.testValuation) {
+      this.valuationForm.controls.testValuation.setValue(extra.testValuation);
+    }
     if (extra.interviewValuation) {
-      this.valuationForm.controls["interviewValuation"].setValue(
+      this.valuationForm.controls.interviewValuation.setValue(
         extra.interviewValuation
       );
     }
     if (extra.notes) {
-      this.valuationForm.controls["notes"].setValue(extra.notes);
+      this.valuationForm.controls.notes.setValue(extra.notes);
     }
   }
 }

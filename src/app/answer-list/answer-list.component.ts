@@ -20,9 +20,10 @@ export class AnswerListComponent implements OnInit {
     status: "",
     dateTime: "",
     name: "",
-    surname: "",
     uni: "",
+    contract: "",
     applicationValuation: "",
+    testValuation: "",
     interviewValuation: "",
     notes: ""
   };
@@ -32,7 +33,9 @@ export class AnswerListComponent implements OnInit {
     name: "",
     surname: "",
     uni: "",
+    contract: "",
     applicationValuation: "",
+    testValuation: "",
     interviewValuation: "",
     notes: ""
   };
@@ -76,6 +79,8 @@ export class AnswerListComponent implements OnInit {
           return this.compare(a.surname, b.surname, isAsc);
         case "uni":
           return this.compare(a.uni, b.uni, isAsc);
+        case "contract":
+          return this.compare(a.contract, b.contract, isAsc);
         case "status":
           return this.compare(a.extra.status, b.extra.status, isAsc);
         case "dateTime":
@@ -90,6 +95,12 @@ export class AnswerListComponent implements OnInit {
           return this.compare(
             a.extra.interviewValuation,
             b.extra.interviewValuation,
+            isAsc
+          );
+        case "testValuation":
+          return this.compare(
+            a.extra.testValuation,
+            b.extra.testValuation,
             isAsc
           );
         case "notes":
@@ -107,10 +118,15 @@ export class AnswerListComponent implements OnInit {
   }
 
   compare(
-    a: number | string | Date,
-    b: number | string | Date,
+    a: number | string | Date | boolean,
+    b: number | string | Date | boolean,
     isAsc: boolean
   ) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  addDots(input) {
+    let adjustedInput = input.substring(0, 12);
+    return adjustedInput > 12 ? adjustedInput + "..." : adjustedInput;
   }
 }

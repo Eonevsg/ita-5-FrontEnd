@@ -190,10 +190,10 @@
             cdkTextareaAutosize
             #contractResizableArea="cdkTextareaAutosize"
             cdkAutosizeMinRows="4"
-            cdkAutosizeMaxRows="8"
+            cdkAutosizeMaxRows="16"
             class="form-control textarea-custom"
             id="contractExplanation"
-            maxlength="250"
+            maxlength="1000"
             formControlName="contractExplanation"
           ></textarea>
 
@@ -259,11 +259,11 @@
           cdkTextareaAutosize
           #shiftResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="shiftExplanation"
           formControlName="shiftExplanation"
-          maxlength="250"
+          maxlength="1000"
         ></textarea>
         <div
           class="alert alert-danger"
@@ -288,11 +288,11 @@
           cdkTextareaAutosize
           #hobbiesResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="hobbies"
           formControlName="hobbies"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="hobbies.valid || hobbies.untouched"
@@ -318,11 +318,11 @@
           cdkTextareaAutosize
           #motivationResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="motivation"
           formControlName="motivation"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="motivation.valid || motivation.untouched"
@@ -350,10 +350,10 @@
           cdkTextareaAutosize
           #experienceResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           formControlName="experience"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="experience.valid || experience.untouched"
@@ -371,16 +371,16 @@
       <div class="form-group">
         <label for="marketing">Iš kur sužinojai apie IT akademiją?</label>
         <textarea
-          (input)="triggerResize()"
           cdkTextareaAutosize
+          (input)="triggerResize()"
           #marketingResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           type="text"
           id="marketing"
           formControlName="marketing"
-          maxlength="250"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="marketing.valid || marketing.untouched"

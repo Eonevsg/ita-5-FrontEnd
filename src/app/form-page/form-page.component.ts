@@ -1,4 +1,5 @@
 import { Component, NgZone, OnInit, ViewChild } from "@angular/core";
+
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Person } from "../models/person";
 import { Answer } from "../models/answer";
@@ -6,6 +7,10 @@ import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { Observable } from "rxjs";
+
+
+
+
 
 @Component({
   selector: "app-form-page",
@@ -233,6 +238,7 @@ export class FormPageComponent implements OnInit {
       this.phone.value,
       this.email.value,
       establishmentValue,
+      this.contract.value,
       null
     );
     tempAnswerList.push(new Answer("1", this.contractExplanation.value));

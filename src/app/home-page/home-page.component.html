@@ -76,10 +76,9 @@
                 <ul>
                   <li>
                     Visa Programa vyksta dviem etapais:
-                    <ul style="list-style-type: circle;">
-                      <li>
-                        3 mėnesius vyksta praktika. Geriausiai praktikos metu
-                        pasirodę studentai atrenkami stažuotei.
+                    <ul>
+                      <li>3 mėnesius vyksta praktika. Geriausiai praktikos metu pasirodę studentai atrenkami
+                        stažuotei.
                       </li>
                       <li>
                         2 mėnesius stažuotė. Geriausieji įdarbinami
@@ -152,20 +151,22 @@
     <!-- Column 2-->
     <div class="image-container">
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image" /></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/form'"/></div>
         <div>
           <a class="nav-link" [routerLink]="'/form'">Užpildykite prašymą</a>
         </div>
       </div>
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image" /></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/home'"/></div>
         <div><a class="nav-link" [routerLink]="'/home'">Studentų erdvė</a></div>
       </div>
       <div>
-        <div><img src="/assets/images/form.jpg" class="side-image" /></div>
+        <div><img src="/assets/images/form.jpg" class="side-image" [routerLink]="'/login'"/></div>
         <div><a class="nav-link" [routerLink]="'/login'">Prisijungimas</a></div>
       </div>
     </div>
   </div>
+
   <app-footer></app-footer>
+
 </div>
