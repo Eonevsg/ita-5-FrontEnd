@@ -59,6 +59,7 @@ input[type="number"] {
 }
 
 .btn {
+  min-width: 120px;
   width: 120px;
   margin-right: 3%;
 }

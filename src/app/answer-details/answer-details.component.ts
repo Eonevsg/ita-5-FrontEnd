@@ -226,4 +226,8 @@ export class AnswerDetailsComponent implements OnInit {
       this.valuationForm.controls.notes.setValue(extra.notes);
     }
   }
+
+  sendTest() {
+
+  }
 }

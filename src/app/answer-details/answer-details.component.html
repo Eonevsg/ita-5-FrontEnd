@@ -233,12 +233,37 @@
               </div>
             </div>
           </div>
-          <button
-            [routerLink]="['/list']"
-            class="btn btn-light btn-return random"
-          >
-            Atgal
-          </button>
+          <div>
+          <div class="button-div">
+            <button
+              class="btn btn-custom btn-functional"  (click)="sendTest()">
+              Siųsti testą
+            </button>
+            <button
+              class="btn btn-custom btn-functional"  (click)="sendTest()">
+              Kviesti interviu
+            </button>
+            <button
+              class="btn btn-custom btn-functional"  (click)="sendTest()">
+              Priimti aplikaciją
+            </button>
+            <button
+              class="btn btn-custom btn-functional"  (click)="sendTest()">
+              Atmesti aplikaciją
+            </button>
+            <button
+              class="btn btn-custom btn-functional"(click)="sendTest()">
+              Atsisakė
+            </button>
+            <button
+              [routerLink]="['/list']"
+              class="btn btn-light btn-return random btn-functional"
+            >
+              Atgal
+            </button>
+          </div>
+
+          </div>
           <!-- Acceptance form End -->
         </div>
       </div>
