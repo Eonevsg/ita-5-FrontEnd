@@ -234,6 +234,7 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   sendTest() {
     this.buttonValue = "Siųsti";
     this.message = `Nuoroda i testa bus issiusta e-mailu: ${this.email}`;
@@ -244,6 +245,12 @@ export class AnswerDetailsComponent implements OnInit {
     this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
     this.show();
   }
+=======
+  sendTest() {}
+
+  inviteToInterview() {}
+
+>>>>>>> 4a94220fbc1c3d486719495b80f5caa40ce00170
   acceptApplication() {
     this.buttonValue = "Patvirtinti";
     this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
@@ -254,6 +261,7 @@ export class AnswerDetailsComponent implements OnInit {
     //   extra: { status: this.acceptMessage }
     // });
   }
+
   rejectApplication() {
     this.buttonValue = "Siųsti";
     this.message = `Neigiamas atsakymas aplikantui bus siunciams e-mailu: ${this.email}`;
@@ -262,9 +270,18 @@ export class AnswerDetailsComponent implements OnInit {
     //   extra: { status: this.rejectMessage }
     // });
   }
+<<<<<<< HEAD
   refused() {
     this.buttonValue = "Patvirtinti";
     this.message = `Aplikantas atsisake`;
     this.show();
+=======
+
+  statusRefused() {
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: { status: "Atsisakyta" }
+    });
+>>>>>>> 4a94220fbc1c3d486719495b80f5caa40ce00170
   }
 }
