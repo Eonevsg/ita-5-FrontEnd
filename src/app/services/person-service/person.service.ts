@@ -11,6 +11,6 @@ export class PersonService {
   constructor(private http: HttpClient) {}
 
   public updatePerson(person): Observable<Person> {
-    return this.http.patch<Person>(environment.answersUrl, person);
+    return this.http.patch<Person>(`${environment.baseUrl}/api/answer`, person);
   }
 }

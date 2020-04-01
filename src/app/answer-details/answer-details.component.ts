@@ -1,13 +1,12 @@
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import { Answer } from "../models/answer";
-import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
+import { AnswerView } from "../models/answerView";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { ActivatedRoute } from "@angular/router";
 import { from, Observable, empty } from "rxjs";
 import { switchMap, tap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
-import { PersonService } from "../services/person-service/person.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 
 @Component({
@@ -16,7 +15,7 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
   styleUrls: ["./answer-details.component.css"]
 })
 export class AnswerDetailsComponent implements OnInit {
-  public answer$: Observable<AnswerViewModel>;
+  public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
@@ -54,7 +53,7 @@ export class AnswerDetailsComponent implements OnInit {
   ];
 
   constructor(
-    private formService: FormService,
+    private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -103,9 +102,9 @@ export class AnswerDetailsComponent implements OnInit {
     });
 
     this.answer$ = from(this.route.paramMap).pipe(
-      switchMap(params => {
-        return this.formService.fetchAnswer({ id: params.get("id") });
-      })
+      switchMap(params =>
+        this.formService.fetchAnswer({ id: params.get("id") })
+      )
     );
     this.answer$.subscribe(data => {
       console.log(data.person.extra);
@@ -117,8 +116,6 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   onSubmitValuation(): void {
-    this.valuationForm.markAllAsTouched();
-
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
     }
@@ -227,4 +224,6 @@ export class AnswerDetailsComponent implements OnInit {
       this.valuationForm.controls.notes.setValue(extra.notes);
     }
   }
+
+  sendTest() {}
 }

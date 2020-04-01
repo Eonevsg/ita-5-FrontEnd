@@ -1,33 +1,34 @@
-import {Injectable} from '@angular/core';
-import {environment} from '../../../environments/environment.prod';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {User} from '../../models/user';
-import {throwError} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { environment } from "../../../environments/environment.prod";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { User } from "../../models/user";
+import { throwError } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  private logInUrl = '/login';
-  baseUrl = environment.baseUrl;
+  private baseUrl = environment.baseUrl;
 
   public logIn(user: User) {
-    return this.httpClient.post(this.baseUrl + this.logInUrl, user, {observe: 'response'})
+    return this.httpClient
+      .post(`${this.baseUrl}/login`, user, { observe: "response" })
       .pipe(
         tap(data => {
-          sessionStorage.setItem('authorization', data.headers.get('Authorization'));
-          console.log(sessionStorage.getItem('authorization'));
-        }),
-        catchError((err) => throwError(err))
+          sessionStorage.setItem(
+            "authorization",
+            data.headers.get("Authorization")
+          );
+          console.log(sessionStorage.getItem("authorization"));
+        })
       );
   }
 
   public getToken() {
-    return sessionStorage.getItem('authorization');
+    return sessionStorage.getItem("authorization");
   }
 
   public logOut() {
@@ -35,12 +36,10 @@ export class AuthService {
   }
 
   error(error: HttpErrorResponse) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
+    let errorMessage = "";
+    error.error instanceof ErrorEvent
+      ? (errorMessage = error.error.message)
+      : (errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`);
     return throwError(errorMessage);
   }
 }
