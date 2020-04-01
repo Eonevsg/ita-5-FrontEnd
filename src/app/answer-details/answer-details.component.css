@@ -74,4 +74,7 @@ table.table-bordered > thead > tr > th {
     justify-content: center;
   }
 }
+.modal-title {
+  white-space: pre-wrap;
+}
 
