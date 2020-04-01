@@ -30,7 +30,11 @@ input {
 }
 
 #uni-column {
-  width: 16%;
+  width: 20%;
+}
+
+#notes-column {
+  width: 12%;
 }
 
 table {
@@ -62,6 +66,7 @@ td {
   transform: translateY(-13%);
   margin-left: -5px;
   font-size: 25px;
+  width: 100%;
 }
 
 th {
@@ -89,5 +94,6 @@ th {
 }
 
 #main {
-  width: 85%;
+  max-width: 1500px;
+  min-width: 1500px;
 }

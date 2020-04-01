@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { MatSortModule } from "@angular/material/sort";
 import { MatInputModule } from "@angular/material/input";
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -46,10 +48,12 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     TextFieldModule,
-    RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" }),
+    RouterModule.forRoot(appRoutes, {anchorScrolling: 'enabled'}),
     BrowserAnimationsModule,
     MatSortModule,
-    MatInputModule
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [
     {
