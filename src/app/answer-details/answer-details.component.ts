@@ -226,4 +226,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {}
+  inviteToInterview(){}
+  acceptApplication(){}
+  rejectApplication(){}
 }
