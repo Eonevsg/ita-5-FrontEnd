@@ -69,11 +69,16 @@ table.table-bordered > thead > tr > th {
   display: table;
   clear: both;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (min-width: 768px) {
   .button-div {
     justify-content: center;
   }
 }
+
+.bold {
+  font-weight: bold;
+}
+
 .modal-title {
   white-space: pre-wrap;
 }
