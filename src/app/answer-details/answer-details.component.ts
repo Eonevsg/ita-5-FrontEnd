@@ -15,6 +15,8 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
   styleUrls: ["./answer-details.component.css"]
 })
 export class AnswerDetailsComponent implements OnInit {
+  private acceptMessage = "Priimta";
+  private rejectMessage = "Atmesta";
   public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
@@ -139,21 +141,21 @@ export class AnswerDetailsComponent implements OnInit {
     });
   }
 
-  onSubmitAcceptance() {
-    this.acceptanceForm.markAllAsTouched();
-    this.statusValue = null;
-    console.log(this.state.value);
-    if (this.state.value === "yes") {
-      this.statusValue = "Priimta";
-    } else if (this.state.value === "no") {
-      this.statusValue = "Atmesta";
-    }
-    window.location.href = this.getEmailOpenString(this.email);
-    this.formService.patchPerson({
-      id: this.personId,
-      extra: { status: this.statusValue }
-    });
-  }
+  // onSubmitAcceptance() {
+  //   this.acceptanceForm.markAllAsTouched();
+  //   this.statusValue = null;
+  //   console.log(this.state.value);
+  //   if (this.state.value === "yes") {
+  //     this.statusValue = "Priimta";
+  //   } else if (this.state.value === "no") {
+  //     this.statusValue = "Atmesta";
+  //   }
+  //   window.location.href = this.getEmailOpenString(this.email);
+  //   this.formService.patchPerson({
+  //     id: this.personId,
+  //     extra: { status: this.statusValue }
+  //   });
+  // }
 
   updateStatus(person: Person): any {
     if (person.extra.status.toLowerCase() === "nauja") {
@@ -226,7 +228,18 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {}
-  inviteToInterview(){}
-  acceptApplication(){}
-  rejectApplication(){}
+  inviteToInterview() {}
+  acceptApplication() {
+    // window.location.href = this.getEmailOpenString(this.email);
+    // this.formService.patchPerson({
+    //   id: this.personId,
+    //   extra: { status: this.acceptMessage }
+    // });
+  }
+  rejectApplication() {
+    // this.formService.patchPerson({
+    //   id: this.personId,
+    //   extra: { status: this.rejectMessage }
+    // });
+  }
 }

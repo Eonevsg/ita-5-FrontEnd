@@ -179,92 +179,44 @@
               </div>
             </div>
             <br />
-            <!-- Acceptance form -->
-            <div class="form-container custom-border">
-              <div class="form-inner-content">
-                <div class="form-title">
-                  <form
-                    [formGroup]="acceptanceForm"
-                    (ngSubmit)="onSubmitAcceptance()"
-                  >
-                    <div class="form-group">
-                      <table
-                        class="table table-bordered table-striped table-hover"
-                      >
-                        <thead class="thead-custom">
-                          <tr>
-                            <th class="center">Priimti/Atmesti</th>
-                          </tr>
-                        </thead>
-                      </table>
-                      <div class="form-radio-group">
-                        <div class="form-radio-group-choice">
-                          <input
-                            type="radio"
-                            value="yes"
-                            id="contract-pos"
-                            formControlName="state"
-                          />
-                          <label for="contract-pos" class="radio-label"
-                            >Priimti</label
-                          >
-                        </div>
-
-                        <div class="form-radio-group-choice">
-                          <input
-                            type="radio"
-                            value="no"
-                            id="contract-neg"
-                            formControlName="state"
-                          />
-                          <label for="contract-neg" class="radio-label"
-                            >Atmesti</label
-                          >
-                        </div>
-                      </div>
-                    </div>
-
-                    <div id="bthn-bottom"></div>
-                    <button type="submit" class="btn btn-custom">
-                      Atsakyti
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
           <div>
-          <div class="button-div">
-            <button
-              class="btn btn-custom btn-functional"  (click)="sendTest()">
-              Siųsti testą
-            </button>
-            <button
-              class="btn btn-custom btn-functional"  (click)="inviteToInterview()">
-              Kviesti interviu
-            </button>
-            <button
-              class="btn btn-custom btn-functional"  (click)="acceptApplication()">
-              Priimti aplikaciją
-            </button>
-            <button
-              class="btn btn-custom btn-functional"  (click)="rejectApplication()">
-              Atmesti aplikaciją
-            </button>
-            <button
-              class="btn btn-custom btn-functional">
-              Atsisakė
-            </button>
-            <button
-              [routerLink]="['/list']"
-              class="btn btn-light btn-return random btn-functional"
-            >
-              Atgal
-            </button>
+            <div class="button-div">
+              <button
+                class="btn btn-custom btn-functional"
+                (click)="sendTest()"
+              >
+                Siųsti testą
+              </button>
+              <button
+                class="btn btn-custom btn-functional"
+                (click)="inviteToInterview()"
+              >
+                Kviesti interviu
+              </button>
+              <button
+                class="btn btn-custom btn-functional"
+                (click)="acceptApplication()"
+              >
+                Priimti aplikaciją
+              </button>
+              <button
+                class="btn btn-custom btn-functional"
+                (click)="rejectApplication()"
+              >
+                Atmesti aplikaciją
+              </button>
+              <button class="btn btn-custom btn-functional">
+                Atsisakė
+              </button>
+              <button
+                [routerLink]="['/list']"
+                class="btn btn-light btn-return random btn-functional"
+              >
+                Atgal
+              </button>
+            </div>
           </div>
-
-          </div>
-          <!-- Acceptance form End -->
         </div>
       </div>
     </div>
