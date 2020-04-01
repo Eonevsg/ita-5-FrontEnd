@@ -223,7 +223,7 @@ export class AnswerDetailsComponent implements OnInit {
 
   sendTest() {
     this.buttonValue = "Siųsti";
-    this.message = `Nuoroda į testa bus išsiųsta el. paštu: ${this.email}`;
+    this.message = `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`;
     this.buttonFunction ="onSendEmail";
     this.statusValue = "Testas";
     this.show();
@@ -237,7 +237,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
   acceptApplication() {
     this.buttonValue = "Patvirtinti";
-    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
+    this.message = "Su aplikantu bus susisiekta telefonu:\n" + this.phone;
     this.buttonFunction ="onConfirm";
     this.statusValue = "Priimta";
     this.show();
@@ -246,7 +246,7 @@ export class AnswerDetailsComponent implements OnInit {
 
   rejectApplication() {
     this.buttonValue = "Siųsti";
-    this.message = `Neigiamas atsakymas aplikantui bus siunčiams el. paštu: ${this.email}`;
+    this.message = `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`;
     this.buttonFunction ="onSendEmail";
     this.statusValue = "Atmesta";
 
@@ -254,7 +254,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
   refused() {
     this.buttonValue = "Patvirtinti";
-    this.message = `Aplikantas atsisake`;
+    this.message = `Aplikantas atsisakė`;
     this.buttonFunction ="onConfirm";
     this.statusValue = "Atsisakė";
     this.show();
