@@ -15,21 +15,27 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
   styleUrls: ["./answer-details.component.css"]
 })
 export class AnswerDetailsComponent implements OnInit {
+  //Message variables
   private acceptMessage = "Priimta";
   private rejectMessage = "Atmesta";
+
   public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
   public person$: Observable<Person>;
   @ViewChild("notesResizableArea") notesResizableArea: CdkTextareaAutosize;
-  private statusValue;
-  private personId;
-  private tempApplVal = null;
-  private tempTestVal = null;
-  private tempInterVal = null;
-  private tempNotes = null;
-  private email;
+  private statusValue: string;
+  private personId: string;
+  private tempApplVal: string = null;
+  private tempTestVal: string = null;
+  private tempInterVal: string = null;
+  private tempNotes: string = null;
+  private email: string;
+  private phone: string;
+
+  public message: string;
+  public buttonValue: string;
 
   applicationValues: any[] = [
     { id: 1, value: "1" },
@@ -114,6 +120,7 @@ export class AnswerDetailsComponent implements OnInit {
       this.updateStatus(data.person);
       this.personId = data.person.id;
       this.email = data.person.email;
+      this.phone = data.person.phone;
     });
   }
 
@@ -227,9 +234,20 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
-  sendTest() {}
-  inviteToInterview() {}
+  sendTest() {
+    this.buttonValue = "Siųsti";
+    this.message = `Nuoroda i testa bus issiusta e-mailu: ${this.email}`;
+    this.show();
+  }
+  inviteToInterview() {
+    this.buttonValue = "Patvirtinti";
+    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
+    this.show();
+  }
   acceptApplication() {
+    this.buttonValue = "Patvirtinti";
+    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
+    this.show();
     // window.location.href = this.getEmailOpenString(this.email);
     // this.formService.patchPerson({
     //   id: this.personId,
@@ -237,9 +255,16 @@ export class AnswerDetailsComponent implements OnInit {
     // });
   }
   rejectApplication() {
+    this.buttonValue = "Siųsti";
+    this.message = `Neigiamas atsakymas aplikantui bus siunciams e-mailu: ${this.email}`;
     // this.formService.patchPerson({
     //   id: this.personId,
     //   extra: { status: this.rejectMessage }
     // });
+  }
+  refused() {
+    this.buttonValue = "Patvirtinti";
+    this.message = `Aplikantas atsisake`;
+    this.show();
   }
 }

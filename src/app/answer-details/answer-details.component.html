@@ -151,7 +151,7 @@
                       <div class="modal-content">
                         <div class="modal-header">
                           <h4 class="modal-title" id="myModalLabel">
-                            Įvertinimas pateiktas
+                            {{message}}
                           </h4>
                         </div>
                         <div id="modal-footer">
@@ -161,7 +161,7 @@
                             id="btn-popup-hide"
                             (click)="hide()"
                           >
-                            Tęsti
+                            {{buttonValue}}
                           </button>
                           <button
                             type="submit"
@@ -169,7 +169,7 @@
                             id="btn-popup-back"
                             [routerLink]="['/list']"
                           >
-                            Baigti
+                            Išeiti
                           </button>
                         </div>
                       </div>
@@ -206,7 +206,7 @@
               >
                 Atmesti aplikaciją
               </button>
-              <button class="btn btn-custom btn-functional">
+              <button class="btn btn-custom btn-functional" (click)="refused()">
                 Atsisakė
               </button>
               <button
