@@ -74,7 +74,12 @@ table.table-bordered > thead > tr > th {
     justify-content: center;
   }
 }
+
 .bold {
   font-weight: bold;
+}
+
+.modal-title {
+  white-space: pre-wrap;
 }
 

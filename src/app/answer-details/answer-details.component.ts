@@ -15,19 +15,28 @@ import { CdkTextareaAutosize } from "@angular/cdk/text-field";
   styleUrls: ["./answer-details.component.css"]
 })
 export class AnswerDetailsComponent implements OnInit {
+  //Message variables
+  private acceptMessage = "Priimta";
+  private rejectMessage = "Atmesta";
+
   public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
   public person$: Observable<Person>;
   @ViewChild("notesResizableArea") notesResizableArea: CdkTextareaAutosize;
-  private statusValue;
-  private personId;
-  private tempApplVal = null;
-  private tempTestVal = null;
-  private tempInterVal = null;
-  private tempNotes = null;
-  private email;
+  private statusValue: string;
+  private personId: string;
+  private tempApplVal: string = null;
+  private tempTestVal: string = null;
+  private tempInterVal: string = null;
+  private tempNotes: string = null;
+  private email: string;
+  private phone: string;
+
+  public message: string;
+  public buttonValue: string;
+  public buttonFunction: string;
 
   applicationValues: any[] = [
     { id: 1, value: "1" },
@@ -112,6 +121,7 @@ export class AnswerDetailsComponent implements OnInit {
       this.updateStatus(data.person);
       this.personId = data.person.id;
       this.email = data.person.email;
+      this.phone = data.person.phone;
     });
   }
 
@@ -139,21 +149,7 @@ export class AnswerDetailsComponent implements OnInit {
     });
   }
 
-  onSubmitAcceptance() {
-    this.acceptanceForm.markAllAsTouched();
-    this.statusValue = null;
-    console.log(this.state.value);
-    if (this.state.value === "yes") {
-      this.statusValue = "Priimta";
-    } else if (this.state.value === "no") {
-      this.statusValue = "Atmesta";
-    }
-    window.location.href = this.getEmailOpenString(this.email);
-    this.formService.patchPerson({
-      id: this.personId,
-      extra: { status: this.statusValue }
-    });
-  }
+
 
   updateStatus(person: Person): any {
     if (person.extra.status.toLowerCase() === "nauja") {
@@ -225,5 +221,59 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
-  sendTest() {}
+  sendTest() {
+    this.buttonValue = "Siųsti";
+    this.message = `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`;
+    this.buttonFunction ="onSendEmail";
+    this.statusValue = "Testas";
+    this.show();
+  }
+  inviteToInterview() {
+    this.buttonValue = "Patvirtinti";
+    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
+    this.buttonFunction ="onConfirm";
+    this.statusValue = "Interviu";
+    this.show();
+  }
+  acceptApplication() {
+    this.buttonValue = "Patvirtinti";
+    this.message = "Su aplikantu bus susisiekta telefonu:\n" + this.phone;
+    this.buttonFunction ="onConfirm";
+    this.statusValue = "Priimta";
+    this.show();
+
+  }
+
+  rejectApplication() {
+    this.buttonValue = "Siųsti";
+    this.message = `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`;
+    this.buttonFunction ="onSendEmail";
+    this.statusValue = "Atmesta";
+
+    this.show();
+  }
+  refused() {
+    this.buttonValue = "Patvirtinti";
+    this.message = `Aplikantas atsisakė`;
+    this.buttonFunction ="onConfirm";
+    this.statusValue = "Atsisakė";
+    this.show();
+  }
+
+  onConfirm() {
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: { status: this.statusValue }
+    });
+    this.hide();
+  }
+
+  onSendEmail() {
+    window.location.href = this.getEmailOpenString(this.email);
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: { status: this.statusValue }
+    });
+    this.hide();
+  }
 }
