@@ -394,12 +394,33 @@
           </div>
         </div>
       </div>
+
+      <div class="chechbox-group form-group">
+        <!-- <label ngbButtonLabel> -->
+        <input
+          type="checkbox"
+          ngbButton
+          id="thirdPartyAgreement"
+          formControlName="thirdPartyAgreement"
+        />
+        Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi
+        įmonės AB "Pavadinimas" IT akademijos tikslams.
+        <!-- </label> -->
+
+        <div
+          [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"
+          class="alert alert-danger"
+        >
+          Laukas privalomas!
+        </div>
+      </div>
+
       <div class="row">
         <div id="submit">
           <button
             type="submit"
             class="btn btn-custom"
-            (click)="(applicationForm.valid)"
+            (click)="applicationForm.valid ? show() : null"
           >
             Pateikti
           </button>
@@ -435,7 +456,7 @@
               Tęsti
             </button>
             <button
-              type="submit"
+              type="button"
               class="btn btn-custom"
               id="btn-popup"
               [routerLink]="['/home']"

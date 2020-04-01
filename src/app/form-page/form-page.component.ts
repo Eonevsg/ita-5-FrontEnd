@@ -8,10 +8,6 @@ import { ApplicationFormService } from "../services/application-form-service/for
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { Observable } from "rxjs";
 
-
-
-
-
 @Component({
   selector: "app-form-page",
   templateUrl: "./form-page.component.html",
@@ -55,7 +51,10 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.saveApplicationForm(this.getPersonAndAnswers());
+    this.applicationForm.markAllAsTouched();
+    if (this.applicationForm.valid) {
+      this.saveApplicationForm(this.getPersonAndAnswers());
+    }
   }
 
   get fname() {
@@ -112,6 +111,10 @@ export class FormPageComponent implements OnInit {
 
   get marketing() {
     return this.applicationForm.get("marketing");
+  }
+
+  get thirdPartyAgreement() {
+    return this.applicationForm.get("thirdPartyAgreement");
   }
 
   show() {
@@ -218,18 +221,15 @@ export class FormPageComponent implements OnInit {
           Validators.maxLength(250),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
         ]
-      ]
+      ],
+      thirdPartyAgreement: ["", [Validators.required]]
     });
   }
   getPersonAndAnswers(): AnswerPerson {
     this.isErrorMessage = false;
-    this.applicationForm.markAllAsTouched();
     let tempPerson: Person = null;
     let tempAnswerList: Answer[] = [];
     let establishmentValue = this.establishment.value;
-    // let contractValue = this.contract.value;
-    //
-    // if (contractValue === "yes") {}
 
     if (establishmentValue === "kita") {
       establishmentValue = this.establishmentOther.value;
