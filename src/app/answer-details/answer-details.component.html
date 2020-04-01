@@ -202,11 +202,14 @@
               </button>
               <button
                 class="btn btn-custom btn-functional"
-                (click)="rejectApplication()"
+                (click)="sendTest()"
               >
                 Atmesti aplikaciją
               </button>
-              <button class="btn btn-custom btn-functional">
+              <button
+                class="btn btn-custom btn-functional"
+                (click)="statusRefused()"
+              >
                 Atsisakė
               </button>
               <button

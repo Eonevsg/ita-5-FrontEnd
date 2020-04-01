@@ -228,7 +228,9 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {}
+
   inviteToInterview() {}
+
   acceptApplication() {
     // window.location.href = this.getEmailOpenString(this.email);
     // this.formService.patchPerson({
@@ -236,10 +238,18 @@ export class AnswerDetailsComponent implements OnInit {
     //   extra: { status: this.acceptMessage }
     // });
   }
+
   rejectApplication() {
     // this.formService.patchPerson({
     //   id: this.personId,
     //   extra: { status: this.rejectMessage }
     // });
+  }
+
+  statusRefused() {
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: { status: "Atsisakyta" }
+    });
   }
 }
