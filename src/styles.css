@@ -3,7 +3,7 @@ html {
   height: 100%;
   margin: 0px;
   min-width: 320px;
-  background-color: lightsalmon;
+  background-color: #e0dceb3d;
 }
 
 #main {
@@ -20,13 +20,6 @@ html {
   margin-top: 50px;
   margin-bottom: 50px;
   background: #ffffff;
-}
-
-.bg-img {
-  background-color: #e0dceb3d;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* Firefox */
@@ -96,4 +89,25 @@ table.table-bordered > thead > tr > th {
 
 .center {
   text-align: center;
+}
+
+h1,
+label {
+  color: #512b2b;
+  font-weight: bold;
+}
+
+p {
+  color: #57292a;
+}
+
+.form-group-header {
+  margin-top: 7%;
+  font-size: 18px;
+}
+
+.form-group-header > hr {
+  margin-top: 0px;
+  border-color: #cccccc;
+  margin-bottom: 30px;
 }
