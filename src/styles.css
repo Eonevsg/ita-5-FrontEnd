@@ -3,6 +3,23 @@ html {
   height: 100%;
   margin: 0px;
   min-width: 320px;
+  background-color: lightsalmon;
+}
+
+#main {
+  height: auto;
+  display: block;
+  overflow: auto;
+  max-width: 1023px;
+  min-width: 320px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #ffffff;
 }
 
 .bg-img {
@@ -10,35 +27,6 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#main {
-  overflow-y: scroll;
-  height: 100%;
-  max-width: 1023px;
-  min-width: 320px;
-  background-color: white;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  -ms-overflow-style: none;
-}
-
-/* Hide scroll bar */
-#main::-webkit-scrollbar {
-  display: none;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 /* Firefox */
@@ -90,23 +78,6 @@ input[type="number"] {
 
 #submit {
   margin-right: 2%;
-}
-
-.logo {
-  margin-bottom: 2%;
-  width: 5%;
-  height: 5%;
-}
-
-.header {
-  text-align: left;
-  background: white;
-  color: #512b2b;
-  margin: 2% 5%;
-}
-
-.title {
-  font-size: 250%;
 }
 
 .textarea-custom {
