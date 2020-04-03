@@ -94,12 +94,14 @@ table.table-bordered > thead > tr > th {
 }
 
 h1,
+h2,
 label {
   color: #512b2b;
   font-weight: bold;
 }
 
-p {
+p,
+li {
   color: #57292a;
 }
 
