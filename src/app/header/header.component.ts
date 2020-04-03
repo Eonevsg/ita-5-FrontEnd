@@ -12,4 +12,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeMenu(){
+    document.getElementById("navbarSupportedContent").classList.remove("show");
+  }
+
 }
