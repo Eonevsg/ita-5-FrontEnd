@@ -126,3 +126,24 @@ table.table-bordered > thead > tr > th {
 .center {
   text-align: center;
 }
+
+h1,
+label {
+  color: #512b2b;
+  font-weight: bold;
+}
+
+p {
+  color: #57292a;
+}
+
+.form-group-header {
+  margin-top: 7%;
+  font-size: 18px;
+}
+
+.form-group-header > hr {
+  margin-top: 0px;
+  border-color: #cccccc;
+  margin-bottom: 30px;
+}

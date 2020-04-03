@@ -1,8 +1,18 @@
 <div id="main">
   <app-header></app-header>
   <div id="form-container">
-    <h2 id="form-title">Registracijos forma</h2>
+    <h1 id="form-title">Registracijos forma</h1>
+    <p>
+      Užpildykite registracijos formą dalyvauti IT Akademijoje. <br />
+      Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl
+      dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus
+      klausimams rašykite mums - atranka@Įmonės_pavadinimas.lt
+    </p>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group-header">
+        <label>Kontaktinė informacija</label>
+        <hr />
+      </div>
       <div class="form-group" [class.has-error]="fname.invalid">
         <label for="fname">Vardas:</label>
         <input
@@ -96,6 +106,11 @@
             Neteisingas formatas!
           </div>
         </div>
+      </div>
+
+      <div class="form-group-header">
+        <label>Apie tave</label>
+        <hr />
       </div>
 
       <div class="form-group">
@@ -224,6 +239,7 @@
               type="radio"
               value="yes"
               id="shift-pos"
+              class="radio-custom"
               formControlName="shift"
             />
             <label for="shift-pos" class="radio-label">Taip</label>
@@ -233,6 +249,7 @@
             <input
               type="radio"
               value="no"
+              class="radio-custom"
               id="shift-neg"
               formControlName="shift"
             />
@@ -368,6 +385,11 @@
         </div>
       </div>
 
+      <div class="form-group-header">
+        <label>Papildoma informacija</label>
+        <hr />
+      </div>
+
       <div class="form-group">
         <label for="marketing">Iš kur sužinojai apie IT akademiją?</label>
         <textarea
@@ -396,7 +418,6 @@
       </div>
 
       <div class="chechbox-group form-group">
-        <!-- <label ngbButtonLabel> -->
         <input
           type="checkbox"
           ngbButton
@@ -405,7 +426,6 @@
         />
         Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi
         įmonės AB "Pavadinimas" IT akademijos tikslams.
-        <!-- </label> -->
 
         <div
           [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"
@@ -415,25 +435,14 @@
         </div>
       </div>
 
-      <div class="row">
-        <div id="submit">
-          <button
-            type="submit"
-            class="btn btn-custom"
-            (click)="applicationForm.valid ? onSubmit() : null"
-          >
-            Pateikti
-          </button>
-        </div>
-        <div id="reset">
-          <button
-            type="button"
-            class="btn btn-light"
-            (click)="applicationForm.reset()"
-          >
-            Išvalyti
-          </button>
-        </div>
+      <div id="submit">
+        <button
+          type="submit"
+          class="btn btn-custom"
+          (click)="applicationForm.valid ? onSubmit() : null"
+        >
+          Pateikti
+        </button>
       </div>
     </form>
 
