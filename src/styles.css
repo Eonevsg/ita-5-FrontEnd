@@ -5,42 +5,17 @@ html {
   min-width: 320px;
 }
 
-.bg-img {
-  background-image: url("/assets/images/back.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
 #main {
-  overflow-y: scroll;
-  height: 100%;
-  /*width: 65%;*/
+  height: auto;
+  display: block;
+  overflow: auto;
   max-width: 1023px;
   min-width: 320px;
-  background-color: white;
-  position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  -ms-overflow-style: none;
-}
-
-/* Hide scroll bar */
-#main::-webkit-scrollbar {
-  display: none;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 /* Firefox */
