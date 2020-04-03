@@ -7,7 +7,8 @@
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <div class="hamburg">
+
+    <div class="hamburger">
       <button
         class="navbar-toggler"
         type="button"
@@ -23,13 +24,28 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" [routerLink]="'/home'" routerLinkActive="active">
+        <li
+          class="nav-item"
+          [routerLink]="'/home'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
           <a class="nav-link">Pradinis</a>
         </li>
-        <li class="nav-item" [routerLink]="'/form'" routerLinkActive="active">
+        <li
+          class="nav-item"
+          [routerLink]="'/form'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
           <a class="nav-link">Registracija</a>
         </li>
-        <li class="nav-item" [routerLink]="'/career'" routerLinkActive="active">
+        <li
+          class="nav-item"
+          [routerLink]="'/career'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
           <a class="nav-link">Karjera įmonėje</a>
         </li>
         <li
@@ -37,6 +53,7 @@
           class="nav-item login-button"
           [routerLink]="'/login'"
           routerLinkActive="active"
+          (click)="closeMenu()"
         >
           <a class="nav-link">Prisijungti</a>
         </li>

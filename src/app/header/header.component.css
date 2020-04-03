@@ -10,25 +10,55 @@
   padding: 30px;
   margin-left: 1%;
 }
-
 .logo-container p {
   display: inline-block;
   margin-left: 2%;
 }
-
 .logo {
   width: 3%;
   height: 3%;
   top: 10px;
 }
-
 .title {
   font-size: 120%;
 }
-
-@media (min-width: 992px) {
+@media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding: 1em 1.5em;
+  }
+  nav {
+    position: absolute;
+  }
+  #login-button {
+    margin-left: 443px;
+  }
+}
+@media (min-width: 1131px) {
+  #login-button {
+    margin-left: 443px;
+  }
+}
+@media (max-width: 1130px) {
+  .navbar-expand-lg .navbar-toggler {
+    display: block;
+    float: right;
+  }
+  .collapse:not(.show) {
+    display: none !important;
+  }
+  #login-button {
+    margin-left: 0;
+  }
+  .hamburger {
+    position: absolute;
+    top: -74px;
+    margin-right: 2%;
+  }
+  #navbarSupportedContent {
+    position: absolute;
+    background-color: white;
+    right: 0px;
+    top: 0px;
   }
 }
 
@@ -36,28 +66,26 @@
   color: black;
   font-weight: 500;
 }
-
 .navbar-light .navbar-nav .active > .nav-link {
   background-color: #e0dceb3d;
 }
-
 nav {
   padding: 0px;
-  position: absolute;
   bottom: 0;
-  width: 1023px;
+  max-width: 1023px;
   margin: auto;
   left: 0;
   right: 0;
 }
-
 nav li.nav-item {
-  border: 1px solid lightgrey;
+  border: 1px solid rgba(211, 211, 211, 0.541);
   color: black;
   width: 145px;
   text-align: center;
 }
 
-#login-button {
-  margin-left: 443px;
+.navbar-light .navbar-nav .login-button > .nav-link {
+}
+.hamburger {
+  width: 100%;
 }
