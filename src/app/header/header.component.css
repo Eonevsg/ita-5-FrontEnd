@@ -49,16 +49,16 @@
   #login-button {
     margin-left: 0;
   }
-  .hamburger{
-      position: absolute;
-      top: -74px;
-      margin-right: 2%;
+  .hamburger {
+    position: absolute;
+    top: -74px;
+    margin-right: 2%;
   }
-  #navbarSupportedContent{
-      position: absolute;
-      background-color: white;
-      right:0px;
-      top:0px;
+  #navbarSupportedContent {
+    position: absolute;
+    background-color: white;
+    right: 0px;
+    top: 0px;
   }
 }
 
@@ -78,7 +78,7 @@ nav {
   right: 0;
 }
 nav li.nav-item {
-  border: 1px solid lightgrey;
+  border: 1px solid rgba(211, 211, 211, 0.541);
   color: black;
   width: 145px;
   text-align: center;
