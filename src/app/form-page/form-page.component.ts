@@ -7,7 +7,7 @@ import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { Observable } from "rxjs";
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @Component({
   selector: "app-form-page",
@@ -15,7 +15,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   styleUrls: ["./form-page.component.css"]
 })
 export class FormPageComponent implements OnInit {
-  message = "";
+  messageTitle = "Registracija sėkmingai išsiųsta!";
+  message =
+    "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
@@ -124,7 +126,9 @@ export class FormPageComponent implements OnInit {
 
   hide() {
     this.showModal = false;
-    this.message = "Registracijos forma sėkmingai išsiųsta.";
+    this.messageTitle = "Registracijos forma sėkmingai išsiųsta.";
+    this.message =
+      "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
   }
 
   buildApplicationForm() {
@@ -257,11 +261,16 @@ export class FormPageComponent implements OnInit {
     this.formService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
-        (this.message = "Registracijos forma sėkmingai išsiųsta."),
+        (this.messageTitle = "Registracijos forma sėkmingai išsiųsta."),
+        (this.message =
+          "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d."),
         this.show()
       ),
       error => (
-        (this.message = error.error), (this.isErrorMessage = true), this.show()
+        (this.messageTitle = "Klaida!"),
+        (this.message = error.error),
+        (this.isErrorMessage = true),
+        this.show()
       )
     );
   }
