@@ -118,3 +118,6 @@ th {
   /*  padding: 0;*/
   /*}*/
 }
+.table-primary-header {
+  padding: 2px;
+}
