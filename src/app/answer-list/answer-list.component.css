@@ -9,37 +9,35 @@ input {
   vertical-align: bottom;
 }
 
-.column-width {
-  width: 25%;
+select {
+  background-color: #29292946;
+  border-color: transparent;
+  width: 100%;
+  font-weight: bold;
+  opacity: 0.5;
 }
 
-#id-column {
-  width: 5%;
-}
-
-#status-column {
-  width: 10%;
-}
-
-#dateTime-column {
-  width: 11%;
-}
-
+#dateTime-column,
+#status-column,
+#contract-column,
 .valuation-column {
-  width: 12%;
+  width: 100px;
+}
+
+#name-surname-column {
+  width: 200px;
 }
 
 #uni-column {
-  width: 16%;
+  width: 200px;
 }
 
-table {
-  table-layout: fixed;
-  width: 100%;
+#notes-column {
+  width: 130px;
 }
 
-#logout-btn {
-  float: right;
+.logout-btn {
+  float: left;
   margin: 3% 1.5%;
 }
 
@@ -47,22 +45,36 @@ table {
   display: inline-block;
 }
 
-.thead-custom {
-  background-color: #ee7023;
-}
-
-table.table-bordered > thead > tr > th {
-  border-color: #da6720;
-  color: #4b250e;
+table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1000px;
 }
 
 td {
   vertical-align: middle;
 }
 
+th {
+  color: #4b250e;
+  text-align: center;
+}
+
 .table-hover tbody tr:hover td,
 .table-hover tbody tr:hover th {
-  background-color: #da672027;
+  background-color: #e0dceb;
+}
+
+.column-width {
+  width: 25%;
+}
+
+#id-column-header {
+  -ms-transform: translateY(-13%);
+  transform: translateY(-13%);
+  margin-left: -5px;
+  font-size: 25px;
+  width: 100%;
 }
 
 .column-header {
@@ -81,6 +93,28 @@ td {
 }
 
 #main {
-  width: 85%;
+  max-width: 100vw;
+  min-width: 100vw;
 }
-/* vertical-align: middle; */
+
+.tick-icon::after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.none-icon:after {
+  font-family: "FontAwesome";
+  content: "\f00d";
+}
+
+@media only screen and (max-width: 1200px) {
+  .logout-btn {
+    margin: 0% 5% 10%;
+  }
+  /*#form-container {*/
+  /*  transform: scale(0.32);*/
+  /*  transform-origin: top left;*/
+  /*  margin-left: 0;*/
+  /*  padding: 0;*/
+  /*}*/
+}

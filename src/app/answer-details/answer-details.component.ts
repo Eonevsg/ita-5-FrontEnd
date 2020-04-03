@@ -1,13 +1,12 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import { Answer } from "../models/answer";
-import { AnswerViewModel } from "../shared/answerViewModel";
-import { FormService } from "../services/form-service/form.service";
-import { ActivatedRoute } from "@angular/router";
-import { from, Observable, empty } from "rxjs";
-import { switchMap, tap } from "rxjs/operators";
-import { FormBuilder, Validators } from "@angular/forms";
-import { Person } from "../models/person";
-import { PersonService } from "../services/person-service/person.service";
+import {Answer} from '../models/answer';
+import {AnswerView} from '../models/answerView';
+import {ApplicationFormService} from '../services/application-form-service/form.service';
+import {ActivatedRoute} from '@angular/router';
+import {from, Observable, empty} from 'rxjs';
+import {switchMap, tap} from 'rxjs/operators';
+import {FormBuilder, Validators} from '@angular/forms';
+import {Person} from '../models/person';
 import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
@@ -16,58 +15,74 @@ import {CdkTextareaAutosize} from '@angular/cdk/text-field';
   styleUrls: ['./answer-details.component.css']
 })
 export class AnswerDetailsComponent implements OnInit {
-  public answer$: Observable<AnswerViewModel>;
+  //Message variables
+  private acceptMessage = 'Priimta';
+  private rejectMessage = 'Atmesta';
+
+  public answer$: Observable<AnswerView>;
   public questions: Answer[];
   public radioQuestionID: string[] = ['1', '2'];
   public showModal: boolean;
-  public person$: Observable<Person>;
   @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
-  private statusValue;
-  private personId;
-  private tempApplVal = null;
-  private tempInterVal = null;
-  private tempNotes = null;
-  private email;
+  private statusValue: string;
+  private personId: string;
+  private tempApplVal: string = null;
+  private tempTestVal: string = null;
+  private tempInterVal: string = null;
+  private tempNotes: string = null;
+  private email: string;
+  private phone: string;
+
+  public message: string;
+  public buttonValue: string;
+  public buttonFunction: string;
+
+  applicationValues: any[] = [
+    {id: 1, value: '1'},
+    {id: 2, value: '2'},
+    {id: 3, value: '3'}
+  ];
+  testValues: any[] = [
+    {id: 1, value: '1'},
+    {id: 2, value: '2'},
+    {id: 3, value: '3'},
+    {id: 4, value: '4'},
+    {id: 5, value: '5'},
+    {id: 6, value: '6'},
+    {id: 7, value: '7'},
+    {id: 8, value: '8'},
+    {id: 9, value: '9'},
+    {id: 10, value: '10'}
+  ];
+  interviewValues: any[] = [
+    {id: 1, value: '1'},
+    {id: 2, value: '2'},
+    {id: 3, value: '3'}
+  ];
 
   constructor(
-    private formService: FormService,
+    private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {
   }
 
   valuationForm = this.fb.group({
-    applicationValuation: [
-      '',
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
-    ],
-    interviewValuation: [
-      '',
-      [
-        Validators.min(0),
-        Validators.max(100),
-        Validators.pattern(/^(0|[1-9][0-9]*)$/)
-      ]
-    ],
-    notes: ['', [Validators.maxLength(450)]]
+    applicationValuation: ['', []],
+    testValuation: ['', []],
+    interviewValuation: ['', []],
+    notes: ['', [Validators.maxLength(1000)]]
   });
   acceptanceForm = this.fb.group({
     state: ['', []]
   });
-  numberOnly(event): boolean {
-    const charCode = (event.which) ? event.which : event.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      return false;
-    }
-    return true;
 
-  }
   get applicationValuation() {
     return this.valuationForm.get('applicationValuation');
+  }
+
+  get testValuation() {
+    return this.valuationForm.get('testValuation');
   }
 
   get interviewValuation() {
@@ -96,22 +111,26 @@ export class AnswerDetailsComponent implements OnInit {
     });
 
     this.answer$ = from(this.route.paramMap).pipe(
-      switchMap(params => {
-        return this.formService.fetchAnswer({id: params.get('id')});
-      })
+      switchMap(params =>
+        this.formService.fetchAnswer({id: params.get('id')})
+      )
     );
     this.answer$.subscribe(data => {
+      console.log(data.person.extra);
+      this.setExistingExtraValue(data.person.extra);
       this.updateStatus(data.person);
       this.personId = data.person.id;
       this.email = data.person.email;
+      this.phone = data.person.phone;
     });
   }
 
   onSubmitValuation(): void {
-    this.valuationForm.markAllAsTouched();
-
     if (this.applicationValuation.value) {
       this.tempApplVal = this.applicationValuation.value;
+    }
+    if (this.testValuation.value) {
+      this.tempTestVal = this.testValuation.value;
     }
     if (this.interviewValuation.value) {
       this.tempInterVal = this.interviewValuation.value;
@@ -119,32 +138,11 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-
-    this.formService.patchPerson({
-      id: this.personId,
-      extra: {
-        applicationValuation: this.tempApplVal,
-        interviewValuation: this.tempInterVal,
-        notes: this.tempNotes
-      }
-    });
+    this.message = 'Ar tikrai norite išsaugoti?';
+    this.buttonValue = 'Išsaugoti';
+    this.buttonFunction = "onUpdateValues";
   }
 
-  onSubmitAcceptance() {
-    this.acceptanceForm.markAllAsTouched();
-    this.statusValue = null;
-    console.log(this.state.value);
-    if (this.state.value === 'yes') {
-      this.statusValue = 'Priimta';
-    } else if (this.state.value === 'no') {
-      this.statusValue = 'Atmesta';
-    }
-    window.location.href = this.getEmailOpenString(this.email);
-    this.formService.patchPerson({
-      id: this.personId,
-      extra: {status: this.statusValue}
-    });
-  }
 
   updateStatus(person: Person): any {
     if (person.extra.status.toLowerCase() === 'nauja') {
@@ -171,10 +169,120 @@ export class AnswerDetailsComponent implements OnInit {
     }
   }
 
+  changeApplicationValue(e) {
+    this.applicationValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeTestValue(e) {
+    this.testValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
+  changeInterviewValue(e) {
+    this.interviewValuation.setValue(e.target.value, {
+      onlySelf: true
+    });
+  }
+
   triggerResize() {
     this.notesResizableArea.resizeToFitContent(true);
   }
+
   getEmailOpenString(email: string) {
     return `mailto:${email}?subject=IT Akademija`;
+  }
+
+  setExistingExtraValue(extra: any) {
+    if (extra.applicationValuation) {
+      this.valuationForm.controls.applicationValuation.setValue(
+        extra.applicationValuation
+      );
+    }
+    if (extra.testValuation) {
+      this.valuationForm.controls.testValuation.setValue(extra.testValuation);
+    }
+    if (extra.interviewValuation) {
+      this.valuationForm.controls.interviewValuation.setValue(
+        extra.interviewValuation
+      );
+    }
+    if (extra.notes) {
+      this.valuationForm.controls.notes.setValue(extra.notes);
+    }
+  }
+
+  sendTest() {
+    this.buttonValue = 'Siųsti';
+    this.message = `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`;
+    this.buttonFunction = 'onSendEmail';
+    this.statusValue = 'Testas';
+    this.show();
+  }
+
+  inviteToInterview() {
+    this.buttonValue = 'Patvirtinti';
+    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
+    this.buttonFunction = 'onConfirm';
+    this.statusValue = 'Interviu';
+    this.show();
+  }
+
+  acceptApplication() {
+    this.buttonValue = 'Patvirtinti';
+    this.message = 'Su aplikantu bus susisiekta telefonu:\n' + this.phone;
+    this.buttonFunction = 'onConfirm';
+    this.statusValue = 'Priimta';
+    this.show();
+
+  }
+
+  rejectApplication() {
+    this.buttonValue = 'Siųsti';
+    this.message = `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`;
+    this.buttonFunction = 'onSendEmail';
+    this.statusValue = 'Atmesta';
+
+    this.show();
+  }
+
+  refused() {
+    this.buttonValue = 'Patvirtinti';
+    this.message = `Aplikantas atsisakė`;
+    this.buttonFunction = 'onConfirm';
+    this.statusValue = 'Atsisakė';
+    this.show();
+  }
+
+  onConfirm() {
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: {status: this.statusValue}
+    });
+    this.hide();
+  }
+
+  onSendEmail() {
+    window.location.href = this.getEmailOpenString(this.email);
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: {status: this.statusValue}
+    });
+    this.hide();
+  }
+
+  onUpdateValues() {
+    this.formService.patchPerson({
+      id: this.personId,
+      extra: {
+        applicationValuation: this.tempApplVal,
+        testValuation: this.tempTestVal,
+        interviewValuation: this.tempInterVal,
+        notes: this.tempNotes
+      }
+    });
+    this.hide();
   }
 }

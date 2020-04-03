@@ -1,0 +1,63 @@
+.header {
+  text-align: left;
+  background: white;
+  color: #6b436e;
+  border-top: 15px solid #6b436e;
+  position: relative;
+}
+
+.logo-container {
+  padding: 30px;
+  margin-left: 1%;
+}
+
+.logo-container p {
+  display: inline-block;
+  margin-left: 2%;
+}
+
+.logo {
+  width: 3%;
+  height: 3%;
+  top: 10px;
+}
+
+.title {
+  font-size: 120%;
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding: 1em 1.5em;
+  }
+}
+
+.nav-link {
+  color: black;
+  font-weight: 500;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  background-color: #e0dceb3d;
+}
+
+nav {
+  padding: 0px;
+  position: absolute;
+  bottom: 0;
+  width: 1023px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+nav li.nav-item {
+  border: 1px solid lightgrey;
+  color: black;
+  width: 145px;
+  text-align: center;
+}
+
+#login-button {
+  margin-left: 443px;
+}

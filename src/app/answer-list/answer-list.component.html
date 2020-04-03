@@ -1,13 +1,14 @@
 <div id="main">
-  <div id="logout-btn">
-    <button class="btn btn-light" type="button" (click)="logOutButtonClick()">
-      Atsijungti
-    </button>
-  </div>
   <div id="form-container">
+    <div class="logout-btn">
+      <button class="btn btn-light" type="button" (click)="logOutButtonClick()">
+        Atsijungti
+      </button>
+    </div>
+
     <div class="card">
       <div class="card-body">
-        <mat-form-field hidden> <input matInput/></mat-form-field>
+        <mat-form-field hidden><input matInput/></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
@@ -16,14 +17,20 @@
           <colgroup>
             <col id="dateTime-column" />
             <col id="status-column" />
-            <col class="name-surname-column" />
-            <col class="name-surname-column" />
+            <col id="name-surname-column" />
             <col id="uni-column" />
+            <col id="contract-column" />
+            <col class="valuation-column" />
             <col class="valuation-column" />
             <col class="valuation-column" />
             <col id="notes-column" />
           </colgroup>
           <thead class="thead-custom">
+            <tr>
+              <th colspan="5" scope="colgroup"></th>
+              <th colspan="3" scope="colgroup" class="center">Vertinimas</th>
+              <th colspan="1" scope="colgroup"></th>
+            </tr>
             <tr>
               <th scope="col">
                 <div class="column-header">
@@ -42,6 +49,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -59,6 +67,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -76,25 +85,9 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
-                <div class="column-header">
-                  <div
-                    mat-sort-header="surname"
-                    class="column-header-title vertical-align-middle"
-                  >
-                    Pavardė
-                  </div>
-                  <input
-                    [(ngModel)]="fields.surname"
-                    (ngModelChange)="updateFilters()"
-                    matInput
-                    MatFormFieldControl
-                    placeholder="Filtruoti"
-                  />
-                </div>
-              </th>
-              <th scope="col">
-                <div class="column-header">
+                <div class="column-header ">
                   <div
                     mat-sort-header="uni"
                     class="column-header-title vertical-align-middle"
@@ -110,13 +103,40 @@
                   />
                 </div>
               </th>
+
+              <th scope="col">
+                <div class="column-header ">
+                  <div
+                    mat-sort-header="contract"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Sutartis
+                  </div>
+                  <select
+                    [(ngModel)]="fields.contract"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                  >
+                    <option value="" hidden selected>Filtruoti</option>
+                    <option value=""></option>
+                    <option [ngValue]="true">
+                      Taip
+                    </option>
+                    <option [ngValue]="false">
+                      Ne
+                    </option>
+                  </select>
+                </div>
+              </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
                     mat-sort-header="applicationValuation"
-                    class="column-header-title"
+                    class="column-header-title vertical-align-middle"
                   >
-                    Anketos vertinimas
+                    Anketos
                   </div>
                   <input
                     [(ngModel)]="fields.applicationValuation"
@@ -127,13 +147,32 @@
                   />
                 </div>
               </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="testValuation"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    Testo
+                  </div>
+                  <input
+                    [(ngModel)]="fields.testValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="Filtruoti"
+                  />
+                </div>
+              </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
                     mat-sort-header="interviewValuation"
-                    class="column-header-title"
+                    class="column-header-title vertical-align-middle"
                   >
-                    Pokalbio vertinimas
+                    Pokalbio
                   </div>
                   <input
                     [(ngModel)]="fields.interviewValuation"
@@ -144,6 +183,7 @@
                   />
                 </div>
               </th>
+
               <th scope="col">
                 <div class="column-header">
                   <div
@@ -172,18 +212,26 @@
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
               <td class="column-width-small">{{ person.extra.status }}</td>
-              <td class="column-width">{{ person.name }}</td>
-              <td class="column-width">{{ person.surname }}</td>
-              <td class="column-width">{{ person.uni }}</td>
               <td class="column-width">
+                {{ person.name + " " + person.surname }}
+              </td>
+              <td class="column-width">{{ person.uni }}</td>
+              <td
+                class="column-width center"
+                [ngClass]="person.contract ? 'tick-icon' : 'none-icon'"
+              ></td>
+              <td class="column-width center">
                 {{ person.extra.applicationValuation }}
               </td>
-              <td class="column-width">
+              <td class="column-width center">
+                {{ person.extra.testValuation }}
+              </td>
+              <td class="column-width center">
                 {{ person.extra.interviewValuation }}
               </td>
               <td class="column-width">
-                <div *ngIf="person.extra.notes">
-                  {{ person.extra.notes.substring(0, 15) }}...
+                <div>
+                  {{ addDots(person.extra.notes) }}
                 </div>
               </td>
             </tr>

@@ -1,4 +1,19 @@
 export class Person {
+  id: string;
+  name: string;
+  surname: string;
+  phone: string;
+  email: string;
+  uni: string;
+  contract: boolean;
+  extra: {
+    dateTime: Date;
+    notes: string;
+    applicationValuation: string;
+    interviewValuation: string;
+    testValuation: string;
+    status: string;
+  };
   constructor(
     id: string,
     fname: string,
@@ -6,6 +21,7 @@ export class Person {
     phone: string,
     email: string,
     establishment: string,
+    contract: boolean,
     extra: any
   ) {
     this.id = id;
@@ -14,20 +30,7 @@ export class Person {
     this.phone = phone;
     this.surname = lname;
     this.uni = establishment;
+    this.contract = contract;
     this.extra = extra;
   }
-
-  id: string;
-  name: string;
-  surname: string;
-  phone: string;
-  email: string;
-  uni: string;
-  extra: {
-    dateTime: Date;
-    notes: string;
-    applicationValuation: string;
-    interviewValuation: string;
-    status: string;
-  };
 }

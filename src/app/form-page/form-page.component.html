@@ -1,17 +1,17 @@
 <div id="main">
-  <!-- header -->
-  <div class="header">
-    <div>
-      <img src="/assets/images/logo.png" class="logo"/>
-    </div>
-    <div>
-      <p class="title">IT Akademija</p>
-    </div>
-  </div>
-
   <div id="form-container">
-    <h2 id="form-title">Registracijos forma</h2>
+    <h1 id="form-title">Registracijos forma</h1>
+    <p>
+      Užpildykite registracijos formą dalyvauti IT Akademijoje. <br />
+      Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl
+      dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus
+      klausimams rašykite mums - atranka@Įmonės_pavadinimas.lt
+    </p>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group-header">
+        <label>Kontaktinė informacija</label>
+        <hr />
+      </div>
       <div class="form-group" [class.has-error]="fname.invalid">
         <label for="fname">Vardas:</label>
         <input
@@ -107,9 +107,14 @@
         </div>
       </div>
 
+      <div class="form-group-header">
+        <label>Apie tave</label>
+        <hr />
+      </div>
+
       <div class="form-group">
         <label for="establishment"
-          >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+        >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
         >
         <select
           type="text"
@@ -132,7 +137,7 @@
         >
           Pasirinkite mokymosi įstaiga!
         </div>
-        <br />
+        <br/>
         <div [hidden]="establishment.value != 'kita'" class="form-group">
           <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
           <input
@@ -157,13 +162,18 @@
 
       <div class="form-group">
         <label for="contract"
-          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
+        >Ar bus galimybė pasirašyti&nbsp;</label
         >
+        <div class="custom-tooltip">trišalę praktikos sutartį?
+          <span class="custom-tooltip-text">
+          Ar esi pasidomėjęs, kad yra galima sutartis tarp Tavęs, banko ir trečiosios šalies: mokymo įstaigos (kai kurios ugdymo įstaigos trišales praktikos sutartis suteikia tik tam tikrais studijų metais), užimtumo tarnybos, etc.
+        </span>
+        </div>
         <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="contract-pos"
               formControlName="contract"
             />
@@ -173,7 +183,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               id="contract-neg"
               formControlName="contract"
             />
@@ -189,7 +199,7 @@
         </div>
 
         <div
-          [hidden]="contract.value == 'yes' || contract.pristine"
+          [hidden]="contract.value == 'true' || contract.pristine"
           class="radio-hidden-group"
         >
           <label for="contractExplanation">Pakomentuok plačiau:</label>
@@ -199,10 +209,10 @@
             cdkTextareaAutosize
             #contractResizableArea="cdkTextareaAutosize"
             cdkAutosizeMinRows="4"
-            cdkAutosizeMaxRows="8"
+            cdkAutosizeMaxRows="16"
             class="form-control textarea-custom"
             id="contractExplanation"
-            maxlength="250"
+            maxlength="1000"
             formControlName="contractExplanation"
           ></textarea>
 
@@ -224,7 +234,7 @@
 
       <div class="form-group">
         <label for="shift"
-          >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
+        >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
           akademijai skirti tiek laiko?</label
         >
         <div class="form-radio-group">
@@ -233,6 +243,7 @@
               type="radio"
               value="yes"
               id="shift-pos"
+              class="radio-custom"
               formControlName="shift"
             />
             <label for="shift-pos" class="radio-label">Taip</label>
@@ -242,6 +253,7 @@
             <input
               type="radio"
               value="no"
+              class="radio-custom"
               id="shift-neg"
               formControlName="shift"
             />
@@ -268,11 +280,11 @@
           cdkTextareaAutosize
           #shiftResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="shiftExplanation"
           formControlName="shiftExplanation"
-          maxlength="250"
+          maxlength="1000"
         ></textarea>
         <div
           class="alert alert-danger"
@@ -289,7 +301,7 @@
 
       <div class="form-group">
         <label for="hobbies"
-          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
+        >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
         >
         <textarea
           type="text"
@@ -297,11 +309,11 @@
           cdkTextareaAutosize
           #hobbiesResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="hobbies"
           formControlName="hobbies"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="hobbies.valid || hobbies.untouched"
@@ -318,7 +330,7 @@
 
       <div class="form-group">
         <label for="motivation"
-          >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
+        >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
         <textarea
@@ -327,11 +339,11 @@
           cdkTextareaAutosize
           #motivationResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="motivation"
           formControlName="motivation"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="motivation.valid || motivation.untouched"
@@ -348,7 +360,7 @@
 
       <div class="form-group">
         <label for="experience"
-          >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+        >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
         >
@@ -359,10 +371,10 @@
           cdkTextareaAutosize
           #experienceResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           formControlName="experience"
-          maxlength="450"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="experience.valid || experience.untouched"
@@ -377,21 +389,24 @@
         </div>
       </div>
 
+      <div class="form-group-header">
+        <label>Papildoma informacija</label>
+        <hr />
+      </div>
+
       <div class="form-group">
-        <label for="marketing"
-          >Iš kur sužinojai apie IT akademiją?</label
-        >
+        <label for="marketing">Iš kur sužinojai apie IT akademiją?</label>
         <textarea
-          (input)="triggerResize()"
           cdkTextareaAutosize
+          (input)="triggerResize()"
           #marketingResizableArea="cdkTextareaAutosize"
           cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="8"
+          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           type="text"
           id="marketing"
           formControlName="marketing"
-          maxlength="250"
+          maxlength="1000"
         ></textarea>
         <div
           [hidden]="marketing.valid || marketing.untouched"
@@ -405,25 +420,33 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div id="submit">
-          <button
-            type="submit"
-            class="btn btn-custom"
-            (click)="applicationForm.valid"
-          >
-            Pateikti
-          </button>
+
+      <div class="chechbox-group form-group">
+        <input
+          type="checkbox"
+          ngbButton
+          id="thirdPartyAgreement"
+          formControlName="thirdPartyAgreement"
+        />
+        Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi
+        įmonės AB "Pavadinimas" IT akademijos tikslams.
+
+        <div
+          [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"
+          class="alert alert-danger"
+        >
+          Laukas privalomas!
         </div>
-        <div id="reset">
-          <button
-            type="button"
-            class="btn btn-light"
-            (click)="applicationForm.reset()"
-          >
-            Išvalyti
-          </button>
-        </div>
+      </div>
+
+      <div id="submit">
+        <button
+          type="submit"
+          class="btn btn-custom"
+          (click)="applicationForm.valid ? onSubmit() : null"
+        >
+          Pateikti
+        </button>
       </div>
     </form>
 
@@ -437,7 +460,7 @@
           </div>
           <div id="modal-footer">
             <button
-              *ngIf = "isErrorMessage"
+              *ngIf="isErrorMessage"
               type="submit"
               class="btn btn-custom"
               id="btn-popup-hide"
@@ -446,7 +469,7 @@
               Tęsti
             </button>
             <button
-              type="submit"
+              type="button"
               class="btn btn-custom"
               id="btn-popup"
               [routerLink]="['/home']"
