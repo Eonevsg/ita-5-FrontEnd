@@ -12,7 +12,7 @@
   float: left;
   width: 40%;
   height: 100%;
-  margin: 5% 5% 5% 5%;
+  margin: 0% 5% 5% 5%;
 }
 .customRow {
   width: 100%;
@@ -39,7 +39,9 @@
 img{
   object-fit: cover;
 }
-
+.title-align {
+  margin: 5% 0 2% 5%;
+}
 .custom-collapse-text {
   color: black;
   font-weight: bold;
@@ -71,18 +73,18 @@ img{
 .open-by-default-tab[aria-expanded="true"]::after{
   font-family: "FontAwesome";
   /* Only once for the first open by default tab*/
-  content: "\f068" !important;
+  content: "\f077" !important;
   float: right;
 }
 .accordion .card-header:after {
   font-family: "FontAwesome";
-  content: "\f068";
+  content: "\f077";
   float: right;
 }
 
 .accordion .card-header.collapsed:after {
   /* symbol for "collapsed" panels */
-  content: "\f067";
+  content: "\f078";
 }
 
 .page-footer {
