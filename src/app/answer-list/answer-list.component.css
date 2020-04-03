@@ -17,9 +17,10 @@ select {
   opacity: 0.5;
 }
 
-
 #dateTime-column,
-#status-column, #contract-column, .valuation-column {
+#status-column,
+#contract-column,
+.valuation-column {
   width: 100px;
 }
 
@@ -35,12 +36,6 @@ select {
   width: 130px;
 }
 
-table {
-  table-layout: fixed;
-  width: 100%;
-  min-width: 1000px;
-}
-
 .logout-btn {
   float: left;
   margin: 3% 1.5%;
@@ -50,13 +45,24 @@ table {
   display: inline-block;
 }
 
-table.table-bordered > thead > tr > th {
-  border-color: #da6720;
-  color: #4b250e;
+table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1000px;
 }
 
 td {
   vertical-align: middle;
+}
+
+th {
+  color: #4b250e;
+  text-align: center;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #e0dceb;
 }
 
 .column-width {
@@ -69,16 +75,6 @@ td {
   margin-left: -5px;
   font-size: 25px;
   width: 100%;
-}
-
-th {
-  color: #4b250e;
-  text-align: center;
-}
-
-.table-hover tbody tr:hover td,
-.table-hover tbody tr:hover th {
-  background-color: #da672027;
 }
 
 .column-header {
@@ -122,4 +118,3 @@ th {
   /*  padding: 0;*/
   /*}*/
 }
-
