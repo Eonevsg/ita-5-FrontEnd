@@ -4,20 +4,10 @@ footer.page-footer {
   clear: both;
   bottom: 0;
   padding-top: 20px;
-  background: #ee7023;
+  background: #FFFFFF;
   width: 100%;
   border-top: 15px solid #6B436E;
 }
-.details-align {
-  text-align: right;
-}
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.column {
-  float: left;
-  width: 50%;
+.footer-align {
+  text-align: center;
 }
