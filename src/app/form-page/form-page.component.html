@@ -100,7 +100,7 @@
 
       <div class="form-group">
         <label for="establishment"
-          >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+        >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
         >
         <select
           type="text"
@@ -123,7 +123,7 @@
         >
           Pasirinkite mokymosi įstaiga!
         </div>
-        <br />
+        <br/>
         <div [hidden]="establishment.value != 'kita'" class="form-group">
           <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
           <input
@@ -148,8 +148,13 @@
 
       <div class="form-group">
         <label for="contract"
-          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?</label
+        >Ar bus galimybė pasirašyti &nbsp;</label
         >
+        <div class="custom-tooltip">trišalę praktikos sutartį?
+          <span class="custom-tooltip-text">
+          Ar esi pasidomėjęs, kad yra galima sutartis tarp Tavęs, banko ir trečiosios šalies: mokymo įstaigos (kai kurios ugdymo įstaigos trišales praktikos sutartis suteikia tik tam tikrais studijų metais), užimtumo tarnybos, etc.
+        </span>
+        </div>
         <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
             <input
@@ -215,7 +220,7 @@
 
       <div class="form-group">
         <label for="shift"
-          >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
+        >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
           akademijai skirti tiek laiko?</label
         >
         <div class="form-radio-group">
@@ -280,7 +285,7 @@
 
       <div class="form-group">
         <label for="hobbies"
-          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
+        >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
         >
         <textarea
           type="text"
@@ -309,7 +314,7 @@
 
       <div class="form-group">
         <label for="motivation"
-          >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
+        >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
         <textarea
@@ -339,7 +344,7 @@
 
       <div class="form-group">
         <label for="experience"
-          >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
+        >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
           turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
           jo nuoroda.</label
         >
