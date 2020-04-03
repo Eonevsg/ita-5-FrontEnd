@@ -3,7 +3,7 @@ html {
   height: 100%;
   margin: 0px;
   min-width: 320px;
-  background-color: lightsalmon;
+  background-color: #e0dceb3d;
 }
 
 #main {
@@ -20,13 +20,6 @@ html {
   margin-top: 50px;
   margin-bottom: 50px;
   background: #ffffff;
-}
-
-.bg-img {
-  background-color: #e0dceb3d;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 /* Firefox */

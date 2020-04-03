@@ -87,6 +87,7 @@
   display: inline-block;
   border-bottom: 1px dotted;
 }
+
 .custom-tooltip .custom-tooltip-text {
   visibility: hidden;
   width: auto;
