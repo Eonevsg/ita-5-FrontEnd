@@ -49,6 +49,17 @@
   #login-button {
     margin-left: 0;
   }
+  .hamburger{
+      position: absolute;
+      top: -74px;
+      margin-right: 2%;
+  }
+  #navbarSupportedContent{
+      position: absolute;
+      background-color: white;
+      right:0px;
+      top:0px;
+  }
 }
 
 .nav-link {
