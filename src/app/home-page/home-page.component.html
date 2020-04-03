@@ -1,29 +1,33 @@
 <div id="main">
-  <!-- header -->
-  <div class="header">
-    <div>
-      <img src="/assets/images/logo.png" class="logo"/>
-    </div>
-    <div>
-      <p class="title">IT Akademija</p>
-    </div>
-  </div>
+
   <div class="main-container">
     <!-- Column 1 -->
-    <div class="content-container">
+    <div class="column">
       <div class="Column1_row">
+        <h1>IT Akademija</h1>
         <p>
-          „IT Akademija@Įmonės_pavadinimas“– tai dviejų dalių programa, kurią sudaro su studijomis suderinta praktika ir
-          stažuotė „Įmonės_pavadinimas“ IT departamente. Ši programa skirta ne tik informacinių technologijų ar
-          susijusių specialybių studentams, tačiau ir tiems, kurie sieja savo ateitį su IT sritimi ir jau dabar tobulina
+          Tai dviejų dalių programa, kurią
+          sudaro su studijomis suderinta praktika ir stažuotė. Ši programa skirta ne tik
+          informacinių technologijų ar susijusių specialybių studentams, tačiau
+          ir tiems, kurie sieja savo ateitį su IT sritimi ir jau dabar tobulina
           savo techninius sugebėjimus.
         </p>
+        <h2>Praktika</h2>
+        <hr>
         <p>
-          Šios programos metu dalyviai mokosi programavimo, duomenų analizės, informacinių sistemų priežiūros ir
-          testavimo, komandinio darbo naudojant banko specifines technologijas, procesus ir praktikas, darbo su
-          duomenimis. IT Akademijos studentai turi galimybę išbandyti ir save atrasti skirtingose IT srityse ir
-          praktikos pabaigoje pasirinkti norimą stažuotės kryptį. Stažuotojai drauge su „Įmonės_pavadinimas“ IT
-          profesionalais įgyvendina realius IT projektus pasirinktose rolėse bei užtvirtina įvairiapuses kompetencijas.
+          Šios programos metu dalyviai mokosi programavimo, duomenų analizės,
+          informacinių sistemų priežiūros ir testavimo, komandinio darbo
+          naudojant banko specifines technologijas, procesus ir praktikas, darbo
+          su duomenimis.
+        </p>
+        <h2>Stažuotė</h2>
+        <hr>
+        <p>
+          IT Akademijos studentai turi galimybę išbandyti ir save
+          atrasti skirtingose IT srityse ir praktikos pabaigoje pasirinkti
+          norimą stažuotės kryptį. Stažuotojai drauge su „Įmonės_pavadinimas“ IT
+          profesionalais įgyvendina realius IT projektus pasirinktose rolėse bei
+          užtvirtina įvairiapuses kompetencijas.
         </p>
       </div>
       <div class="Column1_row">
@@ -116,92 +120,12 @@
         <!-- Collapsable menu ends here-->
       </div>
     </div>
-    <!-- Column 2-->
-    <div class="image-container">
-      <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
-        <div>
-          <a class="nav-link" [routerLink]="'/form'">Užpildykite prašymą</a>
-        </div>
-      </div>
-      <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
-        <div><a class="nav-link" [routerLink]="'/home'">Studentų erdvė</a></div>
-      </div>
-      <div>
-        <div><img src="/assets/images/form.jpg" class="side-image"/></div>
-        <div><a class="nav-link" [routerLink]="'/login'">Prisijungimas</a></div>
-      </div>
+
+    <div class="column">
+      <div class="customRow"></div>
+      <div class="customRow"></div>
+      <div class="customRow"></div>
     </div>
   </div>
 
-  <div id="footerBackground">
-    <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-      <!-- Footer Links -->
-      <div class="container-fluid text-center text-md-left">
-        <!-- Grid row -->
-        <div class="row">
-          <!-- Grid column -->
-          <div class="col-md-6 mt-md-0 mt-3">
-            <!-- Content -->
-            <h5 class="text-uppercase">Rekvizitai</h5>
-            <ul class="list-unstyled">
-              <li>
-                <p>„Įmonės pavadinimas“</p>
-              </li>
-              <li>
-                <p>'Įmonės adresas'</p>
-              </li>
-              <li>
-                <p>'Įmonės SWIFT kodas'</p>
-              </li>
-            </ul>
-          </div>
-          <!-- Grid column -->
-
-          <hr class="clearfix w-100 d-md-none pb-3"/>
-
-          <!-- Grid column -->
-          <div class="col-md-3 mb-md-0 mb-3">
-            <!-- Space for extra content if needed -->
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 mb-md-0 mb-3">
-            <!-- Links -->
-            <h5 class="text-uppercase">Nuorodos</h5>
-
-            <ul class="list-unstyled">
-              <li>
-                <a [routerLink]="'/form'">Užpildyk prašymą</a>
-              </li>
-              <li>
-                <a href="#!">Studentų erdvė</a>
-              </li>
-              <li>
-                <a href="#!">D.U.K</a>
-              </li>
-              <li>
-                <a href="#!">Apie mus</a>
-              </li>
-            </ul>
-          </div>
-          <!-- Grid column -->
-        </div>
-        <!-- Grid row -->
-      </div>
-      <!-- Footer Links -->
-
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">
-        © 2020:
-        <a href=""> „Įmonės pavadinimas“</a>
-      </div>
-      <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-  </div>
 </div>
-
