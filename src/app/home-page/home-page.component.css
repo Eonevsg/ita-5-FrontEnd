@@ -24,7 +24,7 @@
   text-align: center;
   background: #c0adc6b0;
   margin-top: 2%;
-  border-top: 5px solid #6B436E;
+  border-top: 5px solid #6b436e;
 }
 .btn-custom {
   width: 35%;
@@ -36,14 +36,15 @@
   background: red;
   overflow: hidden;
 }
-img{
+img {
   object-fit: cover;
 }
 .title-align {
   margin: 5% 0 2% 5%;
 }
-.custom-collapse-text {
-  color: black;
+.custom-collapse-text,
+.custom-collapse-text:hover {
+  color: #512b2b;
   font-weight: bold;
 }
 
@@ -65,9 +66,9 @@ img{
   width: 90%;
   height: auto;
   background: #c0adc6b0;
-  border-top: 5px solid #6B436E;
+  border-top: 5px solid #6b436e;
 }
-.custom-text{
+.custom-text {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -108,7 +109,7 @@ img{
 
 /* Mobile responsive */
 @media only screen and (max-width: 600px) {
-  .content-container{
+  .content-container {
     width: 50%;
     float: left;
     height: auto;
