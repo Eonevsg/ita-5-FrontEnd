@@ -1,6 +1,6 @@
 body,
 html {
-  height: 100%;
+  height: auto;
   margin: 0px;
   min-width: 320px;
   background-color: #e0dceb3d;
@@ -51,6 +51,7 @@ input[type="number"] {
   min-width: 120px;
   width: 120px;
   margin-right: 3%;
+  border-radius: 0;
 }
 
 .btn:active,
@@ -58,6 +59,7 @@ input[type="number"] {
 .btn:hover {
   box-shadow: 0 5px 11px 0 rgba(66, 133, 244, 0.18),
     0 4px 15px 0 rgba(66, 133, 244, 0.15);
+  border-radius: 0;
 }
 
 .btn-light {
@@ -92,12 +94,14 @@ table.table-bordered > thead > tr > th {
 }
 
 h1,
+h2,
 label {
   color: #512b2b;
   font-weight: bold;
 }
 
-p {
+p,
+li {
   color: #57292a;
 }
 
@@ -109,5 +113,4 @@ p {
 .form-group-header > hr {
   margin-top: 0px;
   border-color: #cccccc;
-  margin-bottom: 30px;
 }

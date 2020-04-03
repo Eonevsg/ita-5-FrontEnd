@@ -26,8 +26,8 @@
   margin-left: 1%;
 }
 
-#modal-footer {
-  text-align: center;
+.modal-header {
+  display: block;
 }
 
 .modal-title {
@@ -90,19 +90,41 @@
 
 .custom-tooltip .custom-tooltip-text {
   visibility: hidden;
-  width: auto;
-  /*background-color: black;*/
+  width: 400px;
   background-color: #c0adc5;
   color: #000000;
-  text-align: center;
-  padding: 5px 0;
-  border-radius: 6px;
-
+  text-align: left;
+  margin: 0 5px;
+  border-radius: 3px;
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
+  display: inline;
+}
+
+.custom-tooltip-text > p {
+  font-weight: normal;
+  margin-left: 5px;
+  color: #000000;
 }
 
 .custom-tooltip:hover .custom-tooltip-text {
   visibility: visible;
+}
+
+.short-input {
+  width: 66%;
+}
+
+.form-group {
+  margin: 0 20px;
+}
+
+.chechbox-group,
+#submit {
+  margin: 20px;
+}
+
+label:not(.radio-label) {
+  margin-top: 20px;
 }
