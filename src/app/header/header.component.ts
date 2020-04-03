@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     addEventListener("click", this.closeMenu);
   }
 
-  closeMenu(){
-    document.getElementById("navbarSupportedContent").classList.remove("show");
+  closeMenu() {
+    var element = document.getElementById("navbarSupportedContent");
+    if (element.classList.contains("show")) {
+      element.classList.remove("show");
+    }
   }
-
 }
