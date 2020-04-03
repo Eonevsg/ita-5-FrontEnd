@@ -44,8 +44,8 @@
     float: right;
   }
   .collapse:not(.show) {
-    display: none!important;
-}
+    display: none !important;
+  }
   #login-button {
     margin-left: 0;
   }
@@ -61,7 +61,7 @@
 nav {
   padding: 0px;
   bottom: 0;
-  width: 1023px;
+  max-width: 1023px;
   margin: auto;
   left: 0;
   right: 0;
