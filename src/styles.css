@@ -3,10 +3,7 @@ html {
   height: 100%;
   margin: 0px;
   min-width: 320px;
-<<<<<<< HEAD
   background-color: lightsalmon;
-=======
->>>>>>> 6ce5f78fef44d01243d0bd9b31d46454c44774e2
 }
 
 #main {
@@ -15,24 +12,14 @@ html {
   overflow: auto;
   max-width: 1023px;
   min-width: 320px;
-<<<<<<< HEAD
-  background-color: white;
-=======
->>>>>>> 6ce5f78fef44d01243d0bd9b31d46454c44774e2
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   margin: auto;
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  -ms-overflow-style: none;
   margin-top: 50px;
   margin-bottom: 50px;
-=======
-  background: #FFFFFF;
->>>>>>> 6ce5f78fef44d01243d0bd9b31d46454c44774e2
+  background: #ffffff;
 }
 
 .bg-img {
@@ -93,26 +80,6 @@ input[type="number"] {
   margin-right: 2%;
 }
 
-<<<<<<< HEAD
-=======
-.logo {
-  margin-bottom: 2%;
-  width: 5%;
-  height: 5%;
-}
-
-.header {
-  text-align: left;
-  background: white;
-  color: #512b2b;
-  margin: 2% 5%;
-}
-
-.title {
-  font-size: 250%;
-}
-
->>>>>>> 6ce5f78fef44d01243d0bd9b31d46454c44774e2
 .textarea-custom {
   overflow: hidden;
 }
