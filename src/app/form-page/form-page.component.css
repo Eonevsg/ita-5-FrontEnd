@@ -26,8 +26,8 @@
   margin-left: 1%;
 }
 
-#modal-footer {
-  text-align: center;
+.modal-header {
+  display: block;
 }
 
 .modal-title {
