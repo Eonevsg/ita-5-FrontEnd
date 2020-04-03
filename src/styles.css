@@ -3,44 +3,30 @@ html {
   height: 100%;
   margin: 0px;
   min-width: 320px;
-}
-
-.bg-img {
-  background-image: url("/assets/images/back.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
+  background-color: lightsalmon;
 }
 
 #main {
-  overflow-y: scroll;
-  height: 100%;
-  /*width: 65%;*/
+  height: auto;
+  display: block;
+  overflow: auto;
   max-width: 1023px;
   min-width: 320px;
-  background-color: white;
-  position: absolute;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   margin: auto;
-  display: flex;
-  flex-direction: column;
-  -ms-overflow-style: none;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #ffffff;
 }
 
-/* Hide scroll bar */
-#main::-webkit-scrollbar {
-  display: none;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.bg-img {
+  background-color: #e0dceb3d;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Firefox */
@@ -49,13 +35,23 @@ input[type="number"] {
 }
 
 .btn-custom {
-  background: #ee7023;
+  background: #6b436eb0;
 }
 
 .btn-custom:active,
 .btn-custom:focus,
 .btn-custom:hover {
-  background: #c95f1e;
+  background: #6b436e;
+}
+
+.btn-secondary-custom {
+  background: #c0adc6b0;
+}
+
+.btn-secondary-custom:active,
+.btn-secondary-custom:focus,
+.btn-secondary-custom:hover {
+  background: #c0adc6;
 }
 
 .btn {
@@ -68,7 +64,7 @@ input[type="number"] {
 .btn:focus,
 .btn:hover {
   box-shadow: 0 5px 11px 0 rgba(66, 133, 244, 0.18),
-  0 4px 15px 0 rgba(66, 133, 244, 0.15);
+    0 4px 15px 0 rgba(66, 133, 244, 0.15);
 }
 
 .btn-light {
@@ -84,23 +80,6 @@ input[type="number"] {
   margin-right: 2%;
 }
 
-.logo {
-  margin-bottom: 2%;
-  width: 5%;
-  height: 5%;
-}
-
-.header {
-  text-align: left;
-  background: white;
-  color: #ee7023;
-  margin: 2% 5%;
-}
-
-.title {
-  font-size: 250%;
-}
-
 .textarea-custom {
   overflow: hidden;
 }
@@ -110,8 +89,9 @@ table > tbody > tr > td {
 }
 
 table.table-bordered > thead > tr > th {
-  background-color: #ee7023;
-  border-color: #da6720;
+  background-color: #9a83a3;
+  border-color: #491e5a38;
+  color: #3f2941;
 }
 
 .center {
