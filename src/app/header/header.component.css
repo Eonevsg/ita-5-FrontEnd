@@ -38,7 +38,7 @@
 }
 
 .navbar-light .navbar-nav .active > .nav-link {
-  background-color: lightsalmon;
+  background-color: #e0dceb3d;
 }
 
 nav {
@@ -56,9 +56,6 @@ nav li.nav-item {
   color: black;
   width: 145px;
   text-align: center;
-}
-
-.navbar-light .navbar-nav .login-button > .nav-link {
 }
 
 #login-button {
