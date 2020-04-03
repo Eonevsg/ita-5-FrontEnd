@@ -7,18 +7,19 @@
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+
     <div class="hamburger">
       <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,7 +33,12 @@
         <li class="nav-item" [routerLink]="'/career'" routerLinkActive="active">
           <a class="nav-link">Karjera įmonėje</a>
         </li>
-        <li id="login-button" class="nav-item login-button" [routerLink]="'/login'" routerLinkActive="active">
+        <li
+          id="login-button"
+          class="nav-item login-button"
+          [routerLink]="'/login'"
+          routerLinkActive="active"
+        >
           <a class="nav-link">Prisijungti</a>
         </li>
       </ul>

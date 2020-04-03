@@ -29,14 +29,25 @@
   nav {
     position: absolute;
   }
+  #login-button {
+    margin-left: 443px;
+  }
+}
+@media (min-width: 1131px) {
+  #login-button {
+    margin-left: 443px;
+  }
 }
 @media (max-width: 1130px) {
   .navbar-expand-lg .navbar-toggler {
     display: block;
-    /* float: right; */
+    float: right;
   }
-  .collapse {
-    display: none !important;
+  .collapse:not(.show) {
+    display: none!important;
+}
+  #login-button {
+    margin-left: 0;
   }
 }
 
@@ -64,10 +75,6 @@ nav li.nav-item {
 
 .navbar-light .navbar-nav .login-button > .nav-link {
 }
-
-#login-button {
-  margin-left: 443px;
-}
 .hamburger {
-  /* width: 100%; */
+  width: 100%;
 }
