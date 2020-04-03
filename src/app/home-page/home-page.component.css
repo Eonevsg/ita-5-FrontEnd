@@ -51,6 +51,7 @@ img{
   padding: 0;
   margin-top: 2%;
 }
+
 .email-icon::after {
   font-family: "FontAwesome";
   content: "\f0e0";
@@ -69,6 +70,16 @@ img{
 .custom-text{
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.card-header {
+  border-top: 1px solid rgba(0,0,0,.125);
+}
+.card {
+  border-top: 0px;
+  border-left: 1px solid rgba(0,0,0,.125);
+  border-right: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0,0,0,.125);
 }
 .open-by-default-tab[aria-expanded="true"]::after{
   font-family: "FontAwesome";
