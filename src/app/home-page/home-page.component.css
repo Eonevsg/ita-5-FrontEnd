@@ -1,6 +1,6 @@
-.side-image {
-  width: 30%;
-  height: 20%;
+img {
+  max-width: 60%;
+  max-height: 40%;
 }
 
 .main-container:after {
@@ -14,36 +14,17 @@
 }
 .column {
   float: left;
-  width: 46%;
-  margin: 3% 3% 3% 3%;
+  width: 40%;
+  margin: 5% 5% 5% 5%;
 }
 .customRow {
   width: 100%;
   height: 33%;
   overflow: hidden;
 }
-.content-container {
-  width: 65%;
-  height: auto;
-  float: left;
-}
-
-.image-container {
-  height: auto;
-  width: auto;
-  padding: 0;
-  text-align: right;
-}
-
-/* Clear floats after the columns */
-.container:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.Column1_row {
+.customChoicesColumn {
   width: 100%;
-  height: 50%;
+  height: 33%;
 }
 
 .custom-collapse-text {
