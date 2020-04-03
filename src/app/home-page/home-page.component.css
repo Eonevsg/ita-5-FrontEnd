@@ -1,30 +1,43 @@
-img {
-  max-width: 60%;
-  max-height: 40%;
-}
-
 .main-container:after {
   content: "";
   display: table;
   clear: both;
-  /*width: auto;*/
-  /*height: auto;*/
-  /*margin: 0% 5%;*/
-  /*flex: 1;*/
 }
+.dropdown-container {
+  margin: 0 5% 0 5%;
+  width: 90%;
+}
+
 .column {
   float: left;
   width: 40%;
+  height: 100%;
   margin: 5% 5% 5% 5%;
 }
 .customRow {
   width: 100%;
   height: 33%;
-  overflow: hidden;
 }
-.customChoicesColumn {
+.customButtonChoicesColumn {
   width: 100%;
   height: 33%;
+  text-align: center;
+  background: #c0adc6b0;
+  margin-top: 2%;
+  border-top: 5px solid #6B436E;
+}
+.btn-custom {
+  width: 35%;
+  margin-bottom: 10px;
+}
+.custom-img {
+  max-width: 100%;
+  height: 33%;
+  background: red;
+  overflow: hidden;
+}
+img{
+  object-fit: cover;
 }
 
 .custom-collapse-text {
@@ -32,15 +45,29 @@ img {
   font-weight: bold;
 }
 
-#marketing {
-  margin-top: 2%;
-}
-
 .card-body {
   padding: 0;
   margin-top: 2%;
 }
-
+.email-icon::after {
+  font-family: "FontAwesome";
+  content: "\f0e0";
+  font-size: large;
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.marketing-container {
+  margin: 2% 5% 5% 5%;
+  width: 90%;
+  height: auto;
+  background: #c0adc6b0;
+  border-top: 5px solid #6B436E;
+}
+.custom-text{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 .open-by-default-tab[aria-expanded="true"]::after{
   font-family: "FontAwesome";
   /* Only once for the first open by default tab*/
