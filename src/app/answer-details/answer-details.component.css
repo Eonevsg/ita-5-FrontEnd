@@ -1,10 +1,49 @@
-.btn-custom {
-  background: #ee7023;
-  margin-right: 3%;
+.question {
+  height: 16px;
+  width: 1040px;
+  color: #666666;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
 }
 
-table.table-bordered > thead > tr > th {
-  background-color: #ee7023;
+.answer {
+  height: 60px;
+  width: 800px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.john-gmail-com {
+  height: 30px;
+  width: 250px;
+  color: #57292A;
+  font-family: Roboto;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+.name {
+  height: 35px;
+  width: 211px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 35px;
+}
+.apie-studenta {
+  height: 30px;
+  width: 250px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 40px;
 }
 
 #btn-popup-hide {
@@ -75,11 +114,25 @@ table.table-bordered > thead > tr > th {
   }
 }
 
-.bold {
-  font-weight: bold;
-}
-
 .modal-title {
   white-space: pre-wrap;
 }
 
+.priimti-paraiska {
+  height: 42px;
+  width: 149px;
+  color: #257886;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+}
+.arrows-open-down-medium-brown {
+  height: 9px;
+  width: 14px;
+  /* background-color: #007A88; */
+}
+.nav-link {
+  font-size: large;
+}

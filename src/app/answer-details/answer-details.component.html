@@ -6,45 +6,51 @@
           class="card-body form-inner-content"
           *ngIf="answer$ | async as model"
         >
-          <div class="custom-border">
-            <div class="form-inner-content">
-              <table class="table table-bordered table-striped table-hover ">
-                <thead class="thead-custom">
-                  <tr>
-                    <th class="center">Asmens duomenys</th>
-                  </tr>
-                </thead>
-              </table>
-
+        <div class="form-inner-content">
+           <button 
+              class="btn-custom btn-functional btn-return" 
+              (click)="refused()">
+                Atsisakė
+              </button>
+              <button
+                class="btn-custom btn-functional btn-return"
+                (click)="rejectApplication()"
+              >
+                Atmesti aplikaciją
+              </button>
+             
+              <button
+                class="btn-custom btn-functional btn-return"
+                (click)="acceptApplication()"
+              >
+                Priimti aplikaciją
+              </button>
+              
               <br />
-              <p>{{ model.person.name + " " + model.person.surname }}</p>
-              <p>{{ model.person.uni }}</p>
-              <p>{{ model.person.phone }}</p>
-              <p>{{ model.person.email }}</p>
-
+              <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
+              
+              <!-- <p>{{ model.person.uni }}</p> -->
+              <i class="fa fa-volume-control-phone"></i>
+              <p class="fa john-gmail-com form-inner-content">{{ model.person.phone }}</p>
+              <i class="fa fa-paper-plane-o"></i>
+              <p class="fa john-gmail-com form-inner-content">{{ model.person.email }}</p>
+<section>
+           <div class="apie-studenta">Asmens duomenys</div>
+                  <hr/>
               <div *ngFor="let answer of model.answerList">
-                <hr />
-                <label class="bold">{{
+                <label class="question">{{
                   getFullQuestion(answer.questionId)
                 }}</label>
-                <div>{{ getAnswer(answer.answer, answer.questionId) }}</div>
+                <div class="answer form-inner-content">
+                  {{ getAnswer(answer.answer, answer.questionId) }}</div>
               </div>
-              <br />
+</section>
             </div>
-          </div>
-          <br />
-
           <div class="both-form-container">
-            <div class="form-container custom-border">
               <div class="form-inner-content">
-                <table class="table table-bordered table-striped table-hover ">
-                  <thead class="thead-custom">
-                    <tr>
-                      <th class="center">Asmens įvertinimas</th>
-                    </tr>
-                  </thead>
-                </table>
-
+               
+                      <div class="apie-studenta">Asmens įvertinimas</div>
+                    <hr/>
                 <div class="form-container">
                   <form
                     [formGroup]="valuationForm"
@@ -132,90 +138,56 @@
                           Pastaba per ilga
                         </div>
                       </div>
-                    </section>
-
+                    
+                    
+                      <button
+                        class="btn-custom btn-functional"
+                        (click)="sendTest()"
+                      >
+                        Siųsti testą
+                      </button>
+                      <button
+                        class="btn-custom btn-functional"
+                        (click)="inviteToInterview()"
+                      >
+                        Kviesti interviu
+                      </button>
+                   
                     <button
                       type="submit"
-                      class="btn btn-custom"
+                      class="btn-custom btn-return btn-functional"
                       [disabled]="valuationForm.invalid"
                       (click)="valuationForm.valid ? show() : null"
                     >
                       Išsaugoti
                     </button>
+                  </section>
                   </form>
-                  <div
-                    [style.display]="showModal ? 'block' : 'none'"
-                    class="modal"
-                  >
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h4 class="modal-title" id="myModalLabel">
-                            {{message}}
-                          </h4>
-                        </div>
-                        <div id="modal-footer">
-                          <button
-                            type="submit"
-                            class="btn btn-custom"
-                            id="btn-popup-hide"
-                            (click)="this[buttonFunction]()"
-                          >
-                            {{buttonValue}}
-                          </button>
-                          <button
-                            type="submit"
-                            class="btn btn-custom"
-                            id="btn-popup-back"
-                            (click)="hide()"
-                          >
-                            Atšaukti
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
-            <br />
+           
           </div>
+          
           <div>
-            <div class="button-div">
-              <button
-                class="btn btn-custom btn-functional"
-                (click)="sendTest()"
-              >
-                Siųsti testą
-              </button>
-              <button
-                class="btn btn-custom btn-functional"
-                (click)="inviteToInterview()"
-              >
-                Kviesti interviu
-              </button>
-              <button
-                class="btn btn-custom btn-functional"
-                (click)="acceptApplication()"
-              >
-                Priimti aplikaciją
-              </button>
-              <button
-                class="btn btn-custom btn-functional"
-                (click)="rejectApplication()"
-              >
-                Atmesti aplikaciją
-              </button>
-              <button class="btn btn-custom btn-functional" (click)="refused()">
-                Atsisakė
-              </button>
-              <button
-                [routerLink]="['/list']"
-                class="btn btn-light btn-return random btn-functional"
-              >
-                Atgal
-              </button>
-            </div>
+            <hr/>
+            <section>
+              <div>
+                <a class="nav-link" [routerLink]="'/list'">
+                <i class="fa fa-angle-double-left nav-link" [routerLink]="'/list'">
+                </i>Atgal</a>
+              </div>
+              <div>
+                <a class="nav-link btn-return" [routerLink]="'/details/:id+1'">
+                <i class="fa fa-angle-double-right nav-link btn-return" [routerLink]="'/details/:id+1'"></i>
+                Kita pareiška</a>
+              </div>
+              <div>
+                <a class="nav-link btn-return" [routerLink]="'/details/:id-1'">
+                <i class="fa fa-angle-double-left nav-link btn-return" [routerLink]="'/details/:id-1'">
+                </i>Praeita pareiška</a>
+              </div>
+            </section>
           </div>
         </div>
       </div>
