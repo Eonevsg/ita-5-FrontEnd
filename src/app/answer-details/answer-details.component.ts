@@ -32,10 +32,13 @@ export class AnswerDetailsComponent implements OnInit {
   private tempNotes: string = null;
   private email: string;
   private phone: string;
+  private status: string;
 
   public message: string;
   public buttonValue: string;
   public buttonFunction: string;
+
+  private routeId: number;
 
   applicationValues: any[] = [
     {id: 1, value: '1'},
@@ -77,6 +80,18 @@ export class AnswerDetailsComponent implements OnInit {
     state: ['', []]
   });
 
+  getNextApplicationId() {
+    return this.routeId + 1;
+  }
+
+  getPrevApplicationId() {
+    return this.routeId - 1;
+  }
+
+  getPersonStatus(){
+    return this.status;
+  }
+
   get applicationValuation() {
     return this.valuationForm.get('applicationValuation');
   }
@@ -116,13 +131,19 @@ export class AnswerDetailsComponent implements OnInit {
       )
     );
     this.answer$.subscribe(data => {
+      console.log(data);
       console.log(data.person.extra);
       this.setExistingExtraValue(data.person.extra);
       this.updateStatus(data.person);
       this.personId = data.person.id;
       this.email = data.person.email;
       this.phone = data.person.phone;
+      this.status = data.person.extra.status;
     });
+
+    this.route.paramMap.subscribe( params => {
+        this.routeId = parseInt(params.get('id'));  
+    })
   }
 
   onSubmitValuation(): void {

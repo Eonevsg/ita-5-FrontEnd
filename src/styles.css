@@ -9,7 +9,7 @@ html {
 #main {
   height: auto;
   display: block;
-  overflow: auto;
+  /* overflow: auto; */
   max-width: 1023px;
   min-width: 320px;
   top: 0;
