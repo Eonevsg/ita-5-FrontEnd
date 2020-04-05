@@ -1,9 +1,63 @@
 <!-- header -->
 <header class="header">
-    <div>
-      <img src="/assets/images/logo.png" class="logo" />
+  <div class="logo-container">
+    <img src="/assets/images/logo.png" class="logo" />
+    <p class="title">IT Akademija</p>
+  </div>
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+
+    <div class="hamburger">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
-    <div>
-      <p class="title">IT Akademija</p>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li
+          class="nav-item"
+          [routerLink]="'/home'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">Pradinis</a>
+        </li>
+        <li
+          class="nav-item"
+          [routerLink]="'/form'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">Registracija</a>
+        </li>
+        <li
+          class="nav-item"
+          [routerLink]="'/career'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">Karjera įmonėje</a>
+        </li>
+        <li
+          id="login-button"
+          class="nav-item login-button"
+          [routerLink]="'/login'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">Prisijungti</a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </nav>
+</header>
