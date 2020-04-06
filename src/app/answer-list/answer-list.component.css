@@ -121,18 +121,12 @@ th {
   margin-bottom: -10px;
 }
 
-/*  
-tbody {
-  display: block;
-  overflow: auto;
-  height: 500px;
-  width: 100%;
-  min-width: 1000px;
-  overflow-x: hidden;
+.tableFixHead {
+  overflow-y: auto;
+  height: 600px;
 }
-  */
 
-.table.sticky th {
+.tableFixHead thead tr th {
   position: sticky;
   top: 0;
 }

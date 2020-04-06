@@ -2,12 +2,12 @@
   <div id="form-container">
     <div class="card">
       <h1 class="title-align">Studentų paraiškos</h1>
-      <div class="card-body">
+      <div class="card-body tableFixHead">
         <mat-form-field hidden><input matInput /></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
-          class="table table-bordered table-striped table-hover sticky"
+          class="table table-bordered table-striped table-hover"
         >
           <colgroup>
             <col id="dateTime-column" />
