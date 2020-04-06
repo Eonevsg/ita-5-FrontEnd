@@ -6,34 +6,40 @@
           class="card-body form-inner-content"
           *ngIf="answer$ | async as model"
         >
-        <div>
-          <p class="status">
-            {{getPersonStatus() }}</p>
+        <div class="form-inner-content">
+          <div style="display: inline-block;">
+            <p class="status">
+              {{ getPersonStatus() }}</p>
+          </div>
+          <div class="line">
+            <button
+            class="btn-custom btn-functional btn-return btn-top"
+            (click)="refused()">
+            <i class="fa fa-ban ban"></i>
+              Atsisakė
+            </button>
+            <button
+              class="btn-custom btn-functional btn-return btn-top"
+              (click)="rejectApplication()">
+              <i class="fa fa-times times"></i>
+              Atmesti aplikaciją
+            </button>
+            <button
+              class="btn-custom btn-functional btn-return btn-top"
+              (click)="acceptApplication()">
+              <i class="fa fa-check check"></i>
+              Priimti aplikaciją
+            </button>
+          </div>
         </div>
+        
 
         <div class="form-inner-content">
-           <button
-              class="btn-custom btn-functional btn-return"
-              (click)="refused()">
-              <i class="fa fa-ban"></i>
-                Atsisakė
-              </button>
-              <button
-                class="btn-custom btn-functional btn-return"
-                (click)="rejectApplication()">
-                <i class="fa fa-times"></i>
-                Atmesti aplikaciją
-              </button>
-              <button
-                class="btn-custom btn-functional btn-return"
-                (click)="acceptApplication()">
-                <i class="fa fa-check"></i>
-                Priimti aplikaciją
-              </button>
+         
 
               <br />
               <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
-              <div style="width: 240px; display: inline-block;">
+              <div class="phone">
                 <div>
                   <i class="fa fa-volume-control-phone"></i>
                   <p class="fa information form-inner-content">{{ model.person.phone }}</p>
@@ -174,21 +180,21 @@
             </div>
           </div>
           <div>
-            <hr/>
+          <hr/>
             <section>
               <div>
                 <a class="nav-link btn-back" [routerLink]="'/list'">
-                <i class="fa fa-angle-double-left nav-link btn-back" [routerLink]="'/list'">
+                <i class="fa fa-angle-double-left nav-link btn-back arrows" [routerLink]="'/list'">
                 </i>Atgal</a>
               </div>
               <div>
                 <a class="nav-link btn-return" [routerLink]="['/details/', getNextApplicationId()]">
-                <i class="fa fa-angle-double-right nav-link btn-return" [routerLink]="['/details/', getNextApplicationId()]"></i>
+                <i class="fa fa-angle-double-right nav-link btn-return arrows" [routerLink]="['/details/', getNextApplicationId()]"></i>
                 Kita pareiška</a>
               </div>
               <div>
                 <a class="nav-link btn-return" [routerLink]="['/details/', getPrevApplicationId()]">
-                <i class="fa fa-angle-double-left nav-link" [routerLink]="['/details/', getPrevApplicationId()]">
+                <i class="fa fa-angle-double-left nav-link arrows" [routerLink]="['/details/', getPrevApplicationId()]">
                 </i>Praeita pareiška</a>
               </div>
             </section>
