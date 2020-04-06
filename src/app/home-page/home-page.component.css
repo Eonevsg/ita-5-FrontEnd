@@ -1,8 +1,9 @@
-.main-container:after {
+.main-container::after {
   content: "";
   display: table;
   clear: both;
 }
+
 .dropdown-container {
   margin: 0 5% 0 5%;
   width: 90%;
@@ -14,10 +15,12 @@
   height: 100%;
   margin: 0% 5% 5% 5%;
 }
+
 .customRow {
   width: 100%;
   height: 33%;
 }
+
 .customButtonChoicesColumn {
   width: 100%;
   height: 33%;
@@ -26,22 +29,27 @@
   margin-top: 2%;
   border-top: 5px solid #6b436e;
 }
+
 .btn-custom {
   width: 35%;
   margin-bottom: 10px;
 }
+
 .custom-img {
   max-width: 100%;
   height: 33%;
   background: red;
   overflow: hidden;
 }
+
 img {
   object-fit: cover;
 }
+
 .title-align {
   margin: 5% 0 2% 5%;
 }
+
 .custom-collapse-text,
 .custom-collapse-text:hover {
   color: #512b2b;
@@ -57,37 +65,59 @@ img {
   font-family: "FontAwesome";
   content: "\f0e0";
   font-size: large;
-  float: left;
-  margin-left: 20px;
-  margin-right: 20px;
+  color: #57292a;
+  height: 100%;
 }
-.marketing-container {
+.left {
+  float: left;
+  width: 5%;
+  height: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.right {
+  float:left;
+  width: 95%;
+  height: 100%;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  text-align: left;
+}
+.email-container {
   margin: 2% 5% 5% 5%;
   width: 90%;
-  height: auto;
+  height: 5vh;
   background: #c0adc6b0;
   border-top: 5px solid #6b436e;
+  display: table;
 }
+
 .custom-text {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
 .card-header {
-  border-top: 1px solid rgba(0,0,0,.125);
+  border-top: 1px solid rgba(0, 0, 0, .125);
 }
+
 .card {
   border-top: 0px;
-  border-left: 1px solid rgba(0,0,0,.125);
-  border-right: 1px solid rgba(0,0,0,.125);
-  border-bottom: 1px solid rgba(0,0,0,.125);
+  border-left: 1px solid rgba(0, 0, 0, .125);
+  border-right: 1px solid rgba(0, 0, 0, .125);
+  border-bottom: 1px solid rgba(0, 0, 0, .125);
 }
-.open-by-default-tab[aria-expanded="true"]::after{
+
+.open-by-default-tab[aria-expanded="true"]::after {
   font-family: "FontAwesome";
   /* Only once for the first open by default tab*/
   content: "\f077" !important;
   float: right;
 }
+
 .accordion .card-header:after {
   font-family: "FontAwesome";
   content: "\f077";
@@ -99,39 +129,14 @@ img {
   content: "\f078";
 }
 
-.page-footer {
-  position: relative;
-  height: auto;
-  clear: both;
-  padding-top: 20px;
-  background: #ee7023;
-}
-
 /* Mobile responsive */
 @media only screen and (max-width: 600px) {
-  .content-container {
-    width: 50%;
-    float: left;
-    height: auto;
+  .column {
+    width: 90%;
+    float: none;
   }
-  .image-container {
-    height: auto;
-    width: 50%;
-    text-align: center;
-  }
-  .side-image {
-    width: 100%;
-    height: 50%;
-  }
-  nav-link {
-    font-size: large;
-  }
-  .page-footer {
-    font-size: large;
-  }
-  .logo {
-    width: 10%;
-    height: 10%;
-    margin-bottom: 2%;
+
+  img {
+    display: none;
   }
 }
