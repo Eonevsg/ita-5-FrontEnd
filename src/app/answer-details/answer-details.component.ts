@@ -1,13 +1,12 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Answer} from '../models/answer';
 import {AnswerView} from '../models/answerView';
 import {ApplicationFormService} from '../services/application-form-service/form.service';
 import {ActivatedRoute} from '@angular/router';
-import {from, Observable, empty} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
+import {from, Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Person} from '../models/person';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-answer-details',
@@ -23,7 +22,6 @@ export class AnswerDetailsComponent implements OnInit {
   public questions: Answer[];
   public radioQuestionID: string[] = ['1', '2'];
   public showModal: boolean;
-  @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
   private statusValue: string;
   private personId: string;
   private tempApplVal: string = null;
@@ -142,8 +140,8 @@ export class AnswerDetailsComponent implements OnInit {
     });
 
     this.route.paramMap.subscribe( params => {
-        this.routeId = parseInt(params.get('id'));  
-    })
+        this.routeId = parseInt(params.get('id'));
+    });
   }
 
   onSubmitValuation(): void {
@@ -206,10 +204,6 @@ export class AnswerDetailsComponent implements OnInit {
     this.interviewValuation.setValue(e.target.value, {
       onlySelf: true
     });
-  }
-
-  triggerResize() {
-    this.notesResizableArea.resizeToFitContent(true);
   }
 
   getEmailOpenString(email: string) {

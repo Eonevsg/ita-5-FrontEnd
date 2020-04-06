@@ -12,8 +12,8 @@
         </div>
 
         <div class="form-inner-content">
-           <button 
-              class="btn-custom btn-functional btn-return" 
+           <button
+              class="btn-custom btn-functional btn-return"
               (click)="refused()">
               <i class="fa fa-ban"></i>
                 Atsisakė
@@ -30,7 +30,7 @@
                 <i class="fa fa-check"></i>
                 Priimti aplikaciją
               </button>
-         
+
               <br />
               <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
               <div style="width: 240px; display: inline-block;">
@@ -41,9 +41,9 @@
                 <div>
                   <p class="fa fa-paper-plane-o"></p>
                   <p class="fa information form-inner-content">{{ model.person.email }}</p>
-                </div> 
+                </div>
               </div>
-            
+
 <section>
            <div class="tit">Asmens duomenys</div>
                   <hr/>
@@ -61,7 +61,7 @@
             </div>
           <div class="both-form-container">
               <div class="form-inner-content">
-               
+
                       <div class="tit">Asmens įvertinimas</div>
                     <hr/>
                 <div class="form-container">
@@ -131,14 +131,10 @@
                         <label for="notes">Pastabos</label>
                         <textarea
                           type="text"
-                          (input)="triggerResize()"
-                          cdkTextareaAutosize
-                          #notesResizableArea="cdkTextareaAutosize"
-                          cdkAutosizeMinRows="4"
-                          cdkAutosizeMaxRows="13"
                           class="form-control textarea-custom"
                           id="notes"
                           maxlength="1000"
+                          autosize
                           formControlName="notes"
                         ></textarea>
                       </div>
@@ -151,7 +147,7 @@
                           Pastaba per ilga
                         </div>
                       </div>
-                    
+
                       <button
                         class="btn-custom btn-confiramtion"
                         (click)="sendTest()"
