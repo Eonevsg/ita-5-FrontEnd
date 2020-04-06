@@ -1,13 +1,12 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Answer} from '../models/answer';
 import {AnswerView} from '../models/answerView';
 import {ApplicationFormService} from '../services/application-form-service/form.service';
 import {ActivatedRoute} from '@angular/router';
-import {from, Observable, empty} from 'rxjs';
-import {switchMap, tap} from 'rxjs/operators';
+import {from, Observable} from 'rxjs';
+import {switchMap} from 'rxjs/operators';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Person} from '../models/person';
-import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-answer-details',
@@ -23,7 +22,6 @@ export class AnswerDetailsComponent implements OnInit {
   public questions: Answer[];
   public radioQuestionID: string[] = ['1', '2'];
   public showModal: boolean;
-  @ViewChild('notesResizableArea') notesResizableArea: CdkTextareaAutosize;
   private statusValue: string;
   private personId: string;
   private tempApplVal: string = null;
@@ -32,10 +30,13 @@ export class AnswerDetailsComponent implements OnInit {
   private tempNotes: string = null;
   private email: string;
   private phone: string;
+  private status: string;
 
   public message: string;
   public buttonValue: string;
   public buttonFunction: string;
+
+  private routeId: number;
 
   applicationValues: any[] = [
     {id: 1, value: '1'},
@@ -77,6 +78,18 @@ export class AnswerDetailsComponent implements OnInit {
     state: ['', []]
   });
 
+  getNextApplicationId() {
+    return this.routeId + 1;
+  }
+
+  getPrevApplicationId() {
+    return this.routeId - 1;
+  }
+
+  getPersonStatus(){
+    return this.status;
+  }
+
   get applicationValuation() {
     return this.valuationForm.get('applicationValuation');
   }
@@ -116,12 +129,18 @@ export class AnswerDetailsComponent implements OnInit {
       )
     );
     this.answer$.subscribe(data => {
+      console.log(data);
       console.log(data.person.extra);
       this.setExistingExtraValue(data.person.extra);
       this.updateStatus(data.person);
       this.personId = data.person.id;
       this.email = data.person.email;
       this.phone = data.person.phone;
+      this.status = data.person.extra.status;
+    });
+
+    this.route.paramMap.subscribe( params => {
+        this.routeId = parseInt(params.get('id'));
     });
   }
 
@@ -185,10 +204,6 @@ export class AnswerDetailsComponent implements OnInit {
     this.interviewValuation.setValue(e.target.value, {
       onlySelf: true
     });
-  }
-
-  triggerResize() {
-    this.notesResizableArea.resizeToFitContent(true);
   }
 
   getEmailOpenString(email: string) {

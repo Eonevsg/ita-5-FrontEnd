@@ -1,42 +1,78 @@
-#btn-popup-hide {
-  margin: 3%;
+.question {
+  color: #666666;
+  font-family: Roboto;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 16px;
+  font-weight: normal;
+}
+
+.answer {
+  width: 800px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.information {
+  color: #57292A;
+  font-family: Roboto;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 30px;
+}
+.name {
+  margin-bottom: 20px;
+  width: 211px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 30px;
+  letter-spacing: 0;
+  line-height: 35px;
+}
+.tit {
+  margin-top: 30px;
+  width: 250px;
+  color: #512B2B;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+textarea {
+  resize: none;
+}
+.btn-confiramtion {
+  width: 170px;
+  margin: 3% 3% 0 3%;
+  padding: 6px 4px 6px 4px;
+  border-radius: 10px;
 }
 
 .btn-functional {
-  width: 150px;
+  width: 180px;
   margin-top: 3%;
-  margin-right: 3%;
-  margin-left: 3%;
+  padding: 6px 4px 6px 4px;
+  color: #6b436eb0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 21px;
+  background-color: white;
+  border: 0px;
 }
 
 .btn-return {
   float: right;
 }
-
-.button-div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.btn-back {
+  float: left;
 }
-
-.button-div div:last-child {
-  margin-left: auto;
-}
-
-.custom-border {
-  border: lightgray;
-  border-radius: 5px;
-  border-style: solid;
-  border-width: 2px;
-}
-
 .form-inner-content {
   margin: 2%;
-}
-
-.random {
-  margin: 3% 3% 0;
-  background-color: lightgray;
 }
 
 #btn-bottom {
@@ -54,22 +90,18 @@
   width: 70%;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 780px) {
   .button-div {
     justify-content: center;
   }
 }
-
-.bold {
-  font-weight: bold;
+.nav-link {
+  font-size: large;
 }
-
-.modal-title {
-  white-space: pre-wrap;
+.column-header {
+  text-align: center;
+}
+.status{
+  text-align: center;
+  color: #512B2B;
 }
