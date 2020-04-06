@@ -51,7 +51,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
             if (err.status !== 403) {
               return;
             }
-            this.router.navigate([""]);
+            return;
           }
         }
       )
