@@ -2,10 +2,11 @@
   <div id="form-container">
     <div class="card">
       <h1 class="title-align">Studentų paraiškos</h1>
-      <div class="card-body tableFixHead">
+      <div class="card-body">
         <mat-form-field hidden><input matInput /></mat-form-field>
         <table
           matSort
+          floatthead
           (matSortChange)="sortData($event)"
           class="table table-bordered table-striped table-hover"
         >
