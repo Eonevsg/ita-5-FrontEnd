@@ -33,17 +33,17 @@
     </div>
     <!-- Column 2-->
     <div class="column">
-          <div>
-            <img src="/assets/images/code.jpg" class="custom-img">
-          </div>
-          <div class="customButtonChoicesColumn">
-            <h2>Registruotis į IT Akademiją!</h2>
-            <button class="btn btn-custom">Pildyti paraišką</button>
-          </div>
-          <div class="customButtonChoicesColumn">
-            <h2>Karjera įmonėje</h2>
-            <button class="btn btn-custom">Skelbimai</button>
-          </div>
+      <div>
+        <img src="/assets/images/code.jpg" class="custom-img">
+      </div>
+      <div class="customButtonChoicesColumn">
+        <h2>Registruotis į IT Akademiją!</h2>
+        <button class="btn btn-custom" [routerLink]="'/form'">Pildyti paraišką</button>
+      </div>
+      <div class="customButtonChoicesColumn">
+        <h2>Karjera įmonėje</h2>
+        <button class="btn btn-custom" [routerLink]="'/home'">Skelbimai</button>
+      </div>
     </div>
   </div>
 
@@ -170,10 +170,9 @@
     </div>
   </div>
 
-  <div class="marketing-container">
-    <p class="email-icon custom-text">
-      Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt
-    </p>
+  <div class="email-container">
+    <div class="email-icon left"></div>
+    <div class="right">Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt</div>
   </div>
 
 </div>

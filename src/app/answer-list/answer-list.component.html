@@ -1,18 +1,13 @@
 <div id="main">
   <div id="form-container">
-    <div class="logout-btn">
-      <button class="btn btn-light" type="button" (click)="logOutButtonClick()">
-        Atsijungti
-      </button>
-    </div>
-
     <div class="card">
+      <h1 class="title-align">Studentų paraiškos</h1>
       <div class="card-body">
-        <mat-form-field hidden><input matInput/></mat-form-field>
+        <mat-form-field hidden><input matInput /></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
-          class="table table-bordered table-striped table-hover"
+          class="table table-bordered table-striped table-hover sticky"
         >
           <colgroup>
             <col id="dateTime-column" />
@@ -25,10 +20,22 @@
             <col class="valuation-column" />
             <col id="notes-column" />
           </colgroup>
-          <thead class="thead-custom">
+          <thead class="thead-custom" id="table-header">
             <tr>
-              <th colspan="5" scope="colgroup" class="center table-primary-header">Paraiškos duomenys</th>
-              <th colspan="4" scope="colgroup" class="center table-primary-header">Vertinimas</th>
+              <th
+                colspan="5"
+                scope="colgroup"
+                class="center table-primary-header"
+              >
+                Paraiškos duomenys
+              </th>
+              <th
+                colspan="4"
+                scope="colgroup"
+                class="center table-primary-header"
+              >
+                Vertinimas
+              </th>
             </tr>
             <tr>
               <th scope="col">
@@ -86,7 +93,7 @@
               </th>
 
               <th scope="col">
-                <div class="column-header ">
+                <div class="column-header">
                   <div
                     mat-sort-header="uni"
                     class="column-header-title vertical-align-middle"
@@ -104,7 +111,7 @@
               </th>
 
               <th scope="col">
-                <div class="column-header ">
+                <div class="column-header">
                   <div
                     mat-sort-header="contract"
                     class="column-header-title vertical-align-middle"

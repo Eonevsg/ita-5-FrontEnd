@@ -12,39 +12,22 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 @Component({
   selector: "app-form-page",
   templateUrl: "./form-page.component.html",
-  styleUrls: ["./form-page.component.css"]
+  styleUrls: ["./form-page.component.css"],
 })
 export class FormPageComponent implements OnInit {
   messageTitle = "Registracija sėkmingai išsiųsta!";
-  message =
-    "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  successMessage =
+    "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  message = this.successMessage;
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
-
-  @ViewChild("contractResizableArea")
-  contractResizableArea: CdkTextareaAutosize;
-  @ViewChild("shiftResizableArea") shiftResizableArea: CdkTextareaAutosize;
-  @ViewChild("hobbiesResizableArea") hobbiesResizableArea: CdkTextareaAutosize;
-  @ViewChild("experienceResizableArea")
-  experienceResizableArea: CdkTextareaAutosize;
-  @ViewChild("marketingResizableArea")
-  marketingResizableArea: CdkTextareaAutosize;
-  @ViewChild("motivationResizableArea")
-  motivationResizableArea: CdkTextareaAutosize;
-
   applicationForm = this.buildApplicationForm();
 
   constructor(
     private fb: FormBuilder,
     private formService: ApplicationFormService
   ) {}
-
-  triggerResize() {
-    this.hobbiesResizableArea.resizeToFitContent(true);
-    this.experienceResizableArea.resizeToFitContent(true);
-    this.marketingResizableArea.resizeToFitContent(true);
-  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
@@ -121,14 +104,13 @@ export class FormPageComponent implements OnInit {
   }
 
   show() {
+    document.getElementById("overlay").classList.add("fadeIn");
     this.showModal = true;
   }
 
   hide() {
+    document.getElementById("overlay").classList.remove("fadeIn");
     this.showModal = false;
-    this.messageTitle = "Registracijos forma sėkmingai išsiųsta.";
-    this.message =
-      "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
   }
 
   buildApplicationForm() {
@@ -137,34 +119,36 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+        ],
       ],
       lname: [
         "",
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+        ],
       ],
       phone: [
         "",
         [
           Validators.required,
-          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")
-        ]
+          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$"),
+        ],
       ],
       email: [
         "",
         [
           Validators.required,
           Validators.maxLength(100),
-          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-        ]
+          Validators.pattern(
+            "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          ),
+        ],
       ],
       establishment: ["", [Validators.required, validateSelect]],
       establishmentOther: [
@@ -173,63 +157,64 @@ export class FormPageComponent implements OnInit {
           requiredIfValidator(
             () => this.applicationForm.get("establishment").value
           ),
-          Validators.maxLength(150),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       contract: ["", [Validators.required]],
       contractExplanation: [
         "",
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
-          Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       shift: ["", [Validators.required]],
       shiftExplanation: [
         "",
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
-          Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       hobbies: [
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       motivation: [
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       experience: [
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       marketing: [
         "",
         [
           Validators.required,
-          Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.maxLength(1000),
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
-      thirdPartyAgreement: ["", [Validators.required]]
+      thirdPartyAgreement: ["", [Validators.required]],
     });
   }
+
   getPersonAndAnswers(): AnswerPerson {
     this.isErrorMessage = false;
     let tempPerson: Person = null;
@@ -257,16 +242,16 @@ export class FormPageComponent implements OnInit {
     tempAnswerList.push(new Answer("6", this.marketing.value));
     return new AnswerPerson(tempAnswerList, tempPerson);
   }
+
   saveApplicationForm(answerPerson: AnswerPerson) {
     this.formService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
         (this.messageTitle = "Registracijos forma sėkmingai išsiųsta."),
-        (this.message =
-          "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d."),
+        (this.message = this.successMessage),
         this.show()
       ),
-      error => (
+      (error) => (
         (this.messageTitle = "Klaida!"),
         (this.message = error.error),
         (this.isErrorMessage = true),
@@ -277,7 +262,7 @@ export class FormPageComponent implements OnInit {
 }
 
 function requiredIfValidator(predicate) {
-  return formControl => {
+  return (formControl) => {
     if (!formControl.parent) {
       return null;
     }
@@ -292,15 +277,15 @@ function validateSelect(predicate: FormControl) {
   if (predicate.value == "0") {
     return {
       establishment: {
-        valid: false
-      }
+        valid: false,
+      },
     };
   }
   return null;
 }
 
 function subscribeToValue(applicationForm, parent, child) {
-  applicationForm.get(parent).valueChanges.subscribe(value => {
+  applicationForm.get(parent).valueChanges.subscribe((value) => {
     applicationForm.get(child).updateValueAndValidity();
   });
 }

@@ -35,11 +35,6 @@ select {
   width: 130px;
 }
 
-.logout-btn {
-  float: left;
-  margin: 3% 1.5%;
-}
-
 #main div {
   display: inline-block;
 }
@@ -119,4 +114,25 @@ th {
 }
 .table-primary-header {
   padding: 2px;
+}
+
+.title-align {
+  padding: 1.25rem;
+  margin-bottom: -10px;
+}
+
+/*  
+tbody {
+  display: block;
+  overflow: auto;
+  height: 500px;
+  width: 100%;
+  min-width: 1000px;
+  overflow-x: hidden;
+}
+  */
+
+.table.sticky th {
+  position: sticky;
+  top: 0;
 }
