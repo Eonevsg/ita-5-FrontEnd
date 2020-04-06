@@ -83,9 +83,16 @@ nav li.nav-item {
   width: 145px;
   text-align: center;
 }
+nav li.nav-item:focus {
+  outline: none;
+}
 
 .navbar-light .navbar-nav .login-button > .nav-link {
 }
 .hamburger {
   width: 100%;
+}
+.logout-btn {
+  float: left;
+  margin: 3% 1.5%;
 }
