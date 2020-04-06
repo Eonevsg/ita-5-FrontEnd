@@ -83,19 +83,20 @@
   transform: scale(1);
 }
 
-.custom-tooltip {
-  display: inline-block;
-  border-bottom: 1px dotted;
+.custom-tooltip-icon::after {
+  font-family: "FontAwesome";
+  content: "\f05a";
 }
 
-.custom-tooltip .custom-tooltip-text {
+.custom-tooltip-container,
+.custom-tooltip-text {
   visibility: hidden;
-  width: 400px;
+  max-width: 400px;
   background-color: #c0adc5;
   color: #000000;
   text-align: left;
-  margin: 0 5px;
   border-radius: 3px;
+  margin-left: 15px;
   /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
@@ -104,8 +105,8 @@
 
 .custom-tooltip-text > p {
   font-weight: normal;
-  margin-left: 5px;
   color: #000000;
+  margin: 10px 15px;
 }
 
 .custom-tooltip:hover .custom-tooltip-text {
@@ -114,6 +115,22 @@
 
 .short-input {
   width: 66%;
+}
+
+@media only screen and (max-width: 600px) {
+  .short-input {
+    width: inherit;
+  }
+
+  .custom-tooltip-text {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .custom-tooltip-text {
+    display: inherit;
+  }
 }
 
 .form-group {

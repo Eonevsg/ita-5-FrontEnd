@@ -86,10 +86,8 @@ table > tbody > tr > td {
 }
 
 table.table-bordered > thead > tr > th {
-  /* background-color: #9a83a3; */
   background-color: #6b436e;
   border-color: #491e5a38;
-  /* color: #3f941; */
   color: black;
 }
 

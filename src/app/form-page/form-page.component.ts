@@ -12,12 +12,13 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 @Component({
   selector: "app-form-page",
   templateUrl: "./form-page.component.html",
-  styleUrls: ["./form-page.component.css"]
+  styleUrls: ["./form-page.component.css"],
 })
 export class FormPageComponent implements OnInit {
   messageTitle = "Registracija sėkmingai išsiųsta!";
-  message =
-    "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  successMessage =
+    "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  message = this.successMessage;
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
@@ -126,9 +127,6 @@ export class FormPageComponent implements OnInit {
 
   hide() {
     this.showModal = false;
-    this.messageTitle = "Registracijos forma sėkmingai išsiųsta.";
-    this.message =
-      "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
   }
 
   buildApplicationForm() {
@@ -139,8 +137,8 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+        ],
       ],
       lname: [
         "",
@@ -148,23 +146,25 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+        ],
       ],
       phone: [
         "",
         [
           Validators.required,
-          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$")
-        ]
+          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$"),
+        ],
       ],
       email: [
         "",
         [
           Validators.required,
           Validators.maxLength(100),
-          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")
-        ]
+          Validators.pattern(
+            "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
+          ),
+        ],
       ],
       establishment: ["", [Validators.required, validateSelect]],
       establishmentOther: [
@@ -174,8 +174,8 @@ export class FormPageComponent implements OnInit {
             () => this.applicationForm.get("establishment").value
           ),
           Validators.maxLength(150),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       contract: ["", [Validators.required]],
       contractExplanation: [
@@ -183,8 +183,8 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
           Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       shift: ["", [Validators.required]],
       shiftExplanation: [
@@ -192,42 +192,42 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
           Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       hobbies: [
         "",
         [
           Validators.required,
           Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       motivation: [
         "",
         [
           Validators.required,
           Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       experience: [
         "",
         [
           Validators.required,
           Validators.maxLength(450),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
       marketing: [
         "",
         [
           Validators.required,
           Validators.maxLength(250),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$")
-        ]
+          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+        ],
       ],
-      thirdPartyAgreement: ["", [Validators.required]]
+      thirdPartyAgreement: ["", [Validators.required]],
     });
   }
   getPersonAndAnswers(): AnswerPerson {
@@ -262,11 +262,10 @@ export class FormPageComponent implements OnInit {
       () => (
         (this.isErrorMessage = false),
         (this.messageTitle = "Registracijos forma sėkmingai išsiųsta."),
-        (this.message =
-          "Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d."),
+        (this.message = this.successMessage),
         this.show()
       ),
-      error => (
+      (error) => (
         (this.messageTitle = "Klaida!"),
         (this.message = error.error),
         (this.isErrorMessage = true),
@@ -277,7 +276,7 @@ export class FormPageComponent implements OnInit {
 }
 
 function requiredIfValidator(predicate) {
-  return formControl => {
+  return (formControl) => {
     if (!formControl.parent) {
       return null;
     }
@@ -292,15 +291,15 @@ function validateSelect(predicate: FormControl) {
   if (predicate.value == "0") {
     return {
       establishment: {
-        valid: false
-      }
+        valid: false,
+      },
     };
   }
   return null;
 }
 
 function subscribeToValue(applicationForm, parent, child) {
-  applicationForm.get(parent).valueChanges.subscribe(value => {
+  applicationForm.get(parent).valueChanges.subscribe((value) => {
     applicationForm.get(child).updateValueAndValidity();
   });
 }
