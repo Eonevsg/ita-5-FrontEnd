@@ -116,6 +116,28 @@ th {
   padding: 2px;
 }
 
+<<<<<<< HEAD
 .disabled {
   background: yellow;
+=======
+.title-align {
+  padding: 1.25rem;
+  margin-bottom: -10px;
+}
+
+/*  
+tbody {
+  display: block;
+  overflow: auto;
+  height: 500px;
+  width: 100%;
+  min-width: 1000px;
+  overflow-x: hidden;
+}
+  */
+
+.table.sticky th {
+  position: sticky;
+  top: 0;
+>>>>>>> c6fc3b05e6dd7c62bc9bee9c9dcb64eb138512fb
 }

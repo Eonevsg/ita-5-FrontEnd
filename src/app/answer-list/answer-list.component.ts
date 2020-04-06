@@ -7,7 +7,7 @@ import { Person } from "../models/person";
 @Component({
   selector: "app-answer-list",
   templateUrl: "./answer-list.component.html",
-  styleUrls: ["./answer-list.component.css"]
+  styleUrls: ["./answer-list.component.css"],
 })
 export class AnswerListComponent implements OnInit {
   answers: AnswerView[];
@@ -22,7 +22,7 @@ export class AnswerListComponent implements OnInit {
     applicationValuation: "",
     testValuation: "",
     interviewValuation: "",
-    notes: ""
+    notes: "",
   };
   filters: any = {
     status: "",
@@ -34,16 +34,16 @@ export class AnswerListComponent implements OnInit {
     applicationValuation: "",
     testValuation: "",
     interviewValuation: "",
-    notes: ""
+    notes: "",
   };
 
   constructor(private formService: ApplicationFormService) {}
 
   ngOnInit(): void {
-    this.formService.findAllAnswers().subscribe(data => {
+    this.formService.findAllAnswers().subscribe((data) => {
       this.answers = data;
       console.log(data);
-      data.forEach(element => this.persons.push(element.person));
+      data.forEach((element) => this.persons.push(element.person));
       console.log(this.persons);
       this.sortedPersons = this.persons.slice();
     });

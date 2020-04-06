@@ -66,21 +66,6 @@ img {
   content: "\f0e0";
   font-size: large;
   color: #57292a;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-}
-.left {
-  float: left;
-  width: 10%;
-  height: 100%;
-  text-align: center;
-}
-.right {
-  width: auto;
-  height: 100%;
-  font-size: 15px;
-=======
-  height: 100%;
 }
 .left {
   float: left;
@@ -91,29 +76,7 @@ img {
   text-align: center;
 }
 .right {
-  float:left;
-  width: 95%;
-  height: 100%;
-  font-size: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
->>>>>>> Stashed changes
-  text-align: left;
-}
-=======
-  height: 100%;
-}
-.left {
   float: left;
-  width: 5%;
-  height: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: center;
-}
-.right {
-  float:left;
   width: 95%;
   height: 100%;
   font-size: 15px;
@@ -122,7 +85,6 @@ img {
   padding-left: 5px;
   text-align: left;
 }
->>>>>>> Stashed changes
 .email-container {
   margin: 2% 5% 5% 5%;
   width: 90%;
@@ -130,11 +92,8 @@ img {
   background: #c0adc6b0;
   border-top: 5px solid #6b436e;
   display: table;
-<<<<<<< Updated upstream
   padding-top: 10px;
   padding-bottom: 10px;
-=======
->>>>>>> Stashed changes
 }
 
 .custom-text {
@@ -143,14 +102,14 @@ img {
 }
 
 .card-header {
-  border-top: 1px solid rgba(0, 0, 0, .125);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card {
   border-top: 0px;
-  border-left: 1px solid rgba(0, 0, 0, .125);
-  border-right: 1px solid rgba(0, 0, 0, .125);
-  border-bottom: 1px solid rgba(0, 0, 0, .125);
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .open-by-default-tab[aria-expanded="true"]::after {
@@ -160,13 +119,7 @@ img {
   float: right;
 }
 
-<<<<<<< Updated upstream
-
 .accordion .card-header::after {
->>>>>>> Stashed changes
-=======
-.accordion .card-header:after {
->>>>>>> Stashed changes
   font-family: "FontAwesome";
   content: "\f077";
   float: right;
@@ -186,11 +139,8 @@ img {
 
   img {
     display: none;
-<<<<<<< Updated upstream
   }
   .left {
     padding-top: 10px;
-=======
->>>>>>> Stashed changes
   }
 }
