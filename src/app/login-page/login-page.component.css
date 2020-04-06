@@ -1,5 +1,5 @@
 .login-page {
-  width: 320px;
+  width: 400px;
   margin: 150px auto ;
   height: auto;
   overflow: hidden;
@@ -32,10 +32,9 @@
   outline: 0;
   width: 100%;
   border: 0;
-  margin: 15px 0 0 0;
+  margin: 15px auto 0 auto;
   padding: 15px;
   /* color: #ffffff; */
-
 }
 
 .form .message {
@@ -99,7 +98,9 @@
   text-align: center;
 }
 #password-reminder-text {
-  float: right;
+  text-align: center;
+  display: block;
+  /*float: right;*/
 }
 .modal {
   position: center;
@@ -114,6 +115,13 @@
 @media only screen and (max-width: 600px) {
 .login-page {
   width: auto;
-  margin: 15px 0;
+  margin: 5% 0;
 }
+  .form {
+    width: 100%;
+  }
+  .modal {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
