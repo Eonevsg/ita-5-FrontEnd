@@ -116,6 +116,9 @@ th {
   padding: 2px;
 }
 
+.disabled {
+  color: lightgray !important;
+}
 .title-align {
   padding: 1.25rem;
   margin-bottom: -10px;
