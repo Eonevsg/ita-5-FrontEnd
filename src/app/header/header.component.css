@@ -37,11 +37,6 @@
   #login-button {
     margin-left: 590px;
   }
-  .hamburger {
-    position: absolute;
-    top: -74px;
-    margin-right: 2%;
-  }
 }
 @media (max-width: 1130px) {
   .navbar-expand-lg .navbar-toggler {
@@ -64,6 +59,17 @@
     background-color: white;
     right: 0px;
     top: 0px;
+  }
+}
+@media (max-width: 1040px) {
+  .hamburger {
+    right: 2%;
+  }
+  ul {
+    margin-right:2%;
+  }
+  #navbarSupportedContent{
+    right: 4%;
   }
 }
 
@@ -101,6 +107,4 @@ nav li.nav-item:focus {
   float: left;
   margin: 3% 1.5%;
 }
-ul{
-  margin-right: 143px;
-}
+
