@@ -22,30 +22,12 @@ export class FormPageComponent implements OnInit {
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
-
-  @ViewChild("contractResizableArea")
-  contractResizableArea: CdkTextareaAutosize;
-  @ViewChild("shiftResizableArea") shiftResizableArea: CdkTextareaAutosize;
-  @ViewChild("hobbiesResizableArea") hobbiesResizableArea: CdkTextareaAutosize;
-  @ViewChild("experienceResizableArea")
-  experienceResizableArea: CdkTextareaAutosize;
-  @ViewChild("marketingResizableArea")
-  marketingResizableArea: CdkTextareaAutosize;
-  @ViewChild("motivationResizableArea")
-  motivationResizableArea: CdkTextareaAutosize;
-
   applicationForm = this.buildApplicationForm();
 
   constructor(
     private fb: FormBuilder,
     private formService: ApplicationFormService
   ) {}
-
-  triggerResize() {
-    this.hobbiesResizableArea.resizeToFitContent(true);
-    this.experienceResizableArea.resizeToFitContent(true);
-    this.marketingResizableArea.resizeToFitContent(true);
-  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
@@ -135,7 +117,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
         ],
@@ -144,7 +126,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(1),
           Validators.maxLength(100),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
         ],
@@ -173,7 +155,7 @@ export class FormPageComponent implements OnInit {
           requiredIfValidator(
             () => this.applicationForm.get("establishment").value
           ),
-          Validators.maxLength(150),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -182,7 +164,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
-          Validators.maxLength(250),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -191,7 +173,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
-          Validators.maxLength(250),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -199,7 +181,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -207,7 +189,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -215,7 +197,7 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.maxLength(450),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
@@ -223,13 +205,14 @@ export class FormPageComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.maxLength(250),
+          Validators.maxLength(1000),
           Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
         ],
       ],
       thirdPartyAgreement: ["", [Validators.required]],
     });
   }
+
   getPersonAndAnswers(): AnswerPerson {
     this.isErrorMessage = false;
     let tempPerson: Person = null;
@@ -257,6 +240,7 @@ export class FormPageComponent implements OnInit {
     tempAnswerList.push(new Answer("6", this.marketing.value));
     return new AnswerPerson(tempAnswerList, tempPerson);
   }
+
   saveApplicationForm(answerPerson: AnswerPerson) {
     this.formService.saveForm(answerPerson).subscribe(
       () => (

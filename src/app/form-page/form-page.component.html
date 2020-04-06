@@ -19,6 +19,7 @@
           class="form-control"
           id="fname"
           formControlName="fname"
+          maxlength="100"
         />
         <div
           [hidden]="fname.valid || fname.untouched"
@@ -29,6 +30,9 @@
           </div>
           <div *ngIf="fname.errors?.minlength">
             Vardas per trumpas
+          </div>
+          <div *ngIf="fname.errors?.maxlength">
+            Pasiektas 100 simbolių ilgis
           </div>
           <div *ngIf="fname.errors?.pattern">
             Nenaudokite skaičių ar specialių simbolių!
@@ -43,6 +47,7 @@
           class="form-control"
           id="lname"
           formControlName="lname"
+          maxlength="100"
         />
         <div
           [hidden]="lname.valid || lname.untouched"
@@ -53,6 +58,9 @@
           </div>
           <div *ngIf="lname.errors?.minlength">
             Pavardė per trumpa
+          </div>
+          <div *ngIf="lname.errors?.maxlength">
+            Pasiektas 100 simbolių ilgis
           </div>
           <div *ngIf="lname.errors?.pattern">
             Nenaudokite skaičių ar specialių simbolių!
@@ -209,14 +217,10 @@
           <label for="contractExplanation">Pakomentuok plačiau:</label>
           <textarea
             type="text"
-            (input)="triggerResize()"
-            cdkTextareaAutosize
-            #contractResizableArea="cdkTextareaAutosize"
-            cdkAutosizeMinRows="4"
-            cdkAutosizeMaxRows="16"
             class="form-control textarea-custom"
             id="contractExplanation"
             maxlength="1000"
+            autosize
             formControlName="contractExplanation"
           ></textarea>
 
@@ -280,15 +284,11 @@
         <label for="shiftExplanation">Pakomentuok plačiau:</label>
         <textarea
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #shiftResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="shiftExplanation"
           formControlName="shiftExplanation"
           maxlength="1000"
+          autosize
         ></textarea>
         <div
           class="alert alert-danger"
@@ -309,15 +309,11 @@
         >
         <textarea
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #hobbiesResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="hobbies"
           formControlName="hobbies"
           maxlength="1000"
+          autosize
         ></textarea>
         <div
           [hidden]="hobbies.valid || hobbies.untouched"
@@ -339,15 +335,11 @@
         >
         <textarea
           type="text"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #motivationResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           id="motivation"
           formControlName="motivation"
           maxlength="1000"
+          autosize
         ></textarea>
         <div
           [hidden]="motivation.valid || motivation.untouched"
@@ -371,14 +363,10 @@
         <textarea
           type="text"
           id="experience"
-          (input)="triggerResize()"
-          cdkTextareaAutosize
-          #experienceResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           formControlName="experience"
           maxlength="1000"
+          autosize
         ></textarea>
         <div
           [hidden]="experience.valid || experience.untouched"
@@ -401,16 +389,12 @@
       <div class="form-group">
         <label for="marketing">Iš kur sužinojai apie IT Akademiją?</label>
         <textarea
-          cdkTextareaAutosize
-          (input)="triggerResize()"
-          #marketingResizableArea="cdkTextareaAutosize"
-          cdkAutosizeMinRows="4"
-          cdkAutosizeMaxRows="16"
           class="form-control textarea-custom"
           type="text"
           id="marketing"
           formControlName="marketing"
           maxlength="1000"
+          autosize
         ></textarea>
         <div
           [hidden]="marketing.valid || marketing.untouched"
@@ -445,14 +429,12 @@
 
       <div id="submit">
         <button type="submit" class="btn btn-custom" (click)="onSubmit()">
-          <!-- (click)="applicationForm.valid ? onSubmit() : null" -->
           Pateikti
         </button>
       </div>
     </form>
 
     <div [style.display]="showModal ? 'block' : 'none'" class="modal">
-      <!-- <div [style.display]="'block'" class="modal"> -->
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">

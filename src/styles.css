@@ -79,6 +79,7 @@ input[type="number"] {
 
 .textarea-custom {
   overflow: hidden;
+  min-height: 80px;
 }
 
 table > tbody > tr > td {

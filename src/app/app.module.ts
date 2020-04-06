@@ -22,6 +22,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
+import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -57,7 +58,8 @@ const appRoutes: Routes = [
     MatSortModule,
     MatInputModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    TextareaAutosizeModule
   ],
   providers: [
     {
