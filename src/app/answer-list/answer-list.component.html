@@ -1,8 +1,9 @@
 <div id="main">
   <div id="form-container">
     <div class="card">
-      <div class="card-body">
-        <mat-form-field hidden><input matInput/></mat-form-field>
+      <h1 class="title-align">Studentų paraiškos</h1>
+      <div class="card-body tableFixHead">
+        <mat-form-field hidden><input matInput /></mat-form-field>
         <table
           matSort
           (matSortChange)="sortData($event)"
@@ -19,7 +20,7 @@
             <col class="valuation-column" />
             <col id="notes-column" />
           </colgroup>
-          <thead class="thead-custom">
+          <thead class="thead-custom" id="table-header">
             <tr>
               <th
                 colspan="5"
@@ -92,7 +93,7 @@
               </th>
 
               <th scope="col">
-                <div class="column-header ">
+                <div class="column-header">
                   <div
                     mat-sort-header="uni"
                     class="column-header-title vertical-align-middle"
@@ -110,7 +111,7 @@
               </th>
 
               <th scope="col">
-                <div class="column-header ">
+                <div class="column-header">
                   <div
                     mat-sort-header="contract"
                     class="column-header-title vertical-align-middle"
@@ -212,11 +213,13 @@
             <tr
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
+              [ngClass]="{'disabled': (person.extra.status === 'Atmesta') || (person.extra.status === 'Atsisakė')}"
             >
               <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
               <td class="column-width-small">{{ person.extra.status }}</td>
+
               <td class="column-width">
                 {{ person.name + " " + person.surname }}
               </td>

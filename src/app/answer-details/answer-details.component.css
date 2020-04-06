@@ -105,3 +105,6 @@ textarea {
   text-align: center;
   color: #512B2B;
 }
+.modal-header {
+  white-space: pre-wrap;
+}

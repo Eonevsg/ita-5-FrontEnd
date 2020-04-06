@@ -162,6 +162,7 @@ export class AnswerDetailsComponent implements OnInit {
     this.message = 'Ar tikrai norite išsaugoti?';
     this.buttonValue = 'Išsaugoti';
     this.buttonFunction = "onUpdateValues";
+    this.show();
   }
 
 

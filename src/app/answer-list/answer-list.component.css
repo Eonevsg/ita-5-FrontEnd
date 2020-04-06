@@ -115,3 +115,21 @@ th {
 .table-primary-header {
   padding: 2px;
 }
+
+.disabled {
+  color: lightgray !important;
+}
+.title-align {
+  padding: 1.25rem;
+  margin-bottom: -10px;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 600px;
+}
+
+.tableFixHead thead tr th {
+  position: sticky;
+  top: 0;
+}
