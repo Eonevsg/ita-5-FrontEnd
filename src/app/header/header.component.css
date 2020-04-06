@@ -59,6 +59,7 @@
     background-color: white;
     right: 0px;
     top: 0px;
+    z-index: 999;
   }
 }
 @media (max-width: 1040px) {
