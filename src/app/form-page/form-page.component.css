@@ -128,3 +128,8 @@
 label:not(.radio-label) {
   margin-top: 20px;
 }
+#messageTitle{
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
