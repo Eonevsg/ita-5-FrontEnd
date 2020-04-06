@@ -213,7 +213,7 @@
             <tr
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
-              [ngClass]="{'disabled':person.extra.status === 'Atmesta'}"
+              [ngClass]="{'disabled': (person.extra.status === 'Atmesta') || (person.extra.status === 'Atsisakė')}"
             >
               <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
