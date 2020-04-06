@@ -116,12 +116,15 @@ th {
   padding: 2px;
 }
 
+.disabled {
+  color: lightgray !important;
+}
 .title-align {
   padding: 1.25rem;
   margin-bottom: -10px;
 }
 
-/*  
+/*
 tbody {
   display: block;
   overflow: auto;
@@ -132,7 +135,3 @@ tbody {
 }
   */
 
-.table.sticky th {
-  position: sticky;
-  top: 0;
-}

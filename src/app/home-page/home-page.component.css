@@ -66,7 +66,6 @@ img {
   content: "\f0e0";
   font-size: large;
   color: #57292a;
-  height: 100%;
 }
 .left {
   float: left;
@@ -93,6 +92,8 @@ img {
   background: #c0adc6b0;
   border-top: 5px solid #6b436e;
   display: table;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .custom-text {
@@ -110,6 +111,7 @@ img {
   border-right: 1px solid rgba(0, 0, 0, 0.125);
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
+
 .open-by-default-tab[aria-expanded="true"]::after {
   font-family: "FontAwesome";
   /* Only once for the first open by default tab*/
@@ -137,5 +139,8 @@ img {
 
   img {
     display: none;
+  }
+  .left {
+    padding-top: 10px;
   }
 }
