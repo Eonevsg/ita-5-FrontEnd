@@ -2,10 +2,10 @@
   <div id="form-container">
     <h1 id="form-title">Registracijos forma</h1>
     <p>
-      Užpildykite registracijos formą dalyvauti IT Akademijoje. <br />
-      Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl
-      dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus
-      klausimams rašykite mums - atranka@Įmonės_pavadinimas.lt
+      Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos
+      formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT
+      Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite
+      mums - atranka@Įmonės_pavadinimas.lt
     </p>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
       <div class="form-group-header">
@@ -169,9 +169,8 @@
       </div>
 
       <div class="form-group">
-        <label for="contract">Ar bus galimybė pasirašyti&nbsp;</label>
-        <label class="custom-tooltip"
-          >trišalę praktikos sutartį?
+        <label for="contract" class="custom-tooltip custom-tooltip-icon"
+          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?
           <div class="custom-tooltip-text">
             <p>
               Ar esi pasidomėjęs, kad yra galima sutartis tarp Tavęs, banko ir
@@ -181,6 +180,7 @@
             </p>
           </div>
         </label>
+
         <div class="form-radio-group" [class.has-error]="contract.invalid">
           <div class="form-radio-group-choice">
             <input
@@ -279,7 +279,7 @@
 
       <div
         [hidden]="shift.value == 'yes' || shift.pristine"
-        class="radio-hidden-group"
+        class="radio-hidden-group form-group"
       >
         <label for="shiftExplanation">Pakomentuok plačiau:</label>
         <textarea
@@ -330,7 +330,7 @@
 
       <div class="form-group">
         <label for="motivation"
-          >Kodėl nori dalyvauti IT akademijoje? Kas tave „veža“ joje
+          >Kodėl nori dalyvauti IT Akademijoje? Kas tave „veža“ joje
           dalyvauti?</label
         >
         <textarea
@@ -387,7 +387,7 @@
       </div>
 
       <div class="form-group">
-        <label for="marketing">Iš kur sužinojai apie IT akademiją?</label>
+        <label for="marketing">Iš kur sužinojai apie IT Akademiją?</label>
         <textarea
           class="form-control textarea-custom"
           type="text"
@@ -428,22 +428,22 @@
       </div>
 
       <div id="submit">
-        <button type="submit" class="btn btn-custom" (click)="onSubmit()">
+        <button type="submit" class="btn btn-custom">
           Pateikti
         </button>
       </div>
     </form>
 
     <div [style.display]="showModal ? 'block' : 'none'" class="modal">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title" id="myModalLabel">
               <div class="center">
-                <label>{{ messageTitle }}</label>
+                <label id="messageTitle">{{ messageTitle }}</label>
               </div>
               <hr />
-              <p>{{ message }}</p>
+              <p id="message">{{ message }}</p>
             </div>
             <div class="center">
               <button
@@ -459,6 +459,7 @@
                 type="button"
                 class="btn btn-custom"
                 id="btn-popup"
+                (click)="hide()"
                 [routerLink]="['/home']"
               >
                 Uždaryti

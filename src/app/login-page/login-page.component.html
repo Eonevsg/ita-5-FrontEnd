@@ -28,7 +28,6 @@
       <div class="alert alert-danger" *ngIf="hasError && !isSelected">
         Klaidingi duomenys!
       </div>
-      <button type="submit" class="btn btn-custom">Prisijungti</button>
       <div id="password-reminder">
         <a
           href="javascript:void(0);"
@@ -38,10 +37,11 @@
           Pamiršote slaptažodį?
         </a>
       </div>
+      <button type="submit" class="btn btn-custom">Prisijungti</button>
     </form>
   </div>
   <div [style.display]="showModal ? 'block' : 'none'" class="modal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">

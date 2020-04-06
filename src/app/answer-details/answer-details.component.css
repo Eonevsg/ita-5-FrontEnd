@@ -133,3 +133,6 @@ textarea {
 .check{
   color: #99CC66;
 }
+.modal-header {
+  white-space: pre-wrap;
+}

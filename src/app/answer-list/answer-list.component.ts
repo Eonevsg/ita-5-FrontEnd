@@ -1,16 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { AnswerView } from "../models/answerView";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { AuthService } from "../services/auth/auth.service";
-import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { Sort } from "@angular/material/sort";
 import { Person } from "../models/person";
 
 @Component({
   selector: "app-answer-list",
   templateUrl: "./answer-list.component.html",
-  styleUrls: ["./answer-list.component.css"]
+  styleUrls: ["./answer-list.component.css"],
 })
 export class AnswerListComponent implements OnInit {
   answers: AnswerView[];
@@ -25,7 +22,7 @@ export class AnswerListComponent implements OnInit {
     applicationValuation: "",
     testValuation: "",
     interviewValuation: "",
-    notes: ""
+    notes: "",
   };
   filters: any = {
     status: "",
@@ -37,21 +34,16 @@ export class AnswerListComponent implements OnInit {
     applicationValuation: "",
     testValuation: "",
     interviewValuation: "",
-    notes: ""
+    notes: "",
   };
 
-  constructor(
-    private formService: ApplicationFormService,
-    private authService: AuthService,
-    private router: Router,
-    private location: Location
-  ) {}
+  constructor(private formService: ApplicationFormService) {}
 
   ngOnInit(): void {
-    this.formService.findAllAnswers().subscribe(data => {
+    this.formService.findAllAnswers().subscribe((data) => {
       this.answers = data;
       console.log(data);
-      data.forEach(element => this.persons.push(element.person));
+      data.forEach((element) => this.persons.push(element.person));
       console.log(this.persons);
       this.sortedPersons = this.persons.slice();
     });
@@ -109,12 +101,6 @@ export class AnswerListComponent implements OnInit {
           return 0;
       }
     });
-  }
-
-  logOutButtonClick() {
-    this.authService.logOut();
-    this.location.replaceState("/"); // clears browser history so they can't navigate with back button
-    this.router.navigate(["home"]);
   }
 
   compare(

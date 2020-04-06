@@ -23,7 +23,7 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav">
         <li
           class="nav-item"
           [routerLink]="'/home'"
@@ -41,16 +41,26 @@
           <a class="nav-link">Registracija</a>
         </li>
         <li
+          *ngIf="isLoggedIn()"
           class="nav-item"
-          [routerLink]="'/career'"
+          [routerLink]="'/list'"
           routerLinkActive="active"
           (click)="closeMenu()"
         >
-          <a class="nav-link">Karjera įmonėje</a>
+          <a class="nav-link">HR aplinka</a>
         </li>
         <li
+          *ngIf="isLoggedIn()"
+          id="logout-button"
+          class="nav-item"
+          (click)="logOutButtonClick()"
+        >
+          <a class="nav-link">Atsijungti</a>
+        </li>
+        <li
+          *ngIf="!isLoggedIn()"
           id="login-button"
-          class="nav-item login-button"
+          class="nav-item"
           [routerLink]="'/login'"
           routerLinkActive="active"
           (click)="closeMenu()"

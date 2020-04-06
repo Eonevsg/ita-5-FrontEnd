@@ -6,6 +6,24 @@ html {
   background-color: #e0dceb3d;
 }
 
+#overlay {
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: .2s ease-in;
+}
+#overlay.fadeIn {
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
 #main {
   height: auto;
   display: block;
@@ -29,6 +47,9 @@ input[type="number"] {
 
 .btn-custom {
   background: #6b436eb0;
+  /* color: #512b2b; */
+  font-weight: 500;
+  margin: 3%
 }
 
 .btn-custom:active,
@@ -85,9 +106,9 @@ table > tbody > tr > td {
 }
 
 table.table-bordered > thead > tr > th {
-  background-color: #9a83a3;
-  border-color: #491e5a38;
-  color: #3f2941;
+  background-color: #6b436e;
+  border: 1px solid rgb(99,59,106);
+  color: black;
 }
 
 .center {
@@ -114,4 +135,7 @@ li {
 .form-group-header > hr {
   margin-top: 0px;
   border-color: #cccccc;
+}
+#modal-footer {
+  text-align: center;
 }

@@ -1,7 +1,7 @@
 .login-page {
-  width: 320px;
-  margin: auto;
-  height: 100vh;
+  width: 400px;
+  margin: 150px auto ;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -29,12 +29,12 @@
 }
 
 .form button {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   outline: 0;
   width: 100%;
   border: 0;
+  margin: 15px auto 0 auto;
   padding: 15px;
-  /* color: #ffffff; */
   font-size: 14px;
 }
 
@@ -99,7 +99,9 @@
   text-align: center;
 }
 #password-reminder-text {
-  float: right;
+  text-align: center;
+  display: block;
+  /*float: right;*/
 }
 .modal {
   position: center;
@@ -109,4 +111,18 @@
 }
 .modal-header {
   width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+.login-page {
+  width: auto;
+  margin: 5% 0;
+}
+  .form {
+    width: 100%;
+  }
+  .modal {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
