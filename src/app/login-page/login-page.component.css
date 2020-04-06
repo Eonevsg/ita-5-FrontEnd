@@ -29,12 +29,11 @@
 }
 
 .form button {
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   outline: 0;
   width: 100%;
   border: 0;
   padding: 15px;
-  /* color: #ffffff; */
   font-size: 14px;
 }
 

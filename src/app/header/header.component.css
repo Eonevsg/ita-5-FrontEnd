@@ -67,7 +67,7 @@
   font-weight: 500;
 }
 .navbar-light .navbar-nav .active > .nav-link {
-  background-color: #e0dceb3d;
+  background-color: rgba(242, 240, 246);
 }
 nav {
   padding: 0px;
