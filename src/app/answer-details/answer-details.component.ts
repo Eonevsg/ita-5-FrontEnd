@@ -111,7 +111,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   show() {
-    // document.getElementById("overlay").classList.add("fadeIn");
+     document.getElementById("overlay").classList.add("fadeIn");
     this.showModal = true;
   }
 
@@ -162,6 +162,7 @@ export class AnswerDetailsComponent implements OnInit {
     this.message = 'Ar tikrai norite išsaugoti?';
     this.buttonValue = 'Išsaugoti';
     this.buttonFunction = "onUpdateValues";
+    this.show();
   }
 
 
