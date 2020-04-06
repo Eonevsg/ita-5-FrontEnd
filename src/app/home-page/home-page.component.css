@@ -77,7 +77,7 @@ img {
   text-align: center;
 }
 .right {
-  float:left;
+  float: left;
   width: 95%;
   height: 100%;
   font-size: 15px;
@@ -101,14 +101,14 @@ img {
 }
 
 .card-header {
-  border-top: 1px solid rgba(0, 0, 0, .125);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card {
   border-top: 0px;
-  border-left: 1px solid rgba(0, 0, 0, .125);
-  border-right: 1px solid rgba(0, 0, 0, .125);
-  border-bottom: 1px solid rgba(0, 0, 0, .125);
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+  border-right: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 .open-by-default-tab[aria-expanded="true"]::after {
   font-family: "FontAwesome";
