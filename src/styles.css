@@ -29,6 +29,8 @@ input[type="number"] {
 
 .btn-custom {
   background: #6b436eb0;
+  /* color: #512b2b; */
+  font-weight: 500;
 }
 
 .btn-custom:active,
@@ -84,9 +86,11 @@ table > tbody > tr > td {
 }
 
 table.table-bordered > thead > tr > th {
-  background-color: #9a83a3;
+  /* background-color: #9a83a3; */
+  background-color: #6b436e;
   border-color: #491e5a38;
-  color: #3f2941;
+  /* color: #3f941; */
+  color: black;
 }
 
 .center {
