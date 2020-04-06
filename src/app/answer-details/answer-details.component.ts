@@ -121,7 +121,7 @@ export class AnswerDetailsComponent implements OnInit {
       case "Atmesta": {
         return "Paraiška atmesta";
       }
-      case "Piimta": {
+      case "Priimta": {
         return "Paraiška priimta";
       }
       case "Atsisakė": {

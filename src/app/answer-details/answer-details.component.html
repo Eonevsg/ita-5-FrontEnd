@@ -7,7 +7,7 @@
           *ngIf="answer$ | async as model"
         >
         <div class="form-inner-content">
-          <div style="display: inline-block;">
+          <div class="display-inline">
             <p class="status">
               {{ getPersonStatus() }}</p>
           </div>
@@ -223,7 +223,6 @@
           </div>
         </div>
       </div>
-    </div>
     <div [style.display]="showModal ? 'block' : 'none'" class="modal">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
