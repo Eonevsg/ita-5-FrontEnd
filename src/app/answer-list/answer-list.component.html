@@ -212,11 +212,13 @@
             <tr
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
+              [ngClass]="{'disabled':person.extra.status === 'Atmesta'}"
             >
               <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
               </td>
               <td class="column-width-small">{{ person.extra.status }}</td>
+
               <td class="column-width">
                 {{ person.name + " " + person.surname }}
               </td>

@@ -115,3 +115,7 @@ th {
 .table-primary-header {
   padding: 2px;
 }
+
+.disabled {
+  background: yellow;
+}
