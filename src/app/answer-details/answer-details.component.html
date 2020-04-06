@@ -6,160 +6,173 @@
           class="card-body form-inner-content"
           *ngIf="answer$ | async as model"
         >
-        <div>
-          <p class="status">
-            {{getPersonStatus() }}</p>
-        </div>
+          <div>
+            <p class="status">
+              {{ getPersonStatus() }}
+            </p>
+          </div>
 
-        <div class="form-inner-content">
-           <button
+          <div class="form-inner-content">
+            <button
               class="btn-custom btn-functional btn-return"
-              (click)="refused()">
+              (click)="refused()"
+            >
               <i class="fa fa-ban"></i>
-                Atsisakė
-              </button>
-              <button
-                class="btn-custom btn-functional btn-return"
-                (click)="rejectApplication()">
-                <i class="fa fa-times"></i>
-                Atmesti aplikaciją
-              </button>
-              <button
-                class="btn-custom btn-functional btn-return"
-                (click)="acceptApplication()">
-                <i class="fa fa-check"></i>
-                Priimti aplikaciją
-              </button>
+              Atsisakė
+            </button>
+            <button
+              class="btn-custom btn-functional btn-return"
+              (click)="rejectApplication()"
+            >
+              <i class="fa fa-times"></i>
+              Atmesti aplikaciją
+            </button>
+            <button
+              class="btn-custom btn-functional btn-return"
+              (click)="acceptApplication()"
+            >
+              <i class="fa fa-check"></i>
+              Priimti aplikaciją
+            </button>
 
-              <br />
-              <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
-              <div style="width: 240px; display: inline-block;">
-                <div>
-                  <i class="fa fa-volume-control-phone"></i>
-                  <p class="fa information form-inner-content">{{ model.person.phone }}</p>
-                </div>
-                <div>
-                  <p class="fa fa-paper-plane-o"></p>
-                  <p class="fa information form-inner-content">{{ model.person.email }}</p>
-                </div>
+            <br />
+            <p class="name">
+              {{ model.person.name + " " + model.person.surname }}
+            </p>
+            <div style="width: 240px; display: inline-block;">
+              <div>
+                <i class="fa fa-volume-control-phone"></i>
+                <p class="fa information form-inner-content">
+                  {{ model.person.phone }}
+                </p>
               </div>
+              <div>
+                <p class="fa fa-paper-plane-o"></p>
+                <p class="fa information form-inner-content">
+                  {{ model.person.email }}
+                </p>
+              </div>
+            </div>
 
-<section>
-           <div class="tit">Asmens duomenys</div>
-                  <hr/>
-                  <label class="question">
-                    Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label>
-                  <div class="answer form-inner-content">{{ model.person.uni }}</div>
+            <section>
+              <div class="tit">Asmens duomenys</div>
+              <hr />
+              <label class="question">
+                Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+              >
+              <div class="answer form-inner-content">
+                {{ model.person.uni }}
+              </div>
               <div *ngFor="let answer of model.answerList">
                 <label class="question">
-                  {{getFullQuestion(answer.questionId)}}</label>
+                  {{ getFullQuestion(answer.questionId) }}</label
+                >
                 <div class="answer form-inner-content">
                   {{ getAnswer(answer.answer, answer.questionId) }}
                 </div>
               </div>
-</section>
-            </div>
+            </section>
+          </div>
           <div class="both-form-container">
-              <div class="form-inner-content">
-
-                      <div class="tit">Asmens įvertinimas</div>
-                    <hr/>
-                <div class="form-container">
-                  <form
-                    [formGroup]="valuationForm"
-                    (ngSubmit)="onSubmitValuation()"
-                  >
-                    <section>
-                      <div class="row">
-                        <div class="form-group column">
-                          <label for="applicationValuation"
-                            >Anketos vertinimas</label
+            <div class="form-inner-content">
+              <div class="tit">Asmens įvertinimas</div>
+              <hr />
+              <div class="form-container">
+                <form
+                  [formGroup]="valuationForm"
+                  (ngSubmit)="onSubmitValuation()"
+                >
+                  <section>
+                    <div class="row">
+                      <div class="form-group column">
+                        <label for="applicationValuation"
+                          >Anketos vertinimas</label
+                        >
+                        <select
+                          class="custom-select form-control"
+                          (change)="changeApplicationValue($event)"
+                          id="applicationValuation"
+                          formControlName="applicationValuation"
+                        >
+                          <option value="">Pasirinkite įvertinimą</option>
+                          <option
+                            *ngFor="let applVal of applicationValues"
+                            [value]="applVal.value"
+                            >{{ applVal.value }}</option
                           >
-                          <select
-                            class="custom-select form-control"
-                            (change)="changeApplicationValue($event)"
-                            id="applicationValuation"
-                            formControlName="applicationValuation"
-                          >
-                            <option value="">Pasirinkite įvertinimą</option>
-                            <option
-                              *ngFor="let applVal of applicationValues"
-                              [value]="applVal.value"
-                              >{{ applVal.value }}</option
-                            >
-                          </select>
-                        </div>
-
-                        <div class="form-group column">
-                          <label for="testValuation">Testo vertinimas</label>
-                          <select
-                            class="custom-select form-control"
-                            (change)="changeTestValue($event)"
-                            id="testValuation"
-                            formControlName="testValuation"
-                          >
-                            <option value="">Pasirinkite įvertinimą</option>
-                            <option
-                              *ngFor="let testVal of testValues"
-                              [value]="testVal.value"
-                              >{{ testVal.value }}</option
-                            >
-                          </select>
-                        </div>
-
-                        <div class="form-group column">
-                          <label for="interviewValuation"
-                            >Interviu vertinimas</label
-                          >
-                          <select
-                            class="custom-select form-control"
-                            (change)="changeInterviewValue($event)"
-                            id="interviewValuation"
-                            formControlName="interviewValuation"
-                          >
-                            <option value="">Pasirinkite įvertinimą</option>
-                            <option
-                              *ngFor="let interVal of interviewValues"
-                              [value]="interVal.value"
-                              >{{ interVal.value }}</option
-                            >
-                          </select>
-                        </div>
+                        </select>
                       </div>
 
-                      <div class="form-group" [class.has-error]="notes.invalid">
-                        <label for="notes">Pastabos</label>
-                        <textarea
-                          type="text"
-                          class="form-control textarea-custom"
-                          id="notes"
-                          maxlength="1000"
-                          autosize
-                          formControlName="notes"
-                        ></textarea>
+                      <div class="form-group column">
+                        <label for="testValuation">Testo vertinimas</label>
+                        <select
+                          class="custom-select form-control"
+                          (change)="changeTestValue($event)"
+                          id="testValuation"
+                          formControlName="testValuation"
+                        >
+                          <option value="">Pasirinkite įvertinimą</option>
+                          <option
+                            *ngFor="let testVal of testValues"
+                            [value]="testVal.value"
+                            >{{ testVal.value }}</option
+                          >
+                        </select>
                       </div>
 
-                      <div
-                        [hidden]="notes.valid || notes.untouched"
-                        class="alert alert-danger"
-                      >
-                        <div *ngIf="notes.errors?.maxlength">
-                          Pastaba per ilga
-                        </div>
+                      <div class="form-group column">
+                        <label for="interviewValuation"
+                          >Interviu vertinimas</label
+                        >
+                        <select
+                          class="custom-select form-control"
+                          (change)="changeInterviewValue($event)"
+                          id="interviewValuation"
+                          formControlName="interviewValuation"
+                        >
+                          <option value="">Pasirinkite įvertinimą</option>
+                          <option
+                            *ngFor="let interVal of interviewValues"
+                            [value]="interVal.value"
+                            >{{ interVal.value }}</option
+                          >
+                        </select>
                       </div>
+                    </div>
 
-                      <button
-                        class="btn-custom btn-confiramtion"
-                        (click)="sendTest()"
-                      >
-                        Siųsti testą
-                      </button>
-                      <button
-                        class="btn-custom btn-confiramtion"
-                        (click)="inviteToInterview()"
-                      >
-                        Kviesti interviu
-                      </button>
+                    <div class="form-group" [class.has-error]="notes.invalid">
+                      <label for="notes">Pastabos</label>
+                      <textarea
+                        type="text"
+                        class="form-control textarea-custom"
+                        id="notes"
+                        maxlength="1000"
+                        autosize
+                        formControlName="notes"
+                      ></textarea>
+                    </div>
+
+                    <div
+                      [hidden]="notes.valid || notes.untouched"
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="notes.errors?.maxlength">
+                        Pastaba per ilga
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn-custom btn-confiramtion"
+                      (click)="sendTest()"
+                    >
+                      Siųsti testą
+                    </button>
+                    <button
+                      class="btn-custom btn-confiramtion"
+                      (click)="inviteToInterview()"
+                    >
+                      Kviesti interviu
+                    </button>
                     <button
                       type="submit"
                       class="btn-custom btn-return btn-confiramtion"
@@ -169,29 +182,78 @@
                       Išsaugoti
                     </button>
                   </section>
-                  </form>
+                </form>
               </div>
             </div>
           </div>
           <div>
-            <hr/>
+            <hr />
             <section>
               <div>
                 <a class="nav-link btn-back" [routerLink]="'/list'">
-                <i class="fa fa-angle-double-left nav-link btn-back" [routerLink]="'/list'">
-                </i>Atgal</a>
+                  <i
+                    class="fa fa-angle-double-left nav-link btn-back"
+                    [routerLink]="'/list'"
+                  >
+                  </i
+                  >Atgal</a
+                >
               </div>
               <div>
-                <a class="nav-link btn-return" [routerLink]="['/details/', getNextApplicationId()]">
-                <i class="fa fa-angle-double-right nav-link btn-return" [routerLink]="['/details/', getNextApplicationId()]"></i>
-                Kita pareiška</a>
+                <a
+                  class="nav-link btn-return"
+                  [routerLink]="['/details/', getNextApplicationId()]"
+                >
+                  <i
+                    class="fa fa-angle-double-right nav-link btn-return"
+                    [routerLink]="['/details/', getNextApplicationId()]"
+                  ></i>
+                  Kita pareiška</a
+                >
               </div>
               <div>
-                <a class="nav-link btn-return" [routerLink]="['/details/', getPrevApplicationId()]">
-                <i class="fa fa-angle-double-left nav-link" [routerLink]="['/details/', getPrevApplicationId()]">
-                </i>Praeita pareiška</a>
+                <a
+                  class="nav-link btn-return"
+                  [routerLink]="['/details/', getPrevApplicationId()]"
+                >
+                  <i
+                    class="fa fa-angle-double-left nav-link"
+                    [routerLink]="['/details/', getPrevApplicationId()]"
+                  >
+                  </i
+                  >Praeita pareiška</a
+                >
               </div>
             </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">
+              {{ message }}
+            </h4>
+          </div>
+          <div id="modal-footer">
+            <button
+              type="submit"
+              class="btn btn-custom"
+              id="btn-popup-hide"
+              (click)="this[buttonFunction]()"
+            >
+              {{ buttonValue }}
+            </button>
+            <button
+              type="submit"
+              class="btn btn-custom"
+              id="btn-popup-back"
+              (click)="hide()"
+            >
+              Atšaukti
+            </button>
           </div>
         </div>
       </div>
