@@ -63,6 +63,7 @@ textarea {
   line-height: 21px;
   background-color: white;
   border: 0px;
+  margin: 0;
 }
 
 .btn-return {
@@ -87,7 +88,7 @@ textarea {
 }
 
 .custom-select {
-  width: 70%;
+  width: 90%;
 }
 
 @media only screen and (min-width: 780px) {
@@ -102,9 +103,41 @@ textarea {
   text-align: center;
 }
 .status{
-  text-align: center;
   color: #512B2B;
+  margin-top: 15px;
+  font-family: Roboto;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 30px;
+  margin-top: 0;
+}
+
+.btn-top{
+  padding-bottom: 0;
+}
+.arrows{
+  margin-top: -3px;
+}
+.line{
+  display: inline-block;
+  float: right;
+}
+.phone{
+  width: 240px;
+  display: inline-block;
+}
+.ban{
+  color: #512B2B;
+}
+.times{
+  color:#BF4638;
+}
+.check{
+  color: #99CC66;
 }
 .modal-header {
   white-space: pre-wrap;
+}
+.display-inline{
+  display: inline-block;
 }

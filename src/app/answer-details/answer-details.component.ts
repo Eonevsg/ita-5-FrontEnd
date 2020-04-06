@@ -7,6 +7,7 @@ import {from, Observable} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Person} from '../models/person';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-answer-details',
@@ -19,6 +20,9 @@ export class AnswerDetailsComponent implements OnInit {
   private rejectMessage = 'Atmesta';
 
   public answer$: Observable<AnswerView>;
+  public persons: Person[] = [];
+  public sortedPersons: Person[];
+  public applicationIDs: number[] = [];
   public questions: Answer[];
   public radioQuestionID: string[] = ['1', '2'];
   public showModal: boolean;
@@ -79,15 +83,54 @@ export class AnswerDetailsComponent implements OnInit {
   });
 
   getNextApplicationId() {
-    return this.routeId + 1;
+    for (let i = 0; i < this.applicationIDs.length; i++) {
+      if (this.routeId == this.applicationIDs[i] && this.applicationIDs[i + 1] != undefined) {
+        return this.applicationIDs[i + 1];
+      } 
+    }
+    return this.routeId;
   }
 
   getPrevApplicationId() {
-    return this.routeId - 1;
+    for (let i = 0; i < this.applicationIDs.length; i++) {
+      if (this.routeId == this.applicationIDs[i] && this.applicationIDs[i - 1] != undefined) {
+        return this.applicationIDs[i - 1];
+      } 
+    }
+    return this.routeId;
   }
 
-  getPersonStatus(){
-    return this.status;
+  getPersonStatus() {
+    return this.extractPersonStatus(this.status);
+  }
+
+  private extractPersonStatus(status: string) {
+    switch (status) {
+      case "Testas": {
+        return "Išsiustas testas";
+      }
+      case "Nauja": {
+        return "Nauja paraiška";
+      }
+      case "Perskaityta": {
+        return "Perskaityta paraiška";
+      }
+      case "Interviu": {
+        return "Interviu pakvietimas";
+      }
+      case "Atmesta": {
+        return "Paraiška atmesta";
+      }
+      case "Priimta": {
+        return "Paraiška priimta";
+      }
+      case "Atsisakė": {
+        return "Aplikantas atsisakė";
+      }
+      default: { 
+        return status;
+     } 
+    }
   }
 
   get applicationValuation() {
@@ -125,14 +168,16 @@ export class AnswerDetailsComponent implements OnInit {
       this.questions = data;
     });
 
+    this.formService.findAllAnswers().subscribe(data => {
+      data.forEach(element => this.applicationIDs.push(parseInt(element.person.id)));
+    });
+
     this.answer$ = from(this.route.paramMap).pipe(
       switchMap(params =>
         this.formService.fetchAnswer({id: params.get('id')})
       )
     );
     this.answer$.subscribe(data => {
-      console.log(data);
-      console.log(data.person.extra);
       this.setExistingExtraValue(data.person.extra);
       this.updateStatus(data.person);
       this.personId = data.person.id;
@@ -145,6 +190,8 @@ export class AnswerDetailsComponent implements OnInit {
         this.routeId = parseInt(params.get('id'));
     });
   }
+
+
 
   onSubmitValuation(): void {
     if (this.applicationValuation.value) {

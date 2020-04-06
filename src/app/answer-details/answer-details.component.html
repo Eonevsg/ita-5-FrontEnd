@@ -6,51 +6,48 @@
           class="card-body form-inner-content"
           *ngIf="answer$ | async as model"
         >
-          <div>
+        <div class="form-inner-content">
+          <div class="display-inline">
             <p class="status">
-              {{ getPersonStatus() }}
-            </p>
+              {{ getPersonStatus() }}</p>
           </div>
-
-          <div class="form-inner-content">
+          <div class="line">
             <button
-              class="btn-custom btn-functional btn-return"
-              (click)="refused()"
-            >
-              <i class="fa fa-ban"></i>
+            class="btn-custom btn-functional btn-return btn-top"
+            (click)="refused()">
+            <i class="fa fa-ban ban"></i>
               Atsisakė
             </button>
             <button
-              class="btn-custom btn-functional btn-return"
-              (click)="rejectApplication()"
-            >
-              <i class="fa fa-times"></i>
+              class="btn-custom btn-functional btn-return btn-top"
+              (click)="rejectApplication()">
+              <i class="fa fa-times times"></i>
               Atmesti aplikaciją
             </button>
             <button
-              class="btn-custom btn-functional btn-return"
-              (click)="acceptApplication()"
-            >
-              <i class="fa fa-check"></i>
+              class="btn-custom btn-functional btn-return btn-top"
+              (click)="acceptApplication()">
+              <i class="fa fa-check check"></i>
               Priimti aplikaciją
             </button>
+          </div>
+        </div>
+        
 
-            <br />
-            <p class="name">
-              {{ model.person.name + " " + model.person.surname }}
-            </p>
-            <div style="width: 240px; display: inline-block;">
-              <div>
-                <i class="fa fa-volume-control-phone"></i>
-                <p class="fa information form-inner-content">
-                  {{ model.person.phone }}
-                </p>
-              </div>
-              <div>
-                <p class="fa fa-paper-plane-o"></p>
-                <p class="fa information form-inner-content">
-                  {{ model.person.email }}
-                </p>
+        <div class="form-inner-content">
+         
+
+              <br />
+              <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
+              <div class="phone">
+                <div>
+                  <i class="fa fa-volume-control-phone"></i>
+                  <p class="fa information form-inner-content">{{ model.person.phone }}</p>
+                </div>
+                <div>
+                  <p class="fa fa-paper-plane-o"></p>
+                  <p class="fa information form-inner-content">{{ model.person.email }}</p>
+                </div>
               </div>
             </div>
 
@@ -190,7 +187,7 @@
               <div>
                 <a class="nav-link btn-back" [routerLink]="'/list'">
                   <i
-                    class="fa fa-angle-double-left nav-link btn-back"
+                    class="fa fa-angle-double-left nav-link btn-back arrows"
                     [routerLink]="'/list'"
                   >
                   </i
@@ -203,7 +200,7 @@
                   [routerLink]="['/details/', getNextApplicationId()]"
                 >
                   <i
-                    class="fa fa-angle-double-right nav-link btn-return"
+                    class="fa fa-angle-double-right nav-link btn-return arrows"
                     [routerLink]="['/details/', getNextApplicationId()]"
                   ></i>
                   Kita pareiška</a
@@ -215,7 +212,7 @@
                   [routerLink]="['/details/', getPrevApplicationId()]"
                 >
                   <i
-                    class="fa fa-angle-double-left nav-link"
+                    class="fa fa-angle-double-left nav-link arrows"
                     [routerLink]="['/details/', getPrevApplicationId()]"
                   >
                   </i
@@ -226,7 +223,6 @@
           </div>
         </div>
       </div>
-    </div>
     <div [style.display]="showModal ? 'block' : 'none'" class="modal">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
