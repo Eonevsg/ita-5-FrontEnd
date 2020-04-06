@@ -29,13 +29,14 @@
   nav {
     position: absolute;
   }
-  #login-button {
-    margin-left: 443px;
-  }
+  
 }
 @media (min-width: 1131px) {
   #login-button {
     margin-left: 590px;
+  }
+  #logout-button{
+    margin-left: 445px;
   }
 }
 @media (max-width: 1130px) {
@@ -49,6 +50,7 @@
   #login-button {
     margin-left: 0;
   }
+  
   .hamburger {
     position: absolute;
     top: -74px;
