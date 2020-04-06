@@ -111,10 +111,12 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   show() {
+    document.getElementById("overlay").classList.add("fadeIn");
     this.showModal = true;
   }
 
   hide() {
+    document.getElementById("overlay").classList.remove("fadeIn");
     this.showModal = false;
   }
 

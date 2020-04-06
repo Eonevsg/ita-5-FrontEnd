@@ -1,9 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AnswerView } from "../models/answerView";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { AuthService } from "../services/auth/auth.service";
-import { Router } from "@angular/router";
-import { Location } from "@angular/common";
 import { Sort } from "@angular/material/sort";
 import { Person } from "../models/person";
 
@@ -40,12 +37,7 @@ export class AnswerListComponent implements OnInit {
     notes: ""
   };
 
-  constructor(
-    private formService: ApplicationFormService,
-    private authService: AuthService,
-    private router: Router,
-    private location: Location
-  ) {}
+  constructor(private formService: ApplicationFormService) {}
 
   ngOnInit(): void {
     this.formService.findAllAnswers().subscribe(data => {
@@ -109,12 +101,6 @@ export class AnswerListComponent implements OnInit {
           return 0;
       }
     });
-  }
-
-  logOutButtonClick() {
-    this.authService.logOut();
-    this.location.replaceState("/"); // clears browser history so they can't navigate with back button
-    this.router.navigate(["home"]);
   }
 
   compare(

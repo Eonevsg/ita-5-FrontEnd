@@ -35,11 +35,6 @@ select {
   width: 130px;
 }
 
-.logout-btn {
-  float: left;
-  margin: 3% 1.5%;
-}
-
 #main div {
   display: inline-block;
 }
