@@ -13,6 +13,7 @@ export class AnswerListComponent implements OnInit {
   answers: AnswerView[];
   persons: Person[] = [];
   sortedPersons: Person[];
+  filter = "{{ 'filter' | translate }}";
   fields: any = {
     status: "",
     dateTime: "",

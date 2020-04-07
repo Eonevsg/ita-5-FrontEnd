@@ -8,9 +8,26 @@
       routerLinkActive="active"
     />
     <p class="title" [routerLink]="'/home'" routerLinkActive="active">
-      IT Akademija
+      {{ "Sitetitle" | translate }}
     </p>
   </div>
+
+  <!-- <span class="form-inline">
+    <select
+      class="form-control"
+      #selectedLang
+      (change)="switchLang(selectedLang.value)"
+    >
+      <option
+        *ngFor="let language of translate.getLangs()"
+        [value]="language"
+        [selected]="language === translate.currentLang"
+      >
+        {{ language }}
+      </option>
+    </select>
+  </span> -->
+
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
@@ -37,7 +54,7 @@
           routerLinkActive="active"
           (click)="closeMenu()"
         >
-          <a class="nav-link">Pradinis</a>
+          <a class="nav-link">{{ "nav-home" | translate }}</a>
         </li>
         <li
           class="nav-item"
@@ -45,7 +62,7 @@
           routerLinkActive="active"
           (click)="closeMenu()"
         >
-          <a class="nav-link">Registracija</a>
+          <a class="nav-link">{{ "nav-registration" | translate }}</a>
         </li>
         <li
           *ngIf="isLoggedIn()"
@@ -54,7 +71,7 @@
           routerLinkActive="active"
           (click)="closeMenu()"
         >
-          <a class="nav-link">HR aplinka</a>
+          <a class="nav-link">{{ "nav-hr" | translate }}</a>
         </li>
         <li
           *ngIf="isLoggedIn()"
@@ -62,7 +79,7 @@
           class="nav-item"
           (click)="logOutButtonClick()"
         >
-          <a class="nav-link">Atsijungti</a>
+          <a class="nav-link">{{ "nav-logout" | translate }}</a>
         </li>
         <li
           *ngIf="!isLoggedIn()"
@@ -72,7 +89,7 @@
           routerLinkActive="active"
           (click)="closeMenu()"
         >
-          <a class="nav-link">Prisijungti</a>
+          <a class="nav-link">{{ "nav-login" | translate }}</a>
         </li>
       </ul>
     </div>
