@@ -18,13 +18,8 @@
       #selectedLang
       (change)="switchLang(selectedLang.value)"
     >
-      <option
-        *ngFor="let language of translate.getLangs()"
-        [value]="language"
-        [selected]="language === translate.currentLang"
-      >
-        {{ language }}
-      </option>
+      <option value="lt" selected class="language lt-icon">LT</option>
+      <option value="en" class="language en-icon">EN</option>
     </select>
   </span>
 
