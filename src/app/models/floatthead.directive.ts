@@ -1,4 +1,4 @@
-import {Directive, AfterViewInit, ElementRef} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef} from '@angular/core';
 
 declare var jQuery: any;
 require('floatthead/dist/jquery.floatThead.js');
@@ -8,6 +8,7 @@ require('floatthead/dist/jquery.floatThead.js');
 })
 export class FloatThead implements AfterViewInit {
   $el: any;
+  private $main: any;
 
   constructor(private elementRef: ElementRef) {
   }
@@ -18,16 +19,17 @@ export class FloatThead implements AfterViewInit {
     // show on window scroll with pageYOffset > 100
     // because, floathead reflow only on window resize but not on table resize
     window.addEventListener('scroll', (e) => this.freezeHeader());
+    window.addEventListener('wheel', (e) => this.freezeHeader());
+    document.getElementById('main').addEventListener('scroll', (e) => this.freezeHeader());
   }
 
   freezeHeader() {
-    if (window.pageYOffset > 200) {
-      this.$el.floatThead({
-        position: 'fixed',
-      });
-    } else {
-      //this.$el.floatThead('destroy');
-    }
+    this.$main = document.getElementById('main');
+
+    this.$el.floatThead({
+      position: 'absolute',
+      top: 0
+    });
   }
 
   ngOnDestroy() {
