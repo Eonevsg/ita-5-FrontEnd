@@ -31,24 +31,11 @@ export class FloatThead implements AfterViewInit {
   }
 
   freezeHeader() {
-    if (this.$main.scrollLeft !== this.scrollLeft) {
-
-      this.scrollLeft = this.$main.scrollLeft;
-      this.$el.floatThead('reflow');
-    }
-    if (document.scrollingElement.scrollTop !== this.scrollTop) {
       this.index = 0;
       this.$el.floatThead({
-        position: 'fixed',
+        position: 'absolute',
         top: 0
       });
-      this.scrollTop = document.scrollingElement.scrollTop;
-      console.log('fixed');
-    }
-    console.log(this.scrollLeft, this.scrollTop);
-    //console.log(window.pageYOffset);
-
-    //this.$el.floatThead('reflow');
   }
 
   ngOnDestroy() {
