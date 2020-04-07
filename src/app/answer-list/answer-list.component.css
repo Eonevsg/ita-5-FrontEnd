@@ -6,6 +6,7 @@ input,
 select {
   background-color: #b09eba;
   width: 100%;
+  font-size: 12px;
   /* vertical-align: bottom; */
 }
 
