@@ -17,18 +17,22 @@ select {
 #contract-column {
   width: 80px;
 }
+
 #dateTime-column,
 #status-column,
 .valuation-column {
   width: 100px;
+  /*min-width: 100px;*/
 }
 
 #name-surname-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #uni-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #notes-column {
