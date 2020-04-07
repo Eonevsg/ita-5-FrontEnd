@@ -38,8 +38,11 @@ export class HeaderComponent implements OnInit {
       element.classList.remove("show");
     }
   }
+  public language: string = "lt"; //LT is defaul value
 
-  // switchLang(lang: string) {
-  //   this.translate.use(lang);
-  // }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+    this.language = lang;
+    console.log(this.language);
+  }
 }

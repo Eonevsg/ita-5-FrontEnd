@@ -9,14 +9,14 @@ import { TranslateService } from "@ngx-translate/core";
 export class AppComponent {
   title = "IT Akademija";
 
-  constructor(public translate: TranslateService) {
-    translate.addLangs(["lt", "en"]);
-    translate.setDefaultLang("lt");
-  }
-  public language: string = "lt"; //LT is defaul value
+  // constructor(public translate: TranslateService) {
+  //   translate.addLangs(["lt", "en"]);
+  //   translate.setDefaultLang("lt");
+  // }
+  // public language: string = "lt"; //LT is defaul value
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-    this.language = lang;
-  }
+  // switchLang(lang: string) {
+  //   this.translate.use(lang);
+  //   this.language = lang;
+  // }
 }

@@ -1,18 +1,3 @@
-<app-header></app-header>
-<span id="language-selector" class="form-inline">
-  <select
-    class="form-control"
-    #selectedLang
-    (change)="switchLang(selectedLang.value)"
-  >
-    <option
-      *ngFor="let language of translate.getLangs()"
-      [value]="language"
-      [selected]="language === translate.currentLang"
-    >
-      {{ language }}
-    </option>
-  </select>
-</span>
+<app-header> </app-header>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
