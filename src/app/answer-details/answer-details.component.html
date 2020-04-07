@@ -6,50 +6,45 @@
           class="card-body form-inner-content"
           *ngIf="answer$ | async as model"
         >
-        <div class="form-inner-content">
-          <div class="display-inline">
-            <p class="status">
-              {{ getPersonStatus() }}</p>
-          </div>
-          <div class="line">
-            <button
-            class="btn-custom btn-functional btn-return btn-top"
-            (click)="refused()">
-            <i class="fa fa-ban ban"></i>
-              Atsisakė
-            </button>
-            <button
-              class="btn-custom btn-functional btn-return btn-top"
-              (click)="rejectApplication()">
-              <i class="fa fa-times times"></i>
-              Atmesti aplikaciją
-            </button>
-            <button
-              class="btn-custom btn-functional btn-return btn-top"
-              (click)="acceptApplication()">
-              <i class="fa fa-check check"></i>
-              Priimti aplikaciją
-            </button>
-          </div>
-        </div>
         
-
         <div class="form-inner-content">
-         
-
-              <br />
-              <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
-              <div class="phone">
-                <div>
-                  <i class="fa fa-volume-control-phone"></i>
-                  <p class="fa information form-inner-content">{{ model.person.phone }}</p>
+            <div>
+              <div class="name">{{ model.person.name + " " + model.person.surname }}</div>
+                <div class="btn-return phone form-inner-content btn-return">
+                  <button
+                      class="btn-custom btn-functional btn-return"
+                      (click)="acceptApplication()">
+                      <i class="fa fa-check check"></i>
+                      Priimti aplikaciją
+                    </button>
+                    <button
+                      class="btn-custom btn-functional btn-return"
+                      (click)="rejectApplication()">
+                      <i class="fa fa-times times"></i>
+                      Atmesti aplikaciją
+                    </button>
+                    <button
+                    class="btn-custom btn-functional btn-return"
+                    (click)="refused()">
+                    <i class="fa fa-ban ban"></i>
+                      Atsisakė
+                    </button>
                 </div>
-                <div>
-                  <p class="fa fa-paper-plane-o"></p>
-                  <p class="fa information form-inner-content">{{ model.person.email }}</p>
+                <div class="phone">
+                  <div>
+                    <p class="fa fa-volume-control-phone space"></p>
+                    <p class="fa information form-inner-content">{{ model.person.phone }}</p>
+                  </div>
+                  <div>
+                    <p class="fa fa-envelope space"></p>
+                    <p class="fa information form-inner-content">{{ model.person.email }}</p>
+                  </div>
+                  <div class="display-inline">
+                    <p class="status">
+                      {{ getPersonStatus() }}</p>
+                  </div>
                 </div>
-              </div>
-            </div>
+        </div>
 
             <section>
               <div class="tit">Asmens duomenys</div>
@@ -158,19 +153,19 @@
                     </div>
 
                     <button
-                      class="btn-custom btn-confiramtion"
+                      class="btn btn-custom btn-confiramtion"
                       (click)="sendTest()"
                     >
                       Siųsti testą
                     </button>
                     <button
-                      class="btn-custom btn-confiramtion"
+                      class="btn btn-custom btn-confiramtion"
                       (click)="inviteToInterview()"
                     >
                       Kviesti interviu
                     </button>
                     <button
-                      class="btn-custom btn-return btn-confiramtion"
+                      class="btn btn-custom btn-return btn-confiramtion"
                       [disabled]="valuationForm.invalid"
                       (click)="onSubmitValuation()"
                     >
@@ -181,6 +176,7 @@
               </div>
             </div>
           </div>
+        </div>
           <div>
             <hr />
             <section>
@@ -203,7 +199,7 @@
                     class="fa fa-angle-double-right nav-link btn-return arrows"
                     [routerLink]="['/details/', getNextApplicationId()]"
                   ></i>
-                  Kita pareiška</a
+                  Sekanti paraiška</a
                 >
               </div>
               <div>
@@ -216,7 +212,7 @@
                     [routerLink]="['/details/', getPrevApplicationId()]"
                   >
                   </i
-                  >Praeita pareiška</a
+                  >Praeita paraiška</a
                 >
               </div>
             </section>
