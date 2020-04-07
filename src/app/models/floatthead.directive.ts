@@ -9,6 +9,9 @@ require('floatthead/dist/jquery.floatThead.js');
 export class FloatThead implements AfterViewInit {
   $el: any;
   private $main: any;
+  private scrollLeft: any;
+  private scrollTop: any;
+  private index: any;
 
   constructor(private elementRef: ElementRef) {
   }
@@ -19,17 +22,33 @@ export class FloatThead implements AfterViewInit {
     // show on window scroll with pageYOffset > 100
     // because, floathead reflow only on window resize but not on table resize
     window.addEventListener('scroll', (e) => this.freezeHeader());
-    window.addEventListener('wheel', (e) => this.freezeHeader());
-    document.getElementById('main').addEventListener('scroll', (e) => this.freezeHeader());
+    //window.addEventListener('wheel', (e) => this.freezeHeader());
+    this.$main = document.getElementById('main');
+    this.$main.addEventListener('scroll', (e) => this.freezeHeader());
+    this.scrollLeft = this.$main.scrollLeft;
+    this.scrollTop = document.scrollingElement.scrollTop;
+    this.index = 0;
   }
 
   freezeHeader() {
-    this.$main = document.getElementById('main');
+    if (this.$main.scrollLeft !== this.scrollLeft) {
 
-    this.$el.floatThead({
-      position: 'absolute',
-      top: 0
-    });
+      this.scrollLeft = this.$main.scrollLeft;
+      this.$el.floatThead('reflow');
+    }
+    if (document.scrollingElement.scrollTop !== this.scrollTop) {
+      this.index = 0;
+      this.$el.floatThead({
+        position: 'fixed',
+        top: 0
+      });
+      this.scrollTop = document.scrollingElement.scrollTop;
+      console.log('fixed');
+    }
+    console.log(this.scrollLeft, this.scrollTop);
+    //console.log(window.pageYOffset);
+
+    //this.$el.floatThead('reflow');
   }
 
   ngOnDestroy() {
