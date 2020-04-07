@@ -49,7 +49,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status !== 403) {
-              return;
+              return this.router.navigate(['']);
             }
             return;
           }
