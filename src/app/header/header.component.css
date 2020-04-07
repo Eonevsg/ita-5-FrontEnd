@@ -23,6 +23,7 @@
 .title {
   font-size: 24px;
 }
+
 @media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding: 1em 1.5em;
@@ -31,6 +32,7 @@
     position: absolute;
   }
 }
+
 @media (min-width: 1131px) {
   #login-button {
     margin-left: 590px;
@@ -39,6 +41,7 @@
     margin-left: 445px;
   }
 }
+
 @media (max-width: 1130px) {
   .navbar-expand-lg .navbar-toggler {
     display: block;
@@ -65,6 +68,7 @@
     z-index: 999;
   }
 }
+
 @media (max-width: 1040px) {
   .hamburger {
     right: 2%;
