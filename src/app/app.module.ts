@@ -23,6 +23,7 @@ import { HeaderComponent } from "./header/header.component";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
 import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
+import {FloatThead} from './models/floatthead.directive';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     AnswerDetailsComponent,
     SearchPipe,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    FloatThead
   ],
   imports: [
     BrowserModule,
