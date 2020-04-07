@@ -1,15 +1,12 @@
 <div id="main">
   <div id="form-container">
-    <h1 id="form-title">Registracijos forma</h1>
+    <h1 id="form-title">{{ "application-form" | translate }}</h1>
     <p>
-      Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos
-      formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT
-      Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite
-      mums - atranka@Įmonės_pavadinimas.lt
+      {{ "form-information" | translate }}
     </p>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
       <div class="form-group-header">
-        <label>Kontaktinė informacija</label>
+        <label>{{ "form-contact" | translate }}</label>
         <hr />
       </div>
       <div class="form-group short-input">
@@ -26,16 +23,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="fname.errors?.required">
-            Įveskite vardą
-          </div>
-          <div *ngIf="fname.errors?.minlength">
-            Vardas per trumpas
-          </div>
-          <div *ngIf="fname.errors?.maxlength">
-            Pasiektas 100 simbolių ilgis
+            {{ "name-error" | translate }}
           </div>
           <div *ngIf="fname.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            {{ "error-symbols" | translate }}
           </div>
         </div>
       </div>
@@ -54,16 +45,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="lname.errors?.required">
-            Įveskite pavardę
-          </div>
-          <div *ngIf="lname.errors?.minlength">
-            Pavardė per trumpa
-          </div>
-          <div *ngIf="lname.errors?.maxlength">
-            Pasiektas 100 simbolių ilgis
+            {{ "surname-error" | translate }}
           </div>
           <div *ngIf="lname.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            {{ "error-symbols" | translate }}
           </div>
         </div>
       </div>
@@ -82,10 +67,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="phone.errors?.required">
-            Įveskite telefono numerį
+            {{ "phone-error" | translate }}
           </div>
           <div *ngIf="phone.errors?.pattern">
-            Neteisingas formatas! (+37060000000)
+            {{ "phone-format" | translate }}
           </div>
         </div>
       </div>
@@ -104,19 +89,19 @@
           class="alert alert-danger"
         >
           <div *ngIf="email.errors?.required">
-            Įveskite el. pašto adresą
+            {{ "email-error" | translate }}
           </div>
           <div *ngIf="email.errors?.maxlength">
-            El. pašto adresas per ilgas!
+            {{ "email-length" | translate }}
           </div>
           <div *ngIf="email.errors?.pattern">
-            Neteisingas formatas!
+            {{ "format" | translate }}
           </div>
         </div>
       </div>
 
       <div class="form-group-header">
-        <label>Apie tave</label>
+        <label>{{ "about-you" | translate }}</label>
         <hr />
       </div>
 
@@ -130,25 +115,25 @@
           id="establishment"
           formControlName="establishment"
         >
-          <option value="0" disabled>Pasirinkite mokymosi įstaigą</option>
+          <option value="0" disabled>{{ "pick-school" | translate }}</option>
           <option
             *ngFor="let university of $universities | async"
             [value]="university"
           >
             {{ university }}
           </option>
-          <option value="other">Kita</option>
+          <option value="other">{{ "school-other" | translate }}</option>
         </select>
         <div
           [hidden]="establishment.valid || establishment.untouched"
           class="alert alert-danger"
         >
-          Pasirinkite mokymosi įstaiga!
+          {{ "school-error" | translate }}
         </div>
       </div>
 
       <div [hidden]="establishment.value != 'other'" class="form-group">
-        <label for="establishmentOther">Įveskite įstaigos pavadinimą:</label>
+        <label for="establishmentOther">{{ "enter-school" | translate }}</label>
         <textarea
           type="text"
           class="form-control textarea-custom"
@@ -162,10 +147,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="establishmentOther.errors?.required">
-            Įveskite mokymosi įstaigos pavadinimą
+            {{ "school-error-other" | translate }}
           </div>
           <div *ngIf="establishmentOther.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
@@ -175,10 +160,7 @@
           >Ar bus galimybė pasirašyti trišalę praktikos sutartį?
           <div class="custom-tooltip-text">
             <p>
-              Ar esi pasidomėjęs, kad yra galima sutartis tarp Tavęs, banko ir
-              trečiosios šalies: mokymo įstaigos (kai kurios ugdymo įstaigos
-              trišales praktikos sutartis suteikia tik tam tikrais studijų
-              metais), užimtumo tarnybos, etc.
+              {{ "tooltip-hint" | translate }}
             </p>
           </div>
         </label>
@@ -187,36 +169,40 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="contract-pos"
               formControlName="contract"
             />
-            <label for="contract-pos" class="radio-label">Taip</label>
+            <label for="contract-pos" class="radio-label">{{
+              "yes" | translate
+            }}</label>
           </div>
 
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               id="contract-neg"
               formControlName="contract"
             />
-            <label for="contract-neg" class="radio-label">Ne</label>
+            <label for="contract-neg" class="radio-label">{{
+              "no" | translate
+            }}</label>
           </div>
           <div
             *ngIf="contract.invalid"
             [hidden]="contract.valid || contract.untouched"
             class="alert alert-danger"
           >
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
         </div>
 
         <div
-          [hidden]="contract.value == 'yes' || contract.pristine"
+          [hidden]="contract.value == 'true' || contract.pristine"
           class="radio-hidden-group"
         >
-          <label for="contractExplanation">Pakomentuok plačiau:</label>
+          <label for="contractExplanation">{{ "expain" | translate }}</label>
           <textarea
             type="text"
             class="form-control textarea-custom"
@@ -233,10 +219,10 @@
             "
           >
             <div *ngIf="contractExplanation.errors?.required">
-              Laukas privalomas!
+              {{ "required-error" | translate }}
             </div>
             <div *ngIf="contractExplanation.errors?.pattern">
-              Nenaudokite specialių simbolių!
+              {{ "symbol-error" | translate }}
             </div>
           </div>
         </div>
@@ -251,23 +237,27 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="shift-pos"
               class="radio-custom"
               formControlName="shift"
             />
-            <label for="shift-pos" class="radio-label">Taip</label>
+            <label for="shift-pos" class="radio-label">{{
+              "yes" | translate
+            }}</label>
           </div>
 
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               class="radio-custom"
               id="shift-neg"
               formControlName="shift"
             />
-            <label for="shift-neg" class="radio-label">Ne</label>
+            <label for="shift-neg" class="radio-label">{{
+              "no" | translate
+            }}</label>
           </div>
         </div>
         <div
@@ -275,15 +265,15 @@
           [hidden]="shift.valid || shift.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          {{ "required-error" | translate }}
         </div>
       </div>
 
       <div
-        [hidden]="shift.value == 'yes' || shift.pristine"
+        [hidden]="shift.value == 'true' || shift.pristine"
         class="radio-hidden-group form-group"
       >
-        <label for="shiftExplanation">Pakomentuok plačiau:</label>
+        <label for="shiftExplanation">{{ "expain" | translate }}</label>
         <textarea
           type="text"
           class="form-control textarea-custom"
@@ -297,10 +287,10 @@
           [hidden]="shiftExplanation.valid || shiftExplanation.untouched"
         >
           <div *ngIf="shiftExplanation.errors?.required">
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
           <div *ngIf="shiftExplanation.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
@@ -322,10 +312,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="hobbies.errors?.required">
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
           <div *ngIf="hobbies.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
@@ -348,10 +338,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="motivation.errors?.required">
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
           <div *ngIf="motivation.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
@@ -375,16 +365,16 @@
           class="alert alert-danger"
         >
           <div *ngIf="experience.errors?.required">
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
           <div *ngIf="experience.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
 
       <div class="form-group-header">
-        <label>Papildoma informacija</label>
+        <label>{{ "additional-information" | translate }}</label>
         <hr />
       </div>
 
@@ -403,10 +393,10 @@
           class="alert alert-danger"
         >
           <div *ngIf="marketing.errors?.required">
-            Laukas privalomas!
+            {{ "required-error" | translate }}
           </div>
           <div *ngIf="marketing.errors?.pattern">
-            Nenaudokite specialių simbolių!
+            {{ "symbol-error" | translate }}
           </div>
         </div>
       </div>
@@ -418,14 +408,13 @@
           id="thirdPartyAgreement"
           formControlName="thirdPartyAgreement"
         />
-        Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT
-        akademijos tikslams.
+        {{ "consent" | translate }}
 
         <div
           [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"
           class="alert alert-danger"
         >
-          Laukas privalomas!
+          {{ "required-error" | translate }}
         </div>
       </div>
 
