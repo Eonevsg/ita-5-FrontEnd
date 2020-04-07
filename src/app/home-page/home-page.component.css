@@ -13,28 +13,42 @@
   float: left;
   width: 40%;
   height: 100%;
-  margin: 0% 5% 5% 5%;
+  margin: 0 5% 5% 5%;
 }
-
+.columnDesktop {
+  float: left;
+  width: 40%;
+  height: 100%;
+  margin: 0 5% 5% 5%;
+}
+.columnMobile {
+  display: none;
+}
 .customRow {
   width: 100%;
   height: 33%;
-}
-
-.customButtonChoicesColumn {
-  width: 100%;
-  height: 33%;
-  text-align: center;
-  background: #c0adc6b0;
-  margin-top: 2%;
-  border-top: 5px solid #6b436e;
 }
 
 .btn-custom {
   width: 35%;
   margin-bottom: 10px;
 }
-
+.customRowText {
+  margin-top: 10px;
+  height: 5vh;
+  text-align: center;
+}
+.customRowButton {
+  padding-bottom: 10px;
+  text-align: center;
+}
+.customChoicesColumn {
+  width: 100%;
+  height: 33%;
+  background: #c0adc6b0;
+  margin-top: 2%;
+  border-top: 5px solid #6b436e;
+}
 .custom-img {
   max-width: 100%;
   height: 33%;
