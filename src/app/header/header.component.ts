@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.language = "lt"; //LT is defaul value
     addEventListener("click", this.closeMenu);
   }
   logOutButtonClick() {
@@ -38,8 +39,11 @@ export class HeaderComponent implements OnInit {
       element.classList.remove("show");
     }
   }
+  public language: string;
 
-  // switchLang(lang: string) {
-  //   this.translate.use(lang);
-  // }
+  switchLang(lang: string) {
+    this.translate.use(lang);
+    this.language = lang;
+    console.log(this.language);
+  }
 }
