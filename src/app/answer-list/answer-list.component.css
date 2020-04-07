@@ -17,18 +17,22 @@ select {
 #contract-column {
   width: 80px;
 }
+
 #dateTime-column,
 #status-column,
 .valuation-column {
   width: 100px;
+  /*min-width: 100px;*/
 }
 
 #name-surname-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #uni-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #notes-column {
@@ -37,6 +41,10 @@ select {
 
 #main div {
   display: inline-block;
+}
+#main2{
+  width: 100%;
+  margin: auto;
 }
 
 table {
@@ -101,17 +109,6 @@ th {
   content: "\f00d";
 }
 
-@media only screen and (max-width: 1200px) {
-  .logout-btn {
-    margin: 0% 5% 10%;
-  }
-  /*#form-container {*/
-  /*  transform: scale(0.32);*/
-  /*  transform-origin: top left;*/
-  /*  margin-left: 0;*/
-  /*  padding: 0;*/
-  /*}*/
-}
 .table-primary-header {
   padding: 2px;
 }

@@ -41,6 +41,10 @@ export class AnswerListComponent implements OnInit {
   constructor(private formService: ApplicationFormService) {}
 
   ngOnInit(): void {
+    document.getElementById("header").classList.add("width1200");
+    document.getElementById("footer").classList.add("width1200");
+    document.getElementById("main2").classList.add("width1200");
+
     this.formService.findAllAnswers().subscribe((data) => {
       this.answers = data;
       console.log(data);
@@ -48,6 +52,11 @@ export class AnswerListComponent implements OnInit {
       console.log(this.persons);
       this.sortedPersons = this.persons.slice();
     });
+  }
+  ngOnDestroy(){
+    document.getElementById("header").classList.remove("width1200");
+    document.getElementById("footer").classList.remove("width1200");
+    document.getElementById("main2").classList.add("width1200");
   }
   updateFilters(): void {
     this.filters = Object.assign({}, this.fields);
