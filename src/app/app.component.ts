@@ -13,8 +13,10 @@ export class AppComponent {
     translate.addLangs(["lt", "en"]);
     translate.setDefaultLang("lt");
   }
+  public language: string = "lt"; //LT is defaul value
 
   switchLang(lang: string) {
     this.translate.use(lang);
+    this.language = lang;
   }
 }
