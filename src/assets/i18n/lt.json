@@ -53,5 +53,21 @@
     "why-join": "Kodėl verta prisijungti?",
     "why-competence": "Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetenciją, išmoksi Agile metodikos principų.",
     "why-bank": "Pamatysi banką be kaklaraiščio, kuriame dirbame ir švenčiame kartu.",
-    "questions": "Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt"
+    "questions": "Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt",
+    "applicationAccept": "Priimti paraišką",
+    "applicationReject": "Atmesti paraišką",
+    "applicationRefused": "Atsisakė",
+    "personalData": "Asmens duomenys",
+    "personalAssessment": "Asmens įvertinimas",
+    "applicationEvaluation": "Anketos vertinimas",
+    "evaluation": "Pasirinkite įvertinimą",
+    "testEvaluation": "Testo vertinimas",
+    "interviewEvaluation": "Interviu vertinimas",
+    "save": "Išsaugoti",
+    "inviteToInterview": "Kviesti interviu",
+    "sendTest": "Siųsti testą",
+    "cancel": "Atšaukti",
+    "back": "Atgal",
+    "nextApplication": "Kita paraiška",
+    "prevApplication": "Praeita paraiška"
 }

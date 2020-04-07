@@ -52,5 +52,21 @@
     "why-join": "Why should you join?",
     "why-competence": "You will take part in developing projects, raise your competence and learn the principles of Agile methodology.",
     "why-bank": "You will see a bank without a tie where we work and celebrate together.",
-    "questions": "If you have any questions - message us at atranka@Įmonės_pavadinimas.lt"
+    "questions": "If you have any questions - message us at atranka@Įmonės_pavadinimas.lt",
+    "applicationAccept": "Accept",
+    "applicationReject": "Reject",
+    "applicationRefused": "Refused",
+    "personalData": "Data",
+    "personalAssessment": "Assessment",
+    "applicationEvaluation": "Application evaluation",
+    "evaluation": "Evaluate",
+    "testEvaluation": "Test evaluation",
+    "interviewEvaluation": "Interview evaluation",
+    "save": "Save",
+    "inviteToInterview": "Invite to interview",
+    "sendTest": "Send test",
+    "cancel": "Cancel",
+    "back": "Back",
+    "nextApplication": "Next application",
+    "prevApplication": "Previous application"
 }
