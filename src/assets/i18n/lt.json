@@ -85,7 +85,7 @@
     "nextApplication": "Kita paraiška",
     "prevApplication": "Praeita paraiška",
     "application-form": "Registracijos forma",
-    "form-information": "",
+    "form-information": "Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite mums - atranka@Įmonės_pavadinimas.lt",
     "form-contact": "Kontaktinė informacija",
     "name-error": "Įveskite vardą",
     "surname-error": "Įveskite pavardę",
@@ -105,5 +105,6 @@
     "tooltip-hint": "Ar esi pasidomėjęs, kad yra galima sutartis tarp Tavęs, banko ir trečiosios šalies: mokymo įstaigos (kai kurios ugdymo įstaigos trišales praktikos sutartis suteikia tik tam tikrais studijų metais), užimtumo tarnybos, etc.",
     "required-error": "Laukas privalomas!",
     "expain": "Pakomentuok plačiau:",
-    "additional-information": "Papildoma informacija"
+    "additional-information": "Papildoma informacija",
+    "consent": "Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT Akademijos tikslams."
 }

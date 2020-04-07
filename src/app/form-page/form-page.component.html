@@ -2,10 +2,7 @@
   <div id="form-container">
     <h1 id="form-title">{{ "application-form" | translate }}</h1>
     <p>
-      Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos
-      formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT
-      Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite
-      mums - atranka@Įmonės_pavadinimas.lt
+      {{ "form-information" | translate }}
     </p>
     <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
       <div class="form-group-header">
@@ -172,7 +169,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="contract-pos"
               formControlName="contract"
             />
@@ -184,7 +181,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               id="contract-neg"
               formControlName="contract"
             />
@@ -202,7 +199,7 @@
         </div>
 
         <div
-          [hidden]="contract.value == 'yes' || contract.pristine"
+          [hidden]="contract.value == 'true' || contract.pristine"
           class="radio-hidden-group"
         >
           <label for="contractExplanation">{{ "expain" | translate }}</label>
@@ -240,7 +237,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="yes"
+              value="true"
               id="shift-pos"
               class="radio-custom"
               formControlName="shift"
@@ -253,7 +250,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="no"
+              value="false"
               class="radio-custom"
               id="shift-neg"
               formControlName="shift"
@@ -273,7 +270,7 @@
       </div>
 
       <div
-        [hidden]="shift.value == 'yes' || shift.pristine"
+        [hidden]="shift.value == 'true' || shift.pristine"
         class="radio-hidden-group form-group"
       >
         <label for="shiftExplanation">{{ "expain" | translate }}</label>
@@ -411,8 +408,7 @@
           id="thirdPartyAgreement"
           formControlName="thirdPartyAgreement"
         />
-        Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT
-        akademijos tikslams.
+        {{ "consent" | translate }}
 
         <div
           [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"

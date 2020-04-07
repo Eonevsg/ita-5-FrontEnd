@@ -104,5 +104,6 @@
     "tooltip-hint": "",
     "required-error": "Required!",
     "expain": "Please explain why:",
-    "additional-information": "Additional information"
+    "additional-information": "Additional information",
+    "consent": "I agree, that my personal information will be used and stored by the IT Academy team."
 }
