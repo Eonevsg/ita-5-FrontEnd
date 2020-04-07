@@ -117,7 +117,7 @@ textarea {
 }
 
 .short-input {
-  width: 66%;
+  width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
