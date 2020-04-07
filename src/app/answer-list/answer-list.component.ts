@@ -112,7 +112,7 @@ export class AnswerListComponent implements OnInit {
   }
 
   addDots(input: string): string {
-    let adjustedInput = input.substring(0, 12);
-    return input.length > 12 ? adjustedInput + "..." : adjustedInput;
+    let adjustedInput = input.substring(0, 25);
+    return input.length > 25 ? adjustedInput + "..." : adjustedInput;
   }
 }
