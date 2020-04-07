@@ -1,8 +1,15 @@
 <!-- header -->
 <header class="header">
   <div class="logo-container">
-    <img src="/assets/images/logo.png" class="logo" />
-    <p class="title">IT Akademija</p>
+    <img
+      src="/assets/images/logo.png"
+      class="logo"
+      [routerLink]="'/home'"
+      routerLinkActive="active"
+    />
+    <p class="title" [routerLink]="'/home'" routerLinkActive="active">
+      IT Akademija
+    </p>
   </div>
   <!-- Navigation bar -->
   <nav class="navbar navbar-expand-lg navbar-light">
