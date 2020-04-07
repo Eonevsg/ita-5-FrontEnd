@@ -2,18 +2,16 @@ input:focus::placeholder {
   color: transparent;
 }
 
-input {
+input,
+select {
   background-color: #b09eba;
   width: 100%;
-  vertical-align: bottom;
+  /* vertical-align: bottom; */
 }
 
 select {
-  background-color: #e0dceb;
-  border-color: transparent;
-  width: 100%;
   font-weight: bold;
-  opacity: 0.314;
+  color: rgb(102, 92, 108);
 }
 
 #dateTime-column,
