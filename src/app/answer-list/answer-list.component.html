@@ -9,6 +9,7 @@
           floatthead
           (matSortChange)="sortData($event)"
           class="table table-bordered table-striped table-hover"
+          id="table-list"
         >
           <colgroup>
             <col id="dateTime-column" />
@@ -23,16 +24,16 @@
           </colgroup>
           <thead class="thead-custom" id="table-header">
             <tr>
-              <th
+              <th scope="colgroup"
                 colspan="5"
-                scope="colgroup"
+
                 class="center table-primary-header"
               >
                 Paraiškos duomenys
               </th>
-              <th
+              <th scope="colgroup"
                 colspan="4"
-                scope="colgroup"
+
                 class="center table-primary-header"
               >
                 Vertinimas
@@ -75,13 +76,14 @@
                 </div>
               </th>
 
+
               <th scope="col">
                 <div class="column-header">
                   <div
                     mat-sort-header="name"
                     class="column-header-title vertical-align-middle"
                   >
-                    Vardas
+                    Vardas Pavarde
                   </div>
                   <input
                     [(ngModel)]="fields.name"

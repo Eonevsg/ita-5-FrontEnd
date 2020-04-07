@@ -133,11 +133,11 @@
           <option value="0" disabled>Pasirinkite mokymosi įstaigą</option>
           <option
             *ngFor="let university of $universities | async"
-            value="{{ university }}"
+            [value]="university"
           >
             {{ university }}
           </option>
-          <option value="kita">Kita</option>
+          <option value="other">Kita</option>
         </select>
         <div
           [hidden]="establishment.valid || establishment.untouched"
@@ -145,25 +145,27 @@
         >
           Pasirinkite mokymosi įstaiga!
         </div>
-        <br />
-        <div [hidden]="establishment.value != 'kita'" class="form-group">
-          <label for="establishmentOther">Įvesk įstaigos pavadinimą:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="establishmentOther"
-            formControlName="establishmentOther"
-          />
-          <div
-            [hidden]="establishmentOther.valid || establishmentOther.untouched"
-            class="alert alert-danger"
-          >
-            <div *ngIf="establishmentOther.errors?.required">
-              Įveskite mokymosi įstaigos pavadinimą
-            </div>
-            <div *ngIf="establishmentOther.errors?.pattern">
-              Nenaudokite skaičių ar specialių simbolių!
-            </div>
+      </div>
+
+      <div [hidden]="establishment.value != 'other'" class="form-group">
+        <label for="establishmentOther">Įveskite įstaigos pavadinimą:</label>
+        <textarea
+          type="text"
+          class="form-control textarea-custom"
+          id="establishmentOther"
+          formControlName="establishmentOther"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="establishmentOther.valid || establishmentOther.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="establishmentOther.errors?.required">
+            Įveskite mokymosi įstaigos pavadinimą
+          </div>
+          <div *ngIf="establishmentOther.errors?.pattern">
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
@@ -185,7 +187,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="true"
+              value="yes"
               id="contract-pos"
               formControlName="contract"
             />
@@ -195,7 +197,7 @@
           <div class="form-radio-group-choice">
             <input
               type="radio"
-              value="false"
+              value="no"
               id="contract-neg"
               formControlName="contract"
             />
@@ -211,7 +213,7 @@
         </div>
 
         <div
-          [hidden]="contract.value == 'true' || contract.pristine"
+          [hidden]="contract.value == 'yes' || contract.pristine"
           class="radio-hidden-group"
         >
           <label for="contractExplanation">Pakomentuok plačiau:</label>
@@ -234,7 +236,7 @@
               Laukas privalomas!
             </div>
             <div *ngIf="contractExplanation.errors?.pattern">
-              Nenaudokite skaičių ar specialių simbolių!
+              Nenaudokite specialių simbolių!
             </div>
           </div>
         </div>
@@ -298,7 +300,7 @@
             Laukas privalomas!
           </div>
           <div *ngIf="shiftExplanation.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
@@ -323,7 +325,7 @@
             Laukas privalomas!
           </div>
           <div *ngIf="hobbies.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
@@ -349,7 +351,7 @@
             Laukas privalomas!
           </div>
           <div *ngIf="motivation.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
@@ -376,7 +378,7 @@
             Laukas privalomas!
           </div>
           <div *ngIf="experience.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
@@ -404,7 +406,7 @@
             Laukas privalomas!
           </div>
           <div *ngIf="marketing.errors?.pattern">
-            Nenaudokite skaičių ar specialių simbolių!
+            Nenaudokite specialių simbolių!
           </div>
         </div>
       </div>
