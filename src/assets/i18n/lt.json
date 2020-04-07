@@ -24,5 +24,24 @@
     "notes": "Pastabos",
     "yes": "Taip",
     "no": "Ne",
-    "filter": "Filtruoti"
+    "filter": "Filtruoti",
+    "applicationAccept": "Priimti paraišką",
+    "applicationReject": "Atmesti paraišką",
+    "applicationRefused": "Atsisakė",
+    "personalData": "Asmens duomenys",
+    "personalAssessment":"Asmens įvertinimas",
+    "applicationEvaluation": "Anketos vertinimas",
+    "evaluation": "Pasirinkite įvertinimą",
+    "testEvaluation": "Testo vertinimas",
+    "interviewEvaluation": "Interviu vertinimas",
+    "save": "Išsaugoti",
+    "inviteToInterview": "Kviesti interviu",
+    "sendTest": "Siųsti testą",
+    "cancel": "Atšaukti",
+    "back": "Atgal",
+    "nextApplication": "Kita paraiška",
+    "prevApplication": "Praeita paraiška"
+    
+    
+    
 }

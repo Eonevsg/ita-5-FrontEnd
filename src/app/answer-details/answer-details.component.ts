@@ -164,6 +164,8 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
+
     this.formService.fetchQuestions().subscribe(data => {
       this.questions = data;
     });

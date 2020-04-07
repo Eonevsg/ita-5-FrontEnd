@@ -23,5 +23,21 @@
     "notes": "Notes",
     "yes": "Yes",
     "no": "No",
-    "filter": "Filter"
+    "filter": "Filter",
+    "applicationAccept": "Accept",
+    "applicationReject": "Reject",
+    "applicationRefused": "Refused",
+    "personalData": "Data",
+    "personalAssessment":"Assessment",
+    "applicationEvaluation": "Application evaluation",
+    "evaluation": "Evaluate",
+    "testEvaluation": "Test evaluation",
+    "interviewEvaluation": "Interview evaluation",
+    "save": "Save",
+    "inviteToInterview": "Invite to interview",
+    "sendTest": "Send test",
+    "cancel": "Cancel",
+    "back": "Back",
+    "nextApplication": "Next application",
+    "prevApplication": "Previous application"
 }

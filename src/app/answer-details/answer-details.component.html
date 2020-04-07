@@ -16,19 +16,19 @@
             class="btn-custom btn-functional btn-return btn-top"
             (click)="refused()">
             <i class="fa fa-ban ban"></i>
-              Atsisakė
+            {{"applicationRefused" | translate}}
             </button>
             <button
               class="btn-custom btn-functional btn-return btn-top"
               (click)="rejectApplication()">
               <i class="fa fa-times times"></i>
-              Atmesti paraišką
+              {{"applicationReject" | translate}}
             </button>
             <button
               class="btn-custom btn-functional btn-return btn-top"
               (click)="acceptApplication()">
               <i class="fa fa-check check"></i>
-              Priimti paraišką
+              {{"applicationAccept" | translate}}
             </button>
           </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
 
             <section>
-              <div class="tit">Asmens duomenys</div>
+              <div class="tit">{{"personalData" | translate}}</div>
               <hr />
               <label class="question">
                 Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
@@ -72,7 +72,7 @@
           </div>
           <div class="both-form-container">
             <div class="form-inner-content">
-              <div class="tit">Asmens įvertinimas</div>
+              <div class="tit">{{"personalAssessment" | translate}}</div>
               <hr />
               <div class="form-container">
                 <form
@@ -82,7 +82,7 @@
                     <div class="row">
                       <div class="form-group column">
                         <label for="applicationValuation"
-                          >Anketos vertinimas</label
+                          >{{"applicationEvaluation" | translate}}</label
                         >
                         <select
                           class="custom-select form-control"
@@ -90,7 +90,7 @@
                           id="applicationValuation"
                           formControlName="applicationValuation"
                         >
-                          <option value="">Pasirinkite įvertinimą</option>
+                          <option value="">{{"evaluation" | translate}}</option>
                           <option
                             *ngFor="let applVal of applicationValues"
                             [value]="applVal.value"
@@ -100,14 +100,14 @@
                       </div>
 
                       <div class="form-group column">
-                        <label for="testValuation">Testo vertinimas</label>
+                        <label for="testValuation">{{"testEvaluation" | translate}}</label>
                         <select
                           class="custom-select form-control"
                           (change)="changeTestValue($event)"
                           id="testValuation"
                           formControlName="testValuation"
                         >
-                          <option value="">Pasirinkite įvertinimą</option>
+                          <option value="">{{"evaluation" | translate}}</option>
                           <option
                             *ngFor="let testVal of testValues"
                             [value]="testVal.value"
@@ -118,7 +118,7 @@
 
                       <div class="form-group column">
                         <label for="interviewValuation"
-                          >Interviu vertinimas</label
+                          >{{"interviewEvaluation" | translate}}</label
                         >
                         <select
                           class="custom-select form-control"
@@ -126,7 +126,7 @@
                           id="interviewValuation"
                           formControlName="interviewValuation"
                         >
-                          <option value="">Pasirinkite įvertinimą</option>
+                          <option value="">{{"evaluation" | translate}}</option>
                           <option
                             *ngFor="let interVal of interviewValues"
                             [value]="interVal.value"
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="form-group" [class.has-error]="notes.invalid">
-                      <label for="notes">Pastabos</label>
+                      <label for="notes">{{"notes" | translate}}</label>
                       <textarea
                         type="text"
                         class="form-control textarea-custom"
@@ -161,20 +161,20 @@
                       class="btn-custom btn-confiramtion"
                       (click)="sendTest()"
                     >
-                      Siųsti testą
+                      {{"sendTest" | translate}}
                     </button>
                     <button
                       class="btn-custom btn-confiramtion"
                       (click)="inviteToInterview()"
                     >
-                      Kviesti interviu
+                      {{"inviteToInterview" | translate}}
                     </button>
                     <button
                       class="btn-custom btn-return btn-confiramtion"
                       [disabled]="valuationForm.invalid"
                       (click)="onSubmitValuation()"
                     >
-                      Išsaugoti
+                      {{"save" | translate}}
                     </button>
                   </section>
                 </form>
@@ -191,7 +191,7 @@
                     [routerLink]="'/list'"
                   >
                   </i
-                  >Atgal</a
+                  >{{"back" | translate}}</a
                 >
               </div>
               <div>
@@ -203,7 +203,7 @@
                     class="fa fa-angle-double-right nav-link btn-return arrows"
                     [routerLink]="['/details/', getNextApplicationId()]"
                   ></i>
-                  Kita pareiška</a
+                  {{"nextApplication" | translate}}</a
                 >
               </div>
               <div>
@@ -216,7 +216,7 @@
                     [routerLink]="['/details/', getPrevApplicationId()]"
                   >
                   </i
-                  >Praeita pareiška</a
+                  >{{"prevApplication" | translate}}</a
                 >
               </div>
             </section>
@@ -246,7 +246,7 @@
               id="btn-popup-back"
               (click)="hide()"
             >
-              Atšaukti
+              {{"cancel" | translate}}
             </button>
           </div>
         </div>
