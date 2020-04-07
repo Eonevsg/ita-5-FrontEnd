@@ -16,23 +16,35 @@ select {
   opacity: 0.314;
 }
 
+/*#form-data {*/
+/*  width: 700px;*/
+/*}*/
+
+/*#valuation {*/
+/*  width: 500px  ;*/
+/*}*/
+
 #dateTime-column,
 #status-column,
 #contract-column,
 .valuation-column {
   width: 100px;
+  /*min-width: 100px;*/
 }
 
 #name-surname-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #uni-column {
   width: 200px;
+  min-width: 200px;
 }
 
 #notes-column {
   width: 130px;
+  min-width: 130px;
 }
 
 #main div {

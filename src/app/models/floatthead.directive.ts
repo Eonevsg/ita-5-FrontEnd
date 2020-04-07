@@ -26,7 +26,7 @@ export class FloatThead implements AfterViewInit {
         position: 'fixed',
       });
     } else {
-      this.$el.floatThead('destroy');
+      //this.$el.floatThead('destroy');
     }
   }
 
