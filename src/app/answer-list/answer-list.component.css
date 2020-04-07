@@ -13,10 +13,11 @@ select {
   font-weight: bold;
   color: rgb(102, 92, 108);
 }
-
+#contract-column {
+  width: 80px;
+}
 #dateTime-column,
 #status-column,
-#contract-column,
 .valuation-column {
   width: 100px;
 }
@@ -30,7 +31,7 @@ select {
 }
 
 #notes-column {
-  width: 130px;
+  width: 150px;
 }
 
 #main div {
