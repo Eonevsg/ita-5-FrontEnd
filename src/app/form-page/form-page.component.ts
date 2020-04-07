@@ -5,9 +5,7 @@ import { Person } from "../models/person";
 import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 import { Observable } from "rxjs";
-import { MatTooltipModule } from "@angular/material/tooltip";
 
 @Component({
   selector: "app-form-page",
@@ -158,7 +156,7 @@ export class FormPageComponent implements OnInit {
             () => this.applicationForm.get("establishment").value
           ),
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       contract: ["", [Validators.required]],
@@ -167,7 +165,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       shift: ["", [Validators.required]],
@@ -176,7 +174,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       hobbies: [
@@ -184,7 +182,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       motivation: [
@@ -192,7 +190,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       experience: [
@@ -200,7 +198,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       marketing: [
@@ -208,7 +206,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ \\.,\\-'\"]+$"),
+          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
       thirdPartyAgreement: ["", [Validators.required]],
@@ -221,7 +219,7 @@ export class FormPageComponent implements OnInit {
     let tempAnswerList: Answer[] = [];
     let establishmentValue = this.establishment.value;
 
-    if (establishmentValue === "kita") {
+    if (establishmentValue === "other") {
       establishmentValue = this.establishmentOther.value;
     }
     tempPerson = new Person(
@@ -266,7 +264,8 @@ function requiredIfValidator(predicate) {
     if (!formControl.parent) {
       return null;
     }
-    if (predicate() === "no" || predicate() === "kita") {
+    console.log(predicate());
+    if (predicate() === "false" || predicate() === "other") {
       return Validators.required(formControl);
     }
     return null;

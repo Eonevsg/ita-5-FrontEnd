@@ -8,7 +8,7 @@
       <input
         id="username"
         type="text"
-        placeholder="prisijungimo vardas"
+        placeholder="{{ 'username' | translate }}"
         name="username"
         required
         ngModel
@@ -18,7 +18,7 @@
       <input
         id="password"
         type="password"
-        placeholder="slaptažodis"
+        placeholder="{{ 'password' | translate }}"
         name="password"
         required
         ngModel
@@ -26,7 +26,7 @@
         (click)="isSelected = true"
       />
       <div class="alert alert-danger" *ngIf="hasError && !isSelected">
-        Klaidingi duomenys!
+        {{ "login-error" | translate }}
       </div>
       <div id="password-reminder">
         <a
@@ -34,10 +34,12 @@
           (click)="show()"
           id="password-reminder-text"
         >
-          Pamiršote slaptažodį?
+          {{ "password-reminder" | translate }}
         </a>
       </div>
-      <button type="submit" class="btn btn-custom">Prisijungti</button>
+      <button type="submit" class="btn btn-custom">
+        {{ "nav-login" | translate }}
+      </button>
     </form>
   </div>
   <div [style.display]="showModal ? 'block' : 'none'" class="modal">
@@ -45,8 +47,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="myModalLabel">
-            Kreipkitės į IT pagalbą telefonu: <br />
-            1111
+            {{ "password-reminder-popup" | translate }} <br />1111
           </h4>
         </div>
         <div id="modal-footer">
@@ -56,7 +57,7 @@
             id="btn-popup-hide"
             (click)="hide()"
           >
-            Uždaryti
+            {{ "close" | translate }}
           </button>
         </div>
       </div>

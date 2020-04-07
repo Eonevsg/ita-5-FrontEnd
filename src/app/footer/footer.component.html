@@ -1,64 +1,57 @@
 <!-- Footer -->
-<footer class="page-footer">
-
+<footer class="page-footer" id="footer">
   <!-- Footer Text -->
-  <div class="container-fluid text-center text-md-left ">
-
+  <div class="container-fluid text-center text-md-left">
     <!-- Grid row -->
     <div class="row footer-align">
-
       <!-- Grid column -->
       <div class="col-md-6 mt-md-0 mt-3">
-
         <!-- Links -->
-        <p class="text-uppercase">Nuorodos</p>
+        <p class="text-uppercase">{{ "links" | translate }}</p>
         <ul class="list-unstyled">
           <li>
-            <a [routerLink]="'/form'">Pildyti paraišką</a>
+            <a [routerLink]="'/form'">{{ "submit-form" | translate }}</a>
           </li>
           <li>
-            <a href="#!">Karjera įmonėje</a>
+            <a href="#!">{{ "career" | translate }}</a>
           </li>
           <li>
-            <a href="#!">D.U.K</a>
+            <a href="#!">{{ "faq" | translate }}</a>
           </li>
           <li>
-            <a href="#!">Apie mus</a>
+            <a href="#!">{{ "about" | translate }}</a>
           </li>
         </ul>
       </div>
       <!-- Grid column -->
 
-      <hr class="clearfix w-100 d-md-none pb-3">
+      <hr class="clearfix w-100 d-md-none pb-3" />
 
       <!-- Grid column -->
       <div class="col-md-6 mb-md-0 mb-3">
-
         <!-- Content -->
-        <p class="text-uppercase">Rekvizitai</p>
+        <p class="text-uppercase">{{ "contacts" | translate }}</p>
         <ul class="list-unstyled">
           <li>
-            <p>„Įmonės pavadinimas“</p>
+            <p>{{ "company-name" | translate }}</p>
           </li>
           <li>
-            <p>'Įmonės adresas'</p>
+            <p>{{ "address" | translate }}</p>
           </li>
           <li>
-            <p>'Įmonės SWIFT kodas'</p>
+            <p>{{ "swift" | translate }}</p>
           </li>
         </ul>
       </div>
       <!-- Grid column -->
-
     </div>
     <!-- Grid row -->
-
   </div>
   <!-- Footer Text -->
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">
     © 2020:
-    <a> „Įmonės pavadinimas“</a>
+    <a> {{ "company-name" | translate }}</a>
   </div>
   <!-- Copyright -->
 </footer>

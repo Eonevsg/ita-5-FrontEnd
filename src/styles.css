@@ -139,3 +139,21 @@ li {
 #modal-footer {
   text-align: center;
 }
+.modal-title {
+  text-align: center;
+  width: 100%;
+  margin-top: 50%;
+
+}
+
+@media only screen and (max-width: 1200px) {
+  /*.width1200 {*/
+  /*  width: 1200px !important;*/
+  /*}*/
+  .header {
+    position: fixed;
+    width: 100vw;
+    min-width: 360px;
+    max-width: 1500px;
+  }
+}

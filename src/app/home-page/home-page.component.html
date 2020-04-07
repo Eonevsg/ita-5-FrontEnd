@@ -1,55 +1,55 @@
 <div id="main">
-
-
   <div class="main-container">
-    <h1 class="title-align">IT Akademija</h1>
+    <h1 class="title-align">{{ "Sitetitle" | translate }}</h1>
     <!-- Column 1 -->
     <div class="column">
       <div class="customRow">
         <p>
-          Tai dviejų dalių programa, kurią
-          sudaro su studijomis suderinta praktika ir stažuotė. Ši programa skirta ne tik
-          informacinių technologijų ar susijusių specialybių studentams, tačiau
-          ir tiems, kurie sieja savo ateitį su IT sritimi ir jau dabar tobulina
-          savo techninius sugebėjimus.
+          {{ "first-paragraph" | translate }}
         </p>
-        <h2>Praktika</h2>
-        <hr>
+        <h2>{{ "internship" | translate }}</h2>
+        <hr />
         <p>
-          Šios programos metu dalyviai mokosi programavimo, duomenų analizės,
-          informacinių sistemų priežiūros ir testavimo, komandinio darbo
-          naudojant banko specifines technologijas, procesus ir praktikas, darbo
-          su duomenimis.
+          {{ "second-paragraph" | translate }}
         </p>
-        <h2>Stažuotė</h2>
-        <hr>
+        <h2>{{ "paid-internship" | translate }}</h2>
+        <hr />
         <p>
-          Šios programos metu dalyviai mokosi programavimo, duomenų analizės,
-          informacinių sistemų priežiūros ir testavimo, komandinio darbo
-          naudojant banko specifines technologijas, procesus ir praktikas, darbo
-          su duomenimis.
+          {{ "third-paragraph" | translate }}
         </p>
       </div>
     </div>
     <!-- Column 2-->
-    <div class="column">
+    <div class="columnDesktop">
       <div>
-        <img src="/assets/images/code.jpg" class="custom-img">
+        <img src="/assets/images/code.jpg" class="custom-img" />
       </div>
-      <div class="customButtonChoicesColumn">
-        <h2>Registruotis į IT Akademiją!</h2>
-        <button class="btn btn-custom" [routerLink]="'/form'">Pildyti paraišką</button>
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>{{ "apply-title" | translate }}</h2>
+        </div>
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/form'">
+            {{ "apply" | translate }}
+          </button>
+        </div>
       </div>
-      <div class="customButtonChoicesColumn">
-        <h2>Karjera įmonėje</h2>
-        <button class="btn btn-custom" [routerLink]="'/home'">Skelbimai</button>
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>{{ "career" | translate }}</h2>
+        </div>
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/home'">
+            {{ "jobs" | translate }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="dropdown-container">
-    <h2>Plačiau apie IT Akademiją</h2>
-    <hr>
+    <h2>{{ "more-about" | translate }}</h2>
+    <hr />
     <div class="customRow">
       <!-- Collapsable menu -->
       <div>
@@ -62,31 +62,25 @@
               aria-expanded="true"
             >
               <a class="card-title custom-collapse-text">
-                Prisijunk, jeigu tu:
+                {{ "join-if" | translate }}
               </a>
             </div>
             <div id="collapseOne" class="card-body collapse show">
               <ul>
                 <li>
-                  Sieki su IT susijusio išsilavinimo ar mėgini praktiškai
-                  atrasti save šioje srityje.
+                  {{ "join-seeking" | translate }}
                 </li>
                 <li>
-                  Ateityje nori būti įvairiapusis IT specialistas, kuris
-                  sugeba ne tik programuoti.
+                  {{ "join-future" | translate }}
                 </li>
                 <li>
-                  Degi noru tobulėti, rodai iniciatyvą ir jau turi bazinius
-                  gebėjimus – savo malonumui programuoji, kuri puslapius ar
-                  programėles, padedi draugams spręsti technines problemas.
+                  {{ "join-enjoy" | translate }}
                 </li>
                 <li>
-                  Esi pasiryžusi/-ęs bent pusę dienos laiko skirti teorinėms
-                  ir praktinėms užduotims. Praktikai numatytas laikas yra
-                  darbo dienomis (14-18 val.).
+                  {{ "join-shift" | translate }}
                 </li>
                 <li>
-                  Puikiai kalbi ir rašai angliškai.
+                  {{ "join-fluent" | translate }}
                 </li>
               </ul>
             </div>
@@ -96,26 +90,25 @@
               href="#collapseTwo"
             >
               <a class="card-title custom-collapse-text">
-                Kiek trunka programa?
+                {{ "program" | translate }}
               </a>
             </div>
             <div id="collapseTwo" class="card-body collapse">
               <ul>
                 <li>
-                  Visa Programa vyksta dviem etapais:
+                  {{ "program-stages" | translate }}
                   <ul>
-                    <li>3 mėnesius vyksta praktika. Geriausiai praktikos metu pasirodę studentai atrenkami
-                      stažuotei.
+                    <li>
+                      {{ "program-stages-unpaid" | translate }}
                     </li>
                     <li>
-                      2 mėnesius stažuotė. Geriausieji įdarbinami
-                      „Įmonės_pavadinimas“ IT.
+                      {{ "program-stages-paid" | translate }}
                     </li>
                   </ul>
                 </li>
-                <li>Stažuotės laikotarpiu dalyviui mokama IT stipendija.</li>
+                <li>{{ "program-scholarship" | translate }}</li>
                 <li>
-                  IT Akademija@Įmonės_pavadinimas startuoja vasario mėnesį.
+                  {{ "program-start" | translate }}
                 </li>
               </ul>
             </div>
@@ -125,40 +118,32 @@
               href="#collapseThree"
             >
               <a class="card-title custom-collapse-text">
-                Kodėl verta prisijungti?
+                {{ "why-join" | translate }}
               </a>
             </div>
             <div id="collapseThree" class="collapse">
               <div class="card-body">
                 <ul>
                   <li>
-                    Dalyvausi įgyvendinant IT projektus, ugdysi IT
-                    kompetenciją, išmoksi Agile metodikos principų.
+                    {{ "why-competence" | translate }}
                   </li>
                   <li>
-                    Pamatysi banką be kaklaraiščio, kuriame dirbame ir
-                    švenčiame kartu.
+                    {{ "why-bank" | translate }}
                   </li>
                   <li>
-                    Susipažinsi su „IT Akademija@Įmonės_pavadinimas“ alumnais,
-                    kurie jau įsidarbino pas mus.
+                    {{ "why-alumni" | translate }}
                   </li>
                   <li>
-                    Mokysiesi ne iš vadovėlių, bet iš „Įmonės_pavadinimas“ IT
-                    profesionalų.
+                    {{ "why-workers" | translate }}
                   </li>
                   <li>
-                    Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti
-                    dar greičiau.
+                    {{ "why-improve" | translate }}
                   </li>
                   <li>
-                    Turėsi galimybę išbandyti ir atrasti save skirtingose IT
-                    srityse.
+                    {{ "why-fields" | translate }}
                   </li>
                   <li>
-                    Jei tau puikiai seksis ir norėsi tęsti karjerą
-                    „Įmonės_pavadinimas“ IT, praktikos pabaigoje galėsi
-                    pasirinkti norimą stažuotės kryptį.
+                    {{ "why-career" | translate }}
                   </li>
                 </ul>
               </div>
@@ -170,10 +155,36 @@
     </div>
   </div>
 
-  <div class="email-container">
-    <div class="email-icon left"></div>
-    <div class="right">Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt</div>
+  <div class="columnMobile">
+    <div>
+      <img src="/assets/images/code.jpg" class="custom-img" />
+    </div>
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>{{ "apply-title" | translate }}</h2>
+      </div>
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/form'">
+          {{ "apply" | translate }}
+        </button>
+      </div>
+    </div>
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>{{ "career" | translate }}</h2>
+      </div>
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/home'">
+          {{ "jobs" | translate }}
+        </button>
+      </div>
+    </div>
   </div>
 
-  
+  <div class="email-container">
+    <div class="email-icon email-icon-column"></div>
+    <div class="email-text-column">
+      {{ "questions" | translate }}
+    </div>
+  </div>
 </div>

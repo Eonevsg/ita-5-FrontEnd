@@ -1,30 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {Answer} from '../models/answer';
-import {AnswerView} from '../models/answerView';
-import {ApplicationFormService} from '../services/application-form-service/form.service';
-import {ActivatedRoute} from '@angular/router';
-import {from, Observable} from 'rxjs';
-import {switchMap} from 'rxjs/operators';
-import {FormBuilder, Validators} from '@angular/forms';
-import {Person} from '../models/person';
-import { element } from 'protractor';
+import { Component, OnInit } from "@angular/core";
+import { Answer } from "../models/answer";
+import { AnswerView } from "../models/answerView";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
+import { ActivatedRoute } from "@angular/router";
+import { from, Observable } from "rxjs";
+import { switchMap } from "rxjs/operators";
+import { FormBuilder, Validators } from "@angular/forms";
+import { Person } from "../models/person";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-answer-details',
-  templateUrl: './answer-details.component.html',
-  styleUrls: ['./answer-details.component.css']
+  selector: "app-answer-details",
+  templateUrl: "./answer-details.component.html",
+  styleUrls: ["./answer-details.component.css"],
 })
 export class AnswerDetailsComponent implements OnInit {
   //Message variables
-  private acceptMessage = 'Priimta';
-  private rejectMessage = 'Atmesta';
+  private acceptMessage = "Priimta";
+  private rejectMessage = "Atmesta";
 
   public answer$: Observable<AnswerView>;
   public persons: Person[] = [];
   public sortedPersons: Person[];
   public applicationIDs: number[] = [];
   public questions: Answer[];
-  public radioQuestionID: string[] = ['1', '2'];
+  public radioQuestionID: string[] = ["1", "2"];
   public showModal: boolean;
   private statusValue: string;
   private personId: string;
@@ -43,59 +43,65 @@ export class AnswerDetailsComponent implements OnInit {
   private routeId: number;
 
   applicationValues: any[] = [
-    {id: 1, value: '1'},
-    {id: 2, value: '2'},
-    {id: 3, value: '3'}
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" },
   ];
   testValues: any[] = [
-    {id: 1, value: '1'},
-    {id: 2, value: '2'},
-    {id: 3, value: '3'},
-    {id: 4, value: '4'},
-    {id: 5, value: '5'},
-    {id: 6, value: '6'},
-    {id: 7, value: '7'},
-    {id: 8, value: '8'},
-    {id: 9, value: '9'},
-    {id: 10, value: '10'}
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" },
+    { id: 4, value: "4" },
+    { id: 5, value: "5" },
+    { id: 6, value: "6" },
+    { id: 7, value: "7" },
+    { id: 8, value: "8" },
+    { id: 9, value: "9" },
+    { id: 10, value: "10" },
   ];
   interviewValues: any[] = [
-    {id: 1, value: '1'},
-    {id: 2, value: '2'},
-    {id: 3, value: '3'}
+    { id: 1, value: "1" },
+    { id: 2, value: "2" },
+    { id: 3, value: "3" },
   ];
 
   constructor(
     private formService: ApplicationFormService,
     private route: ActivatedRoute,
-    private fb: FormBuilder
-  ) {
-  }
+    private fb: FormBuilder,
+    private headerComponent: HeaderComponent
+  ) {}
 
   valuationForm = this.fb.group({
-    applicationValuation: ['', []],
-    testValuation: ['', []],
-    interviewValuation: ['', []],
-    notes: ['', [Validators.maxLength(1000)]]
+    applicationValuation: ["", []],
+    testValuation: ["", []],
+    interviewValuation: ["", []],
+    notes: ["", [Validators.maxLength(1000)]],
   });
   acceptanceForm = this.fb.group({
-    state: ['', []]
+    state: ["", []],
   });
 
   getNextApplicationId() {
     for (let i = 0; i < this.applicationIDs.length; i++) {
-      if (this.routeId == this.applicationIDs[i] && this.applicationIDs[i + 1] != undefined) {
+      if (
+        this.routeId == this.applicationIDs[i] &&
+        this.applicationIDs[i + 1] != undefined
+      ) {
         return this.applicationIDs[i + 1];
-      } 
+      }
     }
     return this.routeId;
   }
 
   getPrevApplicationId() {
     for (let i = 0; i < this.applicationIDs.length; i++) {
-      if (this.routeId == this.applicationIDs[i] && this.applicationIDs[i - 1] != undefined) {
+      if (
+        this.routeId == this.applicationIDs[i] &&
+        this.applicationIDs[i - 1] != undefined
+      ) {
         return this.applicationIDs[i - 1];
-      } 
+      }
     }
     return this.routeId;
   }
@@ -127,30 +133,30 @@ export class AnswerDetailsComponent implements OnInit {
       case "Atsisakė": {
         return "Aplikantas atsisakė";
       }
-      default: { 
+      default: {
         return status;
-     } 
+      }
     }
   }
 
   get applicationValuation() {
-    return this.valuationForm.get('applicationValuation');
+    return this.valuationForm.get("applicationValuation");
   }
 
   get testValuation() {
-    return this.valuationForm.get('testValuation');
+    return this.valuationForm.get("testValuation");
   }
 
   get interviewValuation() {
-    return this.valuationForm.get('interviewValuation');
+    return this.valuationForm.get("interviewValuation");
   }
 
   get notes() {
-    return this.valuationForm.get('notes');
+    return this.valuationForm.get("notes");
   }
 
   get state() {
-    return this.acceptanceForm.get('state');
+    return this.acceptanceForm.get("state");
   }
 
   show() {
@@ -164,20 +170,22 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formService.fetchQuestions().subscribe(data => {
+    this.formService.fetchQuestions().subscribe((data) => {
       this.questions = data;
     });
 
-    this.formService.findAllAnswers().subscribe(data => {
-      data.forEach(element => this.applicationIDs.push(parseInt(element.person.id)));
+    this.formService.findAllAnswers().subscribe((data) => {
+      data.forEach((element) =>
+        this.applicationIDs.push(parseInt(element.person.id))
+      );
     });
 
     this.answer$ = from(this.route.paramMap).pipe(
-      switchMap(params =>
-        this.formService.fetchAnswer({id: params.get('id')})
+      switchMap((params) =>
+        this.formService.fetchAnswer({ id: params.get("id") })
       )
     );
-    this.answer$.subscribe(data => {
+    this.answer$.subscribe((data) => {
       this.setExistingExtraValue(data.person.extra);
       this.updateStatus(data.person);
       this.personId = data.person.id;
@@ -186,12 +194,10 @@ export class AnswerDetailsComponent implements OnInit {
       this.status = data.person.extra.status;
     });
 
-    this.route.paramMap.subscribe( params => {
-        this.routeId = parseInt(params.get('id'));
+    this.route.paramMap.subscribe((params) => {
+      this.routeId = parseInt(params.get("id"));
     });
   }
-
-
 
   onSubmitValuation(): void {
     if (this.applicationValuation.value) {
@@ -206,32 +212,36 @@ export class AnswerDetailsComponent implements OnInit {
     if (this.notes.value) {
       this.tempNotes = this.notes.value;
     }
-    this.message = 'Ar tikrai norite išsaugoti?';
-    this.buttonValue = 'Išsaugoti';
+
+    this.message =
+      this.headerComponent.language === "lt"
+        ? "Ar tikrai norite išsaugoti?"
+        : "Are you sure you want to save changes?";
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Išsaugoti" : "Confirm";
     this.buttonFunction = "onUpdateValues";
     this.show();
   }
 
-
   updateStatus(person: Person): any {
-    if (person.extra.status.toLowerCase() === 'nauja') {
+    if (person.extra.status.toLowerCase() === "nauja") {
       return this.formService.patchPerson({
         id: person.id,
-        extra: {status: 'Perskaityta'}
+        extra: { status: "Perskaityta" },
       });
     }
   }
 
   getFullQuestion(id: string): string {
-    return this.questions.find(question => question.id === id).fullQuestion;
+    return this.questions.find((question) => question.id === id).fullQuestion;
   }
 
   getAnswer(str: string, qId: string) {
     if (this.radioQuestionID.includes(qId)) {
       if (str) {
-        return 'Ne. ' + str;
+        return "Ne. " + str;
       } else {
-        return 'Taip';
+        return "Taip";
       }
     } else {
       return str;
@@ -240,19 +250,19 @@ export class AnswerDetailsComponent implements OnInit {
 
   changeApplicationValue(e) {
     this.applicationValuation.setValue(e.target.value, {
-      onlySelf: true
+      onlySelf: true,
     });
   }
 
   changeTestValue(e) {
     this.testValuation.setValue(e.target.value, {
-      onlySelf: true
+      onlySelf: true,
     });
   }
 
   changeInterviewValue(e) {
     this.interviewValuation.setValue(e.target.value, {
-      onlySelf: true
+      onlySelf: true,
     });
   }
 
@@ -280,51 +290,67 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {
-    this.buttonValue = 'Siųsti';
-    this.message = `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`;
-    this.buttonFunction = 'onSendEmail';
-    this.statusValue = 'Testas';
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Siųsti" : "Send";
+    this.message =
+      this.headerComponent.language === "lt"
+        ? `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`
+        : `Test link will be sent to email:\n ${this.email}`;
+    this.buttonFunction = "onSendEmail";
+    this.statusValue = "Testas";
     this.show();
   }
 
   inviteToInterview() {
-    this.buttonValue = 'Patvirtinti';
-    this.message = `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`;
-    this.buttonFunction = 'onConfirm';
-    this.statusValue = 'Interviu';
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
+    this.message =
+      this.headerComponent.language === "lt"
+        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
+        : `The applicant will be contacted by phone:\n ${this.phone}`;
+    this.buttonFunction = "onConfirm";
+    this.statusValue = "Interviu";
     this.show();
   }
 
   acceptApplication() {
-    this.buttonValue = 'Patvirtinti';
-    this.message = 'Su aplikantu bus susisiekta telefonu:\n' + this.phone;
-    this.buttonFunction = 'onConfirm';
-    this.statusValue = 'Priimta';
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
+    this.message =
+      this.headerComponent.language === "lt"
+        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
+        : `The applicant will be contacted by phone:\n ${this.phone}`;
+    this.buttonFunction = "onConfirm";
+    this.statusValue = "Priimta";
     this.show();
-
   }
 
   rejectApplication() {
-    this.buttonValue = 'Siųsti';
-    this.message = `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`;
-    this.buttonFunction = 'onSendEmail';
-    this.statusValue = 'Atmesta';
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Siųsti" : "Send";
+    this.message =
+      this.headerComponent.language === "lt"
+        ? `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`
+        : `Negative response to the applicant will be sent to email:\n ${this.email}`;
+    this.buttonFunction = "onSendEmail";
+    this.statusValue = "Atmesta";
 
     this.show();
   }
 
   refused() {
-    this.buttonValue = 'Patvirtinti';
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
     this.message = `Aplikantas atsisakė`;
-    this.buttonFunction = 'onConfirm';
-    this.statusValue = 'Atsisakė';
+    this.buttonFunction = "onConfirm";
+    this.statusValue = "Atsisakė";
     this.show();
   }
 
   onConfirm() {
     this.formService.patchPerson({
       id: this.personId,
-      extra: {status: this.statusValue}
+      extra: { status: this.statusValue },
     });
     this.hide();
   }
@@ -333,7 +359,7 @@ export class AnswerDetailsComponent implements OnInit {
     window.location.href = this.getEmailOpenString(this.email);
     this.formService.patchPerson({
       id: this.personId,
-      extra: {status: this.statusValue}
+      extra: { status: this.statusValue },
     });
     this.hide();
   }
@@ -345,8 +371,8 @@ export class AnswerDetailsComponent implements OnInit {
         applicationValuation: this.tempApplVal,
         testValuation: this.tempTestVal,
         interviewValuation: this.tempInterVal,
-        notes: this.tempNotes
-      }
+        notes: this.tempNotes,
+      },
     });
     this.hide();
   }

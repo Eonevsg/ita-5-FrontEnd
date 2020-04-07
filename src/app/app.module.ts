@@ -11,7 +11,11 @@ import { TextFieldModule } from "@angular/cdk/text-field";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AnswerListComponent } from "./answer-list/answer-list.component";
 import { AnswerDetailsComponent } from "./answer-details/answer-details.component";
-import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import {
+  HTTP_INTERCEPTORS,
+  HttpClientModule,
+  HttpClient,
+} from "@angular/common/http";
 import { AuthHttpInterceptor } from "./services/auth/auth-http-interceptor";
 import { SearchPipe } from "./filter/list-filter";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -22,8 +26,11 @@ import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
-import {TextareaAutosizeModule} from 'ngx-textarea-autosize';
-import {FloatThead} from './models/floatthead.directive';
+import { TextareaAutosizeModule } from "ngx-textarea-autosize";
+import { FloatThead } from "./models/floatthead.directive";
+
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -32,7 +39,7 @@ const appRoutes: Routes = [
   { path: "form", component: FormPageComponent },
   { path: "login", component: LoginPageComponent },
   { path: "", redirectTo: "/home", pathMatch: "full" },
-  { path: "**", redirectTo: "/home" }
+  { path: "**", redirectTo: "/home" },
 ];
 
 @NgModule({
@@ -47,7 +54,7 @@ const appRoutes: Routes = [
     SearchPipe,
     FooterComponent,
     HeaderComponent,
-    FloatThead
+    FloatThead,
   ],
   imports: [
     BrowserModule,
@@ -61,15 +68,27 @@ const appRoutes: Routes = [
     MatInputModule,
     MatOptionModule,
     MatSelectModule,
-    TextareaAutosizeModule
+    TextareaAutosizeModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
+    HeaderComponent,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

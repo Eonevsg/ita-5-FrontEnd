@@ -9,19 +9,21 @@
 .logo-container {
   padding: 30px;
   margin-left: 1%;
+  width: 300px;
 }
 .logo-container p {
   display: inline-block;
   margin-left: 2%;
 }
 .logo {
-  width: 3%;
-  height: 3%;
+  width: 45px;
+  height: 45px;
   top: 10px;
 }
 .title {
-  font-size: 120%;
+  font-size: 24px;
 }
+
 @media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding: 1em 1.5em;
@@ -29,16 +31,17 @@
   nav {
     position: absolute;
   }
-  
 }
+
 @media (min-width: 1131px) {
   #login-button {
     margin-left: 590px;
   }
-  #logout-button{
+  #logout-button {
     margin-left: 445px;
   }
 }
+
 @media (max-width: 1130px) {
   .navbar-expand-lg .navbar-toggler {
     display: block;
@@ -50,7 +53,7 @@
   #login-button {
     margin-left: 0;
   }
-  
+
   .hamburger {
     position: absolute;
     top: -74px;
@@ -65,14 +68,15 @@
     z-index: 999;
   }
 }
+
 @media (max-width: 1040px) {
   .hamburger {
     right: 2%;
   }
   ul {
-    margin-right:2%;
+    margin-right: 2%;
   }
-  #navbarSupportedContent{
+  #navbarSupportedContent {
     right: 4%;
   }
 }
@@ -112,3 +116,10 @@ nav li.nav-item:focus {
   margin: 3% 1.5%;
 }
 
+.en-icon {
+  content: url("../../assets/images/united-kingdom-flag.png");
+}
+
+.lt-icon {
+  content: url("../../assets/images/lithuania-flag.png");
+}

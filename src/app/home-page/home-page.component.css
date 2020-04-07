@@ -13,28 +13,42 @@
   float: left;
   width: 40%;
   height: 100%;
-  margin: 0% 5% 5% 5%;
+  margin: 0 5% 5% 5%;
 }
-
+.columnDesktop {
+  float: left;
+  width: 40%;
+  height: 100%;
+  margin: 0 5% 5% 5%;
+}
+.columnMobile {
+  display: none;
+}
 .customRow {
   width: 100%;
   height: 33%;
 }
 
-.customButtonChoicesColumn {
+.btn-custom {
+  width: 45%;
+  margin-bottom: 10px;
+}
+.customRowText {
+  margin-top: 10px;
+  height: 5vh;
+  text-align: center;
+}
+.customRowButton {
+  padding-bottom: 10px;
+  text-align: center;
+}
+.customChoicesColumn {
   width: 100%;
   height: 33%;
-  text-align: center;
   background: #c0adc6b0;
   margin-top: 2%;
   border-top: 5px solid #6b436e;
 }
-
-.btn-custom {
-  width: 35%;
-  margin-bottom: 10px;
-}
-
 .custom-img {
   max-width: 100%;
   height: 33%;
@@ -67,7 +81,7 @@ img {
   font-size: large;
   color: #57292a;
 }
-.left {
+.email-icon-column {
   float: left;
   width: 5%;
   height: 100%;
@@ -75,7 +89,7 @@ img {
   padding-bottom: 5px;
   text-align: center;
 }
-.right {
+.email-text-column {
   float: left;
   width: 95%;
   height: 100%;
@@ -140,7 +154,25 @@ img {
   img {
     display: none;
   }
-  .left {
+  .email-icon-column {
     padding-top: 10px;
+  }
+  .columnDesktop {
+    display: none;
+  }
+  .columnMobile {
+    width: 90%;
+    height: auto;
+    margin: 5% 5% 5% 5%;
+    display: block;
+  }
+  .btn-custom {
+    width: 50%;
+  }
+  .email-icon-column {
+    width: 10%;
+  }
+  .email-text-column {
+    width: 90%;
   }
 }

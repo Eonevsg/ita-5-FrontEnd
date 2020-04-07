@@ -1,7 +1,7 @@
-<div id="main">
+<div id="main2">
   <div id="form-container">
     <div class="card">
-      <h1 class="title-align">Studentų paraiškos</h1>
+      <h1 class="title-align">{{ "lp-title" | translate }}</h1>
       <div class="card-body">
         <mat-form-field hidden><input matInput /></mat-form-field>
         <table
@@ -9,6 +9,7 @@
           floatthead
           (matSortChange)="sortData($event)"
           class="table table-bordered table-striped table-hover"
+          id="table-list"
         >
           <colgroup>
             <col id="dateTime-column" />
@@ -23,19 +24,19 @@
           </colgroup>
           <thead class="thead-custom" id="table-header">
             <tr>
-              <th
+              <th scope="colgroup"
                 colspan="5"
-                scope="colgroup"
+
                 class="center table-primary-header"
               >
-                Paraiškos duomenys
+                {{ "applications-title" | translate }}
               </th>
-              <th
+              <th scope="colgroup"
                 colspan="4"
-                scope="colgroup"
+
                 class="center table-primary-header"
               >
-                Vertinimas
+                {{ "valuation-title" | translate }}
               </th>
             </tr>
             <tr>
@@ -45,14 +46,14 @@
                     mat-sort-header="dateTime"
                     class="column-header-title vertical-align-middle"
                   >
-                    Data
+                    {{ "date" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.dateTime"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -63,17 +64,18 @@
                     mat-sort-header="status"
                     class="column-header-title vertical-align-middle"
                   >
-                    Būsena
+                    {{ "status" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.status"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
+
 
               <th scope="col">
                 <div class="column-header">
@@ -81,14 +83,14 @@
                     mat-sort-header="name"
                     class="column-header-title vertical-align-middle"
                   >
-                    Vardas
+                    {{ "name" | translate }} {{ "surname" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.name"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -99,14 +101,14 @@
                     mat-sort-header="uni"
                     class="column-header-title vertical-align-middle"
                   >
-                    Mokymosi įstaiga
+                    {{ "establishment" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.uni"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -117,7 +119,7 @@
                     mat-sort-header="contract"
                     class="column-header-title vertical-align-middle"
                   >
-                    Sutartis
+                    {{ "contract" | translate }}
                   </div>
                   <select
                     [(ngModel)]="fields.contract"
@@ -125,13 +127,15 @@
                     matInput
                     MatFormFieldControl
                   >
-                    <option value="" hidden selected>Filtruoti</option>
+                    <option value="" hidden selected>{{
+                      "filter" | translate
+                    }}</option>
                     <option value=""></option>
                     <option [ngValue]="true">
-                      Taip
+                      {{ "yes" | translate }}
                     </option>
                     <option [ngValue]="false">
-                      Ne
+                      {{ "no" | translate }}
                     </option>
                   </select>
                 </div>
@@ -143,14 +147,14 @@
                     mat-sort-header="applicationValuation"
                     class="column-header-title vertical-align-middle"
                   >
-                    Anketos
+                    {{ "form" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.applicationValuation"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -161,14 +165,14 @@
                     mat-sort-header="testValuation"
                     class="column-header-title vertical-align-middle"
                   >
-                    Testo
+                    {{ "test" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.testValuation"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -179,14 +183,14 @@
                     mat-sort-header="interviewValuation"
                     class="column-header-title vertical-align-middle"
                   >
-                    Pokalbio
+                    {{ "interview" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.interviewValuation"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -197,14 +201,14 @@
                     mat-sort-header="notes"
                     class="column-header-title vertical-align-middle"
                   >
-                    Pastabos
+                    {{ "notes" | translate }}
                   </div>
                   <input
                     [(ngModel)]="fields.notes"
                     (ngModelChange)="updateFilters()"
                     matInput
                     MatFormFieldControl
-                    placeholder="Filtruoti"
+                    placeholder="{{ 'filter' | translate }}"
                   />
                 </div>
               </th>
@@ -214,7 +218,11 @@
             <tr
               *ngFor="let person of sortedPersons | search: filters"
               [routerLink]="['/details', person.id]"
-              [ngClass]="{'disabled': (person.extra.status === 'Atmesta') || (person.extra.status === 'Atsisakė')}"
+              [ngClass]="{
+                disabled:
+                  person.extra.status === 'Atmesta' ||
+                  person.extra.status === 'Atsisakė'
+              }"
             >
               <td class="column-width-small">
                 {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
