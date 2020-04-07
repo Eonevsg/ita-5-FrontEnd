@@ -83,6 +83,7 @@ const appRoutes: Routes = [
       useClass: AuthHttpInterceptor,
       multi: true,
     },
+    HeaderComponent,
   ],
   bootstrap: [AppComponent],
 })

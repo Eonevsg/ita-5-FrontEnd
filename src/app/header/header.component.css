@@ -115,3 +115,11 @@ nav li.nav-item:focus {
   float: left;
   margin: 3% 1.5%;
 }
+
+.en-icon {
+  content: url("../../assets/images/united-kingdom-flag.png");
+}
+
+.lt-icon {
+  content: url("../../assets/images/lithuania-flag.png");
+}

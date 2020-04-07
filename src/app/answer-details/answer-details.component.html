@@ -7,16 +7,14 @@
           *ngIf="answer$ | async as model"
         >
         <div class="form-inner-content">
-          <div class="display-inline">
-            <p class="status">
-              {{ getPersonStatus() }}</p>
-          </div>
-          <div class="line">
+          <div>
+          <div class="name">{{ model.person.name + " " + model.person.surname }}</div>
+          <div class="line btn-return phone form-inner-content btn-return">
             <button
-            class="btn-custom btn-functional btn-return btn-top"
-            (click)="refused()">
-            <i class="fa fa-ban ban"></i>
-            {{"applicationRefused" | translate}}
+              class="btn-custom btn-functional btn-return btn-top"
+              (click)="acceptApplication()">
+              <i class="fa fa-check check"></i>
+              {{"applicationAccept" | translate}}
             </button>
             <button
               class="btn-custom btn-functional btn-return btn-top"
@@ -25,31 +23,27 @@
               {{"applicationReject" | translate}}
             </button>
             <button
-              class="btn-custom btn-functional btn-return btn-top"
-              (click)="acceptApplication()">
-              <i class="fa fa-check check"></i>
-              {{"applicationAccept" | translate}}
+            class="btn-custom btn-functional btn-return btn-top"
+            (click)="refused()">
+            <i class="fa fa-ban ban"></i>
+            {{"applicationRefused" | translate}}
             </button>
-          </div>
+                </div>
+                <div class="phone">
+                  <div>
+                    <p class="fa fa-volume-control-phone space"></p>
+                    <p class="fa information form-inner-content">{{ model.person.phone }}</p>
+                  </div>
+                  <div>
+                    <p class="fa fa-envelope space"></p>
+                    <p class="fa information form-inner-content">{{ model.person.email }}</p>
+                  </div>
+                  <div class="display-inline">
+                    <p class="status">
+                      {{ getPersonStatus() }}</p>
+                  </div>
+                </div>
         </div>
-
-
-        <div class="form-inner-content">
-
-
-              <br />
-              <p class="name">{{ model.person.name + " " + model.person.surname }}</p>
-              <div class="phone">
-                <div>
-                  <i class="fa fa-volume-control-phone"></i>
-                  <p class="fa information form-inner-content">{{ model.person.phone }}</p>
-                </div>
-                <div>
-                  <p class="fa fa-paper-plane-o"></p>
-                  <p class="fa information form-inner-content">{{ model.person.email }}</p>
-                </div>
-              </div>
-            </div>
 
             <section>
               <div class="tit">{{"personalData" | translate}}</div>
@@ -158,19 +152,19 @@
                     </div>
 
                     <button
-                      class="btn-custom btn-confiramtion"
+                      class="btn btn-custom btn-confiramtion"
                       (click)="sendTest()"
                     >
                       {{"sendTest" | translate}}
                     </button>
                     <button
-                      class="btn-custom btn-confiramtion"
+                      class="btn btn-custom btn-confiramtion"
                       (click)="inviteToInterview()"
                     >
                       {{"inviteToInterview" | translate}}
                     </button>
                     <button
-                      class="btn-custom btn-return btn-confiramtion"
+                      class="btn btn-custom btn-return btn-confiramtion"
                       [disabled]="valuationForm.invalid"
                       (click)="onSubmitValuation()"
                     >
@@ -181,6 +175,7 @@
               </div>
             </div>
           </div>
+        </div>
           <div>
             <hr />
             <section>

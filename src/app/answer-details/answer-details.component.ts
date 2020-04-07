@@ -7,8 +7,7 @@ import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
-import { element } from "protractor";
-import { AppComponent } from "../app.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: "app-answer-details",
@@ -70,7 +69,7 @@ export class AnswerDetailsComponent implements OnInit {
     private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private appComponent: AppComponent
+    private headerComponent: HeaderComponent
   ) {}
 
   valuationForm = this.fb.group({
@@ -215,11 +214,11 @@ export class AnswerDetailsComponent implements OnInit {
     }
 
     this.message =
-      this.appComponent.language === "lt"
+      this.headerComponent.language === "lt"
         ? "Ar tikrai norite išsaugoti?"
         : "Are you sure you want to save changes?";
     this.buttonValue =
-      this.appComponent.language === "lt" ? "Išsaugoti" : "Confirm";
+      this.headerComponent.language === "lt" ? "Išsaugoti" : "Confirm";
     this.buttonFunction = "onUpdateValues";
     this.show();
   }
@@ -291,9 +290,10 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {
-    this.buttonValue = this.appComponent.language === "lt" ? "Siųsti" : "Send";
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Siųsti" : "Send";
     this.message =
-      this.appComponent.language === "lt"
+      this.headerComponent.language === "lt"
         ? `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`
         : `Test link will be sent to email:\n ${this.email}`;
     this.buttonFunction = "onSendEmail";
@@ -303,9 +303,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   inviteToInterview() {
     this.buttonValue =
-      this.appComponent.language === "lt" ? "Patvirtinti" : "Confirm";
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
     this.message =
-      this.appComponent.language === "lt"
+      this.headerComponent.language === "lt"
         ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
         : `The applicant will be contacted by phone:\n ${this.phone}`;
     this.buttonFunction = "onConfirm";
@@ -315,9 +315,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   acceptApplication() {
     this.buttonValue =
-      this.appComponent.language === "lt" ? "Patvirtinti" : "Confirm";
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
     this.message =
-      this.appComponent.language === "lt"
+      this.headerComponent.language === "lt"
         ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
         : `The applicant will be contacted by phone:\n ${this.phone}`;
     this.buttonFunction = "onConfirm";
@@ -326,9 +326,10 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   rejectApplication() {
-    this.buttonValue = this.appComponent.language === "lt" ? "Siųsti" : "Send";
+    this.buttonValue =
+      this.headerComponent.language === "lt" ? "Siųsti" : "Send";
     this.message =
-      this.appComponent.language === "lt"
+      this.headerComponent.language === "lt"
         ? `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`
         : `Negative response to the applicant will be sent to email:\n ${this.email}`;
     this.buttonFunction = "onSendEmail";
@@ -339,7 +340,7 @@ export class AnswerDetailsComponent implements OnInit {
 
   refused() {
     this.buttonValue =
-      this.appComponent.language === "lt" ? "Patvirtinti" : "Confirm";
+      this.headerComponent.language === "lt" ? "Patvirtinti" : "Confirm";
     this.message = `Aplikantas atsisakė`;
     this.buttonFunction = "onConfirm";
     this.statusValue = "Atsisakė";
