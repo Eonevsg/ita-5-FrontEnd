@@ -11,3 +11,7 @@ footer.page-footer {
 .footer-align {
   text-align: center;
 }
+
+.width1200{
+  width:1200px !important;
+}

@@ -38,6 +38,13 @@ select {
 #main div {
   display: inline-block;
 }
+#main2{
+  width: 100%;
+  margin: auto;
+}
+.width1200 {
+  width: 1200px !important;
+}
 
 table {
   table-layout: fixed;

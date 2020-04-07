@@ -5,6 +5,9 @@
   border-top: 15px solid #6b436e;
   position: relative;
 }
+.width1200{
+  width: 1200px!important;
+}
 
 .logo-container {
   padding: 30px;
