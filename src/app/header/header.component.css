@@ -9,18 +9,19 @@
 .logo-container {
   padding: 30px;
   margin-left: 1%;
+  width: 300px;
 }
 .logo-container p {
   display: inline-block;
   margin-left: 2%;
 }
 .logo {
-  width: 3%;
-  height: 3%;
+  width: 45px;
+  height: 45px;
   top: 10px;
 }
 .title {
-  font-size: 120%;
+  font-size: 24px;
 }
 @media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
@@ -29,13 +30,12 @@
   nav {
     position: absolute;
   }
-  
 }
 @media (min-width: 1131px) {
   #login-button {
     margin-left: 590px;
   }
-  #logout-button{
+  #logout-button {
     margin-left: 445px;
   }
 }
@@ -50,7 +50,7 @@
   #login-button {
     margin-left: 0;
   }
-  
+
   .hamburger {
     position: absolute;
     top: -74px;
@@ -70,9 +70,9 @@
     right: 2%;
   }
   ul {
-    margin-right:2%;
+    margin-right: 2%;
   }
-  #navbarSupportedContent{
+  #navbarSupportedContent {
     right: 4%;
   }
 }
@@ -111,4 +111,3 @@ nav li.nav-item:focus {
   float: left;
   margin: 3% 1.5%;
 }
-

@@ -32,17 +32,25 @@
       </div>
     </div>
     <!-- Column 2-->
-    <div class="column">
+    <div class="columnDesktop">
       <div>
         <img src="/assets/images/code.jpg" class="custom-img">
       </div>
-      <div class="customButtonChoicesColumn">
-        <h2>Registruotis į IT Akademiją!</h2>
-        <button class="btn btn-custom" [routerLink]="'/form'">Pildyti paraišką</button>
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>Registruotis į IT Akademiją!</h2>
+        </div>
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/form'">Pildyti paraišką</button>
+        </div>
       </div>
-      <div class="customButtonChoicesColumn">
-        <h2>Karjera įmonėje</h2>
-        <button class="btn btn-custom" [routerLink]="'/home'">Skelbimai</button>
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>Karjera įmonėje</h2>
+        </div>
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/home'">Skelbimai</button>
+        </div>
       </div>
     </div>
   </div>
@@ -170,10 +178,36 @@
     </div>
   </div>
 
-  <div class="email-container">
-    <div class="email-icon left"></div>
-    <div class="right">Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt</div>
+
+  <div class="columnMobile">
+    <div>
+      <img src="/assets/images/code.jpg" class="custom-img">
+    </div>
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>Registruotis į IT Akademiją!</h2>
+      </div>
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/form'">Pildyti paraišką</button>
+      </div>
+    </div>
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>Karjera įmonėje</h2>
+      </div>
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/home'">Skelbimai</button>
+      </div>
+    </div>
   </div>
 
-  
+
+  <div class="email-container">
+    <div class="email-icon email-icon-column"></div>
+    <div class="email-text-column">Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt</div>
+  </div>
+
+
+
+
 </div>
