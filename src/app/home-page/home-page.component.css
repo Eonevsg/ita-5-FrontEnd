@@ -30,7 +30,7 @@
 }
 
 .btn-custom {
-  width: 35%;
+  width: 45%;
   margin-bottom: 10px;
 }
 .customRowText {
@@ -156,5 +156,17 @@ img {
   }
   .left {
     padding-top: 10px;
+  }
+  .columnDesktop {
+    display: none;
+  }
+  .columnMobile {
+    width: 90%;
+    height: auto;
+    margin: 0 5% 5% 5%;
+    display: block;
+  }
+  .btn-custom {
+    width: 50%;
   }
 }
