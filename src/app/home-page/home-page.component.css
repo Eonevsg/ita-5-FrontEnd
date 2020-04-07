@@ -81,7 +81,7 @@ img {
   font-size: large;
   color: #57292a;
 }
-.left {
+.email-icon-column {
   float: left;
   width: 5%;
   height: 100%;
@@ -89,7 +89,7 @@ img {
   padding-bottom: 5px;
   text-align: center;
 }
-.right {
+.email-text-column {
   float: left;
   width: 95%;
   height: 100%;
@@ -154,7 +154,7 @@ img {
   img {
     display: none;
   }
-  .left {
+  .email-icon-column {
     padding-top: 10px;
   }
   .columnDesktop {
@@ -163,10 +163,16 @@ img {
   .columnMobile {
     width: 90%;
     height: auto;
-    margin: 0 5% 5% 5%;
+    margin: 5% 5% 5% 5%;
     display: block;
   }
   .btn-custom {
     width: 50%;
+  }
+  .email-icon-column {
+    width: 10%;
+  }
+  .email-text-column {
+    width: 90%;
   }
 }
