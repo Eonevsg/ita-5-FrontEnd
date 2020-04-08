@@ -3,6 +3,7 @@ import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
+import { LanguageService } from '../services/language-service/language.service';
 
 @Component({
   selector: "app-header",
@@ -14,14 +15,14 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
-    public translate: TranslateService
+    private translate: TranslateService,
+    private languageService: LanguageService
   ) {
     translate.addLangs(["lt", "en"]);
     translate.setDefaultLang("lt");
   }
 
   ngOnInit(): void {
-    this.language = "lt"; //LT is defaul value
     addEventListener("click", this.closeMenu);
   }
   logOutButtonClick() {
@@ -39,11 +40,9 @@ export class HeaderComponent implements OnInit {
       element.classList.remove("show");
     }
   }
-  public language: string;
 
   switchLang(lang: string) {
     this.translate.use(lang);
-    this.language = lang;
-    console.log(this.language);
+    this.languageService.setLanguage(lang);
   }
 }
