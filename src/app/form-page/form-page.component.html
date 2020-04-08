@@ -419,7 +419,7 @@
       </div>
 
       <div id="submit">
-        <button type="submit" class="btn btn-custom">
+        <button type="submit" class="btn btn-custom" [disabled]="!buttonEnabled">
           {{"Submit" | translate}}
         </button>
       </div>
