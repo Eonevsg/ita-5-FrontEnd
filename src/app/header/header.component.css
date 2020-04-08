@@ -24,6 +24,8 @@
   font-size: 24px;
 }
 
+
+
 @media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding: 1em 1.5em;
@@ -35,10 +37,20 @@
 
 @media (min-width: 1131px) {
   #login-button {
-    margin-left: 590px;
+    margin-left: 575px;
   }
   #logout-button {
-    margin-left: 445px;
+    margin-left: 420px;
+  }
+  .form-control {
+    width: 65px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  #language-selector {
+    z-index: 10;
+    position: absolute;
+    right:170px
   }
 }
 
@@ -52,6 +64,17 @@
   }
   #login-button {
     margin-left: 0;
+  }
+  #language-selector {
+    z-index: 10;
+    position: absolute;
+    right: calc(3%  + 65px);
+    top: -73px;
+  }
+  .form-control {
+    width: 65px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 
   .hamburger {
@@ -81,6 +104,19 @@
   }
 }
 
+@media (max-width: 380px) {
+  #language-selector {
+    z-index: 10;
+    position: absolute;
+    right: calc(3%  + 60px);
+    top: -73px;
+  }
+  .form-control {
+    width: 65px;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+}
 .nav-link {
   color: black;
   font-weight: 500;
@@ -99,7 +135,7 @@ nav {
 nav li.nav-item {
   border: 1px solid rgba(211, 211, 211, 0.541);
   color: black;
-  width: 145px;
+  width: 150px;
   text-align: center;
 }
 nav li.nav-item:focus {
