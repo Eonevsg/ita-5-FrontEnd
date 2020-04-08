@@ -195,14 +195,7 @@ export class FormPageComponent implements OnInit {
           Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
-      experience: [
-        "",
-        [
-          Validators.required,
-          Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
-        ],
-      ],
+      experience: ["", [Validators.required, Validators.maxLength(1000)]],
       marketing: [
         "",
         [

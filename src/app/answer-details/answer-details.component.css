@@ -2,7 +2,7 @@
   color: #57292a;
   font-size: 14px;
   line-height: 16px;
-  font-weight: 550;
+  font-weight: bold;
 }
 
 .answer {
@@ -166,12 +166,10 @@ textarea {
 
 .tick-icon::before {
   color: green;
-  margin-left: 10px;
 }
 
 .none-icon::before {
   color: red;
-  margin-left: 10px;
 }
 
 .left-icon::before {
