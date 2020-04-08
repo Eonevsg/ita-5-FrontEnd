@@ -2,15 +2,11 @@
   <div id="form-container card my-5">
     <div class="card-body form-inner-content" *ngIf="answer$ | async as model">
       <div class="form-inner-content">
-        <div>
-          <h1 class="name">
-            {{ model.person.name + " " + model.person.surname }}
-          </h1>
-          <!-- <div class=""> -->
-          <ul class="form-status-control-list">
+        <div class="status-mobile">
+          <ul class="form-status-control-list-responsive">
             <li>
               <button
-                class="btn-custom btn-functional btn-return btn-top tick-icon"
+                class="btn-custom btn-functional left btn-top tick-icon"
                 (click)="acceptApplication()"
               >
                 {{ "applicationAccept" | translate }}
@@ -18,23 +14,53 @@
             </li>
             <li>
               <button
-                class="btn-custom btn-functional btn-return btn-top none-icon"
+                class="btn-custom btn-functional left btn-top none-icon"
                 (click)="rejectApplication()"
               >
-                {{ "applicationReject" | translate }}
+                <span>{{ "applicationReject" | translate }}</span>
               </button>
             </li>
             <li>
               <button
-                class="btn-custom btn-functional btn-return btn-top ban-icon"
+                class="btn-custom btn-functional left btn-top ban-icon"
                 (click)="refused()"
               >
-                {{ "applicationRefused" | translate }}
+                <span>{{ "applicationRefused" | translate }}</span>
               </button>
             </li>
           </ul>
         </div>
-        <!-- </div> -->
+        <div>
+          <h1 class="name">
+            {{ model.person.name + " " + model.person.surname }}
+          </h1>
+          <ul class="form-status-control-list-desktop">
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top tick-icon"
+                (click)="acceptApplication()"
+              >
+                {{ "applicationAccept" | translate }}
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top none-icon"
+                (click)="rejectApplication()"
+              >
+                <span>{{ "applicationReject" | translate }}</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top ban-icon"
+                (click)="refused()"
+              >
+                <span>{{ "applicationRefused" | translate }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
         <div class="contacts">
           <p class="bold-custom">
             {{ getPersonStatus() }}
@@ -51,7 +77,7 @@
           <label class="tit">{{ "personalData" | translate }}</label>
           <hr />
           <label class="question">
-            Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+            {{ "educationalInstitution" | translate }}</label
           >
           <p class="answer form-inner-content">
             {{ model.person.uni }}
@@ -153,7 +179,7 @@
                   </div>
                 </div>
 
-                <div>
+                <div class="button-div">
                   <button
                     class="btn btn-custom btn-confiramtion"
                     (click)="sendTest()"
@@ -167,7 +193,7 @@
                     {{ "inviteToInterview" | translate }}
                   </button>
                   <button
-                    class="btn btn-custom btn-return btn-confiramtion"
+                    class="btn btn-custom right btn-confiramtion"
                     [disabled]="valuationForm.invalid"
                     (click)="onSubmitValuation()"
                   >
@@ -183,18 +209,18 @@
     <div>
       <hr />
       <div>
-        <a class="nav-link btn-back left-icon" [routerLink]="'/list'">
+        <a class="nav-link left left-icon" [routerLink]="'/list'">
           {{ "back" | translate }}</a
         >
         <a
-          class="nav-link btn-return right-icon"
-          [routerLink]="['/details/' + getNextApplicationId()]"
+          class="nav-link right right-icon"
+          [routerLink]="['/details/', getNextApplicationId()]"
         >
           {{ "nextApplication" | translate }}</a
         >
         <a
-          class="nav-link btn-return left-icon"
-          [routerLink]="['/details/' + getPrevApplicationId()]"
+          class="nav-link right left-icon"
+          [routerLink]="['/details/', getPrevApplicationId()]"
         >
           {{ "prevApplication" | translate }}</a
         >
