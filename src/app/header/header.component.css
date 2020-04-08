@@ -108,11 +108,11 @@
   #language-selector {
     z-index: 10;
     position: absolute;
-    right: calc(3%  + 60px);
+    right: calc(3%  + 65px);
     top: -73px;
   }
   .form-control {
-    width: 65px;
+    width: 60px;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
