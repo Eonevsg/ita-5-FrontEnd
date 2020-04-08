@@ -1,251 +1,233 @@
 <div id="main">
-  <body>
-    <div id="form-container">
-      <div class="card my-5">
-        <div
-          class="card-body form-inner-content"
-          *ngIf="answer$ | async as model"
-        >
-        <div class="form-inner-content">
-          <div>
-          <div class="name">{{ model.person.name + " " + model.person.surname }}</div>
-          <div class="line btn-return phone form-inner-content btn-return">
-            <button
-              class="btn-custom btn-functional btn-return btn-top"
-              (click)="acceptApplication()">
-              <i class="fa fa-check check"></i>
-              {{"applicationAccept" | translate}}
-            </button>
-            <button
-              class="btn-custom btn-functional btn-return btn-top"
-              (click)="rejectApplication()">
-              <i class="fa fa-times times"></i>
-              {{"applicationReject" | translate}}
-            </button>
-            <button
-            class="btn-custom btn-functional btn-return btn-top"
-            (click)="refused()">
-            <i class="fa fa-ban ban"></i>
-            {{"applicationRefused" | translate}}
-            </button>
-                </div>
-                <div class="phone">
-                  <div>
-                    <p class="fa fa-volume-control-phone space"></p>
-                    <p class="fa information form-inner-content">{{ model.person.phone }}</p>
-                  </div>
-                  <div>
-                    <p class="fa fa-envelope space"></p>
-                    <p class="fa information form-inner-content">{{ model.person.email }}</p>
-                  </div>
-                  <div class="display-inline">
-                    <p class="status">
-                      {{ getPersonStatus() }}</p>
-                  </div>
-                </div>
-        </div>
-
-            <section>
-              <div class="tit">{{"personalData" | translate}}</div>
-              <hr />
-              <label class="question">
-                Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+  <div id="form-container card my-5">
+    <div class="card-body form-inner-content" *ngIf="answer$ | async as model">
+      <div class="form-inner-content">
+        <div>
+          <h1 class="name">
+            {{ model.person.name + " " + model.person.surname }}
+          </h1>
+          <!-- <div class=""> -->
+          <ul class="form-status-control-list">
+            <li>
+              <button
+                class="btn-custom btn-functional btn-return btn-top tick-icon"
+                (click)="acceptApplication()"
               >
-              <div class="answer form-inner-content">
-                {{ model.person.uni }}
-              </div>
-              <div *ngFor="let answer of model.answerList">
-                <label class="question">
-                  {{ getFullQuestion(answer.questionId) }}</label
-                >
-                <div class="answer form-inner-content">
-                  {{ getAnswer(answer.answer, answer.questionId) }}
-                </div>
-              </div>
-            </section>
-          </div>
-          <div class="both-form-container">
-            <div class="form-inner-content">
-              <div class="tit">{{"personalAssessment" | translate}}</div>
-              <hr />
-              <div class="form-container">
-                <form
-                  [formGroup]="valuationForm"
-                >
-                  <section>
-                    <div class="row">
-                      <div class="form-group column">
-                        <label for="applicationValuation"
-                          >{{"applicationEvaluation" | translate}}</label
-                        >
-                        <select
-                          class="custom-select form-control"
-                          (change)="changeApplicationValue($event)"
-                          id="applicationValuation"
-                          formControlName="applicationValuation"
-                        >
-                          <option value="">{{"evaluation" | translate}}</option>
-                          <option
-                            *ngFor="let applVal of applicationValues"
-                            [value]="applVal.value"
-                            >{{ applVal.value }}</option
-                          >
-                        </select>
-                      </div>
-
-                      <div class="form-group column">
-                        <label for="testValuation">{{"testEvaluation" | translate}}</label>
-                        <select
-                          class="custom-select form-control"
-                          (change)="changeTestValue($event)"
-                          id="testValuation"
-                          formControlName="testValuation"
-                        >
-                          <option value="">{{"evaluation" | translate}}</option>
-                          <option
-                            *ngFor="let testVal of testValues"
-                            [value]="testVal.value"
-                            >{{ testVal.value }}</option
-                          >
-                        </select>
-                      </div>
-
-                      <div class="form-group column">
-                        <label for="interviewValuation"
-                          >{{"interviewEvaluation" | translate}}</label
-                        >
-                        <select
-                          class="custom-select form-control"
-                          (change)="changeInterviewValue($event)"
-                          id="interviewValuation"
-                          formControlName="interviewValuation"
-                        >
-                          <option value="">{{"evaluation" | translate}}</option>
-                          <option
-                            *ngFor="let interVal of interviewValues"
-                            [value]="interVal.value"
-                            >{{ interVal.value }}</option
-                          >
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="form-group" [class.has-error]="notes.invalid">
-                      <label for="notes">{{"notes" | translate}}</label>
-                      <textarea
-                        type="text"
-                        class="form-control textarea-custom"
-                        id="notes"
-                        maxlength="1000"
-                        autosize
-                        formControlName="notes"
-                      ></textarea>
-                    </div>
-
-                    <div
-                      [hidden]="notes.valid || notes.untouched"
-                      class="alert alert-danger"
-                    >
-                      <div *ngIf="notes.errors?.maxlength">
-                        Pastaba per ilga
-                      </div>
-                    </div>
-
-                    <button
-                      class="btn btn-custom btn-confiramtion"
-                      (click)="sendTest()"
-                    >
-                      {{"sendTest" | translate}}
-                    </button>
-                    <button
-                      class="btn btn-custom btn-confiramtion"
-                      (click)="inviteToInterview()"
-                    >
-                      {{"inviteToInterview" | translate}}
-                    </button>
-                    <button
-                      class="btn btn-custom btn-return btn-confiramtion"
-                      [disabled]="valuationForm.invalid"
-                      (click)="onSubmitValuation()"
-                    >
-                      {{"save" | translate}}
-                    </button>
-                  </section>
-                </form>
-              </div>
-            </div>
-          </div>
+                {{ "applicationAccept" | translate }}
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional btn-return btn-top none-icon"
+                (click)="rejectApplication()"
+              >
+                {{ "applicationReject" | translate }}
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional btn-return btn-top ban-icon"
+                (click)="refused()"
+              >
+                {{ "applicationRefused" | translate }}
+              </button>
+            </li>
+          </ul>
         </div>
-          <div>
-            <hr />
-            <section>
-              <div>
-                <a class="nav-link btn-back" [routerLink]="'/list'">
-                  <i
-                    class="fa fa-angle-double-left nav-link btn-back arrows"
-                    [routerLink]="'/list'"
-                  >
-                  </i
-                  >{{"back" | translate}}</a
-                >
-              </div>
-              <div>
-                <a
-                  class="nav-link btn-return"
-                  [routerLink]="['/details/', getNextApplicationId()]"
-                >
-                  <i
-                    class="fa fa-angle-double-right nav-link btn-return arrows"
-                    [routerLink]="['/details/', getNextApplicationId()]"
-                  ></i>
-                  {{"nextApplication" | translate}}</a
-                >
-              </div>
-              <div>
-                <a
-                  class="nav-link btn-return"
-                  [routerLink]="['/details/', getPrevApplicationId()]"
-                >
-                  <i
-                    class="fa fa-angle-double-left nav-link arrows"
-                    [routerLink]="['/details/', getPrevApplicationId()]"
-                  >
-                  </i
-                  >{{"prevApplication" | translate}}</a
-                >
-              </div>
-            </section>
-          </div>
+        <!-- </div> -->
+        <div class="contacts">
+          <p class="bold-custom">
+            {{ getPersonStatus() }}
+          </p>
+          <p class="phone-icon">
+            {{ model.person.phone }}
+          </p>
+          <p class="email-icon">
+            {{ model.person.email }}
+          </p>
         </div>
+
+        <section>
+          <label class="tit">{{ "personalData" | translate }}</label>
+          <hr />
+          <label class="question">
+            Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
+          >
+          <p class="answer form-inner-content">
+            {{ model.person.uni }}
+          </p>
+          <div *ngFor="let answer of model.answerList">
+            <label class="question">
+              {{ getFullQuestion(answer.questionId) }}</label
+            >
+            <p class="answer form-inner-content">
+              {{ getAnswer(answer.answer, answer.questionId) }}
+            </p>
+          </div>
+        </section>
       </div>
-    <div [style.display]="showModal ? 'block' : 'none'" class="modal">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">
-              {{ message }}
-            </h4>
-          </div>
-          <div id="modal-footer">
-            <button
-              type="submit"
-              class="btn btn-custom"
-              id="btn-popup-hide"
-              (click)="this[buttonFunction]()"
-            >
-              {{ buttonValue }}
-            </button>
-            <button
-              type="submit"
-              class="btn btn-custom"
-              id="btn-popup-back"
-              (click)="hide()"
-            >
-              {{"cancel" | translate}}
-            </button>
+      <div class="both-form-container">
+        <div class="form-inner-content">
+          <label class="tit">{{ "personalAssessment" | translate }}</label>
+          <hr />
+          <div class="form-container">
+            <form [formGroup]="valuationForm">
+              <section>
+                <div class="row">
+                  <div class="form-group column">
+                    <label for="applicationValuation">{{
+                      "applicationEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeApplicationValue($event)"
+                      id="applicationValuation"
+                      formControlName="applicationValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let applVal of applicationValues"
+                        [value]="applVal.value"
+                        >{{ applVal.value }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group column">
+                    <label for="testValuation">{{
+                      "testEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeTestValue($event)"
+                      id="testValuation"
+                      formControlName="testValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let testVal of testValues"
+                        [value]="testVal.value"
+                        >{{ testVal.value }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group column">
+                    <label for="interviewValuation">{{
+                      "interviewEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeInterviewValue($event)"
+                      id="interviewValuation"
+                      formControlName="interviewValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let interVal of interviewValues"
+                        [value]="interVal.value"
+                        >{{ interVal.value }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" [class.has-error]="notes.invalid">
+                  <label for="notes">{{ "notes" | translate }}</label>
+                  <textarea
+                    type="text"
+                    class="form-control textarea-custom"
+                    id="notes"
+                    maxlength="1000"
+                    autosize
+                    formControlName="notes"
+                  ></textarea>
+                </div>
+
+                <div
+                  [hidden]="notes.valid || notes.untouched"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="notes.errors?.maxlength">
+                    Pastaba per ilga
+                  </div>
+                </div>
+
+                <div>
+                  <button
+                    class="btn btn-custom btn-confiramtion"
+                    (click)="sendTest()"
+                  >
+                    {{ "sendTest" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-custom btn-confiramtion"
+                    (click)="inviteToInterview()"
+                  >
+                    {{ "inviteToInterview" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-custom btn-return btn-confiramtion"
+                    [disabled]="valuationForm.invalid"
+                    (click)="onSubmitValuation()"
+                  >
+                    {{ "save" | translate }}
+                  </button>
+                </div>
+              </section>
+            </form>
           </div>
         </div>
       </div>
     </div>
-  </body>
+    <div>
+      <hr />
+      <div>
+        <a class="nav-link btn-back left-icon" [routerLink]="'/list'">
+          {{ "back" | translate }}</a
+        >
+        <a
+          class="nav-link btn-return right-icon"
+          [routerLink]="['/details/', getNextApplicationId()]"
+        >
+          {{ "nextApplication" | translate }}</a
+        >
+        <a
+          class="nav-link btn-return left-icon"
+          [routerLink]="['/details/', getPrevApplicationId()]"
+        >
+          {{ "prevApplication" | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div [style.display]="showModal ? 'block' : 'none'" class="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          {{ message }}
+        </h4>
+      </div>
+      <div id="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-custom"
+          id="btn-popup-hide"
+          (click)="this[buttonFunction]()"
+        >
+          {{ buttonValue }}
+        </button>
+        <button
+          type="submit"
+          class="btn btn-custom"
+          id="btn-popup-back"
+          (click)="hide()"
+        >
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
