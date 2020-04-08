@@ -107,14 +107,21 @@ textarea {
 }
 
 .form-status-control-list {
-  width: fit-content;
+  width: auto;
   float: right;
   list-style-type: none;
-  /* margin-top: -50px; */
+}
+
+.form-status-control-list li button {
+  width: max-content;
 }
 
 .tick-icon::before {
   color: green;
+}
+
+.none-icon::before {
+  color: red;
 }
 
 .left-icon::before {
