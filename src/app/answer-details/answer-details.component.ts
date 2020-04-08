@@ -110,16 +110,16 @@ export class AnswerDetailsComponent implements OnInit {
   private extractPersonStatus(status: string) {
     switch (status) {
       case "Testas": {
-        return "Išsiustas testas";
+        return "Testas išsiųstas";
       }
       case "Nauja": {
         return "Nauja paraiška";
       }
       case "Perskaityta": {
-        return "Perskaityta paraiška";
+        return "Paraiška perskaityta";
       }
       case "Interviu": {
-        return "Interviu pakvietimas";
+        return "Pakviestas interviu";
       }
       case "Atmesta": {
         return "Paraiška atmesta";
@@ -340,7 +340,14 @@ export class AnswerDetailsComponent implements OnInit {
   refused() {
     this.buttonValue =
       this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+<<<<<<< HEAD
     this.message = `Aplikantas atsisakė`;
+=======
+    this.message =
+      this.languageService.getLanguage() === "lt"
+        ? `Aplikantas atsisakė`
+        : `Applicant refused`;
+>>>>>>> 1993b2cbf95fc971108c250a69831ae5e34ceb87
     this.buttonFunction = "onConfirm";
     this.statusValue = "Atsisakė";
     this.show();

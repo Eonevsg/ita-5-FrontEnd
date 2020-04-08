@@ -16,7 +16,7 @@ html {
   z-index: 2;
   background: rgba(0, 0, 0, 0);
   opacity: 0;
-  transition: .2s ease-in;
+  transition: 0.2s ease-in;
 }
 #overlay.fadeIn {
   visibility: visible;
@@ -49,7 +49,7 @@ input[type="number"] {
   background: #6b436eb0;
   /* color: #512b2b; */
   font-weight: 500;
-  margin: 3%
+  margin: 3%;
 }
 
 .btn-custom:active,
@@ -107,7 +107,7 @@ table > tbody > tr > td {
 
 table.table-bordered > thead > tr > th {
   background-color: #6b436e;
-  border: 1px solid rgb(99,59,106);
+  border: 1px solid rgb(99, 59, 106);
   color: black;
 }
 
@@ -143,11 +143,44 @@ li {
   text-align: center;
   width: 100%;
   margin-top: 50%;
-
 }
 
 @media only screen and (max-width: 1200px) {
   .width1200 {
     width: 1200px !important;
   }
+}
+
+.email-icon::before {
+  font-family: "FontAwesome";
+  content: "\f0e0";
+  font-size: large;
+  color: #57292a;
+}
+
+.phone-icon::before {
+  font-family: "FontAwesome";
+  content: "\f095";
+  font-size: large;
+  color: #57292a;
+}
+
+.bold-custom {
+  font-weight: 550;
+}
+
+.tick-icon::before {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.none-icon:before {
+  font-family: "FontAwesome";
+  content: "\f00d";
+}
+
+.ban-icon:before {
+  font-family: "FontAwesome";
+  content: "\f05e";
+  color: black;
 }

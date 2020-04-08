@@ -1,42 +1,28 @@
 .question {
   color: #666666;
-  font-family: Roboto;
   font-size: 14px;
-  letter-spacing: 0;
   line-height: 16px;
   font-weight: normal;
 }
 .answer {
-  color: #512B2B;
-  font-family: Roboto;
   font-size: 16px;
-  letter-spacing: 0;
   line-height: 24px;
 }
 .information {
-  color: #57292A;
-  font-family: Roboto;
   font-size: 18px;
-  letter-spacing: 0;
   line-height: 30px;
 }
 .name {
   margin-bottom: 20px;
-  /* width: 211px; */
-  color: #512B2B;
-  font-family: Roboto;
   font-size: 30px;
-  letter-spacing: 0;
-  line-height: 35px;
+  font-weight: 500;
+  width: fit-content;
 }
 .tit {
   margin-top: 30px;
   width: 250px;
-  color: #512B2B;
-  font-family: Roboto;
   font-size: 24px;
   font-weight: bold;
-  letter-spacing: 0;
   line-height: 40px;
 }
 textarea {
@@ -51,23 +37,19 @@ textarea {
 
 .btn-functional {
   padding: 6px 4px 6px 4px;
-  color: #6b436eb0;
-  font-family: Roboto;
+  color: #512b2b;
   font-size: 18px;
-  font-weight: bold;
   background-color: white;
-  border: 0px;
+  border: 0;
 }
 
 .btn-return {
   float: right;
-  margin-bottom: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
 }
 .btn-back {
   float: left;
 }
+
 .form-inner-content {
   margin: 2%;
 }
@@ -95,42 +77,59 @@ textarea {
   }
 }
 .nav-link {
-  font-size: large;
+  margin-top: -10px;
 }
 .column-header {
   text-align: center;
 }
-.status{
-  color: #512B2B;
-  margin-top: 20px;
-  font-family: Roboto;
+.status {
+  /* margin-top: 20px; */
   font-size: 20px;
-  letter-spacing: 0;
   line-height: 30px;
 }
-.arrows{
+.arrows {
   margin-top: -3px;
 }
-.phone{
+.contacts {
   width: 240px;
   display: inline-block;
   margin-top: 5px;
 }
-.ban{
-  color: #512B2B;
-}
-.times{
-  color:#BF4638;
-}
-.check{
-  color: #99CC66;
-}
+
 .modal-header {
   white-space: pre-wrap;
 }
-.display-inline{
+.display-inline {
   display: inline-block;
 }
-.space{
+.space {
   margin-right: 10px;
+}
+
+.form-status-control-list {
+  width: auto;
+  float: right;
+  list-style-type: none;
+}
+
+.form-status-control-list li button {
+  width: max-content;
+}
+
+.tick-icon::before {
+  color: green;
+}
+
+.none-icon::before {
+  color: red;
+}
+
+.left-icon::before {
+  font-family: "FontAwesome";
+  content: "\f100";
+}
+
+.right-icon::after {
+  font-family: "FontAwesome";
+  content: "\f101";
 }

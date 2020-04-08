@@ -75,12 +75,6 @@ img {
   margin-top: 2%;
 }
 
-.email-icon::after {
-  font-family: "FontAwesome";
-  content: "\f0e0";
-  font-size: large;
-  color: #57292a;
-}
 .email-icon-column {
   float: left;
   width: 5%;
