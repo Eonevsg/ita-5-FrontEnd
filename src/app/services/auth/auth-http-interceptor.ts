@@ -49,6 +49,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
         (err: any) => {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
+              this.authService.logOut();
               return this.router.navigate(['']);
             }
             return;

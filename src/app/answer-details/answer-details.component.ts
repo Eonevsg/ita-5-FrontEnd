@@ -7,7 +7,6 @@ import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { FormBuilder, Validators } from "@angular/forms";
 import { Person } from "../models/person";
-import { HeaderComponent } from "../header/header.component";
 import { LanguageService } from "../services/language-service/language.service";
 
 @Component({
@@ -108,30 +107,59 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   private extractPersonStatus(status: string) {
-    switch (status) {
-      case "Testas": {
-        return "Testas išsiųstas";
+    if (this.languageService.getLanguage() === "lt") {
+      switch (status) {
+        case "Testas": {
+          return "Testas išsiųstas";
+        }
+        case "Nauja": {
+          return "Nauja paraiška";
+        }
+        case "Perskaityta": {
+          return "Paraiška perskaityta";
+        }
+        case "Interviu": {
+          return "Pakviestas interviu";
+        }
+        case "Atmesta": {
+          return "Paraiška atmesta";
+        }
+        case "Priimta": {
+          return "Paraiška priimta";
+        }
+        case "Atsisakė": {
+          return "Aplikantas atsisakė";
+        }
+        default: {
+          return status;
+        }
       }
-      case "Nauja": {
-        return "Nauja paraiška";
-      }
-      case "Perskaityta": {
-        return "Paraiška perskaityta";
-      }
-      case "Interviu": {
-        return "Pakviestas interviu";
-      }
-      case "Atmesta": {
-        return "Paraiška atmesta";
-      }
-      case "Priimta": {
-        return "Paraiška priimta";
-      }
-      case "Atsisakė": {
-        return "Aplikantas atsisakė";
-      }
-      default: {
-        return status;
+    } else if (this.languageService.getLanguage() === "en") {
+      switch (status) {
+        case "Testas": {
+          return "Test sent";
+        }
+        case "Nauja": {
+          return "New application";
+        }
+        case "Perskaityta": {
+          return "Read application";
+        }
+        case "Interviu": {
+          return "Invited to interview";
+        }
+        case "Atmesta": {
+          return "Rejected application";
+        }
+        case "Priimta": {
+          return "Accepted application";
+        }
+        case "Atsisakė": {
+          return "Applicant refused";
+        }
+        default: {
+          return status;
+        }
       }
     }
   }
@@ -167,32 +195,32 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.formService.fetchQuestions().subscribe((data) => {
-      this.questions = data;
-    });
-
-    this.formService.findAllAnswers().subscribe((data) => {
-      data.forEach((element) =>
-        this.applicationIDs.push(parseInt(element.person.id))
-      );
-    });
-
-    this.answer$ = from(this.route.paramMap).pipe(
-      switchMap((params) =>
-        this.formService.fetchAnswer({ id: params.get("id") })
-      )
-    );
-    this.answer$.subscribe((data) => {
-      this.setExistingExtraValue(data.person.extra);
-      this.updateStatus(data.person);
-      this.personId = data.person.id;
-      this.email = data.person.email;
-      this.phone = data.person.phone;
-      this.status = data.person.extra.status;
-    });
-
     this.route.paramMap.subscribe((params) => {
       this.routeId = parseInt(params.get("id"));
+
+      this.formService.fetchQuestions().subscribe((data) => {
+        this.questions = data;
+      });
+
+      this.formService.findAllAnswers().subscribe((data) => {
+        data.forEach((element) =>
+          this.applicationIDs.push(parseInt(element.person.id))
+        );
+      });
+
+      this.answer$ = from(this.route.paramMap).pipe(
+        switchMap((params) =>
+          this.formService.fetchAnswer({ id: params.get("id") })
+        )
+      );
+      this.answer$.subscribe((data) => {
+        this.setExistingExtraValue(data.person.extra);
+        this.updateStatus(data.person);
+        this.personId = data.person.id;
+        this.email = data.person.email;
+        this.phone = data.person.phone;
+        this.status = data.person.extra.status;
+      });
     });
   }
 

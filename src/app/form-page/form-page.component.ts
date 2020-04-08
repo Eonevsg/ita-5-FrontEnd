@@ -22,6 +22,7 @@ export class FormPageComponent implements OnInit {
   showModal: boolean;
   $universities: Observable<string[]>;
   applicationForm = this.buildApplicationForm();
+  buttonEnabled: boolean = true;
   questions: Answer[];
 
   constructor(
@@ -44,10 +45,11 @@ export class FormPageComponent implements OnInit {
     this.applicationForm.markAllAsTouched();
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());
+      this.buttonEnabled = false;
     }
   }
 
-  getFullQuestion(id: string): string{
+  getFullQuestion(id: string): string {
     return this.languageService.getLanguage() === "lt"
       ? this.questions.find((question) => question.id === id).fullQuestion
       : this.questions.find((question) => question.id === id).enFullQuestion;
@@ -120,6 +122,7 @@ export class FormPageComponent implements OnInit {
 
   hide() {
     document.getElementById("overlay").classList.remove("fadeIn");
+    this.buttonEnabled = true;
     this.showModal = false;
   }
 

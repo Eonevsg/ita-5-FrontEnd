@@ -62,7 +62,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     TextFieldModule,
-    RouterModule.forRoot(appRoutes, { anchorScrolling: "enabled" }),
+    RouterModule.forRoot(appRoutes, { anchorScrolling: 'enabled'}),
     BrowserAnimationsModule,
     MatSortModule,
     MatInputModule,
