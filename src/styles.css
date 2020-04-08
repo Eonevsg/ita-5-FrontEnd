@@ -156,6 +156,7 @@ li {
   content: "\f0e0";
   font-size: large;
   color: #57292a;
+  margin-right: 5px;
 }
 
 .phone-icon::before {
@@ -163,6 +164,8 @@ li {
   content: "\f095";
   font-size: large;
   color: #57292a;
+  margin-right: 7px;
+  margin-left: 2px;
 }
 
 .bold-custom {
