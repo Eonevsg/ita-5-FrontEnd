@@ -188,13 +188,13 @@
         >
         <a
           class="nav-link btn-return right-icon"
-          [routerLink]="['/details/', getNextApplicationId()]"
+          [routerLink]="['/details/' + getNextApplicationId()]"
         >
           {{ "nextApplication" | translate }}</a
         >
         <a
           class="nav-link btn-return left-icon"
-          [routerLink]="['/details/', getPrevApplicationId()]"
+          [routerLink]="['/details/' + getPrevApplicationId()]"
         >
           {{ "prevApplication" | translate }}</a
         >
