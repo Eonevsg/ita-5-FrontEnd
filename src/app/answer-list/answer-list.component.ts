@@ -47,9 +47,7 @@ export class AnswerListComponent implements OnInit {
 
     this.formService.findAllAnswers().subscribe((data) => {
       this.answers = data;
-      console.log(data);
       data.forEach((element) => this.persons.push(element.person));
-      console.log(this.persons);
       this.sortedPersons = this.persons.slice();
     });
   }
@@ -60,7 +58,6 @@ export class AnswerListComponent implements OnInit {
   }
   updateFilters(): void {
     this.filters = Object.assign({}, this.fields);
-    console.log(this.filters);
   }
 
   sortData(sort: Sort) {
