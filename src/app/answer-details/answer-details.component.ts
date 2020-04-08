@@ -113,16 +113,16 @@ export class AnswerDetailsComponent implements OnInit {
   private extractPersonStatus(status: string) {
     switch (status) {
       case "Testas": {
-        return "Išsiustas testas";
+        return "Testas išsiųstas";
       }
       case "Nauja": {
         return "Nauja paraiška";
       }
       case "Perskaityta": {
-        return "Perskaityta paraiška";
+        return "Paraiška perskaityta";
       }
       case "Interviu": {
-        return "Interviu pakvietimas";
+        return "Pakviestas interviu";
       }
       case "Atmesta": {
         return "Paraiška atmesta";

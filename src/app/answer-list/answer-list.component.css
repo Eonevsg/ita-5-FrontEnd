@@ -42,7 +42,7 @@ select {
 #main div {
   display: inline-block;
 }
-#main2{
+#main2 {
   width: 100%;
   margin: auto;
 }
@@ -97,16 +97,6 @@ th {
 #main {
   max-width: 100vw;
   min-width: 100vw;
-}
-
-.tick-icon::after {
-  font-family: "FontAwesome";
-  content: "\f00c";
-}
-
-.none-icon:after {
-  font-family: "FontAwesome";
-  content: "\f00d";
 }
 
 .table-primary-header {
