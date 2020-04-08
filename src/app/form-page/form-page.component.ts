@@ -22,6 +22,7 @@ export class FormPageComponent implements OnInit {
   showModal: boolean;
   $universities: Observable<string[]>;
   applicationForm = this.buildApplicationForm();
+  questions: Answer[];
 
   constructor(
     private fb: FormBuilder,
@@ -34,6 +35,9 @@ export class FormPageComponent implements OnInit {
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
     this.$universities = this.formService.fetchSchools();
     this.applicationForm.controls["establishment"].setValue(0);
+    this.formService.fetchQuestions().subscribe((data) => {
+      this.questions = data;
+    });
   }
 
   onSubmit(): void {
@@ -41,6 +45,12 @@ export class FormPageComponent implements OnInit {
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());
     }
+  }
+
+  getFullQuestion(id: string): string{
+    return this.languageService.getLanguage() === "lt"
+      ? this.questions.find((question) => question.id === id).fullQuestion
+      : this.questions.find((question) => question.id === id).enFullQuestion;
   }
 
   get fname() {
