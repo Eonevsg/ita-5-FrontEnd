@@ -10,5 +10,6 @@ export class Answer {
   //TODO refactoring needed
   id: string;
   fullQuestion: string;
+  enFullQuestion: string;
   shortQuestion: string;
 }

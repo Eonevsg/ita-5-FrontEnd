@@ -10,7 +10,7 @@
         <hr />
       </div>
       <div class="form-group short-input">
-        <label for="fname">{{"name" | translate}}</label>
+        <label for="fname">{{ "name" | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -32,7 +32,7 @@
       </div>
 
       <div class="form-group short-input">
-        <label for="lname">{{"surname" | translate}}</label>
+        <label for="lname">{{ "surname" | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -54,7 +54,7 @@
       </div>
 
       <div class="form-group short-input">
-        <label for="phone">{{"phone" | translate}}</label>
+        <label for="phone">{{ "phone" | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -76,7 +76,7 @@
       </div>
 
       <div class="form-group short-input">
-        <label for="email">{{"email" | translate}}</label>
+        <label for="email">{{ "email" | translate }}</label>
         <input
           type="text"
           class="form-control"
@@ -106,9 +106,7 @@
       </div>
 
       <div class="form-group">
-        <label for="establishment"
-          >Mokymosi įstaiga, kurioje šiuo metu mokaisi:</label
-        >
+        <label for="establishment">{{"educationalInstitution" | translate}}</label>
         <select
           type="text"
           class="form-control"
@@ -157,7 +155,7 @@
 
       <div class="form-group">
         <label for="contract" class="custom-tooltip custom-tooltip-icon"
-          >Ar bus galimybė pasirašyti trišalę praktikos sutartį?
+          >{{ getFullQuestion("1") }}
           <div class="custom-tooltip-text">
             <p>
               {{ "tooltip-hint" | translate }}
@@ -229,10 +227,7 @@
       </div>
 
       <div class="form-group">
-        <label for="shift"
-          >Numatytas praktikos laikas darbo dienomis 14-18 val. Ar galėsi
-          akademijai skirti tiek laiko?</label
-        >
+        <label for="shift">{{ getFullQuestion("2") }}</label>
         <div class="form-radio-group">
           <div class="form-radio-group-choice">
             <input
@@ -296,9 +291,7 @@
       </div>
 
       <div class="form-group">
-        <label for="hobbies"
-          >Ką veiki kai nesimokai? Kokie tavo pomėgiai?</label
-        >
+        <label for="hobbies">{{ getFullQuestion("3") }}</label>
         <textarea
           type="text"
           class="form-control textarea-custom"
@@ -321,10 +314,7 @@
       </div>
 
       <div class="form-group">
-        <label for="motivation"
-          >Kodėl nori dalyvauti IT Akademijoje? Kas tave „veža“ joje
-          dalyvauti?</label
-        >
+        <label for="motivation">{{ getFullQuestion("4") }}</label>
         <textarea
           type="text"
           class="form-control textarea-custom"
@@ -347,11 +337,7 @@
       </div>
 
       <div class="form-group">
-        <label for="experience"
-          >Kokios technologijos tau labiausiai patinka ir su kokiomis iš jų jau
-          turi patirties? Jei teko dirbti prie konkretaus projekto, pasidalink
-          jo nuoroda.</label
-        >
+        <label for="experience">{{ getFullQuestion("5") }}</label>
         <textarea
           type="text"
           id="experience"
@@ -367,9 +353,6 @@
           <div *ngIf="experience.errors?.required">
             {{ "required-error" | translate }}
           </div>
-          <div *ngIf="experience.errors?.pattern">
-            {{ "symbol-error" | translate }}
-          </div>
         </div>
       </div>
 
@@ -379,7 +362,7 @@
       </div>
 
       <div class="form-group">
-        <label for="marketing">Iš kur sužinojai apie IT Akademiją?</label>
+        <label for="marketing">{{ getFullQuestion("6") }}</label>
         <textarea
           class="form-control textarea-custom"
           type="text"
@@ -420,7 +403,7 @@
 
       <div id="submit">
         <button type="submit" class="btn btn-custom">
-          {{"Submit" | translate}}
+          {{ "Submit" | translate }}
         </button>
       </div>
     </form>
@@ -444,7 +427,7 @@
                 id="btn-popup-hide"
                 (click)="hide()"
               >
-                {{"continue" | translate}}
+                {{ "continue" | translate }}
               </button>
               <button
                 type="button"
@@ -453,7 +436,7 @@
                 (click)="hide()"
                 [routerLink]="['/home']"
               >
-                {{"close" | translate}}
+                {{ "close" | translate }}
               </button>
             </div>
           </div>

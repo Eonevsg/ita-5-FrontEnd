@@ -68,8 +68,8 @@
     "why-fields": "Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse.",
     "why-career": "Jei tau puikiai seksis ir norėsi tęsti karjerą „Įmonės_pavadinimas“ IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį.",
     "questions": "Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt",
-    "applicationAccept": "Priimti paraišką",
-    "applicationReject": "Atmesti paraišką",
+    "applicationAccept": "Priimti",
+    "applicationReject": "Atmesti",
     "applicationRefused": "Atsisakė",
     "personalData": "Asmens duomenys",
     "personalAssessment": "Asmens įvertinimas",
@@ -109,5 +109,6 @@
     "consent": "Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT Akademijos tikslams.",
     "phone": "Tel. numeris:",
     "email": "El. paštas:",
-    "continue": "Tęsti"
+    "continue": "Tęsti",
+    "educationalInstitution": "Mokymosi įstaiga, kurioje šiuo metu mokaisi:"
 }
