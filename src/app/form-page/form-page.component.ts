@@ -263,7 +263,8 @@ export class FormPageComponent implements OnInit {
       (error) => (
         (this.messageTitle =
           this.languageService.getLanguage() === "lt" ? "Klaida!" : "Error"),
-        (this.message = error.error),
+        (this.message =
+          this.languageService.getLanguage() === "lt" ? error.error.ltErrorMessage : error.error.enErrorMessage),
         (this.isErrorMessage = true),
         this.show()
       )
