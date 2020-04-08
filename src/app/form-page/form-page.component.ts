@@ -6,6 +6,7 @@ import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { Observable } from "rxjs";
+import { LanguageService } from "../services/language-service/language.service";
 
 @Component({
   selector: "app-form-page",
@@ -24,7 +25,8 @@ export class FormPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private formService: ApplicationFormService
+    private formService: ApplicationFormService,
+    private languageService: LanguageService
   ) {}
 
   ngOnInit(): void {
@@ -245,12 +247,16 @@ export class FormPageComponent implements OnInit {
     this.formService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
-        (this.messageTitle = "Registracijos forma sėkmingai išsiųsta."),
+        (this.messageTitle =
+          this.languageService.getLanguage() === "lt"
+            ? "Registracijos forma sėkmingai išsiųsta."
+            : "Registration form successfully sent."),
         (this.message = this.successMessage),
         this.show()
       ),
       (error) => (
-        (this.messageTitle = "Klaida!"),
+        (this.messageTitle =
+          this.languageService.getLanguage() === "lt" ? "Klaida!" : "Error"),
         (this.message = error.error),
         (this.isErrorMessage = true),
         this.show()
