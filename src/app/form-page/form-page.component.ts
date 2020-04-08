@@ -264,7 +264,6 @@ function requiredIfValidator(predicate) {
     if (!formControl.parent) {
       return null;
     }
-    console.log(predicate());
     if (predicate() === "false" || predicate() === "other") {
       return Validators.required(formControl);
     }
