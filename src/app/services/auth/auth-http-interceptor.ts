@@ -1,16 +1,9 @@
-import { Injectable } from "@angular/core";
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpHeaders,
-  HttpInterceptor,
-  HttpRequest
-} from "@angular/common/http";
-import { AuthService } from "./auth.service";
-import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
-import { Router } from "@angular/router";
+import {Injectable} from '@angular/core';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
@@ -39,7 +32,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
     if (token) {
       headerSettings.Authorization = token;
     }
-    headerSettings["Content-Type"] = "application/json";
+    headerSettings['Content-Type'] = 'application/json';
     changedRequest = request.clone({
       headers: new HttpHeaders(headerSettings)
     });
