@@ -107,8 +107,8 @@ table > tbody > tr > td {
 
 table.table-bordered > thead > tr > th {
   background-color: #6b436e;
-  border: 1px solid rgb(99, 59, 106);
-  color: black;
+  border: 1px solid #8e8989;
+  color: #d3d3d3;
 }
 
 .center {
@@ -156,6 +156,7 @@ li {
   content: "\f0e0";
   font-size: large;
   color: #57292a;
+  margin-right: 5px;
 }
 
 .phone-icon::before {
@@ -163,6 +164,8 @@ li {
   content: "\f095";
   font-size: large;
   color: #57292a;
+  margin-right: 7px;
+  margin-left: 2px;
 }
 
 .bold-custom {

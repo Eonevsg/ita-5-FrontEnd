@@ -1,23 +1,27 @@
 .question {
-  color: #666666;
+  color: #57292a;
   font-size: 14px;
   line-height: 16px;
-  font-weight: normal;
+  font-weight: 550;
 }
+
 .answer {
   font-size: 16px;
   line-height: 24px;
 }
+
 .information {
   font-size: 18px;
   line-height: 30px;
 }
+
 .name {
   margin-bottom: 20px;
   font-size: 30px;
   font-weight: 500;
   width: fit-content;
 }
+
 .tit {
   margin-top: 30px;
   width: 250px;
@@ -25,9 +29,11 @@
   font-weight: bold;
   line-height: 40px;
 }
+
 textarea {
   resize: none;
 }
+
 .btn-confiramtion {
   width: 170px;
   margin: 3% 2% 0 1%;
@@ -47,10 +53,12 @@ textarea {
   float: right;
   margin-right: 0;
 }
+
 .left {
   float: left;
   margin-left: 0;
 }
+
 .btn-back {
   float: left;
 }
@@ -87,6 +95,7 @@ textarea {
   .row div label {
     width: 90px;
   }
+
   .button-div button {
     width: 100%;
   }
@@ -109,9 +118,11 @@ textarea {
 .nav-link {
   margin-top: -10px;
 }
+
 .column-header {
   text-align: center;
 }
+
 .status {
   font-size: 20px;
   line-height: 30px;
@@ -155,18 +166,22 @@ textarea {
 
 .tick-icon::before {
   color: green;
+  margin-left: 10px;
 }
 
 .none-icon::before {
   color: red;
+  margin-left: 10px;
 }
 
 .left-icon::before {
   font-family: "FontAwesome";
   content: "\f100";
+  margin-right: 5px;
 }
 
 .right-icon::after {
   font-family: "FontAwesome";
   content: "\f101";
+  margin-left: 5px;
 }

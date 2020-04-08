@@ -106,5 +106,8 @@
     "required-error": "Laukas privalomas!",
     "expain": "Pakomentuok plačiau:",
     "additional-information": "Papildoma informacija",
-    "consent": "Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT Akademijos tikslams."
+    "consent": "Sutinku, kad pateikti asmeniniai duomenys, būtų naudojami ir saugomi IT Akademijos tikslams.",
+    "phone": "Tel. numeris:",
+    "email": "El. paštas:",
+    "continue": "Tęsti"
 }
