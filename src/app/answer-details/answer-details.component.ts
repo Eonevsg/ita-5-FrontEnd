@@ -340,14 +340,10 @@ export class AnswerDetailsComponent implements OnInit {
   refused() {
     this.buttonValue =
       this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
-<<<<<<< HEAD
-    this.message = `Aplikantas atsisakė`;
-=======
     this.message =
       this.languageService.getLanguage() === "lt"
         ? `Aplikantas atsisakė`
         : `Applicant refused`;
->>>>>>> 1993b2cbf95fc971108c250a69831ae5e34ceb87
     this.buttonFunction = "onConfirm";
     this.statusValue = "Atsisakė";
     this.show();
