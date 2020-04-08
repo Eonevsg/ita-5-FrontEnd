@@ -43,8 +43,13 @@ textarea {
   border: 0;
 }
 
-.btn-return {
+.right {
   float: right;
+  margin-right: 0;
+}
+.left {
+  float: left;
+  margin-left: 0;
 }
 .btn-back {
   float: left;
@@ -69,13 +74,38 @@ textarea {
   width: 90%;
 }
 
-@media only screen and (min-width: 780px) {
-  .button-div {
-    justify-content: center;
-    width: 90%;
+@media only screen and (max-width: 780px) {
+  .button-div button {
+    display: block;
+    margin: 10px auto;
     float: none;
+    width: 50%;
   }
 }
+
+@media only screen and (max-width: 520px) {
+  .row div label {
+    width: 90px;
+  }
+  .button-div button {
+    width: 100%;
+  }
+
+  .status-mobile {
+    display: inline !important;
+  }
+
+  .form-status-control-list-desktop {
+    display: none;
+  }
+}
+
+.form-status-control-list-responsive {
+  padding: 0;
+  padding-bottom: 50px;
+  list-style-type: none;
+}
+
 .nav-link {
   margin-top: -10px;
 }
@@ -83,13 +113,10 @@ textarea {
   text-align: center;
 }
 .status {
-  /* margin-top: 20px; */
   font-size: 20px;
   line-height: 30px;
 }
-.arrows {
-  margin-top: -3px;
-}
+
 .contacts {
   width: 240px;
   display: inline-block;
@@ -99,21 +126,31 @@ textarea {
 .modal-header {
   white-space: pre-wrap;
 }
+
 .display-inline {
   display: inline-block;
 }
+
 .space {
   margin-right: 10px;
 }
 
-.form-status-control-list {
+.status-mobile {
+  display: none;
+}
+
+.form-status-control-list-desktop {
   width: auto;
   float: right;
   list-style-type: none;
 }
 
-.form-status-control-list li button {
+.form-status-control-list-desktop li button {
   width: max-content;
+}
+
+.form-status-control-list-desktop li button span {
+  padding-left: 7px;
 }
 
 .tick-icon::before {

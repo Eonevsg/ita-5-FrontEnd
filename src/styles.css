@@ -172,15 +172,18 @@ li {
 .tick-icon::before {
   font-family: "FontAwesome";
   content: "\f00c";
+  font-size: medium;
 }
 
 .none-icon:before {
   font-family: "FontAwesome";
   content: "\f00d";
+  font-size: medium;
 }
 
 .ban-icon:before {
   font-family: "FontAwesome";
   content: "\f05e";
   color: black;
+  font-size: medium;
 }
