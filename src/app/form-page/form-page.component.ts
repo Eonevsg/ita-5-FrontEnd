@@ -23,12 +23,20 @@ export class FormPageComponent implements OnInit {
   applicationForm = this.buildApplicationForm();
   buttonEnabled: boolean = true;
   questions: Answer[];
-
   constructor(
     private fb: FormBuilder,
     private applicationFormService: ApplicationFormService,
     private translateService: TranslateService
   ) {}
+
+  onChange(newValue) {
+    console.log("The value is " + newValue);
+      if(newValue === "other"){
+        this.applicationForm.get("establishmentOther").enable();
+      } else {
+        this.applicationForm.get("establishmentOther").disable();
+      }
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
@@ -170,9 +178,7 @@ export class FormPageComponent implements OnInit {
       establishmentOther: [
         "",
         [
-          requiredIfValidator(
-            () => this.applicationForm.get("establishment").value
-          ),
+          Validators.required,
           Validators.maxLength(1000),
           Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
