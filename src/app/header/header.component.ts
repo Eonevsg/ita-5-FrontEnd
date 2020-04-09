@@ -3,7 +3,6 @@ import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
-import { LanguageService } from '../services/language-service/language.service';
 
 @Component({
   selector: "app-header",
@@ -15,8 +14,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
-    private translate: TranslateService,
-    private languageService: LanguageService
+    private translate: TranslateService
   ) {
     translate.addLangs(["lt", "en"]);
     translate.setDefaultLang("lt");
@@ -43,6 +41,5 @@ export class HeaderComponent implements OnInit {
 
   switchLang(lang: string) {
     this.translate.use(lang);
-    this.languageService.setLanguage(lang);
   }
 }

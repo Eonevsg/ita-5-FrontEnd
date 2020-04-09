@@ -109,5 +109,15 @@
   "phone": "Phone",
   "email": "Email address",
   "continue": "Continue",
-  "educationalInstitution": "Educational institution"
+  "educationalInstitution": "Educational institution",
+  "error": "Error!",
+  "regesterFormSentSuccessfully": "Registration form successfully sent.",
+  "youSureYouWantToSave": "Are you sure you want to save changes?",
+  "confirm": "Confirm",
+  "send": "Send",
+  "linkWillBeSentToEmail": "Test link will be sent to email:\n",
+  "applicantWillBeContactedByPhone": "Applicant will be contacted by phone: \n",
+  "confirmation": "Confirm",
+  "negativeResponseToApplicant": "Negative response to the applicant will be sent to email:\n",
+  "applicantRefused": "Applicant refused"
 }
