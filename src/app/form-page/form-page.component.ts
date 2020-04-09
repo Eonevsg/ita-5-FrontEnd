@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
 import { Person } from "../models/person";
+import { Regex } from "../models/regex";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 
 @Component({
@@ -20,15 +21,18 @@ export class FormPageComponent implements OnInit {
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
-  applicationForm = this.buildApplicationForm();
+  applicationForm;
   buttonEnabled: boolean = true;
   questions: Answer[];
 
   constructor(
     private fb: FormBuilder,
     private applicationFormService: ApplicationFormService,
-    private translateService: TranslateService
-  ) {}
+    private translateService: TranslateService,
+    private regex: Regex
+  ) {
+    this.applicationForm = this.buildApplicationForm();
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
@@ -137,7 +141,7 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+          Validators.pattern(this.regex.nameRegex),
         ],
       ],
       lname: [
@@ -146,24 +150,19 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+          Validators.pattern(this.regex.nameRegex),
         ],
       ],
       phone: [
         "",
-        [
-          Validators.required,
-          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$"),
-        ],
+        [Validators.required, Validators.pattern(this.regex.phoneRegex)],
       ],
       email: [
         "",
         [
           Validators.required,
           Validators.maxLength(100),
-          Validators.pattern(
-            "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
-          ),
+          Validators.pattern(this.regex.emailRegex),
         ],
       ],
       establishment: ["", [Validators.required, validateSelect]],
@@ -174,7 +173,7 @@ export class FormPageComponent implements OnInit {
             () => this.applicationForm.get("establishment").value
           ),
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       contract: ["", [Validators.required]],
@@ -183,7 +182,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       shift: ["", [Validators.required]],
@@ -192,7 +191,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       hobbies: [
@@ -200,7 +199,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       motivation: [
@@ -208,7 +207,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       experience: ["", [Validators.required, Validators.maxLength(1000)]],
@@ -217,10 +216,13 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
-      thirdPartyAgreement: ["", [Validators.required, Validators.pattern('true')]],
+      thirdPartyAgreement: [
+        "",
+        [Validators.required, Validators.pattern("true")],
+      ],
     });
   }
 
