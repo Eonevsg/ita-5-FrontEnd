@@ -15,7 +15,8 @@ select {
 }
 
 #contract-column {
-  width: 80px;
+  width: 100px;
+  min-width: 100px;
 }
 
 #dateTime-column,
