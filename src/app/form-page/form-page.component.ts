@@ -218,7 +218,7 @@ export class FormPageComponent implements OnInit {
           Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
-      thirdPartyAgreement: ["", [Validators.required]],
+      thirdPartyAgreement: ["", [Validators.required, Validators.pattern('true')]],
     });
   }
 
