@@ -29,7 +29,7 @@ export class ApplicationFormService {
   public patchPerson(person: { extra: any; id: string }) {
     return this.http.patch(`${this.url}/api/answer`, JSON.stringify(person), {
       headers: new HttpHeaders({ "Content-Type": "application/json" }),
-    });
+    }).subscribe();
   }
 
   public saveForm(form: AnswerPerson) {
