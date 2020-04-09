@@ -4,13 +4,12 @@
 
 #loading-spinner {
   position: fixed;
-  diameter: 100!important;
   visibility: hidden !important;
   z-index: 1000;
   top: calc(50% - 60px);
   left: calc(50% - 60px);
 }
-#loading-spinner circle {
+#loading-spinner::ng-deep circle {
   stroke: #6b436e!important;
 }
 
