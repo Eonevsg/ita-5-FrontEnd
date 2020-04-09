@@ -195,7 +195,6 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.translateService.currentLang = "lt";
     this.route.paramMap.subscribe((params) => {
       this.routeId = parseInt(params.get("id"));
 
