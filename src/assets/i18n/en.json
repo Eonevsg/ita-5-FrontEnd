@@ -119,11 +119,6 @@
   "applicantWillBeContactedByPhone": "Applicant will be contacted by phone: \n",
   "confirmation": "Confirm",
   "negativeResponseToApplicant": "Negative response to the applicant will be sent to email:\n",
-<<<<<<< HEAD
   "applicantRefused": "Applicant refused",
   "confirmationEmail": "The confirmation for registration was sent to the specified email. You will hear about our decision not later than the 15th on January"
 }
-=======
-  "applicantRefused": "Applicant refused"
-}
->>>>>>> b465373de13ce3dbd7b1af4a1ebf471a6b6b78fe
