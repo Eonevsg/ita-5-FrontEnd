@@ -1,12 +1,12 @@
-import { Component, NgZone, OnInit, ViewChild } from "@angular/core";
-
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import { Person } from "../models/person";
+import { TranslateService } from "@ngx-translate/core";
+import { Observable } from "rxjs";
 import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
+import { Person } from "../models/person";
+import { Regex } from "../models/regex";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { Observable } from "rxjs";
-import { LanguageService } from "../services/language-service/language.service";
 
 @Component({
   selector: "app-form-page",
@@ -14,34 +14,48 @@ import { LanguageService } from "../services/language-service/language.service";
   styleUrls: ["./form-page.component.css"],
 })
 export class FormPageComponent implements OnInit {
-  messageTitle = "Registracija sėkmingai išsiųsta!";
-  successMessage =
-    "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  messageTitle = this.translateService.instant("regesterFormSentSuccessfully");
+  successMessage = this.translateService.instant("confirmationEmail");
   message = this.successMessage;
   isErrorMessage: boolean;
   showModal: boolean;
   $universities: Observable<string[]>;
-  applicationForm = this.buildApplicationForm();
+  applicationForm;
   buttonEnabled: boolean = true;
   questions: Answer[];
-
   constructor(
     private fb: FormBuilder,
-    private formService: ApplicationFormService,
-    private languageService: LanguageService
-  ) {}
+    private applicationFormService: ApplicationFormService,
+    private translateService: TranslateService,
+    private regex: Regex
+  ) {
+    this.applicationForm = this.buildApplicationForm();
+  }
+
+  onChange(newValue) {
+    console.log("The value is " + newValue);
+      if(newValue === "other"){
+        this.applicationForm.get("establishmentOther").enable();
+      } else {
+        this.applicationForm.get("establishmentOther").disable();
+      }
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
-    this.$universities = this.formService.fetchSchools();
+    this.$universities = this.applicationFormService.fetchSchools();
     this.applicationForm.controls["establishment"].setValue(0);
-    this.formService.fetchQuestions().subscribe((data) => {
+    this.applicationFormService.fetchQuestions().subscribe((data) => {
       this.questions = data;
     });
   }
 
   onSubmit(): void {
+    if (this.applicationForm.valid) {
+      document.getElementById("overlay").classList.add("fadeIn");
+      document.getElementById("loading-spinner").classList.add("visible");
+    }
     this.applicationForm.markAllAsTouched();
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());
@@ -50,7 +64,7 @@ export class FormPageComponent implements OnInit {
   }
 
   getFullQuestion(id: string): string {
-    return this.languageService.getLanguage() === "lt"
+    return this.translateService.currentLang === "lt"
       ? this.questions.find((question) => question.id === id).fullQuestion
       : this.questions.find((question) => question.id === id).enFullQuestion;
   }
@@ -116,7 +130,7 @@ export class FormPageComponent implements OnInit {
   }
 
   show() {
-    document.getElementById("overlay").classList.add("fadeIn");
+    document.getElementById("loading-spinner").classList.remove("visible");
     this.showModal = true;
   }
 
@@ -134,7 +148,7 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+          Validators.pattern(this.regex.nameRegex),
         ],
       ],
       lname: [
@@ -143,35 +157,28 @@ export class FormPageComponent implements OnInit {
           Validators.required,
           Validators.minLength(1),
           Validators.maxLength(100),
-          Validators.pattern("^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ -]+$"),
+          Validators.pattern(this.regex.nameRegex),
         ],
       ],
       phone: [
         "",
-        [
-          Validators.required,
-          Validators.pattern("^(3706|\\+3706|86)+[0-9]{7}$"),
-        ],
+        [Validators.required, Validators.pattern(this.regex.phoneRegex)],
       ],
       email: [
         "",
         [
           Validators.required,
           Validators.maxLength(100),
-          Validators.pattern(
-            "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$"
-          ),
+          Validators.pattern(this.regex.emailRegex),
         ],
       ],
       establishment: ["", [Validators.required, validateSelect]],
       establishmentOther: [
         "",
         [
-          requiredIfValidator(
-            () => this.applicationForm.get("establishment").value
-          ),
+          Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       contract: ["", [Validators.required]],
@@ -180,7 +187,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("contract").value),
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       shift: ["", [Validators.required]],
@@ -189,7 +196,7 @@ export class FormPageComponent implements OnInit {
         [
           requiredIfValidator(() => this.applicationForm.get("shift").value),
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       hobbies: [
@@ -197,7 +204,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       motivation: [
@@ -205,7 +212,7 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
       experience: ["", [Validators.required, Validators.maxLength(1000)]],
@@ -214,10 +221,13 @@ export class FormPageComponent implements OnInit {
         [
           Validators.required,
           Validators.maxLength(1000),
-          Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
+          Validators.pattern(this.regex.generalRegex),
         ],
       ],
-      thirdPartyAgreement: ["", [Validators.required]],
+      thirdPartyAgreement: [
+        "",
+        [Validators.required, Validators.pattern("true")],
+      ],
     });
   }
 
@@ -250,21 +260,21 @@ export class FormPageComponent implements OnInit {
   }
 
   saveApplicationForm(answerPerson: AnswerPerson) {
-    this.formService.saveForm(answerPerson).subscribe(
+    this.applicationFormService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
-        (this.messageTitle =
-          this.languageService.getLanguage() === "lt"
-            ? "Registracijos forma sėkmingai išsiųsta."
-            : "Registration form successfully sent."),
+        (this.messageTitle = this.translateService.instant(
+          "regesterFormSentSuccessfully"
+        )),
         (this.message = this.successMessage),
         this.show()
       ),
       (error) => (
-        (this.messageTitle =
-          this.languageService.getLanguage() === "lt" ? "Klaida!" : "Error"),
+        (this.messageTitle = this.translateService.instant("error")),
         (this.message =
-          this.languageService.getLanguage() === "lt" ? error.error.ltErrorMessage : error.error.enErrorMessage),
+          this.translateService.currentLang === "lt"
+            ? error.error.ltErrorMessage
+            : error.error.enErrorMessage),
         (this.isErrorMessage = true),
         this.show()
       )

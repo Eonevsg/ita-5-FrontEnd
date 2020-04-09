@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { Answer } from "../models/answer";
-import { AnswerView } from "../models/answerView";
-import { ApplicationFormService } from "../services/application-form-service/form.service";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { FormBuilder, Validators } from "@angular/forms";
+import { Answer } from "../models/answer";
+import { AnswerView } from "../models/answerView";
 import { Person } from "../models/person";
-import { LanguageService } from "../services/language-service/language.service";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
 
 @Component({
   selector: "app-answer-details",
@@ -65,7 +65,7 @@ export class AnswerDetailsComponent implements OnInit {
     private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private languageService: LanguageService
+    private translateService: TranslateService
   ) {}
 
   valuationForm = this.fb.group({
@@ -107,7 +107,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   private extractPersonStatus(status: string) {
-    if (this.languageService.getLanguage() === "lt") {
+    if (this.translateService.currentLang === "lt") {
       switch (status) {
         case "Testas": {
           return "Testas išsiųstas";
@@ -134,7 +134,7 @@ export class AnswerDetailsComponent implements OnInit {
           return status;
         }
       }
-    } else if (this.languageService.getLanguage() === "en") {
+    } else if (this.translateService.currentLang === "en") {
       switch (status) {
         case "Testas": {
           return "Test sent";
@@ -238,12 +238,8 @@ export class AnswerDetailsComponent implements OnInit {
       this.tempNotes = this.notes.value;
     }
 
-    this.message =
-      this.languageService.getLanguage() === "lt"
-        ? "Ar tikrai norite išsaugoti?"
-        : "Are you sure you want to save changes?";
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Išsaugoti" : "Confirm";
+    this.message = this.translateService.instant("youSureYouWantToSave");
+    this.buttonValue = this.translateService.instant("confirm");
     this.buttonFunction = "onUpdateValues";
     this.show();
   }
@@ -258,7 +254,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   getFullQuestion(id: string): string {
-    return this.languageService.getLanguage() === "lt"
+    return this.translateService.currentLang === "lt"
       ? this.questions.find((question) => question.id === id).fullQuestion
       : this.questions.find((question) => question.id === id).enFullQuestion;
   }
@@ -298,80 +294,57 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   setExistingExtraValue(extra: any) {
-    if (extra.applicationValuation) {
-      this.valuationForm.controls.applicationValuation.setValue(
-        extra.applicationValuation
-      );
-    }
-    if (extra.testValuation) {
-      this.valuationForm.controls.testValuation.setValue(extra.testValuation);
-    }
-    if (extra.interviewValuation) {
-      this.valuationForm.controls.interviewValuation.setValue(
-        extra.interviewValuation
-      );
-    }
-    if (extra.notes) {
-      this.valuationForm.controls.notes.setValue(extra.notes);
-    }
+    this.valuationForm.controls.applicationValuation.setValue(
+      extra.applicationValuation
+    );
+    this.valuationForm.controls.testValuation.setValue(extra.testValuation);
+    this.valuationForm.controls.interviewValuation.setValue(
+      extra.interviewValuation
+    );
+    this.valuationForm.controls.notes.setValue(extra.notes);
   }
 
   sendTest() {
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Siųsti" : "Send";
+    this.buttonValue = this.translateService.instant("send");
     this.message =
-      this.languageService.getLanguage() === "lt"
-        ? `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`
-        : `Test link will be sent to email:\n ${this.email}`;
+      this.translateService.instant("linkWillBeSentToEmail") + this.email;
     this.buttonFunction = "onSendEmail";
     this.statusValue = "Testas";
     this.show();
   }
 
   inviteToInterview() {
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+    this.buttonValue = this.translateService.instant("confirmation");
     this.message =
-      this.languageService.getLanguage() === "lt"
-        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
-        : `The applicant will be contacted by phone:\n ${this.phone}`;
+      this.translateService.instant("applicantWillBeContactedByPhone") +
+      this.phone;
     this.buttonFunction = "onConfirm";
     this.statusValue = "Interviu";
     this.show();
   }
 
   acceptApplication() {
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+    this.buttonValue = this.translateService.instant("confirmation");
     this.message =
-      this.languageService.getLanguage() === "lt"
-        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
-        : `The applicant will be contacted by phone:\n ${this.phone}`;
+      this.translateService.instant("applicantWillBeContactedByPhone") +
+      this.phone;
     this.buttonFunction = "onConfirm";
     this.statusValue = "Priimta";
     this.show();
   }
 
   rejectApplication() {
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Siųsti" : "Send";
+    this.buttonValue = this.translateService.instant("send");
     this.message =
-      this.languageService.getLanguage() === "lt"
-        ? `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`
-        : `Negative response to the applicant will be sent to email:\n ${this.email}`;
+      this.translateService.instant("negativeResponseToApplicant") + this.email;
     this.buttonFunction = "onSendEmail";
     this.statusValue = "Atmesta";
-
     this.show();
   }
 
   refused() {
-    this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
-    this.message =
-      this.languageService.getLanguage() === "lt"
-        ? `Aplikantas atsisakė`
-        : `Applicant refused`;
+    this.buttonValue = this.translateService.instant("confirmation");
+    this.message = this.translateService.instant("applicantRefused");
     this.buttonFunction = "onConfirm";
     this.statusValue = "Atsisakė";
     this.show();

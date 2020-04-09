@@ -11,25 +11,27 @@
   margin-left: 1%;
   width: 300px;
 }
+
 .logo-container p {
   display: inline-block;
   margin-left: 2%;
 }
+
 .logo {
   width: 45px;
   height: 45px;
   top: 10px;
 }
+
 .title {
   font-size: 24px;
 }
-
-
 
 @media (min-width: 1456px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding: 1em 1.5em;
   }
+
   nav {
     position: absolute;
   }
@@ -39,18 +41,21 @@
   #login-button {
     margin-left: 575px;
   }
+
   #logout-button {
     margin-left: 420px;
   }
+
   .form-control {
     width: 65px;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
+
   #language-selector {
     z-index: 10;
     position: absolute;
-    right:170px
+    right: 170px;
   }
 }
 
@@ -59,18 +64,22 @@
     display: block;
     float: right;
   }
+
   .collapse:not(.show) {
     display: none !important;
   }
+
   #login-button {
     margin-left: 0;
   }
+
   #language-selector {
     z-index: 10;
     position: absolute;
-    right: calc(3%  + 65px);
+    right: calc(3% + 65px);
     top: -73px;
   }
+
   .form-control {
     width: 65px;
     padding-right: 0.5rem;
@@ -82,6 +91,7 @@
     top: -74px;
     margin-right: 2%;
   }
+
   #navbarSupportedContent {
     position: absolute;
     background-color: white;
@@ -90,15 +100,36 @@
 
     z-index: 999;
   }
+
+  .logo-container {
+    padding-left: 10px;
+    padding-top: 30px;
+  }
+
+  .logo-container p {
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 10px;
+    position: absolute;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+    top: -4px;
+    position: relative;
+  }
 }
 
 @media (max-width: 1040px) {
   .hamburger {
     right: 2%;
   }
+
   ul {
     margin-right: 2%;
   }
+
   #navbarSupportedContent {
     right: 4%;
   }
@@ -108,22 +139,26 @@
   #language-selector {
     z-index: 10;
     position: absolute;
-    right: calc(3%  + 65px);
+    right: calc(3% + 65px);
     top: -73px;
   }
+
   .form-control {
     width: 60px;
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
 }
+
 .nav-link {
   color: black;
   font-weight: 500;
 }
+
 .navbar-light .navbar-nav .active > .nav-link {
   background-color: rgba(242, 240, 246);
 }
+
 nav {
   padding: 0px;
   bottom: 0;
@@ -132,30 +167,24 @@ nav {
   left: 0;
   right: 0;
 }
+
 nav li.nav-item {
   border: 1px solid rgba(211, 211, 211, 0.541);
   color: black;
   width: 150px;
   text-align: center;
+  cursor: pointer;
 }
+
 nav li.nav-item:focus {
   outline: none;
 }
 
-.navbar-light .navbar-nav .login-button > .nav-link {
-}
 .hamburger {
   width: 100%;
 }
+
 .logout-btn {
   float: left;
   margin: 3% 1.5%;
-}
-
-.en-icon {
-  content: url("../../assets/images/united-kingdom-flag.png");
-}
-
-.lt-icon {
-  content: url("../../assets/images/lithuania-flag.png");
 }

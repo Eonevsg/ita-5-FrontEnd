@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { AnswerView } from "../models/answerView";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
 import { Sort } from "@angular/material/sort";
@@ -9,7 +9,7 @@ import { Person } from "../models/person";
   templateUrl: "./answer-list.component.html",
   styleUrls: ["./answer-list.component.css"],
 })
-export class AnswerListComponent implements OnInit {
+export class AnswerListComponent implements OnInit, OnDestroy {
   answers: AnswerView[];
   persons: Person[] = [];
   sortedPersons: Person[];
@@ -51,7 +51,7 @@ export class AnswerListComponent implements OnInit {
       this.sortedPersons = this.persons.slice();
     });
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     document.getElementById("header").classList.remove("width1200");
     document.getElementById("footer").classList.remove("width1200");
     document.getElementById("main2").classList.add("width1200");

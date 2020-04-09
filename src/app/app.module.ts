@@ -27,10 +27,11 @@ import { HeaderComponent } from "./header/header.component";
 import { MatOptionModule } from "@angular/material/core";
 import { MatSelectModule } from "@angular/material/select";
 import { TextareaAutosizeModule } from "ngx-textarea-autosize";
-import { FloatThead } from "./models/floatthead.directive";
+import { FloattheadDirective } from './models/floatthead.directive';
 
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
     SearchPipe,
     FooterComponent,
     HeaderComponent,
-    FloatThead,
+    FloattheadDirective,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
         deps: [HttpClient],
       },
     }),
+    MatProgressSpinnerModule,
   ],
   providers: [
     {

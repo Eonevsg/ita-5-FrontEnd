@@ -3,7 +3,6 @@ import { AuthService } from "../services/auth/auth.service";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { TranslateService } from "@ngx-translate/core";
-import { LanguageService } from '../services/language-service/language.service';
 
 @Component({
   selector: "app-header",
@@ -15,8 +14,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private location: Location,
-    private translate: TranslateService,
-    private languageService: LanguageService
+    private translate: TranslateService
   ) {
     translate.addLangs(["lt", "en"]);
     translate.setDefaultLang("lt");
@@ -27,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
   logOutButtonClick() {
     this.authService.logOut();
-    this.location.replaceState("/"); // clears browser history so they can't navigate with back button
+    this.location.replaceState("/");
     this.router.navigate(["home"]);
   }
   isLoggedIn() {
@@ -35,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   closeMenu() {
-    var element = document.getElementById("navbarSupportedContent");
+    const element = document.getElementById("navbarSupportedContent");
     if (element.classList.contains("show")) {
       element.classList.remove("show");
     }
@@ -43,6 +41,5 @@ export class HeaderComponent implements OnInit {
 
   switchLang(lang: string) {
     this.translate.use(lang);
-    this.languageService.setLanguage(lang);
   }
 }
