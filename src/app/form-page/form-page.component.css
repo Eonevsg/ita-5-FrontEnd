@@ -5,6 +5,7 @@
 textarea {
   resize: none;
 }
+
 .row::after {
   content: "";
   clear: both;
@@ -100,7 +101,6 @@ textarea {
   text-align: left;
   border-radius: 3px;
   margin-left: 15px;
-  /* Position the tooltip text - see examples below! */
   position: absolute;
   z-index: 1;
   display: inline;

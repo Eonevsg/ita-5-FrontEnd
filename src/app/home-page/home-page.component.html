@@ -1,17 +1,18 @@
 <div id="main">
   <div class="main-container">
     <h1 class="title-align">{{ "Sitetitle" | translate }}</h1>
-    <!-- Column 1 -->
     <div class="column">
       <div class="customRow">
         <p>
           {{ "first-paragraph" | translate }}
         </p>
+
         <h2>{{ "internship" | translate }}</h2>
         <hr />
         <p>
           {{ "second-paragraph" | translate }}
         </p>
+
         <h2>{{ "paid-internship" | translate }}</h2>
         <hr />
         <p>
@@ -19,25 +20,29 @@
         </p>
       </div>
     </div>
-    <!-- Column 2-->
+
     <div class="columnDesktop">
       <div>
         <img src="/assets/images/code.jpg" class="custom-img" />
       </div>
+
       <div class="customChoicesColumn">
         <div class="customRowText">
           <h2>{{ "apply-title" | translate }}</h2>
         </div>
+
         <div class="customRowButton">
           <button class="btn btn-custom" [routerLink]="'/form'">
             {{ "apply" | translate }}
           </button>
         </div>
       </div>
+
       <div class="customChoicesColumn">
         <div class="customRowText">
           <h2>{{ "career" | translate }}</h2>
         </div>
+
         <div class="customRowButton">
           <button class="btn btn-custom" [routerLink]="'/home'">
             {{ "jobs" | translate }}
@@ -50,8 +55,8 @@
   <div class="dropdown-container">
     <h2>{{ "more-about" | translate }}</h2>
     <hr />
+
     <div class="customRow">
-      <!-- Collapsable menu -->
       <div>
         <div id="accordion" class="accordion">
           <div class="card mb-0">
@@ -65,6 +70,7 @@
                 {{ "join-if" | translate }}
               </a>
             </div>
+
             <div id="collapseOne" class="card-body collapse show">
               <ul>
                 <li>
@@ -84,6 +90,7 @@
                 </li>
               </ul>
             </div>
+
             <div
               class="card-header collapsed"
               data-toggle="collapse"
@@ -93,6 +100,7 @@
                 {{ "program" | translate }}
               </a>
             </div>
+
             <div id="collapseTwo" class="card-body collapse">
               <ul>
                 <li>
@@ -112,6 +120,7 @@
                 </li>
               </ul>
             </div>
+
             <div
               class="card-header collapsed"
               data-toggle="collapse"
@@ -121,6 +130,7 @@
                 {{ "why-join" | translate }}
               </a>
             </div>
+
             <div id="collapseThree" class="collapse">
               <div class="card-body">
                 <ul>
@@ -151,7 +161,6 @@
           </div>
         </div>
       </div>
-      <!-- Collapsable menu ends here-->
     </div>
   </div>
 
@@ -159,20 +168,24 @@
     <div>
       <img src="/assets/images/code.jpg" class="custom-img" />
     </div>
+
     <div class="customChoicesColumn">
       <div class="customRowText">
         <h2>{{ "apply-title" | translate }}</h2>
       </div>
+
       <div class="customRowButton">
         <button class="btn btn-custom" [routerLink]="'/form'">
           {{ "apply" | translate }}
         </button>
       </div>
     </div>
+
     <div class="customChoicesColumn">
       <div class="customRowText">
         <h2>{{ "career" | translate }}</h2>
       </div>
+
       <div class="customRowButton">
         <button class="btn btn-custom" [routerLink]="'/home'">
           {{ "jobs" | translate }}
@@ -183,6 +196,7 @@
 
   <div class="email-container">
     <div class="email-icon email-icon-column"></div>
+
     <div class="email-text-column">
       {{ "questions" | translate }}
     </div>

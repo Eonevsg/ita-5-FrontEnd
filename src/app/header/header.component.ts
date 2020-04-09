@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
   }
   logOutButtonClick() {
     this.authService.logOut();
-    this.location.replaceState("/"); // clears browser history so they can't navigate with back button
+    this.location.replaceState("/");
     this.router.navigate(["home"]);
   }
   isLoggedIn() {
