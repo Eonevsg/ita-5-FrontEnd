@@ -111,6 +111,7 @@
           "educationalInstitution" | translate
         }}</label>
         <select
+          (ngModelChange)="onChange($event)"
           type="text"
           class="form-control"
           id="establishment"

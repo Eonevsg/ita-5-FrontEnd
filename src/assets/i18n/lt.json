@@ -120,5 +120,6 @@
   "applicantWillBeContactedByPhone": "Su aplikantu bus susisiekta telefonu:\n",
   "confirmation": "Patvirtinti",
   "negativeResponseToApplicant": "Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n",
-  "applicantRefused": "Aplikantas atsisakė"
+  "applicantRefused": "Aplikantas atsisakė",
+  "confirmationEmail": "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d."
 }
