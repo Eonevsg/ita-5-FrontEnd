@@ -298,22 +298,14 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   setExistingExtraValue(extra: any) {
-    if (extra.applicationValuation) {
       this.valuationForm.controls.applicationValuation.setValue(
         extra.applicationValuation
       );
-    }
-    if (extra.testValuation) {
       this.valuationForm.controls.testValuation.setValue(extra.testValuation);
-    }
-    if (extra.interviewValuation) {
       this.valuationForm.controls.interviewValuation.setValue(
         extra.interviewValuation
       );
-    }
-    if (extra.notes) {
       this.valuationForm.controls.notes.setValue(extra.notes);
-    }
   }
 
   sendTest() {
