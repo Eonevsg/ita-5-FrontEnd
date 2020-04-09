@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   closeMenu() {
-    var element = document.getElementById("navbarSupportedContent");
+    const element = document.getElementById("navbarSupportedContent");
     if (element.classList.contains("show")) {
       element.classList.remove("show");
     }
