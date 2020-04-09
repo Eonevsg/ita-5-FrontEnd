@@ -41,8 +41,10 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
-    document.getElementById("overlay").classList.add("fadeIn");
-    document.getElementById("loading-spinner").classList.add("visible");
+    if (this.applicationForm.valid) {
+      document.getElementById("overlay").classList.add("fadeIn");
+      document.getElementById("loading-spinner").classList.add("visible");
+    }
     this.applicationForm.markAllAsTouched();
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());

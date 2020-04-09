@@ -9,8 +9,9 @@
   z-index: 1000;
   top: calc(50% - 60px);
   left: calc(50% - 60px);
-
-
+}
+#loading-spinner circle {
+  stroke: #6b436e!important;
 }
 
 #loading-spinner.visible {
