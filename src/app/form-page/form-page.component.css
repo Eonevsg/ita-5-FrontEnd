@@ -10,7 +10,7 @@
   left: calc(50% - 60px);
 }
 #loading-spinner::ng-deep circle {
-  stroke: #6b436e!important;
+  stroke: #6b436e !important;
 }
 
 #loading-spinner.visible {
@@ -168,4 +168,8 @@ label:not(.radio-label) {
   font-size: x-large;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.btn-custom {
+  margin-left: 0;
 }
