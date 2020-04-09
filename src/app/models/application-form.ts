@@ -1,4 +1,4 @@
-export interface Form {
+export interface ApplicationForm {
   id?: string;
   fname: string;
   lname: string;

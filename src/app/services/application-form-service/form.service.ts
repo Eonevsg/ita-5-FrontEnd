@@ -7,7 +7,7 @@ import { Answer } from "../../models/answer";
 import { environment } from "src/environments/environment.prod";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class ApplicationFormService {
   private url = environment.baseUrl;
@@ -27,12 +27,9 @@ export class ApplicationFormService {
   }
 
   public patchPerson(person: { extra: any; id: string }) {
-    console.log(JSON.stringify(person));
-    return this.http
-      .patch(`${this.url}/api/answer`, JSON.stringify(person), {
-        headers: new HttpHeaders({ "Content-Type": "application/json" })
-      })
-      .subscribe(data => console.log(data));
+    return this.http.patch(`${this.url}/api/answer`, JSON.stringify(person), {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    });
   }
 
   public saveForm(form: AnswerPerson) {
@@ -41,7 +38,7 @@ export class ApplicationFormService {
       JSON.stringify(form),
       {
         headers: new HttpHeaders({ "Content-Type": "application/json" }),
-        observe: "response"
+        observe: "response",
       }
     );
   }
