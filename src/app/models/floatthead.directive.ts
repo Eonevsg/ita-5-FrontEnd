@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, OnDestroy} from '@angular/core';
 
 declare var jQuery: any;
 require('floatthead/dist/jquery.floatThead.js');
@@ -6,7 +6,7 @@ require('floatthead/dist/jquery.floatThead.js');
 @Directive({
   selector: '[floatthead]'
 })
-export class FloatThead implements AfterViewInit {
+export class FloatThead implements AfterViewInit, OnDestroy{
   $el: any;
   private $main: any;
   private scrollLeft: any;
