@@ -6,7 +6,7 @@ import { throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
@@ -17,12 +17,11 @@ export class AuthService {
     return this.httpClient
       .post(`${this.baseUrl}/login`, user, { observe: "response" })
       .pipe(
-        tap(data => {
+        tap((data) => {
           sessionStorage.setItem(
             "authorization",
             data.headers.get("Authorization")
           );
-          console.log(sessionStorage.getItem("authorization"));
         })
       );
   }

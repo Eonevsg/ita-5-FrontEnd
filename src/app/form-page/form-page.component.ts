@@ -26,16 +26,16 @@ export class FormPageComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private formService: ApplicationFormService,
+    private applicationFormService: ApplicationFormService,
     private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
     subscribeToValue(this.applicationForm, "shift", "shiftExplanation");
-    this.$universities = this.formService.fetchSchools();
+    this.$universities = this.applicationFormService.fetchSchools();
     this.applicationForm.controls["establishment"].setValue(0);
-    this.formService.fetchQuestions().subscribe((data) => {
+    this.applicationFormService.fetchQuestions().subscribe((data) => {
       this.questions = data;
     });
   }
@@ -249,10 +249,12 @@ export class FormPageComponent implements OnInit {
   }
 
   saveApplicationForm(answerPerson: AnswerPerson) {
-    this.formService.saveForm(answerPerson).subscribe(
+    this.applicationFormService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
-        (this.messageTitle = this.translateService.instant("regesterFormSentSuccessfully")),
+        (this.messageTitle = this.translateService.instant(
+          "regesterFormSentSuccessfully"
+        )),
         (this.message = this.successMessage),
         this.show()
       ),
