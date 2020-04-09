@@ -13,9 +13,8 @@ import { ApplicationFormService } from "../services/application-form-service/for
   styleUrls: ["./form-page.component.css"],
 })
 export class FormPageComponent implements OnInit {
-  messageTitle = "Registracija sėkmingai išsiųsta!";
-  successMessage =
-    "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d.";
+  messageTitle = this.translateService.instant("regesterFormSentSuccessfully");
+  successMessage = this.translateService.instant("confirmationEmail");
   message = this.successMessage;
   isErrorMessage: boolean;
   showModal: boolean;
