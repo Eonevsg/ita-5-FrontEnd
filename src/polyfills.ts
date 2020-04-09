@@ -28,8 +28,6 @@
  */
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
-import "zone.js/dist/zone-patch-rxjs";
-
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
  * user can disable parts of macroTask/DomEvents patch by setting following flags
@@ -61,5 +59,4 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
 /***************************************************************************************************
- * APPLICATION IMPORTS
- */
+ * APPLICATION IMPORTS */
