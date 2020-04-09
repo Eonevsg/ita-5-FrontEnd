@@ -31,6 +31,7 @@ import { FloattheadDirective } from './models/floatthead.directive';
 
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const appRoutes: Routes = [
   { path: "details/:id", component: AnswerDetailsComponent },
@@ -76,6 +77,7 @@ const appRoutes: Routes = [
         deps: [HttpClient],
       },
     }),
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
