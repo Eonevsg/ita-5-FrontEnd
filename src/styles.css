@@ -190,3 +190,15 @@ li {
   color: black;
   font-size: medium;
 }
+
+.plus-icon:before {
+  font-family: "FontAwesome";
+  content:"\f067";
+  font-size: medium;
+}
+
+.minus-icon:before {
+  font-family: "FontAwesome";
+  content:"\f068";
+  font-size: medium;
+}
