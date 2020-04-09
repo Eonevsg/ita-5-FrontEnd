@@ -24,7 +24,6 @@ export class FormPageComponent implements OnInit {
   applicationForm;
   buttonEnabled: boolean = true;
   questions: Answer[];
-
   constructor(
     private fb: FormBuilder,
     private applicationFormService: ApplicationFormService,
@@ -32,6 +31,15 @@ export class FormPageComponent implements OnInit {
     private regex: Regex
   ) {
     this.applicationForm = this.buildApplicationForm();
+  }
+
+  onChange(newValue) {
+    console.log("The value is " + newValue);
+      if(newValue === "other"){
+        this.applicationForm.get("establishmentOther").enable();
+      } else {
+        this.applicationForm.get("establishmentOther").disable();
+      }
   }
 
   ngOnInit(): void {
@@ -169,9 +177,7 @@ export class FormPageComponent implements OnInit {
       establishmentOther: [
         "",
         [
-          requiredIfValidator(
-            () => this.applicationForm.get("establishment").value
-          ),
+          Validators.required,
           Validators.maxLength(1000),
           Validators.pattern(this.regex.generalRegex),
         ],
