@@ -15,7 +15,7 @@
   "name": "Vardas",
   "surname": "Pavardė",
   "establishment": "Mokymosi įstaiga",
-  "contract": "Sutartis",
+  "contract": "Trišalė",
   "form": "Anketos",
   "test": "Testo",
   "interview": "Pokalbio",
@@ -62,12 +62,12 @@
   "why-join": "Kodėl verta prisijungti?",
   "why-competence": "Dalyvausi įgyvendinant IT projektus, ugdysi IT kompetenciją, išmoksi Agile metodikos principų.",
   "why-bank": "Pamatysi banką be kaklaraiščio, kuriame dirbame ir švenčiame kartu.",
-  "why-alumni": "Susipažinsi su „IT Akademija@Įmonės_pavadinimas“ alumnais, kurie jau įsidarbino pas mus.",
+  "why-alumni": "Susipažinsi su „IT Akademija@Įmonės_pavadinimas alumnais, kurie jau įsidarbino pas mus.",
   "why-workers": "Mokysiesi ne iš vadovėlių, bet iš „Įmonės_pavadinimas“ IT profesionalų.",
   "why-improve": "Gausi kokybišką grįžtamąjį ryšį, kuris tau padės tobulėti dar greičiau.",
   "why-fields": "Turėsi galimybę išbandyti ir atrasti save skirtingose IT srityse.",
   "why-career": "Jei tau puikiai seksis ir norėsi tęsti karjerą „Įmonės_pavadinimas“ IT, praktikos pabaigoje galėsi pasirinkti norimą stažuotės kryptį.",
-  "questions": "Jei turi klausimų – parašyk atranka@Įmonės_pavadinimas.lt",
+  "questions": "Jei turi klausimų – parašyk atranka@imones_pavadinimas.lt",
   "applicationAccept": "Priimti",
   "applicationReject": "Atmesti",
   "applicationRefused": "Atsisakė",
@@ -85,7 +85,7 @@
   "nextApplication": "Kita paraiška",
   "prevApplication": "Praeita paraiška",
   "application-form": "Registracijos forma",
-  "form-information": "Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite mums - atranka@Įmonės_pavadinimas.lt",
+  "form-information": "Užpildykite registracijos formą dalyvauti IT Akademijoje. Registracijos formą galite pildyti iki Lapkričio 30d. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d. Kilus klausimams rašykite mums - atranka@imones_pavadinimas.lt",
   "form-contact": "Kontaktinė informacija",
   "name-error": "Įveskite vardą",
   "surname-error": "Įveskite pavardę",
@@ -120,6 +120,11 @@
   "applicantWillBeContactedByPhone": "Su aplikantu bus susisiekta telefonu:\n",
   "confirmation": "Patvirtinti",
   "negativeResponseToApplicant": "Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n",
+<<<<<<< HEAD
   "applicantRefused": "Aplikantas atsisakė",
   "confirmationEmail": "Registracijos patvirtinimas išsiųstas nurodytu el. pašto adresu. Atsakymą dėl dalyvavimo IT Akademijoje gausite ne vėliau nei Sausio 15d."
 }
+=======
+  "applicantRefused": "Aplikantas atsisakė"
+}
+>>>>>>> b465373de13ce3dbd7b1af4a1ebf471a6b6b78fe

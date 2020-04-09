@@ -18,6 +18,7 @@ html {
   opacity: 0;
   transition: 0.2s ease-in;
 }
+
 #overlay.fadeIn {
   visibility: visible;
   background: rgba(0, 0, 0, 0.7);
@@ -40,14 +41,12 @@ html {
   background: #ffffff;
 }
 
-/* Firefox */
 input[type="number"] {
   -moz-appearance: textfield;
 }
 
 .btn-custom {
   background: #6b436eb0;
-  /* color: #512b2b; */
   font-weight: 500;
   margin: 3%;
 }

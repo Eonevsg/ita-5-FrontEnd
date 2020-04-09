@@ -15,15 +15,18 @@
   height: 100%;
   margin: 0 5% 5% 5%;
 }
+
 .columnDesktop {
   float: left;
   width: 40%;
   height: 100%;
   margin: 0 5% 5% 5%;
 }
+
 .columnMobile {
   display: none;
 }
+
 .customRow {
   width: 100%;
   height: 33%;
@@ -33,15 +36,18 @@
   width: 45%;
   margin-bottom: 10px;
 }
+
 .customRowText {
   margin-top: 10px;
   height: 5vh;
   text-align: center;
 }
+
 .customRowButton {
   padding-bottom: 10px;
   text-align: center;
 }
+
 .customChoicesColumn {
   width: 100%;
   height: 33%;
@@ -49,6 +55,7 @@
   margin-top: 2%;
   border-top: 5px solid #6b436e;
 }
+
 .custom-img {
   max-width: 100%;
   height: 33%;
@@ -83,6 +90,7 @@ img {
   padding-bottom: 5px;
   text-align: center;
 }
+
 .email-text-column {
   float: left;
   width: 95%;
@@ -93,6 +101,7 @@ img {
   padding-left: 5px;
   text-align: left;
 }
+
 .email-container {
   margin: 2% 5% 5% 5%;
   width: 90%;
@@ -122,7 +131,6 @@ img {
 
 .open-by-default-tab[aria-expanded="true"]::after {
   font-family: "FontAwesome";
-  /* Only once for the first open by default tab*/
   content: "\f077" !important;
   float: right;
 }
@@ -134,11 +142,9 @@ img {
 }
 
 .accordion .card-header.collapsed::after {
-  /* symbol for "collapsed" panels */
   content: "\f078";
 }
 
-/* Mobile responsive */
 @media only screen and (max-width: 772px) {
   .column {
     width: 90%;
@@ -148,24 +154,30 @@ img {
   img {
     display: none;
   }
+
   .email-icon-column {
     padding-top: 10px;
   }
+
   .columnDesktop {
     display: none;
   }
+
   .columnMobile {
     width: 90%;
     height: auto;
     margin: 5% 5% 5% 5%;
     display: block;
   }
+
   .btn-custom {
     width: 50%;
   }
+
   .email-icon-column {
     width: 10%;
   }
+
   .email-text-column {
     width: 90%;
   }

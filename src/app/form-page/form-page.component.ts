@@ -22,12 +22,20 @@ export class FormPageComponent implements OnInit {
   applicationForm = this.buildApplicationForm();
   buttonEnabled: boolean = true;
   questions: Answer[];
-
   constructor(
     private fb: FormBuilder,
     private applicationFormService: ApplicationFormService,
     private translateService: TranslateService
   ) {}
+
+  onChange(newValue) {
+    console.log("The value is " + newValue);
+      if(newValue === "other"){
+        this.applicationForm.get("establishmentOther").enable();
+      } else {
+        this.applicationForm.get("establishmentOther").disable();
+      }
+  }
 
   ngOnInit(): void {
     subscribeToValue(this.applicationForm, "contract", "contractExplanation");
@@ -40,6 +48,10 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.applicationForm.valid) {
+      document.getElementById("overlay").classList.add("fadeIn");
+      document.getElementById("loading-spinner").classList.add("visible");
+    }
     this.applicationForm.markAllAsTouched();
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());
@@ -114,7 +126,7 @@ export class FormPageComponent implements OnInit {
   }
 
   show() {
-    document.getElementById("overlay").classList.add("fadeIn");
+    document.getElementById("loading-spinner").classList.remove("visible");
     this.showModal = true;
   }
 
@@ -165,9 +177,7 @@ export class FormPageComponent implements OnInit {
       establishmentOther: [
         "",
         [
-          requiredIfValidator(
-            () => this.applicationForm.get("establishment").value
-          ),
+          Validators.required,
           Validators.maxLength(1000),
           Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
@@ -215,7 +225,7 @@ export class FormPageComponent implements OnInit {
           Validators.pattern("[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ\\d\\n\\* \\.,\\-'\"]+"),
         ],
       ],
-      thirdPartyAgreement: ["", [Validators.required]],
+      thirdPartyAgreement: ["", [Validators.required, Validators.pattern('true')]],
     });
   }
 
