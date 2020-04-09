@@ -195,7 +195,6 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.translateService.currentLang = "lt";
     this.route.paramMap.subscribe((params) => {
       this.routeId = parseInt(params.get("id"));
 
@@ -239,12 +238,8 @@ export class AnswerDetailsComponent implements OnInit {
       this.tempNotes = this.notes.value;
     }
 
-    this.message =
-      this.translateService.currentLang === "lt"
-        ? "Ar tikrai norite išsaugoti?"
-        : "Are you sure you want to save changes?";
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Išsaugoti" : "Confirm";
+    this.message = this.translateService.instant("youSureYouWantToSave");
+    this.buttonValue = this.translateService.instant("confirm");
     this.buttonFunction = "onUpdateValues";
     this.show();
   }
@@ -310,61 +305,46 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   sendTest() {
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Siųsti" : "Send";
+    this.buttonValue = this.translateService.instant("send");
     this.message =
-      this.translateService.currentLang === "lt"
-        ? `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`
-        : `Test link will be sent to email:\n ${this.email}`;
+      this.translateService.instant("linkWillBeSentToEmail") + this.email;
     this.buttonFunction = "onSendEmail";
     this.statusValue = "Testas";
     this.show();
   }
 
   inviteToInterview() {
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
+    this.buttonValue = this.translateService.instant("confirmation");
     this.message =
-      this.translateService.currentLang === "lt"
-        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
-        : `The applicant will be contacted by phone:\n ${this.phone}`;
+      this.translateService.instant("applicantWillBeContactedByPhone") +
+      this.phone;
     this.buttonFunction = "onConfirm";
     this.statusValue = "Interviu";
     this.show();
   }
 
   acceptApplication() {
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
+    this.buttonValue = this.translateService.instant("confirmation");
     this.message =
-      this.translateService.currentLang === "lt"
-        ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
-        : `The applicant will be contacted by phone:\n ${this.phone}`;
+      this.translateService.instant("applicantWillBeContactedByPhone") +
+      this.phone;
     this.buttonFunction = "onConfirm";
     this.statusValue = "Priimta";
     this.show();
   }
 
   rejectApplication() {
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Siųsti" : "Send";
+    this.buttonValue = this.translateService.instant("send");
     this.message =
-      this.translateService.currentLang === "lt"
-        ? `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`
-        : `Negative response to the applicant will be sent to email:\n ${this.email}`;
+      this.translateService.instant("negativeResponseToApplicant") + this.email;
     this.buttonFunction = "onSendEmail";
     this.statusValue = "Atmesta";
-
     this.show();
   }
 
   refused() {
-    this.buttonValue =
-      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
-    this.message =
-      this.translateService.currentLang === "lt"
-        ? `Aplikantas atsisakė`
-        : `Applicant refused`;
+    this.buttonValue = this.translateService.instant("confirmation");
+    this.message = this.translateService.instant("applicantRefused");
     this.buttonFunction = "onConfirm";
     this.statusValue = "Atsisakė";
     this.show();

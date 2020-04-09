@@ -252,16 +252,12 @@ export class FormPageComponent implements OnInit {
     this.formService.saveForm(answerPerson).subscribe(
       () => (
         (this.isErrorMessage = false),
-        (this.messageTitle =
-          this.translateService.currentLang === "lt"
-            ? "Registracijos forma sėkmingai išsiųsta."
-            : "Registration form successfully sent."),
+        (this.messageTitle = this.translateService.instant("regesterFormSentSuccessfully")),
         (this.message = this.successMessage),
         this.show()
       ),
       (error) => (
-        (this.messageTitle =
-          this.translateService.currentLang === "lt" ? "Klaida!" : "Error"),
+        (this.messageTitle = this.translateService.instant("error")),
         (this.message =
           this.translateService.currentLang === "lt"
             ? error.error.ltErrorMessage
