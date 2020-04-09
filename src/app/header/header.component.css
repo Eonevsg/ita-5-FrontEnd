@@ -90,6 +90,22 @@
 
     z-index: 999;
   }
+  .logo-container {
+    padding-left: 10px;
+    padding-top: 30px;
+  }
+  .logo-container p {
+    display: inline-block;
+    margin-left: 2%;
+    margin-top: 10px;
+    position: absolute;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+    top: -4px;
+    position:relative;
+  }
 }
 
 @media (max-width: 1040px) {

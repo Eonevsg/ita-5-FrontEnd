@@ -1,12 +1,11 @@
-import { Component, NgZone, OnInit, ViewChild } from "@angular/core";
-
+import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, Validators } from "@angular/forms";
-import { Person } from "../models/person";
+import { TranslateService } from "@ngx-translate/core";
+import { Observable } from "rxjs";
 import { Answer } from "../models/answer";
 import { AnswerPerson } from "../models/answer-person";
+import { Person } from "../models/person";
 import { ApplicationFormService } from "../services/application-form-service/form.service";
-import { Observable } from "rxjs";
-import { LanguageService } from "../services/language-service/language.service";
 
 @Component({
   selector: "app-form-page",
@@ -28,7 +27,7 @@ export class FormPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private formService: ApplicationFormService,
-    private languageService: LanguageService
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +49,7 @@ export class FormPageComponent implements OnInit {
   }
 
   getFullQuestion(id: string): string {
-    return this.languageService.getLanguage() === "lt"
+    return this.translateService.currentLang === "lt"
       ? this.questions.find((question) => question.id === id).fullQuestion
       : this.questions.find((question) => question.id === id).enFullQuestion;
   }
@@ -254,7 +253,7 @@ export class FormPageComponent implements OnInit {
       () => (
         (this.isErrorMessage = false),
         (this.messageTitle =
-          this.languageService.getLanguage() === "lt"
+          this.translateService.currentLang === "lt"
             ? "Registracijos forma sėkmingai išsiųsta."
             : "Registration form successfully sent."),
         (this.message = this.successMessage),
@@ -262,9 +261,11 @@ export class FormPageComponent implements OnInit {
       ),
       (error) => (
         (this.messageTitle =
-          this.languageService.getLanguage() === "lt" ? "Klaida!" : "Error"),
+          this.translateService.currentLang === "lt" ? "Klaida!" : "Error"),
         (this.message =
-          this.languageService.getLanguage() === "lt" ? error.error.ltErrorMessage : error.error.enErrorMessage),
+          this.translateService.currentLang === "lt"
+            ? error.error.ltErrorMessage
+            : error.error.enErrorMessage),
         (this.isErrorMessage = true),
         this.show()
       )
