@@ -2,9 +2,25 @@
   border-left: 5px solid #42a948;
 }
 
+#loading-spinner {
+  position: fixed;
+  diameter: 100!important;
+  visibility: hidden !important;
+  z-index: 1000;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+
+
+}
+
+#loading-spinner.visible {
+  visibility: visible !important;
+}
+
 textarea {
   resize: none;
 }
+
 .row::after {
   content: "";
   clear: both;
@@ -148,6 +164,7 @@ textarea {
 label:not(.radio-label) {
   margin-top: 20px;
 }
+
 #messageTitle {
   font-size: x-large;
   margin-top: 20px;

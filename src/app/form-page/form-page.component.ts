@@ -41,6 +41,8 @@ export class FormPageComponent implements OnInit {
   }
 
   onSubmit(): void {
+    document.getElementById("overlay").classList.add("fadeIn");
+    document.getElementById("loading-spinner").classList.add("visible");
     this.applicationForm.markAllAsTouched();
     if (this.applicationForm.valid) {
       this.saveApplicationForm(this.getPersonAndAnswers());
@@ -115,7 +117,7 @@ export class FormPageComponent implements OnInit {
   }
 
   show() {
-    document.getElementById("overlay").classList.add("fadeIn");
+    document.getElementById("loading-spinner").classList.remove("visible");
     this.showModal = true;
   }
 
