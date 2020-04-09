@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { Answer } from "../models/answer";
-import { AnswerView } from "../models/answerView";
-import { ApplicationFormService } from "../services/application-form-service/form.service";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { TranslateService } from "@ngx-translate/core";
 import { from, Observable } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { FormBuilder, Validators } from "@angular/forms";
+import { Answer } from "../models/answer";
+import { AnswerView } from "../models/answerView";
 import { Person } from "../models/person";
-import { LanguageService } from "../services/language-service/language.service";
+import { ApplicationFormService } from "../services/application-form-service/form.service";
 
 @Component({
   selector: "app-answer-details",
@@ -65,7 +65,7 @@ export class AnswerDetailsComponent implements OnInit {
     private formService: ApplicationFormService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private languageService: LanguageService
+    private translateService: TranslateService
   ) {}
 
   valuationForm = this.fb.group({
@@ -107,7 +107,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   private extractPersonStatus(status: string) {
-    if (this.languageService.getLanguage() === "lt") {
+    if (this.translateService.currentLang === "lt") {
       switch (status) {
         case "Testas": {
           return "Testas išsiųstas";
@@ -134,7 +134,7 @@ export class AnswerDetailsComponent implements OnInit {
           return status;
         }
       }
-    } else if (this.languageService.getLanguage() === "en") {
+    } else if (this.translateService.currentLang === "en") {
       switch (status) {
         case "Testas": {
           return "Test sent";
@@ -195,6 +195,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.translateService.currentLang = "lt";
     this.route.paramMap.subscribe((params) => {
       this.routeId = parseInt(params.get("id"));
 
@@ -239,11 +240,11 @@ export class AnswerDetailsComponent implements OnInit {
     }
 
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? "Ar tikrai norite išsaugoti?"
         : "Are you sure you want to save changes?";
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Išsaugoti" : "Confirm";
+      this.translateService.currentLang === "lt" ? "Išsaugoti" : "Confirm";
     this.buttonFunction = "onUpdateValues";
     this.show();
   }
@@ -258,7 +259,7 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   getFullQuestion(id: string): string {
-    return this.languageService.getLanguage() === "lt"
+    return this.translateService.currentLang === "lt"
       ? this.questions.find((question) => question.id === id).fullQuestion
       : this.questions.find((question) => question.id === id).enFullQuestion;
   }
@@ -298,21 +299,21 @@ export class AnswerDetailsComponent implements OnInit {
   }
 
   setExistingExtraValue(extra: any) {
-      this.valuationForm.controls.applicationValuation.setValue(
-        extra.applicationValuation
-      );
-      this.valuationForm.controls.testValuation.setValue(extra.testValuation);
-      this.valuationForm.controls.interviewValuation.setValue(
-        extra.interviewValuation
-      );
-      this.valuationForm.controls.notes.setValue(extra.notes);
+    this.valuationForm.controls.applicationValuation.setValue(
+      extra.applicationValuation
+    );
+    this.valuationForm.controls.testValuation.setValue(extra.testValuation);
+    this.valuationForm.controls.interviewValuation.setValue(
+      extra.interviewValuation
+    );
+    this.valuationForm.controls.notes.setValue(extra.notes);
   }
 
   sendTest() {
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Siųsti" : "Send";
+      this.translateService.currentLang === "lt" ? "Siųsti" : "Send";
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? `Nuoroda į testa bus išsiųsta el. paštu:\n ${this.email}`
         : `Test link will be sent to email:\n ${this.email}`;
     this.buttonFunction = "onSendEmail";
@@ -322,9 +323,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   inviteToInterview() {
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
         : `The applicant will be contacted by phone:\n ${this.phone}`;
     this.buttonFunction = "onConfirm";
@@ -334,9 +335,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   acceptApplication() {
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? `Su aplikantu bus susisiekta telefonu:\n ${this.phone}`
         : `The applicant will be contacted by phone:\n ${this.phone}`;
     this.buttonFunction = "onConfirm";
@@ -346,9 +347,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   rejectApplication() {
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Siųsti" : "Send";
+      this.translateService.currentLang === "lt" ? "Siųsti" : "Send";
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? `Neigiamas atsakymas aplikantui bus siunčiams el. paštu:\n ${this.email}`
         : `Negative response to the applicant will be sent to email:\n ${this.email}`;
     this.buttonFunction = "onSendEmail";
@@ -359,9 +360,9 @@ export class AnswerDetailsComponent implements OnInit {
 
   refused() {
     this.buttonValue =
-      this.languageService.getLanguage() === "lt" ? "Patvirtinti" : "Confirm";
+      this.translateService.currentLang === "lt" ? "Patvirtinti" : "Confirm";
     this.message =
-      this.languageService.getLanguage() === "lt"
+      this.translateService.currentLang === "lt"
         ? `Aplikantas atsisakė`
         : `Applicant refused`;
     this.buttonFunction = "onConfirm";
