@@ -266,7 +266,7 @@ export class FormPageComponent implements OnInit {
         (this.messageTitle = this.translateService.instant(
           "regesterFormSentSuccessfully"
         )),
-        (this.message = this.successMessage),
+        (this.message = this.translateService.instant("confirmationEmail")),
         this.show()
       ),
       (error) => (
