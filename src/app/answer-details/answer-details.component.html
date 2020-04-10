@@ -1,0 +1,259 @@
+<div id="main">
+  <div id="form-container card my-5">
+    <div class="card-body form-inner-content" *ngIf="answer$ | async as model">
+      <div class="form-inner-content">
+        <div class="status-mobile">
+          <ul class="form-status-control-list-responsive">
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top tick-icon"
+                (click)="acceptApplication()"
+              >
+                {{ "applicationAccept" | translate }}
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top none-icon"
+                (click)="rejectApplication()"
+              >
+                <span>{{ "applicationReject" | translate }}</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top ban-icon"
+                (click)="refused()"
+              >
+                <span>{{ "applicationRefused" | translate }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1 class="name">
+            {{ model.person.name + " " + model.person.surname }}
+          </h1>
+          <ul class="form-status-control-list-desktop">
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top tick-icon"
+                (click)="acceptApplication()"
+              >
+                {{ "applicationAccept" | translate }}
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top none-icon"
+                (click)="rejectApplication()"
+              >
+                <span>{{ "applicationReject" | translate }}</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="btn-custom btn-functional left btn-top ban-icon"
+                (click)="refused()"
+              >
+                <span>{{ "applicationRefused" | translate }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="contacts">
+          <p class="bold-custom">
+            {{ getPersonStatus() }}
+          </p>
+          <p class="phone-icon">
+            {{ model.person.phone }}
+          </p>
+          <p class="email-icon">
+            {{ model.person.email }}
+          </p>
+        </div>
+
+        <section>
+          <label class="tit">{{ "personalData" | translate }}</label>
+          <hr />
+          <label class="question">
+            {{ "educationalInstitution" | translate }}</label
+          >
+          <p class="answer form-inner-content">
+            {{ model.person.uni }}
+          </p>
+          <div *ngFor="let answer of model.answerList">
+            <label class="question">
+              {{ getFullQuestion(answer.questionId) }}</label
+            >
+            <p class="answer form-inner-content">
+              {{ getAnswer(answer.answer, answer.questionId) }}
+            </p>
+          </div>
+        </section>
+      </div>
+      <div class="both-form-container">
+        <div class="form-inner-content">
+          <label class="tit">{{ "personalAssessment" | translate }}</label>
+          <hr />
+          <div class="form-container">
+            <form [formGroup]="valuationForm">
+              <section>
+                <div class="row">
+                  <div class="form-group column">
+                    <label for="applicationValuation">{{
+                      "applicationEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeApplicationValue($event)"
+                      id="applicationValuation"
+                      formControlName="applicationValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let applVal of applicationValues"
+                        [value]="applVal.value"
+                        >{{ applVal.value }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group column">
+                    <label for="testValuation">{{
+                      "testEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeTestValue($event)"
+                      id="testValuation"
+                      formControlName="testValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let testVal of testValues"
+                        [value]="testVal.value"
+                        >{{ testVal.value }}</option
+                      >
+                    </select>
+                  </div>
+
+                  <div class="form-group column">
+                    <label for="interviewValuation">{{
+                      "interviewEvaluation" | translate
+                    }}</label>
+                    <select
+                      class="custom-select form-control"
+                      (change)="changeInterviewValue($event)"
+                      id="interviewValuation"
+                      formControlName="interviewValuation"
+                    >
+                      <option value="">{{ "evaluation" | translate }}</option>
+                      <option
+                        *ngFor="let interVal of interviewValues"
+                        [value]="interVal.value"
+                        >{{ interVal.value }}</option
+                      >
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group" [class.has-error]="notes.invalid">
+                  <label for="notes">{{ "notes" | translate }}</label>
+                  <textarea
+                    type="text"
+                    class="form-control textarea-custom"
+                    id="notes"
+                    maxlength="1000"
+                    autosize
+                    formControlName="notes"
+                  ></textarea>
+                </div>
+
+                <div
+                  [hidden]="notes.valid || notes.untouched"
+                  class="alert alert-danger"
+                >
+                  <div *ngIf="notes.errors?.maxlength">
+                    Pastaba per ilga
+                  </div>
+                </div>
+
+                <div class="button-div">
+                  <button
+                    class="btn btn-custom btn-confiramtion"
+                    (click)="sendTest()"
+                  >
+                    {{ "sendTest" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-custom btn-confiramtion"
+                    (click)="inviteToInterview()"
+                  >
+                    {{ "inviteToInterview" | translate }}
+                  </button>
+                  <button
+                    class="btn btn-custom right btn-confiramtion"
+                    [disabled]="valuationForm.invalid"
+                    (click)="onSubmitValuation()"
+                  >
+                    {{ "save" | translate }}
+                  </button>
+                </div>
+              </section>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <hr />
+      <div>
+        <a class="nav-link left left-icon" [routerLink]="'/list'">
+          {{ "back" | translate }}</a
+        >
+        <a
+          class="nav-link right right-icon"
+          [routerLink]="['/details/', getNextApplicationId()]"
+        >
+          {{ "nextApplication" | translate }}</a
+        >
+        <a
+          class="nav-link right left-icon"
+          [routerLink]="['/details/', getPrevApplicationId()]"
+        >
+          {{ "prevApplication" | translate }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div [style.display]="showModal ? 'block' : 'none'" class="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          {{ message }}
+        </h4>
+      </div>
+      <div id="modal-footer">
+        <button
+          type="submit"
+          class="btn btn-custom"
+          id="btn-popup-hide"
+          (click)="this[buttonFunction]()"
+        >
+          {{ buttonValue }}
+        </button>
+        <button
+          type="submit"
+          class="btn btn-custom"
+          id="btn-popup-back"
+          (click)="hide()"
+        >
+          {{ "cancel" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+footer.page-footer {
+  position: relative;
+  height: auto;
+  clear: both;
+  bottom: 0;
+  padding-top: 20px;
+  background: #ffffff;
+  width: 100%;
+  border-top: 15px solid #6b436e;
+}
+
+.footer-align {
+  text-align: center;
+}

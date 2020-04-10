@@ -1,1 +1,203 @@
-/* You can add global styles to this file, and also import other style files */
+body,
+html {
+  height: auto;
+  margin: 0px;
+  min-width: 320px;
+  background-color: #e0dceb3d;
+}
+
+#overlay {
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0);
+  opacity: 0;
+  transition: 0.2s ease-in;
+}
+
+#overlay.fadeIn {
+  visibility: visible;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 1;
+}
+
+#main {
+  height: auto;
+  display: block;
+  overflow: auto;
+  max-width: 1023px;
+  min-width: 320px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background: #ffffff;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.btn-custom {
+  background: #6b436eb0;
+  font-weight: 500;
+  margin: 3%;
+}
+
+.btn-custom:active,
+.btn-custom:focus,
+.btn-custom:hover {
+  background: #6b436e;
+}
+
+.btn-secondary-custom {
+  background: #c0adc6b0;
+}
+
+.btn-secondary-custom:active,
+.btn-secondary-custom:focus,
+.btn-secondary-custom:hover {
+  background: #c0adc6;
+}
+
+.btn {
+  min-width: 120px;
+  width: 120px;
+  margin-right: 3%;
+  border-radius: 0;
+}
+
+.btn:active,
+.btn:focus,
+.btn:hover {
+  box-shadow: 0 5px 11px 0 rgba(66, 133, 244, 0.18),
+    0 4px 15px 0 rgba(66, 133, 244, 0.15);
+  border-radius: 0;
+}
+
+.btn-light {
+  background-color: #ececec;
+}
+
+.btn-light:active,
+.btn-light:hover {
+  background-color: #dbdbdb;
+}
+
+#submit {
+  margin-right: 2%;
+}
+
+.textarea-custom {
+  overflow: hidden;
+  min-height: 80px;
+}
+
+table > tbody > tr > td {
+  cursor: pointer;
+}
+
+table.table-bordered > thead > tr > th {
+  background-color: #6b436e;
+  border: 1px solid #8e8989;
+  color: #d3d3d3;
+}
+
+.center {
+  text-align: center;
+}
+
+h1,
+h2,
+label {
+  color: #512b2b;
+  font-weight: bold;
+}
+
+p,
+li {
+  color: #57292a;
+}
+
+.form-group-header {
+  margin-top: 7%;
+  font-size: 18px;
+}
+
+.form-group-header > hr {
+  margin-top: 0px;
+  border-color: #cccccc;
+}
+#modal-footer {
+  text-align: center;
+}
+.modal-title {
+  text-align: center;
+  width: 100%;
+  margin-top: 50%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .width1200 {
+    width: 1200px !important;
+  }
+}
+
+.email-icon::before {
+  font-family: "FontAwesome";
+  content: "\f0e0";
+  font-size: large;
+  color: #57292a;
+  margin-right: 5px;
+}
+
+.phone-icon::before {
+  font-family: "FontAwesome";
+  content: "\f095";
+  font-size: large;
+  color: #57292a;
+  margin-right: 7px;
+  margin-left: 2px;
+}
+
+.bold-custom {
+  font-weight: 550;
+}
+
+.tick-icon::before {
+  font-family: "FontAwesome";
+  content: "\f00c";
+  font-size: medium;
+}
+
+.none-icon:before {
+  font-family: "FontAwesome";
+  content: "\f00d";
+  font-size: medium;
+}
+
+.ban-icon:before {
+  font-family: "FontAwesome";
+  content: "\f05e";
+  color: black;
+  font-size: medium;
+}
+
+.plus-icon:before {
+  font-family: "FontAwesome";
+  content:"\f067";
+  font-size: medium;
+}
+
+.minus-icon:before {
+  font-family: "FontAwesome";
+  content:"\f068";
+  font-size: medium;
+}

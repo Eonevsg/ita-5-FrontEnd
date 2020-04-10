@@ -1,0 +1,87 @@
+<header id="header" class="header">
+  <div class="logo-container">
+    <img
+      src="/assets/images/logo.png"
+      class="logo"
+      [routerLink]="'/home'"
+      routerLinkActive="active"
+    />
+    <p class="title" [routerLink]="'/home'" routerLinkActive="active">
+      {{ "Sitetitle" | translate }}
+    </p>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="hamburger">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <li
+          class="nav-item"
+          [routerLink]="'/home'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">{{ "nav-home" | translate }}</a>
+        </li>
+        <li
+          class="nav-item"
+          [routerLink]="'/form'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">{{ "nav-registration" | translate }}</a>
+        </li>
+        <li
+          *ngIf="isLoggedIn()"
+          class="nav-item"
+          [routerLink]="'/list'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">{{ "nav-hr" | translate }}</a>
+        </li>
+        <li
+          *ngIf="isLoggedIn()"
+          id="logout-button"
+          class="nav-item"
+          (click)="logOutButtonClick()"
+        >
+          <a class="nav-link">{{ "nav-logout" | translate }}</a>
+        </li>
+        <li
+          *ngIf="!isLoggedIn()"
+          id="login-button"
+          class="nav-item"
+          [routerLink]="'/login'"
+          routerLinkActive="active"
+          (click)="closeMenu()"
+        >
+          <a class="nav-link">{{ "nav-login" | translate }}</a>
+        </li>
+      </ul>
+    </div>
+    <span id="language-selector" class="form-inline">
+      <select
+        class="form-control"
+        #selectedLang
+        (change)="switchLang(selectedLang.value)"
+      >
+        <option value="lt" selected class="language lt-icon">LT</option>
+        <option value="en" class="language en-icon">EN</option>
+      </select>
+    </span>
+  </nav>
+</header>

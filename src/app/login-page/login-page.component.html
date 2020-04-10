@@ -1,0 +1,67 @@
+<div class="login-page">
+  <div class="form">
+    <form
+      #loginForm="ngForm"
+      (ngSubmit)="onSubmit(loginForm.value)"
+      class="login-form"
+    >
+      <input
+        id="username"
+        type="text"
+        autocapitalize="off"
+        placeholder="{{ 'username' | translate }}"
+        name="username"
+        required
+        ngModel
+        #username="ngModel"
+        (click)="isSelected = true"
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="{{ 'password' | translate }}"
+        name="password"
+        required
+        ngModel
+        #password="ngModel"
+        (click)="isSelected = true"
+      />
+      <div class="alert alert-danger" *ngIf="hasError && !isSelected">
+        {{ "login-error" | translate }}
+      </div>
+      <div id="password-reminder">
+        <a
+          href="javascript:void(0);"
+          (click)="show()"
+          id="password-reminder-text"
+        >
+          {{ "password-reminder" | translate }}
+        </a>
+      </div>
+      <button type="submit" class="btn btn-custom">
+        {{ "nav-login" | translate }}
+      </button>
+    </form>
+  </div>
+  <div [style.display]="showModal ? 'block' : 'none'" class="modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">
+            {{ "password-reminder-popup" | translate }} <br />1111
+          </h4>
+        </div>
+        <div id="modal-footer">
+          <button
+            type="button"
+            class="btn btn-custom"
+            id="btn-popup-hide"
+            (click)="hide()"
+          >
+            {{ "close" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

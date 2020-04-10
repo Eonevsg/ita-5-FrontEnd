@@ -1,0 +1,175 @@
+.ng-valid.ng-touched:not(form) {
+  border-left: 5px solid #42a948;
+}
+
+#loading-spinner {
+  position: fixed;
+  visibility: hidden !important;
+  z-index: 1000;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+}
+#loading-spinner::ng-deep circle {
+  stroke: #6b436e !important;
+}
+
+#loading-spinner.visible {
+  visibility: visible !important;
+}
+
+textarea {
+  resize: none;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
+  .row {
+    display: inline-block;
+  }
+}
+
+#form-container {
+  margin: 0% 5% 10%;
+}
+
+#form-title {
+  margin: 5% 0;
+}
+
+.radio-label {
+  margin-left: 1%;
+}
+
+.modal-header {
+  display: block;
+}
+
+.modal-title {
+  margin-top: 5%;
+}
+
+[type="radio"] {
+  display: none;
+}
+
+[type="radio"] + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+}
+
+[type="radio"] + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  background: #fff;
+}
+
+[type="radio"] + label:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #6b436e;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.custom-tooltip-icon::after {
+  font-family: "FontAwesome";
+  content: "\f05a";
+}
+
+.custom-tooltip-container,
+.custom-tooltip-text {
+  visibility: hidden;
+  max-width: 400px;
+  background-color: #c0adc5;
+  color: #000000;
+  text-align: left;
+  border-radius: 3px;
+  margin-left: 15px;
+  position: absolute;
+  z-index: 1;
+  display: inline;
+}
+
+.custom-tooltip-text > p {
+  font-weight: normal;
+  color: #000000;
+  margin: 10px 15px;
+}
+
+.custom-tooltip:hover .custom-tooltip-text {
+  visibility: visible;
+}
+
+.short-input {
+  width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .short-input {
+    width: inherit;
+  }
+
+  .custom-tooltip-text {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .custom-tooltip-text {
+    display: inherit;
+  }
+}
+
+.form-group {
+  margin: 0 20px;
+}
+
+.chechbox-group,
+#submit {
+  margin: 20px;
+}
+
+label:not(.radio-label) {
+  margin-top: 20px;
+}
+
+#messageTitle {
+  font-size: x-large;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-custom {
+  margin-left: 0;
+}

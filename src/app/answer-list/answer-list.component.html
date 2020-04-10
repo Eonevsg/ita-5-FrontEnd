@@ -1,0 +1,260 @@
+<div id="main2">
+  <div id="form-container">
+    <div class="card">
+      <h1 class="title-align">{{ "lp-title" | translate }}</h1>
+      <div class="card-body">
+        <mat-form-field hidden><input matInput /></mat-form-field>
+        <table
+          matSort
+          floatthead
+          (matSortChange)="sortData($event)"
+          class="table table-bordered table-striped table-hover"
+          id="table-list"
+        >
+          <colgroup>
+            <col id="dateTime-column" />
+            <col id="status-column" />
+            <col id="name-surname-column" />
+            <col id="uni-column" />
+            <col id="contract-column" />
+            <col class="valuation-column" />
+            <col class="valuation-column" />
+            <col class="valuation-column" />
+            <col id="notes-column" />
+          </colgroup>
+          <thead class="thead-custom" id="table-header">
+            <tr>
+              <th scope="colgroup"
+                colspan="5"
+
+                class="center table-primary-header"
+              >
+                {{ "applications-title" | translate }}
+              </th>
+              <th scope="colgroup"
+                colspan="4"
+
+                class="center table-primary-header"
+              >
+                {{ "valuation-title" | translate }}
+              </th>
+            </tr>
+            <tr>
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="dateTime"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "date" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.dateTime"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="status"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "status" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.status"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="name"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "name" | translate }} {{ "surname" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.name"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="uni"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "establishment" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.uni"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="contract"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "contract" | translate }}
+                  </div>
+                  <select
+                    [(ngModel)]="fields.contract"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                  >
+                    <option value="" hidden selected>{{
+                      "filter" | translate
+                    }}</option>
+                    <option value=""></option>
+                    <option [ngValue]="true">
+                      {{ "yes" | translate }}
+                    </option>
+                    <option [ngValue]="false">
+                      {{ "no" | translate }}
+                    </option>
+                  </select>
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="applicationValuation"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "form" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.applicationValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="testValuation"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "test" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.testValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="interviewValuation"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "interview" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.interviewValuation"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+
+              <th scope="col">
+                <div class="column-header">
+                  <div
+                    mat-sort-header="notes"
+                    class="column-header-title vertical-align-middle"
+                  >
+                    {{ "notes" | translate }}
+                  </div>
+                  <input
+                    [(ngModel)]="fields.notes"
+                    (ngModelChange)="updateFilters()"
+                    matInput
+                    MatFormFieldControl
+                    placeholder="{{ 'filter' | translate }}"
+                  />
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let person of sortedPersons | search: filters"
+              [routerLink]="['/details', person.id]"
+              [ngClass]="{
+                disabled:
+                  person.extra.status === 'Atmesta' ||
+                  person.extra.status === 'Atsisakė'
+              }"
+            >
+              <td class="column-width-small">
+                {{ person.extra.dateTime | date: "yyyy-MM-dd" }}
+              </td>
+              <td class="column-width-small">{{ person.extra.status }}</td>
+
+              <td class="column-width">
+                {{ person.name + " " + person.surname }}
+              </td>
+              <td class="column-width">{{ person.uni }}</td>
+              <td
+                class="column-width center"
+                [ngClass]="person.contract ? 'plus-icon' : 'minus-icon'"
+              ></td>
+              <td class="column-width center">
+                {{ person.extra.applicationValuation }}
+              </td>
+              <td class="column-width center">
+                {{ person.extra.testValuation }}
+              </td>
+              <td class="column-width center">
+                {{ person.extra.interviewValuation }}
+              </td>
+              <td class="column-width">
+                <div>
+                  {{ addDots(person.extra.notes) }}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

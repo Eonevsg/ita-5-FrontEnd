@@ -1,0 +1,46 @@
+<footer class="page-footer" id="footer">
+  <div class="container-fluid text-center text-md-left">
+    <div class="row footer-align">
+      <div class="col-md-6 mt-md-0 mt-3">
+        <p class="text-uppercase">{{ "links" | translate }}</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <a [routerLink]="'/form'">{{ "submit-form" | translate }}</a>
+          </li>
+          <li>
+            <a href="#!">{{ "career" | translate }}</a>
+          </li>
+          <li>
+            <a href="#!">{{ "faq" | translate }}</a>
+          </li>
+          <li>
+            <a href="#!">{{ "about" | translate }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <hr class="clearfix w-100 d-md-none pb-3" />
+
+      <div class="col-md-6 mb-md-0 mb-3">
+        <p class="text-uppercase">{{ "contacts" | translate }}</p>
+
+        <ul class="list-unstyled">
+          <li>
+            <p>{{ "company-name" | translate }}</p>
+          </li>
+          <li>
+            <p>{{ "address" | translate }}</p>
+          </li>
+          <li>
+            <p>{{ "swift" | translate }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center py-3">
+    © 2020:
+    <a> {{ "company-name" | translate }}</a>
+  </div>
+</footer>

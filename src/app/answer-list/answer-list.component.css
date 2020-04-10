@@ -1,0 +1,114 @@
+input:focus::placeholder {
+  color: transparent;
+}
+
+input,
+select {
+  background-color: #b09eba;
+  width: 100%;
+  font-size: 12px;
+}
+
+select {
+  font-weight: bold;
+  color: rgb(102, 92, 108);
+}
+
+#contract-column {
+  width: 100px;
+  min-width: 100px;
+}
+
+#dateTime-column,
+#status-column,
+.valuation-column {
+  width: 100px;
+}
+
+#name-surname-column {
+  width: 200px;
+  min-width: 200px;
+}
+
+#uni-column {
+  width: 210px;
+  min-width: 210px;
+}
+
+#notes-column {
+  width: 150px;
+}
+
+#main div {
+  display: inline-block;
+}
+
+#main2 {
+  width: 100%;
+  margin: auto;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 1000px;
+}
+
+td {
+  vertical-align: middle;
+}
+
+th {
+  color: #4b250e;
+  text-align: center;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #e0dceb;
+}
+
+.column-width {
+  width: 25%;
+}
+
+#id-column-header {
+  -ms-transform: translateY(-13%);
+  transform: translateY(-13%);
+  margin-left: -5px;
+  font-size: 25px;
+  width: 100%;
+}
+
+.column-header {
+  text-align: center;
+}
+
+.column-header-title {
+  display: inline-block;
+  text-align: center;
+  margin-left: 15%;
+  vertical-align: middle;
+}
+
+.vertical-align-middle {
+  transform: translateY(-50%);
+}
+
+#main {
+  max-width: 100vw;
+  min-width: 100vw;
+}
+
+.table-primary-header {
+  padding: 10px;
+}
+
+.disabled {
+  color: lightgray !important;
+}
+
+.title-align {
+  padding: 1.25rem;
+  margin-bottom: -10px;
+}

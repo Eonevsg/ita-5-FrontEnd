@@ -1,0 +1,204 @@
+<div id="main">
+  <div class="main-container">
+    <h1 class="title-align">{{ "Sitetitle" | translate }}</h1>
+    <div class="column">
+      <div class="customRow">
+        <p>
+          {{ "first-paragraph" | translate }}
+        </p>
+
+        <h2>{{ "internship" | translate }}</h2>
+        <hr />
+        <p>
+          {{ "second-paragraph" | translate }}
+        </p>
+
+        <h2>{{ "paid-internship" | translate }}</h2>
+        <hr />
+        <p>
+          {{ "third-paragraph" | translate }}
+        </p>
+      </div>
+    </div>
+
+    <div class="columnDesktop">
+      <div>
+        <img src="/assets/images/code.jpg" class="custom-img" />
+      </div>
+
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>{{ "apply-title" | translate }}</h2>
+        </div>
+
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/form'">
+            {{ "apply" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="customChoicesColumn">
+        <div class="customRowText">
+          <h2>{{ "career" | translate }}</h2>
+        </div>
+
+        <div class="customRowButton">
+          <button class="btn btn-custom" [routerLink]="'/home'">
+            {{ "jobs" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dropdown-container">
+    <h2>{{ "more-about" | translate }}</h2>
+    <hr />
+
+    <div class="customRow">
+      <div>
+        <div id="accordion" class="accordion">
+          <div class="card mb-0">
+            <div
+              class="card-header collapsed open-by-default-tab"
+              data-toggle="collapse"
+              href="#collapseOne"
+              aria-expanded="true"
+            >
+              <a class="card-title custom-collapse-text">
+                {{ "join-if" | translate }}
+              </a>
+            </div>
+
+            <div id="collapseOne" class="card-body collapse show">
+              <ul>
+                <li>
+                  {{ "join-seeking" | translate }}
+                </li>
+                <li>
+                  {{ "join-future" | translate }}
+                </li>
+                <li>
+                  {{ "join-enjoy" | translate }}
+                </li>
+                <li>
+                  {{ "join-shift" | translate }}
+                </li>
+                <li>
+                  {{ "join-fluent" | translate }}
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="card-header collapsed"
+              data-toggle="collapse"
+              href="#collapseTwo"
+            >
+              <a class="card-title custom-collapse-text">
+                {{ "program" | translate }}
+              </a>
+            </div>
+
+            <div id="collapseTwo" class="card-body collapse">
+              <ul>
+                <li>
+                  {{ "program-stages" | translate }}
+                  <ul>
+                    <li>
+                      {{ "program-stages-unpaid" | translate }}
+                    </li>
+                    <li>
+                      {{ "program-stages-paid" | translate }}
+                    </li>
+                  </ul>
+                </li>
+                <li>{{ "program-scholarship" | translate }}</li>
+                <li>
+                  {{ "program-start" | translate }}
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="card-header collapsed"
+              data-toggle="collapse"
+              href="#collapseThree"
+            >
+              <a class="card-title custom-collapse-text">
+                {{ "why-join" | translate }}
+              </a>
+            </div>
+
+            <div id="collapseThree" class="collapse">
+              <div class="card-body">
+                <ul>
+                  <li>
+                    {{ "why-competence" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-bank" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-alumni" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-workers" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-improve" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-fields" | translate }}
+                  </li>
+                  <li>
+                    {{ "why-career" | translate }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="columnMobile">
+    <div>
+      <img src="/assets/images/code.jpg" class="custom-img" />
+    </div>
+
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>{{ "apply-title" | translate }}</h2>
+      </div>
+
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/form'">
+          {{ "apply" | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="customChoicesColumn">
+      <div class="customRowText">
+        <h2>{{ "career" | translate }}</h2>
+      </div>
+
+      <div class="customRowButton">
+        <button class="btn btn-custom" [routerLink]="'/home'">
+          {{ "jobs" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-container">
+    <div class="email-icon email-icon-column"></div>
+
+    <div class="email-text-column">
+      {{ "questions" | translate }}
+    </div>
+  </div>
+</div>

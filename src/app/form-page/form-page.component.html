@@ -1,0 +1,455 @@
+<mat-spinner id="loading-spinner" diameter="120"></mat-spinner>
+<div id="main">
+  <div id="form-container">
+    <h1 id="form-title">{{ "application-form" | translate }}</h1>
+    <p>
+      {{ "form-information" | translate }}
+    </p>
+    <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+      <div class="form-group-header">
+        <label>{{ "form-contact" | translate }}</label>
+        <hr />
+      </div>
+      <div class="form-group short-input">
+        <label for="fname">{{ "name" | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fname"
+          formControlName="fname"
+          maxlength="100"
+        />
+        <div
+          [hidden]="fname.valid || fname.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="fname.errors?.required">
+            {{ "name-error" | translate }}
+          </div>
+          <div *ngIf="fname.errors?.pattern">
+            {{ "error-symbols" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group short-input">
+        <label for="lname">{{ "surname" | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="lname"
+          formControlName="lname"
+          maxlength="100"
+        />
+        <div
+          [hidden]="lname.valid || lname.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="lname.errors?.required">
+            {{ "surname-error" | translate }}
+          </div>
+          <div *ngIf="lname.errors?.pattern">
+            {{ "error-symbols" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group short-input">
+        <label for="phone">{{ "phone" | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          formControlName="phone"
+          placeholder="+37060000000"
+        />
+        <div
+          [hidden]="phone.valid || phone.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="phone.errors?.required">
+            {{ "phone-error" | translate }}
+          </div>
+          <div *ngIf="phone.errors?.pattern">
+            {{ "phone-format" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group short-input">
+        <label for="email">{{ "email" | translate }}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="name@example.com"
+        />
+        <div
+          [hidden]="email.valid || email.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors?.required">
+            {{ "email-error" | translate }}
+          </div>
+          <div *ngIf="email.errors?.maxlength">
+            {{ "email-length" | translate }}
+          </div>
+          <div *ngIf="email.errors?.pattern">
+            {{ "format" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group-header">
+        <label>{{ "about-you" | translate }}</label>
+        <hr />
+      </div>
+
+      <div class="form-group">
+        <label for="establishment">{{
+          "educationalInstitution" | translate
+        }}</label>
+        <select
+          (ngModelChange)="onChange($event)"
+          type="text"
+          class="form-control"
+          id="establishment"
+          formControlName="establishment"
+        >
+          <option value="0" disabled>{{ "pick-school" | translate }}</option>
+          <option
+            *ngFor="let university of $universities | async"
+            [value]="university"
+          >
+            {{ university }}
+          </option>
+          <option value="other">{{ "school-other" | translate }}</option>
+        </select>
+        <div
+          [hidden]="establishment.valid || establishment.untouched"
+          class="alert alert-danger"
+        >
+          {{ "school-error" | translate }}
+        </div>
+      </div>
+
+      <div [hidden]="establishment.value != 'other'" class="form-group">
+        <label for="establishmentOther">{{ "enter-school" | translate }}</label>
+        <textarea
+          type="text"
+          class="form-control textarea-custom"
+          id="establishmentOther"
+          formControlName="establishmentOther"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="establishmentOther.valid || establishmentOther.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="establishmentOther.errors?.required">
+            {{ "school-error-other" | translate }}
+          </div>
+          <div *ngIf="establishmentOther.errors?.pattern">
+            {{ "symbol-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="contract" class="custom-tooltip custom-tooltip-icon"
+          >{{ getFullQuestion("1") }}
+          <div class="custom-tooltip-text">
+            <p>
+              {{ "tooltip-hint" | translate }}
+            </p>
+          </div>
+        </label>
+
+        <div class="form-radio-group" [class.has-error]="contract.invalid">
+          <div class="form-radio-group-choice">
+            <input
+              type="radio"
+              value="true"
+              id="contract-pos"
+              formControlName="contract"
+            />
+            <label for="contract-pos" class="radio-label">{{
+              "yes" | translate
+            }}</label>
+          </div>
+
+          <div class="form-radio-group-choice">
+            <input
+              type="radio"
+              value="false"
+              id="contract-neg"
+              formControlName="contract"
+            />
+            <label for="contract-neg" class="radio-label">{{
+              "no" | translate
+            }}</label>
+          </div>
+          <div
+            *ngIf="contract.invalid"
+            [hidden]="contract.valid || contract.untouched"
+            class="alert alert-danger"
+          >
+            {{ "required-error" | translate }}
+          </div>
+        </div>
+
+        <div
+          [hidden]="contract.value == 'true' || contract.pristine"
+          class="radio-hidden-group"
+        >
+          <label for="contractExplanation">{{ "expain" | translate }}</label>
+          <textarea
+            type="text"
+            class="form-control textarea-custom"
+            id="contractExplanation"
+            maxlength="1000"
+            autosize
+            formControlName="contractExplanation"
+          ></textarea>
+
+          <div
+            class="alert alert-danger"
+            [hidden]="
+              contractExplanation.valid || contractExplanation.untouched
+            "
+          >
+            <div *ngIf="contractExplanation.errors?.required">
+              {{ "required-error" | translate }}
+            </div>
+            <div *ngIf="contractExplanation.errors?.pattern">
+              {{ "symbol-error" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="shift">{{ getFullQuestion("2") }}</label>
+        <div class="form-radio-group">
+          <div class="form-radio-group-choice">
+            <input
+              type="radio"
+              value="true"
+              id="shift-pos"
+              class="radio-custom"
+              formControlName="shift"
+            />
+            <label for="shift-pos" class="radio-label">{{
+              "yes" | translate
+            }}</label>
+          </div>
+
+          <div class="form-radio-group-choice">
+            <input
+              type="radio"
+              value="false"
+              class="radio-custom"
+              id="shift-neg"
+              formControlName="shift"
+            />
+            <label for="shift-neg" class="radio-label">{{
+              "no" | translate
+            }}</label>
+          </div>
+        </div>
+        <div
+          *ngIf="shift.invalid"
+          [hidden]="shift.valid || shift.untouched"
+          class="alert alert-danger"
+        >
+          {{ "required-error" | translate }}
+        </div>
+      </div>
+
+      <div
+        [hidden]="shift.value == 'true' || shift.pristine"
+        class="radio-hidden-group form-group"
+      >
+        <label for="shiftExplanation">{{ "expain" | translate }}</label>
+        <textarea
+          type="text"
+          class="form-control textarea-custom"
+          id="shiftExplanation"
+          formControlName="shiftExplanation"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          class="alert alert-danger"
+          [hidden]="shiftExplanation.valid || shiftExplanation.untouched"
+        >
+          <div *ngIf="shiftExplanation.errors?.required">
+            {{ "required-error" | translate }}
+          </div>
+          <div *ngIf="shiftExplanation.errors?.pattern">
+            {{ "symbol-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="hobbies">{{ getFullQuestion("3") }}</label>
+        <textarea
+          type="text"
+          class="form-control textarea-custom"
+          id="hobbies"
+          formControlName="hobbies"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="hobbies.valid || hobbies.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="hobbies.errors?.required">
+            {{ "required-error" | translate }}
+          </div>
+          <div *ngIf="hobbies.errors?.pattern">
+            {{ "symbol-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="motivation">{{ getFullQuestion("4") }}</label>
+        <textarea
+          type="text"
+          class="form-control textarea-custom"
+          id="motivation"
+          formControlName="motivation"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="motivation.valid || motivation.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="motivation.errors?.required">
+            {{ "required-error" | translate }}
+          </div>
+          <div *ngIf="motivation.errors?.pattern">
+            {{ "symbol-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">{{ getFullQuestion("5") }}</label>
+        <textarea
+          type="text"
+          id="experience"
+          class="form-control textarea-custom"
+          formControlName="experience"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="experience.valid || experience.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="experience.errors?.required">
+            {{ "required-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group-header">
+        <label>{{ "additional-information" | translate }}</label>
+        <hr />
+      </div>
+
+      <div class="form-group">
+        <label for="marketing">{{ getFullQuestion("6") }}</label>
+        <textarea
+          class="form-control textarea-custom"
+          type="text"
+          id="marketing"
+          formControlName="marketing"
+          maxlength="1000"
+          autosize
+        ></textarea>
+        <div
+          [hidden]="marketing.valid || marketing.untouched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="marketing.errors?.required">
+            {{ "required-error" | translate }}
+          </div>
+          <div *ngIf="marketing.errors?.pattern">
+            {{ "symbol-error" | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="chechbox-group form-group">
+        <input
+          type="checkbox"
+          ngbButton
+          id="thirdPartyAgreement"
+          formControlName="thirdPartyAgreement"
+        />
+        {{ "consent" | translate }}
+
+        <div
+          [hidden]="thirdPartyAgreement.valid || thirdPartyAgreement.untouched"
+          class="alert alert-danger"
+        >
+          {{ "required-error" | translate }}
+        </div>
+      </div>
+
+      <div id="submit">
+        <button
+          type="submit"
+          class="btn btn-custom"
+          [disabled]="!buttonEnabled"
+        >
+          {{ "Submit" | translate }}
+        </button>
+      </div>
+    </form>
+
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="modal-title" id="myModalLabel">
+              <div class="center">
+                <label id="messageTitle">{{ messageTitle }}</label>
+              </div>
+              <hr />
+              <p id="message">{{ message }}</p>
+            </div>
+            <div class="center">
+              <button
+                *ngIf="isErrorMessage"
+                type="submit"
+                class="btn btn-custom"
+                id="btn-popup-hide"
+                (click)="hide()"
+              >
+                {{ "continue" | translate }}
+              </button>
+              <button
+                type="button"
+                class="btn btn-custom"
+                id="btn-popup"
+                (click)="hide()"
+                [routerLink]="['/home']"
+              >
+                {{ "close" | translate }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

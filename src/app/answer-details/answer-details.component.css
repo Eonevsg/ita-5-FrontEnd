@@ -1,0 +1,185 @@
+.question {
+  color: #57292a;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+}
+
+.answer {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.information {
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.name {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.tit {
+  margin-top: 30px;
+  width: 250px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+textarea {
+  resize: none;
+}
+
+.btn-confiramtion {
+  width: 170px;
+  margin: 3% 2% 0 1%;
+  padding: 6px 4px 6px 4px;
+  margin-left: 0px;
+}
+
+.btn-functional {
+  padding: 6px 4px 6px 4px;
+  color: #512b2b;
+  font-size: 18px;
+  background-color: white;
+  border: 0;
+}
+
+.right {
+  float: right;
+  margin-right: 0;
+}
+
+.left {
+  float: left;
+  margin-left: 0;
+}
+
+.btn-back {
+  float: left;
+}
+
+.form-inner-content {
+  margin: 2%;
+}
+
+#btn-bottom {
+  display: inline-block;
+  height: 100%;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+.custom-select {
+  width: 90%;
+}
+
+@media only screen and (max-width: 780px) {
+  .button-div button {
+    display: block;
+    margin: 10px auto;
+    float: none;
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .row div label {
+    width: 90px;
+  }
+
+  .button-div button {
+    width: 100%;
+  }
+
+  .status-mobile {
+    display: inline !important;
+  }
+
+  .form-status-control-list-desktop {
+    display: none;
+  }
+}
+
+.form-status-control-list-responsive {
+  padding: 0;
+  padding-bottom: 50px;
+  list-style-type: none;
+}
+
+.nav-link {
+  margin-top: -10px;
+}
+
+.column-header {
+  text-align: center;
+}
+
+.status {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.contacts {
+  width: 240px;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.modal-header {
+  white-space: pre-wrap;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.space {
+  margin-right: 10px;
+}
+
+.status-mobile {
+  display: none;
+}
+
+.form-status-control-list-desktop {
+  width: auto;
+  float: right;
+  list-style-type: none;
+}
+
+.form-status-control-list-desktop li button {
+  width: max-content;
+}
+
+.form-status-control-list-desktop li button span {
+  padding-left: 7px;
+}
+
+.tick-icon::before {
+  color: green;
+}
+
+.none-icon::before {
+  color: red;
+}
+
+.left-icon::before {
+  font-family: "FontAwesome";
+  content: "\f100";
+  margin-right: 5px;
+}
+
+.right-icon::after {
+  font-family: "FontAwesome";
+  content: "\f101";
+  margin-left: 5px;
+}

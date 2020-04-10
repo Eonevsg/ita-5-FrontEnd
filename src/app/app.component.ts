@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
-export class AppComponent {
-  title = 'ita5-FrontEndv3';
+export class AppComponent implements OnInit {
+  title = "IT Akademija";
+  constructor(private translateService: TranslateService) {}
+  ngOnInit() {
+    this.translateService.currentLang = "lt";
+  }
 }
